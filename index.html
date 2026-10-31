@@ -116,7 +116,7 @@ const $=id=>document.getElementById(id),MAX_DEPTH=11000,SECONDS=25,DAY=86400000;
 const today=new Date(),dayKey=today.toISOString().slice(0,10),midnight=Date.UTC(today.getUTCFullYear(),today.getUTCMonth(),today.getUTCDate()),dayIndex=Math.floor(midnight/DAY);
 $('dateLabel').textContent='KOSTENLOS · UNBEGRENZT SPIELBAR';$('edition').textContent='TAUCHGANG · #'+String((Number(localStorage.getItem('abgrundDives')||0)+1)).padStart(3,'0');
 function rng(seed){let t=seed>>>0;return()=>{t+=0x6D2B79F5;let x=t;x=Math.imul(x^x>>>15,x|1);x^=x+Math.imul(x^x>>>7,x|61);return((x^x>>>14)>>>0)/4294967296}}
-const CURRENT='abgrundCurrentV3',USED='abgrundUsedV3';
+const CURRENT='abgrundCurrentV4',USED='abgrundUsedV4';
 function makeSession(){let used=JSON.parse(localStorage.getItem(USED)||'[]'),available=bank.map((_,i)=>i).filter(i=>!used.includes(i));if(!available.length){used=[];available=bank.map((_,i)=>i)}const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};shuffle(available);const picks=available.slice(0,7);if(picks.length<7){const extras=shuffle(bank.map((_,i)=>i).filter(i=>!picks.includes(i)));picks.push(...extras.slice(0,7-picks.length))}return{started:false,idx:0,depth:0,points:0,answers:[],done:false,counted:false,deckIds:picks}}
 let save=JSON.parse(localStorage.getItem(CURRENT)||'null');if(!save)save=makeSession();let deck=save.deckIds.map(i=>bank[i]);let timerId=null,remaining=SECONDS;
 function store(){localStorage.setItem(CURRENT,JSON.stringify(save));updateStats()}
