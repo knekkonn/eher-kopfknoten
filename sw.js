@@ -1,16 +1,21 @@
-const CACHE='abgrund-shell-v3';
+const CACHE='abgrund-shell-v4';
 const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./krillion-patch.js','./krillion-archive-extra.js'];
-const PATCH='<script src="./krillion-patch.js?v=20261101"></script><script src="./krillion-archive-extra.js?v=20261101"></script>';
+const MAIN_PATCH='<script src="./krillion-patch.js?v=20261101"></script>';
+const EXTRA_PATCH='<script src="./krillion-archive-extra.js?v=20261101"></script>';
+function injectPatches(html){
+  let out=html;
+  if(!out.includes('krillion-patch.js'))out=out.replace('</body>',MAIN_PATCH+'</body>');
+  if(!out.includes('krillion-archive-extra.js'))out=out.replace('</body>',EXTRA_PATCH+'</body>');
+  return out;
+}
 async function patchedNavigation(request){
   try{
     const response=await fetch(request,{cache:'no-store'});
     if(!response.ok)return response;
     const type=response.headers.get('content-type')||'';
     if(!type.includes('text/html'))return response;
-    let html=await response.text();
-    if(!html.includes('krillion-patch.js'))html=html.replace('</body>',PATCH+'</body>');
-    const headers=new Headers(response.headers);
-    headers.delete('content-length');
+    const html=injectPatches(await response.text());
+    const headers=new Headers(response.headers);headers.delete('content-length');
     const out=new Response(html,{status:response.status,statusText:response.statusText,headers});
     const cache=await caches.open(CACHE);cache.put(request,out.clone()).catch(()=>{});
     return out;
@@ -19,8 +24,7 @@ async function patchedNavigation(request){
     if(!cached)return Response.error();
     const type=cached.headers.get('content-type')||'';
     if(!type.includes('text/html'))return cached;
-    let html=await cached.text();
-    if(!html.includes('krillion-patch.js'))html=html.replace('</body>',PATCH+'</body>');
+    const html=injectPatches(await cached.text());
     const headers=new Headers(cached.headers);headers.delete('content-length');
     return new Response(html,{status:cached.status,statusText:cached.statusText,headers});
   }
