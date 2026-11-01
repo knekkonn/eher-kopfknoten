@@ -127,7 +127,33 @@ body.playing .homehub,body.playing .api-note{display:none}
  .api-note{top:calc(52vh + 91px)}
  .gamecard{max-height:calc(100dvh - 145px)}
 }
-.quicknew{width:100%;min-height:44px;border:1px solid #83e8f477;background:#061a2bdb;color:#b9edf5;font:600 11px 'DM Mono',monospace;letter-spacing:.13em;padding:10px}.resumeNote{color:#b5ced9;font:9px 'DM Mono',monospace;text-align:center;text-shadow:0 1px 5px #00111e}.quicknew[hidden]{display:none!important}.startrow:has(.quicknew:not([hidden])){gap:8px}</style>
+.quicknew{width:100%;min-height:44px;border:1px solid #83e8f477;background:#061a2bdb;color:#b9edf5;font:600 11px 'DM Mono',monospace;letter-spacing:.13em;padding:10px}.resumeNote{color:#b5ced9;font:9px 'DM Mono',monospace;text-align:center;text-shadow:0 1px 5px #00111e}.quicknew[hidden]{display:none!important}.startrow:has(.quicknew:not([hidden])){gap:8px}/* Layout pass: put all landing copy in normal flow so text never collides */
+.layout{display:block;position:absolute;inset:90px 0 0;max-width:none;width:100%;margin:0;padding:0}
+.main{position:relative;width:min(1050px,90vw);height:auto;max-width:none;margin:0 auto;padding:clamp(90px,13vh,145px) 0 155px}
+.headline{position:relative;inset:auto;width:min(720px,100%);font-size:clamp(40px,6.2vw,72px);line-height:1.02;letter-spacing:-.055em;margin:0 0 16px}
+.subhead{position:relative;inset:auto;max-width:min(600px,75vw);font-size:13px;line-height:1.7;margin:0}
+.homehub{position:relative;inset:auto;width:min(600px,75vw);margin:22px 0 0}
+.api-note{position:relative;inset:auto;width:min(600px,75vw);margin:10px 0 0}
+body.playing .layout{overflow:hidden}
+@media(max-width:650px){
+ .layout{position:fixed;inset:72px 0 0;overflow-y:auto;overscroll-behavior:contain;padding:0 0 140px}
+ .main{width:auto;margin:0;padding:7vh 6vw 20px}
+ .headline{width:100%;font-size:clamp(34px,11vw,44px);line-height:1.04;margin:4px 0 14px}
+ .subhead{width:100%;max-width:none;font-size:11px;line-height:1.6;margin:0}
+ .homehub{width:100%;margin:20px 0 0;padding:11px}
+ .api-note{width:100%;font-size:8px;line-height:1.5;margin:10px 0 0}
+ .startrow{bottom:calc(env(safe-area-inset-bottom,0px) + 24px)}
+ .quicknew{min-height:42px}
+ .resumeNote{line-height:1.5}
+ .depth{display:none!important}
+ body.playing .layout{overflow:hidden}
+}
+@media(max-height:700px) and (max-width:650px){
+ .main{padding-top:4vh}
+ .headline{font-size:clamp(32px,10vw,40px)}
+ .homehub{margin-top:14px}
+}
+</style>
 </head>
 <body><div class="scene" id="scene" aria-hidden="true"><i class="fish f1" style="--y:24%;--speed:23s;--delay:-8s"></i><i class="fish f2" style="--y:38%;--speed:29s;--delay:-18s"></i><i class="fish f3" style="--y:62%;--speed:25s;--delay:-4s"></i><i class="fish f4" style="--y:75%;--speed:34s;--delay:-22s"></i><i class="fish f5" style="--y:49%;--speed:31s;--delay:-13s"></i></div><div class="diver" id="diver" aria-hidden="true"><svg viewBox="0 0 32 32" shape-rendering="crispEdges"><rect x="8" y="9" width="15" height="11" fill="#ff4b79"/><rect x="5" y="11" width="5" height="7" fill="#ffb83d"/><rect x="17" y="6" width="9" height="9" fill="#ffb83d"/><rect x="20" y="8" width="5" height="5" fill="#8ff4ff"/><rect x="22" y="4" width="3" height="3" fill="#ff4b79"/><rect x="12" y="20" width="4" height="7" fill="#ff4b79"/><rect x="19" y="19" width="4" height="8" fill="#ff4b79"/><rect x="9" y="25" width="6" height="3" fill="#ffc34d"/><rect x="19" y="25" width="6" height="3" fill="#ffc34d"/><rect x="26" y="8" width="3" height="2" fill="#9cefff"/><rect x="28" y="6" width="2" height="2" fill="#9cefff"/></svg></div><div class="water"></div><i class="bubble b1"></i><i class="bubble b2"></i><i class="bubble b3"></i><div class="shell">
 <header class="top"><div class="brand"><span class="mark">⌁</span><div><strong>ABGRUND</strong><small>TAUCHGÄNGE OHNE LIMIT</small></div></div><nav class="toplinks"><button class="toplink" id="share">↗ &nbsp;TEILEN</button><button class="toplink" id="rules">? &nbsp;SPIELREGELN</button></nav></header><section class="hudtop" aria-label="Tauchanzeige"><div class="hudchip"><small>TIEFE</small><b id="hudDepth">0 m</b></div><div class="progresshud" id="progressHud" aria-label="Fragenfortschritt"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><small>PROMPT 1 VON 7</small></div><div class="hudchip scorechip"><small>SCORE</small><b id="hudScore">0</b></div></section>
