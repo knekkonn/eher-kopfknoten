@@ -1,5 +1,5 @@
-const CACHE='abgrund-shell-v4';
-const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./krillion-patch.js','./krillion-archive-extra.js'];
+const CACHE='abgrund-shell-v5';
+const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./krillion-patch.js?v=20261102','./krillion-archive-extra.js?v=20261102','./answer-expansion.js?v=20261102'];
 const MAIN_PATCH='<script src="./krillion-patch.js?v=20261101"></script>';
 const EXTRA_PATCH='<script src="./krillion-archive-extra.js?v=20261101"></script>';
 function injectPatches(html){
