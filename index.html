@@ -88,6 +88,45 @@ body.playing .gamecard{top:49%}
 .hudchip{padding:7px 9px;background:#03111edb;border:1px solid #173c53;color:#78e9f3;min-height:52px;box-shadow:0 5px 18px #00101b66}.hudchip small{display:block;font:8px 'DM Mono',monospace;letter-spacing:.24em;color:#9db9c8}.hudchip b{display:block;font:700 21px 'DM Mono',monospace;color:#54eafa;text-shadow:0 0 12px #46dff577}.scorechip{text-align:right}.scorechip b{color:#ff5d91;text-shadow:0 0 12px #ff559077}
 .progresshud{display:flex;justify-content:center;gap:5px;flex-wrap:wrap;padding-top:7px}.progresshud i{width:20px;height:20px;background:#061626;border:2px solid #020912;box-shadow:0 0 0 1px #3c7190;display:block}.progresshud i.done{background:#f2bd53;box-shadow:0 0 10px #f2bd5366}.progresshud i.current{background:#ff4e87;box-shadow:0 0 10px #ff4e8766}.progresshud small{flex:0 0 100%;text-align:center;font:8px 'DM Mono',monospace;letter-spacing:.22em;color:#a4c2d3;margin-top:5px}
 .stats{display:none!important}.layout{inset:128px 0 0}
+/* Mobile first screen and dive view: keep every layer in its own state */
+.hudtop,.gamecard,.depth{display:none}
+body.playing .hudtop{display:grid}
+body.playing .gamecard{display:block}
+body.playing .depth{display:flex}
+.homehub{position:fixed;z-index:3;left:7%;top:calc(16vh + clamp(230px,27vw,340px));width:min(520px,65vw);margin:0}
+.api-note{position:fixed;z-index:3;left:7%;top:calc(16vh + clamp(300px,34vw,420px));width:min(520px,65vw);margin:0}
+body.playing .homehub,body.playing .api-note{display:none}
+@media(max-width:650px){
+ .hudtop{top:76px;width:92vw;grid-template-columns:minmax(64px,1fr) auto minmax(64px,1fr);gap:5px}
+ .progresshud{gap:4px;padding-top:4px}
+ .progresshud i{width:14px;height:16px;border-width:1px}
+ .progresshud small{font-size:7px;letter-spacing:.13em;margin-top:4px}
+ .hudchip{min-height:45px;padding:6px 7px}
+ .hudchip b{font-size:17px}
+ .homehub{top:55vh;left:6%;width:88%;padding:11px;gap:8px}
+ .homehub>div{min-width:calc(50% - 8px)}
+ .homehub b{font-size:15px}
+ .installbtn{width:100%;min-height:40px}
+ .api-note{top:calc(55vh + 91px);left:6%;width:88%;font-size:8px}
+ .depth{display:none!important}
+ .gamecard{top:53%;width:92vw;max-height:calc(100dvh - 185px);overflow-y:auto;padding:14px 13px}
+ body.playing .gamecard{top:53%;transform:translate(-50%,-43%)}
+ .question{font-size:clamp(17px,4.8vw,22px);line-height:1.35;min-height:0;margin:12px auto}
+ .answerfield textarea{min-height:58px}
+ .cardbottom{margin-top:10px}
+ .answeractions{flex-wrap:wrap}
+ .answeractions span{max-width:55%}
+ .response{max-height:24vh;overflow:auto}
+ .startrow{bottom:calc(env(safe-area-inset-bottom,0px) + 32px)}
+ .footer{display:none}
+}
+@media(max-height:720px) and (max-width:650px){
+ .headline{top:13%}
+ .subhead{top:calc(13% + 82px)}
+ .homehub{top:52vh}
+ .api-note{top:calc(52vh + 91px)}
+ .gamecard{max-height:calc(100dvh - 145px)}
+}
 </style>
 </head>
 <body><div class="scene" id="scene" aria-hidden="true"><i class="fish f1" style="--y:24%;--speed:23s;--delay:-8s"></i><i class="fish f2" style="--y:38%;--speed:29s;--delay:-18s"></i><i class="fish f3" style="--y:62%;--speed:25s;--delay:-4s"></i><i class="fish f4" style="--y:75%;--speed:34s;--delay:-22s"></i><i class="fish f5" style="--y:49%;--speed:31s;--delay:-13s"></i></div><div class="diver" id="diver" aria-hidden="true"><svg viewBox="0 0 32 32" shape-rendering="crispEdges"><rect x="8" y="9" width="15" height="11" fill="#ff4b79"/><rect x="5" y="11" width="5" height="7" fill="#ffb83d"/><rect x="17" y="6" width="9" height="9" fill="#ffb83d"/><rect x="20" y="8" width="5" height="5" fill="#8ff4ff"/><rect x="22" y="4" width="3" height="3" fill="#ff4b79"/><rect x="12" y="20" width="4" height="7" fill="#ff4b79"/><rect x="19" y="19" width="4" height="8" fill="#ff4b79"/><rect x="9" y="25" width="6" height="3" fill="#ffc34d"/><rect x="19" y="25" width="6" height="3" fill="#ffc34d"/><rect x="26" y="8" width="3" height="2" fill="#9cefff"/><rect x="28" y="6" width="2" height="2" fill="#9cefff"/></svg></div><div class="water"></div><i class="bubble b1"></i><i class="bubble b2"></i><i class="bubble b3"></i><div class="shell">
