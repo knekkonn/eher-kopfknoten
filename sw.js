@@ -1,6 +1,6 @@
-const CACHE='abgrund-shell-v2';
-const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./krillion-patch.js'];
-const PATCH='<script src="./krillion-patch.js?v=20261101"></script>';
+const CACHE='abgrund-shell-v3';
+const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./krillion-patch.js','./krillion-archive-extra.js'];
+const PATCH='<script src="./krillion-patch.js?v=20261101"></script><script src="./krillion-archive-extra.js?v=20261101"></script>';
 async function patchedNavigation(request){
   try{
     const response=await fetch(request,{cache:'no-store'});
