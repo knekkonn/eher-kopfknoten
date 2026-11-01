@@ -14781,6 +14781,14 @@ function words(text){return text.toLocaleLowerCase('de-DE').replace(/ß/g,'ss').
 // Answer review 2026-11-01: scoped lists; screenshot regressions fixed (answers-v2).
 function normalizeFactText(s){return words(s).join(' ')}
 function canonicalAnswer(q,text){return q.answerAliases?.[normalizeFactText(text)]||text}
+// Titles are often entered without an introductory article. Only add a shortcut
+// when it identifies one answer in the same question; preserve existing answers.
+for (const q of bank) {
+ if (!/film|serie|song|lied/i.test(q.q)) continue;
+ const groups=new Map(), existing=new Set((q.answers||[]).map(normalizeFactText));
+ for(const title of q.answers||[]){const match=title.match(/^(?:the|der|die|das)\s+(.+)$/i);if(!match||normalizeFactText(match[1]).length<5)continue;const key=normalizeFactText(match[1]);if(!groups.has(key))groups.set(key,[]);groups.get(key).push(title)}
+ for(const [key,titles] of groups)if(titles.length===1&&!existing.has(key)&&!q.answerAliases?.[key]){q.answers.push(key);(q.answerAliases||={})[key]=titles[0]}
+}
 const PERFECT_SCORE_ANSWERS=["Malloreddus alla campidanese","Flórián Albert","Bob Pettit","plov","the last emperor","Pizza salsiccia e friarielli","uruguay","steaua bucuresti","robert parish","pasta alla norma","Papas arrugadas","Esperanza Spalding","Nordische Kombination","Spielberg","Jochen Rindt","Richard Krajicek","azerbaijan","flow","Mastiha","idli","julien faubert","Jeffrén Suárez","New Orleans Pelicans","andre iguodala","karl heinz rummenigge","khao soi","paneer makhani","Jalapeño poppers","Body of Lies","veep","Dianne Reeves","england","1 fc nurnberg","Uwe Bein","metta world peace","Pappa al pomodoro","cavatappi","mapo tofu","Pat Cash","laura kenny","naoya inoue","ethiopia","the banshees of inisherin","mole poblano","Oyakodon","Undhiyu","Canelé","Salep","bob gibson","jean beliveau","saint louis","gloria estefan","ousmane dembele","ada hegerberg","salvatore schillaci","Wigan Athletic","Funghi trifolati","Dobos torte","Lecsó","coq au vin","Cullen skink","jeffrey rush","luise rainer","James Coburn","lieber thomas","Killer Mike","alabama shakes","bolivia","england","Y.E. Yang","10 km freiwasser","ful medames","Menemen","Salsa di noci","comte","pelmeni","Kwek-kwek","ethiopia","Salomon Kalou","Dave Cowens","Baltimore Colts","stephen roche","joop zoetemelk","justine henin","zenit st petersburg","olimpia","Cacciucco","Moqueca baiana","Merveilleux","The Hours","rivaldo","stanley matthews","japchae","david robinson","Steve Nash","andriy shevchenko","Yuzu","Paolo Rossi"];
 function perfectAnswerFor(q){if(q.full)return q.full;const i=bank.indexOf(q);return i<0?'':PERFECT_SCORE_ANSWERS[i]||''}
 function wikipediaCategoryRule(q){ if(q.reviewedOnly)return null;
@@ -14878,6 +14886,23 @@ async function wikidataClaims(id,signal){const url='https://www.wikidata.org/w/a
 function claimIds(claims,property){return[...new Set((claims[property]||[]).map(s=>s.mainsnak?.datavalue?.value?.id).filter(Boolean))]}
 function claimMaxNumber(claims,property){const values=(claims[property]||[]).map(s=>Number(s.mainsnak?.datavalue?.value?.amount)).filter(Number.isFinite);return values.length?Math.max(...values):0}
 function wikidataCountry(claims){return claimIds(claims,'P31').some(id=>id==='Q3624078'||id==='Q6256')}
+async function verifyDiCaprioFilm(q,text){
+ if(normalizeFactText(q.q)!=='nenne einen film mit leonardo dicaprio')return false;
+ const key=normalizeFactText(text);if(!key)return false;
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),4200);
+ try {
+  const searches=await Promise.allSettled(['de','en'].map(async lang=>{
+   const url='https://www.wikidata.org/w/api.php?action=wbsearchentities&search='+encodeURIComponent(text)+'&language='+lang+'&uselang='+lang+'&type=item&limit=8&format=json&origin=*';
+   const response=await fetch(url,{signal:controller.signal});if(!response.ok)throw Error('Wikidata unavailable');return response.json();
+  }));
+  const matches=new Map();
+  for(const result of searches)if(result.status==='fulfilled')for(const item of result.value.search||[]){const names=[item.label,...(item.aliases||[]).map(a=>typeof a==='string'?a:a.value)].filter(Boolean);if(names.some(n=>normalizeFactText(n)===key))matches.set(item.id,item)}
+  // Do not guess if several entities have the same title.
+  if(matches.size!==1)return false;
+  const item=[...matches.values()][0],claims=await wikidataClaims(item.id,controller.signal);
+  return claimIds(claims,'P31').includes('Q11424')&&claimIds(claims,'P161').includes('Q38111');
+ } catch {return false} finally {clearTimeout(timer)}
+}
 function wikidataCity(claims){return claimIds(claims,'P31').some(id=>['Q515','Q5119','Q15284','Q200250','Q702492','Q174844'].includes(id))}
 function areaInSquareKilometers(claims){const values=(claims.P2046||[]).map(s=>s.mainsnak?.datavalue?.value).filter(Boolean).map(v=>{const n=Number(v.amount),unit=String(v.unit||'').split('/').pop();if(!Number.isFinite(n))return 0;if(unit==='Q712226')return n;if(unit==='Q25343')return n/1000000;return 0});return values.length?Math.max(...values):0}
 async function verifyWikidataFact(q,text){const type=wikidataFactType(q);if(!type)return false;const key=normalizeFactText(text);if(!key)return false;const cacheKey='abgrundWikidataV2:'+type+':'+key;try{const cache=JSON.parse(localStorage.getItem(cacheKey)||'null');if(cache&&Date.now()-cache.at<DAY)return cache.ok?(cache.title&&normalizeFactText(cache.title)!==key?cache.title:true):false}catch{}const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),4200);try{const searches=await Promise.allSettled(['de','en'].map(async lang=>{const url='https://www.wikidata.org/w/api.php?action=wbsearchentities&search='+encodeURIComponent(text)+'&language='+lang+'&uselang='+lang+'&type=item&limit=8&format=json&origin=*';const r=await fetch(url,{signal:controller.signal});if(!r.ok)throw new Error('Wikidata search unavailable');return r.json()}));const byId=new Map();for(const result of searches){if(result.status!=='fulfilled')continue;for(const item of result.value.search||[]){const names=[item.label,...(item.aliases||[]).map(a=>typeof a==='string'?a:a.value)].filter(Boolean);const score=names.map(name=>normalizeFactText(name)===key?0:completionMatch(text,name)?.score??99).sort((a,b)=>a-b)[0];if(score<99&&(!byId.has(item.id)||score<byId.get(item.id).score))byId.set(item.id,{item,names,score})}}const candidates=[...byId.values()].sort((a,b)=>a.score-b.score);if(!candidates.length||candidates.length>1&&candidates[1].score-candidates[0].score<.12){clearTimeout(timeout);return false}const selected=candidates[0],entity=await wikidataClaims(selected.item.id,controller.signal);let ok=false;if(type==='area')ok=wikidataCountry(entity)&&areaInSquareKilometers(entity)>1964375;else if(type==='borders')ok=wikidataCountry(entity)&&claimIds(entity,'P47').length>5;else if(type==='metro')ok=wikidataCity(entity)&&claimMaxNumber(entity,'P1082')>10000000;else if(type==='europeCity'){let inEurope=claimIds(entity,'P30').includes('Q46');if(!inEurope){for(const countryId of claimIds(entity,'P17').slice(0,3)){const country=await wikidataClaims(countryId,controller.signal);if(claimIds(country,'P30').includes('Q46')){inEurope=true;break}}}ok=wikidataCity(entity)&&inEurope&&claimMaxNumber(entity,'P1082')>100000}const title=selected.item.label||text;try{localStorage.setItem(cacheKey,JSON.stringify({at:Date.now(),ok,title}))}catch{}clearTimeout(timeout);return ok?(normalizeFactText(title)===key?true:title):false}catch{clearTimeout(timeout);return false}}
@@ -14900,6 +14925,12 @@ let validationPending=false;async function submitAnswer(timedOut=false){
  if(!accepted&&englishPatternType(q)){
   const response=$('response');response.textContent='WÖRTERBUCH-CHECK · Prüfe das englische Wort …';response.classList.remove('invalid','good');response.classList.add('show','checking');$('hint').textContent='Die Rechtschreibung wird geprüft. Die Antwortzeit läuft weiter.';$('submitAnswer').disabled=true;$('answer').disabled=true;
   try{accepted=await verifyEnglishPattern(q,text)}catch{accepted=false}
+  $('answer').disabled=false;$('submitAnswer').disabled=false;response.classList.remove('checking');
+  if(remaining<=0){validationPending=false;return submitAnswer(true)}
+ }
+ if(!accepted&&normalizeFactText(q.q)==='nenne einen film mit leonardo dicaprio'){
+  const response=$('response');response.textContent='WIKIDATA-CHECK · Prüfe die Filmbesetzung …';response.classList.remove('invalid','good');response.classList.add('show','checking');$('hint').textContent='Die Antwortzeit läuft weiter.';$('submitAnswer').disabled=true;$('answer').disabled=true;
+  try{accepted=await verifyDiCaprioFilm(q,text)}catch{accepted=false}
   $('answer').disabled=false;$('submitAnswer').disabled=false;response.classList.remove('checking');
   if(remaining<=0){validationPending=false;return submitAnswer(true)}
  }
