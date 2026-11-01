@@ -14751,6 +14751,18 @@ const bank=[
   }
 ];
 bank.push(...EXTRA_QUESTIONS);
+// Deutschsprachige Wortfragen und europäischere Sportthemen; Indizes bleiben stabil.
+for (const item of [
+ ['Nenne ein englisches Wort, das auf „-ship“ endet.','Nenne ein deutsches Wort, das auf „-schaft“ endet.','Rechenschaft',['Freundschaft','Mannschaft','Meisterschaft','Landschaft','Wissenschaft','Wirtschaft','Gesellschaft','Nachbarschaft','Eigenschaft','Leidenschaft','Verwandtschaft','Botschaft','Bekanntschaft','Erbschaft','Ortschaft','Bruderschaft','Gewerkschaft','Partnerschaft','Staatsbürgerschaft','Rechenschaft'],'schaft'],
+ ['Nenne ein englisches Wort mit der Buchstabenfolge „uni“.','Nenne ein deutsches Wort mit der Buchstabenfolge „ung“.','Luftverschmutzung',['Zeitung','Wohnung','Hoffnung','Übung','Bewegung','Entscheidung','Erinnerung','Verbindung','Rechnung','Prüfung','Regierung','Versicherung','Entwicklung','Verantwortung','Entschuldigung','Luftverschmutzung'],'ung'],
+ ['Nenne ein englisches Wort mit der Buchstabenfolge „sub“.','Nenne ein deutsches Wort, das mit „unter“ beginnt.','Unterwasserkabel',['unter','Unterhose','Unterricht','Unterkunft','Untergrund','Unternehmen','untersuchen','unterwegs','Unterwasser','Unterarm','Unterstützung','Unterschied','Unterhaltung','unterbrechen','Unterwasserkabel'],'unter'],
+ ['Nenne ein englisches Wort mit der Buchstabenfolge „para“.','Nenne ein deutsches Wort, das mit „vor“ beginnt.','Vorstellungsvermögen',['vor','Voraussetzung','Vorstellung','Vorname','Vorhang','Vorsicht','Vorteil','Vorschlag','vorbei','vorher','Vorbild','Vorrat','Vorlesung','Vorfreude','Vorstellungsvermögen'],'vor'],
+ ['Nenne ein englisches Wort, das mit demselben Buchstaben zweimal endet.','Nenne ein deutsches Wort, das mit zwei gleichen Buchstaben endet.','Sauerstoff',['Ball','Fall','Stall','Knall','Schall','Tee','See','Kaffee','Schnee','Idee','Stoff','Schiff','Griff','Sauerstoff'],'double'],
+ ['Nenne eine englische Konjunktion.','Nenne eine deutsche Konjunktion.','wenngleich',['und','oder','aber','denn','sondern','weil','dass','obwohl','wenn','als','während','bevor','nachdem','sobald','solange','sodass','sofern','falls','indem','ob','entweder','weder','bis','seitdem','wenngleich'],''],
+ ['Nenne einen Gewinner des World Series MVP in der MLB.','Nenne ein Land oder eine frühere Nationalmannschaft, die die Fußball-Europameisterschaft der Männer gewonnen hat.','Griechenland',['Deutschland','Westdeutschland','Spanien','Italien','Frankreich','Portugal','Niederlande','Dänemark','Griechenland','Tschechoslowakei','Sowjetunion'],''],
+ ['Nenne ein Team, das mindestens einmal den Super Bowl gewonnen hat.','Nenne einen Verein, der die UEFA Europa League oder den UEFA-Pokal gewonnen hat.','IFK Göteborg',['IFK Göteborg','Schalke 04','Eintracht Frankfurt','Bayer Leverkusen','Bayern München','FC Sevilla','Sevilla','Liverpool','Chelsea','Manchester United','Inter Mailand','Juventus','Ajax Amsterdam','Feyenoord','Galatasaray','Porto','Atalanta Bergamo'],''],
+ ['Nenne einen NHL-Spieler, der den Stanley Cup gewonnen hat.','Nenne einen Verein, der die Fußball-Bundesliga der Frauen gewonnen hat.','Turbine Potsdam',['Turbine Potsdam','VfL Wolfsburg','Bayern München','FC Bayern München','Eintracht Frankfurt','1. FFC Frankfurt','FFC Frankfurt','FCR 2001 Duisburg','TSV Siegen','Grün-Weiß Brauweiler'],'']
+]) {const q=bank.find(x=>x.q===item[0]);if(q){q.q=item[1];q.full=item[2];q.answers=item[3];q.germanPattern=item[4];q.reviewedOnly=true;delete q.factRule;delete q.answerAliases;delete q.scoreOverrides;}}
 // Local, question-specific synonyms: equivalent answers share a canonical name.
 for (const [question, canonical, alternatives] of [
   ['Nenne eine Nudelform.', 'fusilli', ['Spirali', 'Spiralpasta', 'spiral pasta', 'corkscrew pasta', 'Spiralen-Nudeln']],
@@ -14894,6 +14906,15 @@ async function wikidataClaims(id,signal){const url='https://www.wikidata.org/w/a
 function claimIds(claims,property){return[...new Set((claims[property]||[]).map(s=>s.mainsnak?.datavalue?.value?.id).filter(Boolean))]}
 function claimMaxNumber(claims,property){const values=(claims[property]||[]).map(s=>Number(s.mainsnak?.datavalue?.value?.amount)).filter(Number.isFinite);return values.length?Math.max(...values):0}
 function wikidataCountry(claims){return claimIds(claims,'P31').some(id=>id==='Q3624078'||id==='Q6256')}
+async function verifyGermanWord(q,text){
+ const raw=text.trim();if(!q.germanPattern||!/^\p{L}+$/u.test(raw))return false;
+ const word=raw.toLocaleLowerCase('de-DE');
+ const fits=q.germanPattern==='schaft'?word.endsWith('schaft'):q.germanPattern==='ung'?word.includes('ung'):q.germanPattern==='unter'?word.startsWith('unter'):q.germanPattern==='vor'?word.startsWith('vor'):q.germanPattern==='double'?word.length>1&&word.at(-1)===word.at(-2):false;
+ if(!fits)return false;
+ const variants=[...new Set([word,word[0].toLocaleUpperCase('de-DE')+word.slice(1)])];
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),3500);
+ try{const url='https://de.wiktionary.org/w/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&formatversion=2&format=json&origin=*&titles='+encodeURIComponent(variants.join('|'));const r=await fetch(url,{signal:controller.signal});if(!r.ok)return false;const data=await r.json();return(data.query?.pages||[]).some(p=>variants.includes(p.title)&&/\{\{\s*Sprache\s*\|\s*Deutsch\s*\}\}/i.test(p.revisions?.[0]?.slots?.main?.content||''))}catch{return false}finally{clearTimeout(timer)}
+}
 async function verifyDiCaprioFilm(q,text){
  if(normalizeFactText(q.q)!=='nenne einen film mit leonardo dicaprio')return false;
  const key=normalizeFactText(text);if(!key)return false;
@@ -14939,6 +14960,12 @@ let validationPending=false;async function submitAnswer(timedOut=false){
  if(!accepted&&normalizeFactText(q.q)==='nenne einen film mit leonardo dicaprio'){
   const response=$('response');response.textContent='WIKIDATA-CHECK · Prüfe die Filmbesetzung …';response.classList.remove('invalid','good');response.classList.add('show','checking');$('hint').textContent='Die Antwortzeit läuft weiter.';$('submitAnswer').disabled=true;$('answer').disabled=true;
   try{accepted=await verifyDiCaprioFilm(q,text)}catch{accepted=false}
+  $('answer').disabled=false;$('submitAnswer').disabled=false;response.classList.remove('checking');
+  if(remaining<=0){validationPending=false;return submitAnswer(true)}
+ }
+ if(!accepted&&q.germanPattern){
+  const response=$('response');response.textContent='WÖRTERBUCH-CHECK · Prüfe das deutsche Wort …';response.classList.remove('invalid','good');response.classList.add('show','checking');$('hint').textContent='Die Antwortzeit läuft weiter.';$('submitAnswer').disabled=true;$('answer').disabled=true;
+  try{accepted=await verifyGermanWord(q,text)}catch{accepted=false}
   $('answer').disabled=false;$('submitAnswer').disabled=false;response.classList.remove('checking');
   if(remaining<=0){validationPending=false;return submitAnswer(true)}
  }
