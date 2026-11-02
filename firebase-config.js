@@ -11,3 +11,5 @@ window.ABGRUND_FIREBASE_CONFIG = {
 
 // Named Enterprise/native database; realtime listeners keep devices in sync.
 window.ABGRUND_FIRESTORE_DATABASE = 'abgrund';
+
+window.ABGRUND_COMMUNITY_URL = 'https://abgrund-community.knekkonn-hide-and-seek.workers.dev';

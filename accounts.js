@@ -14,7 +14,7 @@ box.innerHTML=`<section class="account-card" role="dialog" aria-modal="true" ari
  <div class="account-actions"><div class="account-row"><button id="accountLogin" type="button">ANMELDEN</button><button id="accountRegister" type="button">REGISTRIEREN</button></div><button id="accountReset" type="button">PASSWORT ZURÜCKSETZEN</button></div></div>
  <div id="accountSignedIn" hidden><p class="account-user" id="accountUser"></p><p id="accountSync"></p><div class="account-actions"><button id="accountRetry" type="button">SYNCHRONISIERUNG ERNEUT VERSUCHEN</button><button id="accountLinkGoogle" type="button">GOOGLE-KONTO VERBINDEN</button></div>
  <div id="accountPasswordLink"><label for="accountNewPassword">PASSWORT FÜR E-MAIL-ANMELDUNG</label><input id="accountNewPassword" type="password" autocomplete="new-password"><div class="account-actions"><button id="accountLinkPassword" type="button">E-MAIL-ANMELDUNG HINZUFÜGEN</button></div></div>
- <div class="account-actions"><button id="accountLogout" type="button">ABMELDEN</button></div></div>
+ <div class="account-actions"><button id="accountVerify" type="button">E-MAIL BESTÄTIGEN</button><button id="accountLogout" type="button">ABMELDEN</button></div></div>
  <p class="account-status" id="accountStatus" role="status" aria-live="polite"></p><div class="account-actions"><button id="accountClose" type="button">SCHLIESSEN</button></div>
  </section>`;
 document.body.appendChild(box);
@@ -41,6 +41,7 @@ function render(){
  const u=user(),signed=!!u;trigger.textContent=signed?'◎ KONTO':'◎ ANMELDEN';
  $('accountSignedOut').hidden=signed;$('accountSignedIn').hidden=!signed;
  if(!u)return;
+ $('accountVerify').hidden=!!u.emailVerified||!u.email;
  $('accountUser').textContent=u.email||u.displayName||'Angemeldet';
  const providers=new Set(u.providerData.map(p=>p.providerId));
  $('accountLinkGoogle').hidden=providers.has('google.com');
@@ -59,7 +60,7 @@ async function syncPending(){
   }).catch(error=>{if(epoch!==myEpoch)return;pending.delete(item.id);failed.add(item.id);$('accountSync').textContent='Noch lokal gespeichert. Bitte Synchronisierung erneut versuchen.';console.warn('Account sync:',error.code||'unavailable')});
  }
 }
-window.ABGRUND_ACCOUNTS={onLocalGame:()=>{if(user()){serverReady&&($('accountSync').textContent='Ergebnisse werden synchronisiert …');syncPending()}}};
+window.ABGRUND_ACCOUNTS={identity:()=>user()?.uid||null,getToken:async()=>user()?.getIdToken?user().getIdToken():null,onLocalGame:()=>{if(user()){serverReady&&($('accountSync').textContent='Ergebnisse werden synchronisiert …');syncPending()}}};
 async function start(){
  try{
   const [appMod,authMod,fireMod]=await Promise.all([
@@ -72,6 +73,7 @@ async function start(){
   $('accountLogin').onclick=()=>perform(()=>api.signInWithEmailAndPassword(auth,$('accountEmail').value.trim(),$('accountPassword').value));
   $('accountRegister').onclick=()=>perform(()=>api.createUserWithEmailAndPassword(auth,$('accountEmail').value.trim(),$('accountPassword').value));
   $('accountReset').onclick=()=>perform(async()=>{await api.sendPasswordResetEmail(auth,$('accountEmail').value.trim());status('Wenn ein Konto existiert, wurde eine E-Mail zum Zurücksetzen versendet.')});
+  $('accountVerify').onclick=()=>perform(async()=>{await api.sendEmailVerification(user());status('Bestätigungslink versendet. Öffne ihn und melde dich danach erneut an, damit deine Runden zur Community zählen.')});
   $('accountLogout').onclick=()=>perform(()=>api.signOut(auth));
   $('accountRetry').onclick=()=>{failed.clear();if(serverReady)syncPending();else restartSync()};
   $('accountLinkGoogle').onclick=()=>perform(()=>api.linkWithPopup(user(),new api.GoogleAuthProvider()));
