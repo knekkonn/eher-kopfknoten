@@ -1,5 +1,5 @@
-const CACHE='abgrund-shell-v17';
-const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./krillion-patch.js?v=20261102b','./krillion-archive-extra.js?v=20261102','./answer-expansion.js?v=20261102c','./tier-calibration.js?v=20261102','./answer-corrections.js?v=20261102f','./question-pack.js?v=20261102','./fact-fixes.js?v=20261102','./firebase-config.js?v=2','./accounts.js?v=2','./accounts.css?v=1'];
+const CACHE='abgrund-shell-v18';
+const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./krillion-patch.js?v=20261102b','./krillion-archive-extra.js?v=20261102','./answer-expansion.js?v=20261102c','./tier-calibration.js?v=20261102','./answer-corrections.js?v=20261102f','./question-pack.js?v=20261102','./question-pack-extra.js?v=20261102','./fact-fixes.js?v=20261102','./firebase-config.js?v=2','./accounts.js?v=2','./accounts.css?v=1'];
 const MAIN_PATCH='<script src="./krillion-patch.js?v=20261101"></script>';
 const EXTRA_PATCH='<script src="./krillion-archive-extra.js?v=20261101"></script>';
 function injectPatches(html){

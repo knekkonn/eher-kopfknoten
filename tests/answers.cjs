@@ -13,7 +13,7 @@ const fakeAuth={getAuth:()=>auth,onAuthStateChanged:(_,cb)=>{authListener=cb;cb(
 const fakeFire={getFirestore:()=>({}),collection:(_,a,uid)=>({uid}),doc:(_,a,uid,b,id)=>({uid,id}),onSnapshot:(ref,options,cb)=>{if(!listeners.has(ref.uid))listeners.set(ref.uid,new Set());listeners.get(ref.uid).add(cb);queueMicrotask(()=>fire(ref.uid));return()=>listeners.get(ref.uid).delete(cb)},setDoc:async(ref,data)=>{if(failNext){failNext=false;throw Object.assign(Error('offline'),{code:'unavailable'})}if(!cloud.has(ref.uid))cloud.set(ref.uid,new Map());cloud.get(ref.uid).set(ref.id,data);queueMicrotask(()=>fire(ref.uid))}};
 const ctx=vm.createContext({console,URL,AbortController,Event,queueMicrotask,fakeApp,fakeAuth,fakeFire,document:{getElementById:node,createElement:()=>node('created-dialog'),querySelector:node,querySelectorAll:()=>[],body:node('body'),documentElement:node('root'),addEventListener(){}},window:{innerHeight:844,addEventListener(){},ABGRUND_FIREBASE_CONFIG:{apiKey:'test',authDomain:'test',projectId:'test',appId:'test'}},navigator:{},location:{href:'https://example.test/'},localStorage:{getItem:k=>storage.get(k)??null,setItem:(k,v)=>storage.set(k,String(v)),removeItem:k=>storage.delete(k)},setTimeout:()=>1,clearTimeout(){},setInterval:()=>1,clearInterval(){},fetch:async()=>{throw Error('offline')}});
 vm.runInContext(script,ctx);
-for(const file of ['krillion-patch.js','krillion-archive-extra.js','answer-expansion.js','tier-calibration.js','answer-corrections.js','question-pack.js','fact-fixes.js'])vm.runInContext(fs.readFileSync(file,'utf8'),ctx);
+for(const file of ['krillion-patch.js','krillion-archive-extra.js','answer-expansion.js','tier-calibration.js','answer-corrections.js','question-pack.js','question-pack-extra.js','fact-fixes.js'])vm.runInContext(fs.readFileSync(file,'utf8'),ctx);
 const run=s=>vm.runInContext(s,ctx),complete=points=>{ctx.points=points;run("save={started:true,idx:7,depth:1000,points,answers:Array.from({length:7},()=>({text:'x',points:0,meters:0})),done:false,counted:false,deckIds:Array(7).fill(0)};deck=save.deckIds.map(i=>bank[i]);finish()");};
 
 let count=0;
@@ -32,3 +32,16 @@ for(const [question,answer] of [['europa league','Frankfurt'],['sternbild','Kreb
 }
 assert(!script.includes('const completion=suggestCompletion(deck[save.idx],text)'));
 console.log(count+' bilingual answers: exact points and acceptance OK; ambiguity, explicit completion, factual corrections OK');
+
+assert.equal(run("bank.filter(q=>/reim|rhymes/i.test(q.q)).length"),0);
+
+for(const [question,answer,points] of [
+ ['Nenne ein Erdalkalimetall.','Radium',85],
+ ['Nenne ein Harry-Potter-Buch.','Harry Potter und der Halbblutprinz',85],
+ ['Nenne ein Saiteninstrument.','Drehleier',60],
+ ['Nenne ein Küchenutensil.','Brotmesser',100],
+ ['Nenne ein Tier, das auf einem Bauernhof gehalten wird.','Katze',100],
+ ['Nenne ein mexikanisches Gericht.','sope',30],
+ ['Nenne ein Nagetier.','pocket gopher',60]
+ ]){ctx.question=question;ctx.a=answer;assert.equal(run('tierForAnswer(bank.find(q=>q.q===question),a).points'),points)}
+assert(run('makeSession().deckQuestions.length===7'));
