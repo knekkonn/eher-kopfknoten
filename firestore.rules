@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId}/games/{gameId} {
+      function owner() { return request.auth != null && request.auth.uid == userId; }
+      function validGame() {
+        return request.resource.data.keys().hasOnly(['score', 'day'])
+          && request.resource.data.keys().hasAll(['score'])
+          && request.resource.data.score is int
+          && request.resource.data.score >= 0
+          && request.resource.data.score <= 700
+          && (!('day' in request.resource.data) || (request.resource.data.day is string && request.resource.data.day.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')));
+      }
+      allow read: if owner();
+      allow create: if owner() && validGame();
+      // Repeating an upload is safe, but a stored result cannot be changed.
+      allow update: if owner() && validGame() && request.resource.data == resource.data;
+      allow delete: if false;
+    }
+  }
+}
