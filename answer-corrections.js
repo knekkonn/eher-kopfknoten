@@ -306,3 +306,22 @@ for(const [question,target,variants] of groups){
 }
 window.ABGRUND_ALIAS_REPORT={added,skipped};
 })();
+
+/* Explicit equivalents reported by players. */
+(()=>{
+'use strict';
+const n=normalizeFactText;
+const add=(q,canonical,variants,points)=>{
+ q.answers||=[];q.answerAliases||={};q.scoreOverrides||={};q.estimatedScores||={};
+ if(!q.answers.some(a=>n(a)===n(canonical)))q.answers.push(canonical);
+ for(const value of variants){if(!q.answers.some(a=>n(a)===n(value)))q.answers.push(value);if(n(value)!==n(canonical))q.answerAliases[n(value)]=canonical}
+ const key=n(canonical);if(points!=null&&q.scoreOverrides[key]==null&&q.archiveScores?.[key]==null&&n(perfectAnswerFor(q))!==key){q.scoreOverrides[key]=points;q.estimatedScores[key]='editorial'}
+};
+for(const q of bank){
+ const name=n(q.q);
+ if(name===n('Nenne einen Verein, der aktuell oder früher in der Premier League gespielt hat.')||name===n('Nenne ein aktuelles oder ehemaliges Team aus NBA, MLB, Premier League oder NFL.'))add(q,'Hull City',['Hull','null city'],30);
+ if(name===n('Nenne einen Verein, der die UEFA Europa League oder den UEFA-Pokal gewonnen hat.')||name===n('Nenne einen Gewinner der UEFA Europa League.'))add(q,'Eintracht Frankfurt',['Frankfurt','Eintracht Frankfurt am Main','SGE'],15);
+ if(name===n('Nenne ein offiziell anerkanntes Sternbild.'))add(q,'Cancer',['Krebs','Sternbild Krebs'],30);
+ if(name===n('Nenne ein Tier, dessen Name mit K beginnt.'))add(q,'Karausche',['Carassius carassius'],60);
+}
+})();
