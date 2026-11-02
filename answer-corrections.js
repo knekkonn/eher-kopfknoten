@@ -152,3 +152,32 @@ for(const q of bank){if(!geoQuestions.has(n(q.q)))continue;
 }
 window.ABGRUND_COUNTRY_REPORT={updated,skipped:skipped.length,skippedQuestions:skipped};
 })();
+
+/* IBA cocktail classics and common German spellings. Points are editorial estimates. */
+(()=>{
+'use strict';
+const n=normalizeFactText,q=bank.find(item=>n(item.q)===n('Nenne einen Cocktail.'));
+if(!q)return;
+q.answers||=[];q.answerAliases||={};q.scoreOverrides||={};q.estimatedScores||={};
+const groups=[
+ ['Negroni',15,[]],
+ ['Moscow Mule',15,['Moskau Mule','Moskauer Mule']],
+ ['Margarita',10,[]],['Daiquiri',15,[]],['Caipirinha',10,[]],
+ ['Piña Colada',10,['Pina Colada']],['Cuba Libre',10,[]],
+ ['Long Island Iced Tea',10,['Long Island Ice Tea']],
+ ['Sex on the Beach',10,[]],['Tequila Sunrise',15,[]],
+ ['Bloody Mary',15,[]],['Cosmopolitan',15,[]],['Espresso Martini',15,[]],
+ ['Dry Martini',15,[]],['Manhattan',15,[]],['Old Fashioned',15,[]],
+ ['Gin Fizz',15,[]],['Whiskey Sour',15,['Whisky Sour']],
+ ['Mai Tai',15,['Mai-Tai']],['Mimosa',15,[]],['Bellini',15,[]],
+ ['Black Russian',15,[]],['Paloma',15,[]],['French 75',30,[]],
+ ['Gin Basil Smash',30,['Basil Smash']],['Bramble',30,[]],
+ ['Dark and Stormy',30,['Dark n Stormy','Dark & Stormy']]
+];
+for(const [canonical,points,variants] of groups){
+ const key=n(canonical),existing=q.answers.some(a=>n(a)===key);
+ if(!existing)q.answers.push(canonical);
+ if(!existing&&q.scoreOverrides[key]==null&&q.archiveScores?.[key]==null){q.scoreOverrides[key]=points;q.estimatedScores[key]='editorial'}
+ for(const variant of variants){if(!q.answers.some(a=>n(a)===n(variant)))q.answers.push(variant);if(n(variant)!==key)q.answerAliases[n(variant)]=canonical}
+}
+})();
