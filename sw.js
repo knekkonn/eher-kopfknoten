@@ -1,4 +1,4 @@
-const CACHE='abgrund-shell-v13';
+const CACHE='abgrund-shell-v14';
 const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./krillion-patch.js?v=20261102b','./krillion-archive-extra.js?v=20261102','./answer-expansion.js?v=20261102c','./tier-calibration.js?v=20261102','./answer-corrections.js?v=20261102e'];
 const MAIN_PATCH='<script src="./krillion-patch.js?v=20261101"></script>';
 const EXTRA_PATCH='<script src="./krillion-archive-extra.js?v=20261101"></script>';
