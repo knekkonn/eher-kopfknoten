@@ -181,3 +181,128 @@ for(const [canonical,points,variants] of groups){
  for(const variant of variants){if(!q.answers.some(a=>n(a)===n(variant)))q.answers.push(variant);if(n(variant)!==key)q.answerAliases[n(variant)]=canonical}
 }
 })();
+
+/* Common German names, short names and equivalent spellings, scoped to each prompt. */
+(()=>{
+'use strict';
+const n=normalizeFactText;
+const groups=[
+ ['Nenne eine Pizzasorte, die man in einer Pizzeria bestellen kann.','margherita',['Pizza Margherita','Pizza Margarita']],
+ ['Nenne eine Pizzasorte, die man in einer Pizzeria bestellen kann.','salami',['Pizza Salami','Salamipizza']],
+ ['Nenne eine Pizzasorte, die man in einer Pizzeria bestellen kann.','funghi',['Pizza Funghi','Pilzpizza','Pizza Pilze']],
+ ['Nenne eine Pizzasorte, die man in einer Pizzeria bestellen kann.','tonno',['Pizza Tonno','Thunfischpizza','Pizza Thunfisch']],
+ ['Nenne eine Pizzasorte, die man in einer Pizzeria bestellen kann.','hawaii',['Pizza Hawaii','Hawaiipizza']],
+ ['Nenne eine Pizzasorte, die man in einer Pizzeria bestellen kann.','quattro formaggi',['Pizza Quattro Formaggi','Vier Käse','Vier-Käse-Pizza']],
+ ['Nenne ein Gericht aus Kartoffeln.','pommes',['Pommes frites','Pommes Frites','French fries']],
+ ['Nenne ein Gericht aus Kartoffeln.','kartoffelpüree',['Kartoffelstampf','Kartoffelmus','Kartoffelbrei']],
+ ['Nenne ein Gericht aus Kartoffeln.','kartoffelpuffer',['Reibekuchen','Reiberdatschi']],
+ ['Nenne eine Eissorte (auch Sorbet zählt).','schokolade',['Schoko','Schokoeis','Schokoladeneis']],
+ ['Nenne eine Eissorte (auch Sorbet zählt).','vanille',['Vanilleeis']],
+ ['Nenne eine Eissorte (auch Sorbet zählt).','erdbeere',['Erdbeereis']],
+ ['Nenne eine Eissorte (auch Sorbet zählt).','zitrone',['Zitroneneis','Zitronensorbet']],
+ ['Nenne eine Eissorte mit Fruchtgeschmack.','erdbeere',['Erdbeereis']],
+ ['Nenne eine Eissorte mit Fruchtgeschmack.','zitrone',['Zitroneneis','Zitronensorbet']],
+ ['Nenne eine Eissorte mit Fruchtgeschmack.','himbeere',['Himbeereis']],
+ ['Nenne ein Frühstücksgericht, das in mehreren Ländern gegessen wird.','pancakes',['Pfannkuchen','Pancake']],
+ ['Nenne ein Frühstücksgericht, das in mehreren Ländern gegessen wird.','rührei',['Rühreier','Scrambled eggs']],
+ ['Nenne ein Fast-Food-Gericht, das kein Burger ist.','doner kebab',['Döner','Döner Kebab','Döner Kebap']],
+ ['Nenne ein Fast-Food-Gericht, das kein Burger ist.','hot dog',['Hotdog']],
+ ['Nenne ein Fast-Food-Gericht, das kein Burger ist.','pommes',['Pommes frites']],
+ ['Nenne eine Nudelform.','macaroni',['Makkaroni','Maccheroni']],
+ ['Nenne eine Nudelform.','farfalle',['Schleifennudeln']],
+ ['Nenne eine Nudelform.','conchiglie',['Muschelnudeln']],
+ ['Nenne ein Gericht aus Japan.','miso soup',['Misosuppe','Miso-Suppe']],
+ ['Nenne ein Dessert, das gebacken wird.','apfelkuchen',['Apfel-Kuchen']],
+ ['Nenne ein Dessert, das gebacken wird.','brownies',['Brownie']],
+ ['Nenne ein Getränk, das typischerweise heiß serviert wird.','heiße schokolade',['Kakao','heißer Kakao','Trinkschokolade']],
+ ['Nenne eine Suppe, die in Europa bekannt ist.','tomatensuppe',['Tomatencremesuppe']],
+ ['Nenne eine Suppe, die in Europa bekannt ist.','borschtsch',['Borscht','Bortsch']],
+ ['Nenne eine Nudelsauce.','tomatensauce',['Tomatensoße','Tomatensosse']],
+ ['Nenne eine Nudelsauce.','käsesauce',['Käsesoße','Käsesosse']],
+ ['Nenne eine Nudelsauce.','bolognese',['Bolognesesoße','Bolognesesauce']],
+ ['Nenne ein Street-Food-Gericht.','doner kebab',['Döner','Döner Kebab','Döner Kebap']],
+ ['Nenne ein Street-Food-Gericht.','hot dog',['Hotdog']],
+ ['Nenne eine Stadt in Italien.','Mailand',['Milano','Milan']],
+ ['Nenne eine Stadt in Italien.','Turin',['Torino']],
+ ['Nenne ein Bauteil eines Autos.','Lenkrad',['Steuerrad']],
+ ['Nenne einen Teil des menschlichen Fußes.','Großzehe',['großer Zeh','große Zehe']],
+ ['Nenne einen Teil des menschlichen Fußes.','Kleinzehe',['kleiner Zeh','kleine Zehe']],
+ ['Nenne eine Haiart.','Weißer Hai',['weißer Hai','großer weißer Hai','Great white shark']],
+ ['Nenne einen Belag für Pizza.','Thunfisch',['Tunfisch','Tuna']],
+ ['Nenne einen Belag für Pizza.','Zwiebeln',['Zwiebel','Onion']],
+ ['Nenne einen Belag für Pizza.','Tomaten',['Tomate','Tomato']],
+ ['Nenne einen Belag für Pizza.','Oliven',['Olive']],
+ ['Nenne einen Schokoriegel oder eine Süßigkeitenriegel-Marke.','KitKat',['Kit Kat','Kit-Kat']],
+ ['Nenne einen Schokoriegel oder eine Süßigkeitenriegel-Marke.','Kinder Riegel',['Kinderriegel','Kinder Schokolade']],
+ ['Nenne eine Automarke, die Sportwagen baut.','Mercedes-Benz',['Mercedes','Mercedes Benz']],
+ ['Nenne ein Gerät oder eine Maschine im Fitnessstudio.','Lat pulldown',['Latzug','Lat-Zug','Latzugmaschine']],
+ ['Nenne ein Gerät oder eine Maschine im Fitnessstudio.','Smith-Maschine',['Multipresse','Smith machine']],
+ ['Nenne ein Gerät oder eine Maschine im Fitnessstudio.','Hantelbank',['Trainingsbank','Gewichtsbank','weight bench']],
+ ['Nenne eine Dienstleistung, die ein Friseursalon anbietet.','Haarschnitt',['Haare schneiden','Haare schneiden lassen']],
+ ['Nenne eine Dienstleistung, die ein Friseursalon anbietet.','Färben',['Haare färben','Haarfarbe färben']],
+ ['Nenne eine Dienstleistung, die ein Friseursalon anbietet.','Waschen',['Haare waschen']],
+ ['Nenne eine Frisur oder einen Haarschnitt.','Mullet',['Vokuhila','Vorne kurz hinten lang']],
+ ['Nenne eine Frisur oder einen Haarschnitt.','Dauerwelle',['Perm']],
+ ['Nenne einen Gegenstand aus „Mario Kart“.','Blauer Panzer',['Stachi-Panzer','Stachipanzer','Blue shell','Spiny shell']],
+ ['Nenne einen Gegenstand aus „Mario Kart“.','Stern',['Superstern','Superstar','Star']],
+ ['Nenne eine Figur aus „Die Eiskönigin“ („Frozen“).','Elsa',['Königin Elsa','Queen Elsa']],
+ ['Nenne eine Figur aus „Die Eiskönigin“ („Frozen“).','Anna',['Prinzessin Anna','Princess Anna']],
+ ['Nenne eine Figur aus „Die Eiskönigin“ („Frozen“).','Olaf',['Schneemann Olaf']],
+ ['Nenne einen Feiertag oder Festtag, der im Oktober, November oder Dezember gefeiert wird.','Nikolaustag',['Nikolaus','Sankt Nikolaus']],
+ ['Nenne einen Feiertag oder Festtag, der im Oktober, November oder Dezember gefeiert wird.','Tag der Deutschen Einheit',['Deutsche Einheit','3. Oktober']],
+ ['Nenne eine Chips- oder Crisps-Marke.','Funny-frisch',['Funny Frisch','Funnyfrisch']],
+ ['Nenne eine Schokolade mit Waffel, Keks oder Biscuit.','Kit Kat',['KitKat','Kit-Kat']],
+ ['Nenne eine Schokolade mit Waffel, Keks oder Biscuit.','Kinder Bueno',['Bueno']],
+ ['Nenne eine Fast-Food-Kette, die in mehr als einem Land tätig ist.',"McDonald's",['McDonalds','Mc Donalds','Mcdonald']],
+ ['Nenne eine Fast-Food-Kette, die in mehr als einem Land tätig ist.','KFC',['Kentucky Fried Chicken']],
+ ['Nenne eine Fast-Food-Kette, die in mehr als einem Land tätig ist.',"Domino's",['Dominos','Dominos Pizza']],
+ ['Nenne ein Tier, das in Südamerika heimisch ist.','Capybara',['Wasserschwein','Kapibara']],
+ ['Nenne ein Tier, das in Südamerika heimisch ist.','Sloth',['Faultier']],
+ ['Nenne eine Zitrusfrucht.','Blood orange',['Blutorange']],
+ ['Nenne eine Zitrusfrucht.','Bergamot',['Bergamotte']],
+ ['Nenne eine Zitrusfrucht.','Buddha\'s hand',['Buddhas Hand']],
+ ['Nenne ein Wurzelgemüse.','Karotte',['Möhre','Möhren','Karotten']],
+ ['Nenne einen griechischen Gott oder eine griechische Göttin.','Athena',['Athene','Pallas Athene']],
+ ['Nenne einen griechischen Gott oder eine griechische Göttin.','Apollo',['Apoll','Apollon']],
+ ['Nenne eine Figur aus Harry Potter.','Harry Potter',['Harry']],
+ ['Nenne eine Figur aus Harry Potter.','Hermine Granger',['Hermine','Hermione','Hermione Granger']],
+ ['Nenne eine Figur aus Harry Potter.','Ron Weasley',['Ron','Ronald','Ronald Weasley']],
+ ['Nenne eine Figur aus Harry Potter.','Albus Dumbledore',['Dumbledore','Professor Dumbledore']],
+ ['Nenne eine Figur aus Harry Potter.','Severus Snape',['Snape','Professor Snape']],
+ ['Nenne eine Figur aus Harry Potter.','Lord Voldemort',['Voldemort','Tom Riddle']],
+ ['Nenne eine Figur aus Harry Potter.','Draco Malfoy',['Draco']],
+ ['Nenne eine Figur aus Harry Potter.','Minerva McGonagall',['McGonagall','Professor McGonagall']],
+ ['Nenne eine Figur aus Harry Potter.','Rubeus Hagrid',['Hagrid']],
+ ['Nenne eine Figur aus Harry Potter.','Sirius Black',['Sirius']],
+ ['Nenne eine Figur aus Harry Potter.','Remus Lupin',['Lupin']],
+ ['Nenne eine Figur aus Harry Potter.','Neville Longbottom',['Neville']],
+ ['Nenne eine Figur aus Harry Potter.','Luna Lovegood',['Luna']],
+ ['Nenne eine Figur aus Harry Potter.','Ginny Weasley',['Ginny']],
+ ['Nenne eine Figur aus Harry Potter.','Bellatrix Lestrange',['Bellatrix']],
+ ['Nenne eine Figur aus Harry Potter.','Dolores Umbridge',['Umbridge']],
+ ['Nenne einen Mond eines Planeten in unserem Sonnensystem.','Mond',['Erdmond','der Mond']],
+ ['Nenne eine Kampfkunst.','Brazilian Jiu-Jitsu',['Brasilianisches Jiu-Jitsu','Brazilian Jiu Jitsu','BJJ']],
+ ['Nenne ein Fabelwesen.','Phönix',['Phoenix']]
+];
+let added=0,skipped=[];
+for(const [question,target,variants] of groups){
+ const q=bank.find(item=>n(item.q)===n(question));if(!q){skipped.push(question+': missing question');continue}
+ q.answers||=[];q.answerAliases||={};
+ let canonical=canonicalAnswer(q,target),seen=new Set();
+ while(q.answerAliases[n(canonical)]&&!seen.has(n(canonical))){seen.add(n(canonical));const next=q.answerAliases[n(canonical)];if(n(next)===n(canonical))break;canonical=next}
+ if(!q.answers.some(a=>n(a)===n(canonical))&&n(perfectAnswerFor(q))!==n(canonical)){skipped.push(question+': missing '+target);continue}
+ const oldAnswers=[...q.answers],oldAliases={...q.answerAliases};
+ const before=(archivedTierExamples(q).match(/noch kein festes Beispiel/g)||[]).length;
+ let count=0;
+ for(const variant of variants){
+  const key=n(variant);if(!key||key===n(canonical))continue;
+  const existing=q.answerAliases[key];
+  if(existing&&n(canonicalAnswer(q,existing))!==n(canonical))continue;
+  if(!q.answers.some(a=>n(a)===key)){q.answers.push(variant);count++}
+  q.answerAliases[key]=canonical;
+ }
+ const after=(archivedTierExamples(q).match(/noch kein festes Beispiel/g)||[]).length;
+ if(after>before){q.answers=oldAnswers;q.answerAliases=oldAliases;skipped.push(question+': tier preservation for '+target)}else added+=count;
+}
+window.ABGRUND_ALIAS_REPORT={added,skipped};
+})();
