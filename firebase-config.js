@@ -8,3 +8,6 @@ window.ABGRUND_FIREBASE_CONFIG = {
   messagingSenderId: '1054616756639',
   appId: '1:1054616756639:web:b80950b70174789ec11daa'
 };
+
+// Named Enterprise/native database; realtime listeners keep devices in sync.
+window.ABGRUND_FIRESTORE_DATABASE = 'abgrund';

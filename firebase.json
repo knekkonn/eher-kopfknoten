@@ -1,0 +1,9 @@
+{
+  "firestore": {
+    "database": "abgrund",
+    "location": "europe-west3",
+    "edition": "enterprise",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}

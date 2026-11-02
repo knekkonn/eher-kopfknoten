@@ -66,7 +66,7 @@ async function start(){
    import('https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js'),
    import('https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js'),
    import('https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js')]);
-  api={...authMod,...fireMod};const app=appMod.initializeApp(cfg);auth=api.getAuth(app);db=api.getFirestore(app);
+  api={...authMod,...fireMod};const app=appMod.initializeApp(cfg);auth=api.getAuth(app);db=api.getFirestore(app,window.ABGRUND_FIRESTORE_DATABASE||'(default)');
   const perform=async fn=>{status('');try{await fn();$('accountPassword').value='';$('accountNewPassword').value='';render()}catch(error){status(errorText(error))}};
   $('accountGoogle').onclick=()=>perform(()=>api.signInWithPopup(auth,new api.GoogleAuthProvider()));
   $('accountLogin').onclick=()=>perform(()=>api.signInWithEmailAndPassword(auth,$('accountEmail').value.trim(),$('accountPassword').value));

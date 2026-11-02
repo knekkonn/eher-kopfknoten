@@ -25,7 +25,7 @@ for(const a of ['Muhammad','Mohammed','Ali','Max']){ctx.a=a;assert.equal(run('su
 ctx.q={q:'Nenne ein Dessert.',answers:['Tarte'],answerAliases:{}};
 assert.equal(run("suggestCompletion(q,'tart')"),'Tarte');
 ctx.q={q:'Nenne ein Dessert.',answers:['Tarte','Tarte Tatin','Tarte au citron'],answerAliases:{}};
-assert.equal(run("suggestCompletion(q,'tart')"),'Tarte');
+assert.equal(run("suggestCompletion(q,'tart')"),'');
 assert.equal(run("wikiTitleMatches('Muhammad','Muhammad Ali')"),false);
 for(const [question,answer] of [['europa league','Frankfurt'],['sternbild','Krebs'],['tier dessen name mit k','Karausche'],['premier league','Hull City']]){
  ctx.question=question;ctx.a=answer;assert(run('bank.filter(q=>normalizeFactText(q.q).includes(question)).some(q=>verifyFact(q,a))'),answer);

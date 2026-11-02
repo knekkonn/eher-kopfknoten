@@ -1,13 +1,16 @@
-# ABGRUND: Konten aktivieren
+# ABGRUND Firebase
 
-Die Anmeldungen bleiben verborgen, solange in `firebase-config.js` keine Konfiguration steht. Bis dahin funktioniert das Spiel als Gast.
+Projekt: `krillion-d74e1`. Die öffentliche Web-Konfiguration liegt in `firebase-config.js`.
 
-1. In der [Firebase Console](https://console.firebase.google.com/) ein eigenes Projekt für ABGRUND erstellen oder ein ausdrücklich dafür freigegebenes Projekt auswählen.
-2. Unter **Projekteinstellungen → Allgemein → Deine Apps** eine Web-App hinzufügen und das angezeigte `firebaseConfig`-Objekt kopieren. Es enthält öffentliche Projektkennungen, keine Admin-Anmeldedaten.
-3. In `firebase-config.js` `null` durch das Objekt ersetzen. Mindestens `apiKey`, `authDomain`, `projectId` und `appId` müssen vorhanden sein. Keine Service-Account-Dateien, Passwörter oder privaten Schlüssel ins Repository kopieren.
-4. Unter **Authentication → Sign-in-Methode** sowohl **E-Mail/Passwort** als auch **Google** aktivieren. Bei Google Support-E-Mail und Projektname festlegen.
-5. Unter **Authentication → Einstellungen → Autorisierte Domains** `knekkonn.github.io` hinzufügen. Die bestehende Firebase-Domain beibehalten.
-6. Unter **Firestore Database** eine Datenbank erstellen. Unter **Regeln** den Inhalt von `firestore.rules` veröffentlichen. Die Regeln gestatten ausschließlich angemeldeten Nutzern den Zugriff auf ihre eigenen Rundenergebnisse. Nicht im offenen Testmodus betreiben.
-7. Erst danach diese Änderungen veröffentlichen und auf zwei verschiedenen Geräten mit einem Testkonto prüfen: Registrierung, Anmeldung beider Methoden, Gastübernahme, neue Runde, Synchronisierung, Abmeldung und Anmeldung mit einem anderen Konto.
+Am 2. November 2026 eingerichtet:
 
-Gespeicherte Rundenergebnisse enthalten nur Punkte, optionale Tagesangabe und eine zufällige Runden-ID. Gastdaten werden beim Anmelden einmalig auf diesem Gerät in das gewählte Konto übernommen; bereits mit einem anderen Konto synchronisierte Daten werden nicht übernommen. Die Synchronisierung ist für die auf diesem Gerät weiterhin gespeicherten Runden auch nach einem vorübergehenden Verbindungsverlust erneut möglich.
+- Authentication: Google und E-Mail/Passwort aktiviert, öffentlicher Name ABGRUND.
+- Autorisierte Webadresse: `knekkonn.github.io` zusätzlich zu den Firebase-Domains und localhost.
+- Firestore: Enterprise/native, Datenbank-ID `abgrund`, Standort `europe-west3` (Frankfurt), Echtzeitaktualisierungen aktiv. Spark-Tarif beibehalten; keine kostenpflichtigen Sicherungen aktiviert.
+- `accounts.js` verwendet die explizite Datenbank-ID aus `ABGRUND_FIRESTORE_DATABASE`.
+- Echtzeit-Listener sind erforderlich, damit Rundenergebnisse auf mehreren Geräten automatisch aktualisiert werden; daher verwendet die App Core-Abfragen statt Pipelines.
+- `firestore.rules` veröffentlicht: nur Kontoinhaber können eigene Runden lesen und gültige Ergebnisse schreiben. Identische Wiederholungen sind erlaubt; Änderungen und Löschen werden abgewiesen.
+
+Live geprüft mit zwei temporären Testkonten: Registrierung und Passwortanmeldung, Schreiben und Lesen eigener Ergebnisse, identische Wiederholung, Ablehnung fremder und unangemeldeter Zugriffe, Ablehnung von Werten über 700 und Ergebnisänderungen. Testkonten anschließend gelöscht. Ein synthetisches Testdokument (123 Punkte) bleibt unter einer nicht mehr anmeldbaren Test-UID; keine echten Nutzerdaten.
+
+Die Google-Anmeldemethode wurde in der Konsole aktiviert. Der tatsächliche Popup-Ablauf auf der veröffentlichten Website und die Synchronisierung auf zwei physischen Geräten müssen separat geprüft werden.
