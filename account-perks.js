@@ -1,7 +1,7 @@
 /* Account-only cosmetic rewards and release notes. Scores are read from synced rounds. */
 (()=>{
 'use strict';
-const VERSION='2026-11-04-character-skins';
+const VERSION='2026-11-04-scene-character-fix';
 const SKINS=[
 {id:'diver',name:'Taucher',min:0,sprite:'diver.svg',color:'#7ce4d9'},
 {id:'jelly',name:'Leuchtqualle',min:100,sprite:'jelly.svg',color:'#83c8ff'},
@@ -63,19 +63,75 @@ body.playing .abg-equipped{border-width:2px}
 .abg-perk-close{width:100%;background:#7ce4d9!important;color:#06232b!important;font-weight:800}
 `;document.head.appendChild(css);
 const spriteUrl=skin=>'./skins/'+skin.sprite;
+const sceneCss=document.createElement('style');
+sceneCss.textContent=`
+/* In-world character: the original swimming pixel diver is replaced, not duplicated. */
+#diver:has(.abg-scene-character){width:clamp(48px,5.5vw,76px);height:clamp(48px,5.5vw,76px);z-index:4;filter:drop-shadow(0 0 12px var(--abg-scene-color,#76e5dd));}
+#diver .abg-scene-character{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;animation:abg-scene-bob 2.8s ease-in-out infinite;transform-origin:center}
+#diver .abg-scene-character[hidden]{display:none!important}
+#diver[data-skin=jelly] .abg-scene-character{animation:abg-scene-jelly 3.3s ease-in-out infinite}
+#diver[data-skin=crab] .abg-scene-character{animation:abg-scene-crab 3.5s ease-in-out infinite}
+#diver[data-skin=phantom] .abg-scene-character{animation:abg-scene-phantom 3s ease-in-out infinite}
+#diver[data-skin=angler] .abg-scene-character{animation:abg-scene-angler 3s ease-in-out infinite}
+#diver[data-skin=leviathan] .abg-scene-character{animation:abg-scene-leviathan 3.4s ease-in-out infinite}
+@keyframes abg-scene-bob{0%,100%{transform:translateY(1px) rotate(-3deg)}50%{transform:translateY(-5px) rotate(3deg)}}
+@keyframes abg-scene-jelly{0%,100%{transform:scale(1,.94) translateY(3px)}50%{transform:scale(.94,1.07) translateY(-5px)}}
+@keyframes abg-scene-crab{0%,100%{transform:translateX(-3px) rotate(-3deg)}50%{transform:translateX(4px) rotate(3deg)}}
+@keyframes abg-scene-phantom{0%,100%{transform:translateY(3px);opacity:.82}50%{transform:translateY(-8px);opacity:1}}
+@keyframes abg-scene-angler{0%,100%{transform:translateY(2px) rotate(-4deg);filter:drop-shadow(0 0 5px #ffdf84)}50%{transform:translateY(-5px) rotate(4deg);filter:drop-shadow(0 0 17px #ffdf84)}}
+@keyframes abg-scene-leviathan{0%,100%{transform:translate(-3px,3px) rotate(-4deg)}50%{transform:translate(4px,-7px) rotate(4deg)}}
+@media(max-width:650px){#diver:has(.abg-scene-character){width:52px;height:52px}}
+@media(prefers-reduced-motion:reduce){#diver .abg-scene-character{animation:none!important}}
+`;
+document.head.appendChild(sceneCss);
+
 function artImage(skin,className){
  const img=document.createElement('img');img.className=className;img.src=spriteUrl(skin);img.alt=skin.name+' – Tiefsee-Charakter';img.loading='lazy';img.decoding='async';img.draggable=false;img.onerror=()=>{img.alt='Charaktergrafik konnte nicht geladen werden'};return img;
 }
 const localBest=()=>Math.max(0,...(window.ABGRUND_HISTORY?.list?.()||[]).map(x=>Number(x.score)||0));
 function modal(title,body,action){document.querySelector('.abg-perk-overlay')?.remove();const wrap=document.createElement('div');wrap.className='abg-perk-overlay';const panel=document.createElement('section');panel.className='abg-perk-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');const h=document.createElement('h2');h.textContent=title;panel.append(h);const b=document.createElement('div');panel.append(b);body(b);const close=document.createElement('button');close.className='abg-perk-close';close.textContent=action||'WEITER TAUCHEN';close.onclick=()=>wrap.remove();panel.append(close);wrap.append(panel);document.body.append(wrap);wrap.onclick=e=>{if(e.target===wrap)wrap.remove()};}
-function release(){if(!uid||!ready||lastSeen===VERSION)return;lastSeen=VERSION;persist();modal('NEUES AUS DER TIEFE',b=>{const p=document.createElement('p');p.textContent='Sechs vollständig illustrierte und animierte Tiefsee-Charaktere sind da! Wähle im Skin-Menü deinen Begleiter. Seine Figur erscheint jetzt im eigentlichen Tauchgang. Deine Bestleistung in einer einzelnen Runde schaltet weitere Charaktere frei.';b.append(p)});}
-function updateEquipped(){const skin=SKINS.find(x=>x.id===selected)||SKINS[0];const widget=document.getElementById('abgEquipped');if(!widget)return;widget.hidden=!uid;const stage=document.getElementById('abgSkinStage');if(stage)stage.hidden=!uid;if(!uid)return;widget.style.setProperty('--abg-skin-color',skin.color);widget.querySelector('.abg-equipped-emoji').src=spriteUrl(skin);widget.querySelector('.abg-equipped-emoji').alt=skin.name;widget.querySelector('strong').textContent=skin.name;widget.querySelector('small').textContent='AUSGERÜSTETER SKIN';widget.setAttribute('aria-label','Aktueller Skin: '+skin.name+'. Skins wechseln');
- if(stage){stage.hidden=false;stage.dataset.skin=skin.id;stage.style.setProperty('--abg-skin-color',skin.color);stage.querySelector('.abg-stage-art').src=spriteUrl(skin);stage.querySelector('.abg-stage-art').alt=skin.name;stage.querySelector('.abg-stage-name').textContent=skin.name.toUpperCase();stage.classList.remove('abg-skin-change');void stage.offsetWidth;stage.classList.add('abg-skin-change')}}
+function release(){if(!uid||!ready||lastSeen===VERSION)return;lastSeen=VERSION;persist();modal('NEUES AUS DER TIEFE',b=>{const p=document.createElement('p');p.textContent='Dein ausgewählter Skin ersetzt jetzt direkt den kleinen Taucher in der Unterwasser-Szene. Alle sechs Charaktere haben eigene Animationen. Deine Bestleistung in einer einzelnen Runde schaltet weitere Charaktere frei.';b.append(p)});}
+function updateSceneCharacter(skin){
+ // The existing #diver is the actual swimming figure in the scene, not the account badge.
+ const sceneDiver=document.getElementById('diver');
+ if(!sceneDiver)return;
+ let sprite=sceneDiver.querySelector('img.abg-scene-character');
+ if(!sprite){
+  // Keep the original pixel diver available as a guest/failure fallback.
+  const original=sceneDiver.querySelector('svg');
+  if(original)original.style.display='none';
+  sprite=document.createElement('img');
+  sprite.className='abg-scene-character';
+  sprite.alt='';
+  sprite.setAttribute('aria-hidden','true');
+  sprite.decoding='async';
+  sprite.draggable=false;
+  sprite.onerror=()=>{sprite.hidden=true;if(original)original.style.display='block'};
+  sceneDiver.appendChild(sprite);
+ }
+ const active=uid?skin:SKINS[0];
+ sceneDiver.dataset.skin=active.id;
+ sceneDiver.style.setProperty('--abg-scene-color',active.color);
+ if(sprite.getAttribute('src')!==spriteUrl(active)){sprite.hidden=false;sprite.src=spriteUrl(active)}
+}
+function updateEquipped(){
+ const skin=SKINS.find(x=>x.id===selected)||SKINS[0];
+ updateSceneCharacter(skin);
+ const widget=document.getElementById('abgEquipped');
+ if(!widget)return;
+ widget.hidden=!uid;
+ if(!uid)return;
+ widget.style.setProperty('--abg-skin-color',skin.color);
+ widget.querySelector('.abg-equipped-emoji').src=spriteUrl(skin);
+ widget.querySelector('.abg-equipped-emoji').alt=skin.name;
+ widget.querySelector('strong').textContent=skin.name;
+ widget.querySelector('small').textContent='AUSGERÜSTETER SKIN';
+ widget.setAttribute('aria-label','Aktueller Skin: '+skin.name+'. Skins wechseln');
+}
 function persist(){updateEquipped();if(uid){try{localStorage.setItem('abgrundSeenUpdate:'+uid,lastSeen);localStorage.setItem('abgrundEquippedSkin:'+uid,selected)}catch{}}if(!uid||!db||!fire)return;fire.setDoc(fire.doc(db,'users',uid,'profile','preferences'),{skin:selected,seenUpdate:lastSeen}).catch(e=>console.warn('Perk preferences:',e.code||e.message));}
 function choose(){if(!uid)return;score=Math.max(score,localBest());modal('DEINE TIEFSEE-SKINS',b=>{const p=document.createElement('p');p.textContent='Rundenbestleistung: '+score+' Punkte. Skins sind rein kosmetisch und beeinflussen deine Punkte nicht.';b.append(p);const grid=document.createElement('div');grid.className='abg-perk-grid';for(const skin of SKINS){const button=document.createElement('button'),available=score>=skin.min;button.disabled=!available;button.dataset.skin=skin.id;button.setAttribute('aria-pressed',String(selected===skin.id));const avatar=artImage(skin,'abg-perk-avatar');avatar.style.color=skin.color;avatar.src=spriteUrl(skin);avatar.alt=skin.name+' als Tiefsee-Charakter';const name=document.createElement('strong');name.textContent=skin.name;const threshold=document.createElement('small');threshold.textContent=available?'FREIGESCHALTET':skin.min+' P IN EINER RUNDE';button.append(avatar,name,threshold);button.onclick=()=>{selected=skin.id;try{localStorage.setItem('abgrundEquippedSkin:'+uid,selected)}catch{}updateEquipped();persist();choose()};grid.append(button)}b.append(grid);const achievements=document.createElement('div');achievements.innerHTML='<h3>ERFOLGE & PROFIL</h3>';const games=window.ABGRUND_HISTORY?.list?.()||[];const streakDays=[...new Set(games.map(g=>g.day).filter(Boolean))].sort().reverse();let streak=0,day=new Date();for(let i=0;i<365;i++){const key=day.toISOString().slice(0,10);if(streakDays.includes(key))streak++;else if(i>0||streakDays.length&&streakDays[0]!==new Date(Date.now()-86400000).toISOString().slice(0,10))break;day.setUTCDate(day.getUTCDate()-1)}const lines=[['Erster Tauchgang',games.length>=1],['10 Tauchgänge',games.length>=10],['100 Tauchgänge',games.length>=100],['7-Tage-Serie',streak>=7],['Tiefsee-Legende',score>=700]];for(const [label,done] of lines){const el=document.createElement('p');el.textContent=(done?'🏆 ':'🔒 ')+label;achievements.append(el)}const summary=document.createElement('p');summary.textContent='Gespielte Runden: '+games.length+' · Tages-Serie: '+streak+' · Bestleistung: '+score;achievements.prepend(summary);b.append(achievements)})}
 const equipped=document.createElement('button');equipped.id='abgEquipped';equipped.type='button';equipped.className='abg-equipped';equipped.hidden=true;equipped.innerHTML='<img class="abg-equipped-emoji" aria-hidden="true" alt=""><span class="abg-equipped-copy"><small>AUSGERÜSTETER SKIN</small><strong></strong></span>';equipped.onclick=choose;
 const hud=document.querySelector('.hudtop');const home=document.querySelector('.homehub');if(hud)hud.insertAdjacentElement('afterend',equipped);else if(home)home.insertAdjacentElement('beforebegin',equipped);else document.querySelector('.main')?.prepend(equipped);
-const stage=document.createElement('section');stage.id='abgSkinStage';stage.className='abg-skin-stage';stage.hidden=true;stage.setAttribute('aria-label','Aktuell ausgerüsteter Spielcharakter');stage.innerHTML='<img class="abg-stage-art" alt=""><div class="abg-stage-info"><span class="abg-stage-eyebrow">DEIN TIEFSEE-BEGLEITER</span><strong class="abg-stage-name"></strong><span class="abg-stage-caption">Einzigartiger Charakter • kosmetischer Skin</span></div><button class="abg-stage-swap" type="button">WECHSELN</button>';stage.querySelector('button').onclick=choose;const card=document.querySelector('.gamecard');if(card)card.insertAdjacentElement('beforebegin',stage);
 const trigger=document.createElement('button');trigger.type='button';trigger.textContent='✦ SKINS';trigger.hidden=true;trigger.onclick=choose;trigger.style.cssText='background:#102b3a;color:#91eee2;border:1px solid #7de6dc55;border-radius:10px;padding:10px;cursor:pointer;font:11px monospace';document.getElementById('accountButton')?.insertAdjacentElement('afterend',trigger);
 async function init(){try{const [a,f,g]=await Promise.all([import('https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js'),import('https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js'),import('https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js')]);fire=f;const app=a.getApps()[0]||a.initializeApp(window.ABGRUND_FIREBASE_CONFIG);db=f.getFirestore(app,window.ABGRUND_FIRESTORE_DATABASE||'(default)');auth=g.getAuth(app);g.onAuthStateChanged(auth,async u=>{unsub();unsub=()=>{};uid=u?.uid||null;ready=false;trigger.hidden=!uid;selected='diver';if(uid){try{const cached=localStorage.getItem('abgrundEquippedSkin:'+uid);if(SKINS.some(x=>x.id===cached))selected=cached}catch{}}updateEquipped();lastSeen='';if(uid){try{lastSeen=localStorage.getItem('abgrundSeenUpdate:'+uid)||''}catch{}}score=localBest();if(!uid)return;unsub=f.onSnapshot(f.doc(db,'users',uid,'profile','preferences'),snap=>{const data=snap.data()||{};selected=SKINS.some(x=>x.id===data.skin)?data.skin:selected;lastSeen=data.seenUpdate||lastSeen;ready=true;updateEquipped();release()},()=>{ready=true;release()});f.onSnapshot(f.collection(db,'users',uid,'games'),snap=>{score=Math.max(localBest(),...snap.docs.map(d=>Number(d.data().score)||0));if(score<SKINS.find(s=>s.id===selected)?.min){selected='diver';updateEquipped();persist()}},()=>{});});}catch(e){console.warn('Account perks unavailable',e.message)}}
 window.ABGRUND_FEATURES={rejected:async(q,answer)=>{if(!uid||!db||!fire||!answer?.trim())return;try{await fire.addDoc(fire.collection(db,'rejectedAnswers'),{uid,question:q.q,answer:answer.trim(),status:'pending',createdAt:fire.serverTimestamp()})}catch(e){console.warn('Answer review queue:',e.code||e.message)}}};
