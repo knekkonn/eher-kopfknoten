@@ -22,3 +22,7 @@ Nach offizieller Anmeldung wurden Projekt, Datenbankedition, Frankfurt und aktiv
 Für den täglichen Prüflauf wurde ein schlüsselloser, auf das genaue GitHub-Repository, `main` und die Review-Workflowdatei beschränkter Workload-Identity-Zugang eingerichtet. Das Dienstkonto besitzt ausschließlich datenbankbezogene Leserechte und kann weder Punkte noch Antworten ändern. Details und Nachweise: `COMPLETION_STATUS.md`. Der erste manuelle Live-Prüflauf war erfolgreich, die Warteschlange war leer. Ein GitHub-Zeitplanlauf ist damit noch nicht nachgewiesen.
 
 Live mit zwei temporären Konten geprüft: gleichzeitige Transaktionen zweier Instanzen desselben Kontos, disjunkte Fragenpakete, private Präferenzen, Erstellen eines abgelehnten Antwortvorschlags, Verweigerung fremder/unangemeldeter Zugriffe, UID-Fälschung, Werte über 700 und Ergebnisänderungen. Identische Wiederholung eines Uploads erlaubt. Testkonten und synthetische Testdokumente anschließend entfernt.
+
+## Profil- und Freundschaftserweiterung
+
+Am 4. November 2026 wurden zusätzlich die Regeln für private Profile, Messwerte, priorisierte Meldungen und beidseitig bestätigte Freundschaften veröffentlicht und live geprüft. Aktueller Ruleset: `f0513ed8-029d-4d27-87eb-4319590ff46a`. Keine öffentliche Nutzer-/E-Mail-Liste; Freunde lesen ausschließlich freigegebene Summenstatistiken. Details, Emulatorprüfung, Tests mit drei anschließend entfernten temporären Konten und bekannte Grenzen: `GERMAN_SOCIAL_UPDATE.md`.

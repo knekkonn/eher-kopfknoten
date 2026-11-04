@@ -17,7 +17,7 @@ completionOptions=(q,input)=>{
  const answer=[...groups.values()][0],name=answer&&norm(answer);
  return{suggestion:answer&&name.split(' ').length===parts&&key.length/name.length>=.8?answer:'',ambiguous:false};
 };
-archivedTierExamples=q=>q.archiveExamples?'<details class="tier-examples"><summary>BEISPIELE FÜR DIE PUNKTSTUFEN</summary><ul>'+SCORE_TIERS.filter(t=>q.archiveExamples[t.points]?.length).map(t=>'<li><b>'+esc(t.name)+' · '+t.points+' P:</b> '+q.archiveExamples[t.points].map(esc).join(', ')+'</li>').join('')+'</ul><small>Gespeicherte Archivpunkte. Deutsche und englische Bezeichnungen derselben Antwort zählen gleich.</small></details>':oldExamples(q);
+archivedTierExamples=q=>q.archiveExamples?'<details class="tier-examples"><summary>BEISPIELE FÜR DIE PUNKTSTUFEN</summary><ul>'+SCORE_TIERS.filter(t=>q.archiveExamples[t.points]?.length).map(t=>'<li><b>'+esc(t.name)+' · '+t.points+' P:</b> '+q.archiveExamples[t.points].map(a=>esc(window.ABGRUND_DISPLAY?.answer(q,a)||a)).join(', ')+'</li>').join('')+'</ul><small>Gespeicherte Archivpunkte. Deutsche und englische Bezeichnungen derselben Antwort zählen gleich.</small></details>':oldExamples(q);
 async function fetchDive(path){
  if(!loadCache.has(path))loadCache.set(path,(async()=>{
   const r=await fetch('./'+path);if(!r.ok)throw Error('archive unavailable');const bytes=new Uint8Array(await r.arrayBuffer());let text;
@@ -30,9 +30,11 @@ async function loadQuestion(q){
  if(!q.archiveAssets||q.archiveLoaded)return q;
  const sources=await Promise.all(q.archiveAssets.map(async asset=>{const dive=await fetchDive(asset.path);const record=dive.find(x=>x.id===asset.id);if(!record)throw Error('missing question');return record}));
  const answers=new Map((q.answers||[]).map(a=>[norm(a),a]));
- q.archiveCanonicalByNorm||=new Map();q.answerAliases||={};q.scoreOverrides||={};q.archiveRawScores||={};q.archiveRawNames||={};q.suppliedTiers=true;
+ q.archiveGermanNames||={};q.archiveCanonicalByNorm||=new Map();q.answerAliases||={};q.scoreOverrides||={};q.archiveRawScores||={};q.archiveRawNames||={};q.suppliedTiers=true;
  // Dated records are processed from old to new. Newer snapshots determine repeated scores.
  for(const source of sources)for(const [answer,points,aliases=[]] of source.rows){
+  const candidates=aliases.filter(a=>norm(a)!==norm(answer)&&!/^the /i.test(a)&&!/^\p{Ll}/u.test(a));
+  if(candidates.length){const preferred=candidates.find(a=>/[äöüÄÖÜß]/.test(a))||candidates[0];q.archiveGermanNames[norm(answer)]=preferred}
   const raw=answer.trim().toLocaleLowerCase('de-DE');q.archiveRawNames[raw]=answer;q.archiveRawScores[raw]=points;const key=norm(answer);if(!key)continue;q.archiveCanonicalByNorm.set(key,answer);answers.set(key,answer);q.archiveRawNames[answer.trim().toLocaleLowerCase('de-DE')]=answer;q.archiveRawScores[answer.trim().toLocaleLowerCase('de-DE')]=points;q.scoreOverrides[key]=points;
   for(const alias of aliases){const a=norm(alias);if(!a){q.archiveRawNames[alias.trim().toLocaleLowerCase('de-DE')]=answer;continue}if(a===key)continue;answers.set(a,alias);q.answerAliases[a]=answer}
  }

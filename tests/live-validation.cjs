@@ -1,0 +1,9 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),engine=require('../scripts/game-engine.cjs');
+(async()=>{await engine.ready;let mode='valid',calls=0;engine.ctx.setTimeout=setTimeout;engine.ctx.clearTimeout=clearTimeout;engine.ctx.fetch=async url=>{calls++;if(mode==='offline')throw Error('offline');const text=new URL(url).searchParams.get('titles');return Response.json({query:{pages:{'1':{title:mode==='unrelated'?'Other entry':text,pageprops:mode==='ambiguous'?{disambiguation:''}:{},categories:[{title:mode==='martial-film'?'Category:Martial arts films':mode==='wrong-category'?'Category:Movies':'Category:Chemical elements'}]}}}})};
+vm.runInContext(fs.readFileSync('live-validation.js','utf8'),engine.ctx);const api=engine.ctx.window.ABGRUND_LIVE,q={q:'Nenne ein chemisches Element.',answers:[]};
+let proof=await api.check(q,'Livermorium');assert(proof);assert.equal(proof.points,30);assert(proof.estimated);assert(proof.source.startsWith('https://de.wikipedia.org/'));
+for(const [test,input] of [['unrelated','Boron'],['wrong-category','Fluorine'],['ambiguous','Krypton'],['offline','Neon']]){mode=test;assert.equal(await api.check(q,input),null,test)}
+mode='martial-film';assert.equal(await api.check({q:'Nenne eine Kampfkunst.',answers:[]},'Karate Kid'),null,'a martial-arts film is not a martial art');
+const before=calls;assert.equal(await api.check({q:'Nenne einen Schauspieler, der einen Oscar gewonnen hat.'},'Johnny'),null);assert.equal(await api.check(q,'x'.repeat(181)),null);assert.equal(calls,before);
+console.log('Live checks: exact prompt/category match, no unrelated titles or disambiguation pages, bounded estimated points, graceful outages and no partial-name completion: OK (mock sources).');
+})().catch(e=>{console.error(e);process.exit(1)});

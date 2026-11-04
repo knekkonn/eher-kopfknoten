@@ -1,49 +1,125 @@
 rules_version = '2';
+// Private games: score, optional day/metrics. Private rotation/preferences/social identity.
+// Shared stats: numeric aggregates and ten scores, readable only by mutually accepted friends.
+// Friend edges are written in matching pairs; only the recipient can accept a request.
+// Friend codes are unguessable 128-bit codes, authenticated get only; never listable.
+// Rejected answers: append-only pending entries, priority 0 automatic / 1 explicit report.
 service cloud.firestore {
-  match /databases/{database}/documents {
-    match /users/{userId}/profile/rotation {
-      allow read: if request.auth != null && request.auth.uid == userId;
-      allow create, update: if request.auth != null && request.auth.uid == userId
-        && request.resource.data.keys().hasOnly(['round','order','last'])
-        && request.resource.data.round is int && request.resource.data.round >= 0
-        && request.resource.data.order is list && request.resource.data.order.size() <= 2000
-        && request.resource.data.last is map && request.resource.data.last.keys().size() <= 2000;
-      allow delete: if false;
-    }
-    match /users/{userId}/profile/{profileId} {
-      allow read: if request.auth != null && request.auth.uid == userId;
-      allow create, update: if request.auth != null && request.auth.uid == userId
-        && profileId == 'preferences'
-        && request.resource.data.keys().hasOnly(['skin','seenUpdate'])
-        && request.resource.data.skin is string && request.resource.data.skin.size() <= 32
-        && request.resource.data.seenUpdate is string && request.resource.data.seenUpdate.size() <= 32;
-      allow delete: if false;
-    }
-    match /rejectedAnswers/{entryId} {
-      allow create: if request.auth != null
-        && request.resource.data.keys().hasOnly(['uid','question','answer','createdAt','status'])
-        && request.resource.data.uid == request.auth.uid
-        && request.resource.data.question is string && request.resource.data.question.size() <= 250
-        && request.resource.data.answer is string && request.resource.data.answer.size() <= 180
-        && request.resource.data.status == 'pending'
-        && request.resource.data.createdAt == request.time;
-      allow read, update, delete: if false;
-    }
-    match /users/{userId}/games/{gameId} {
-      function owner() { return request.auth != null && request.auth.uid == userId; }
-      function validGame() {
-        return request.resource.data.keys().hasOnly(['score', 'day'])
-          && request.resource.data.keys().hasAll(['score'])
-          && request.resource.data.score is int
-          && request.resource.data.score >= 0
-          && request.resource.data.score <= 700
-          && (!('day' in request.resource.data) || (request.resource.data.day is string && request.resource.data.day.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')));
-      }
-      allow read: if owner();
-      allow create: if owner() && validGame();
-      // Repeating an upload is safe, but a stored result cannot be changed.
-      allow update: if owner() && validGame() && request.resource.data == resource.data;
-      allow delete: if false;
-    }
+ match /databases/{database}/documents {
+  function signed() { return request.auth != null; }
+  function owner(uid) { return signed() && request.auth.uid == uid; }
+  function number(x,max) { return x is int && x >= 0 && x <= max; }
+  function validRotation(d) {
+   return d.keys().hasOnly(['round','order','last']) && d.keys().hasAll(['round','order','last'])
+    && number(d.round,10000000) && d.order is list && d.order.size() <= 2000
+    && d.last is map && d.last.keys().size() <= 2000
+    && d.order.toSet().size() == d.order.size()
+    && d.order.toSet().difference(d.last.keys().toSet()).size() == 0;
   }
+  function validPreferences(d) {
+   return d.keys().hasOnly(['skin','seenUpdate']) && d.keys().hasAll(['skin','seenUpdate'])
+    && d.skin in ['diver','jelly','crab','phantom','angler','leviathan']
+    && d.seenUpdate is string && d.seenUpdate.size() <= 32;
+  }
+  function validMetrics(m) {
+   return m is map && m.keys().hasOnly(['answered','skipped','timeouts','measured','responseMs','fastestMs','slowestMs','reports','failed','quick','rare','full'])
+    && m.keys().hasAll(['answered','skipped','timeouts','measured','responseMs','fastestMs','slowestMs','reports','failed','quick','rare','full'])
+    && number(m.answered,7) && number(m.skipped,7) && number(m.timeouts,7) && m.answered+m.skipped+m.timeouts == 7
+    && number(m.measured,m.answered) && number(m.responseMs,m.measured*30000)
+    && number(m.fastestMs,30000) && number(m.slowestMs,30000)
+    && number(m.reports,99) && number(m.failed,999) && number(m.quick,m.measured)
+    && number(m.rare,m.answered) && number(m.full,m.rare);
+  }
+  function validGame(d) {
+   return d.keys().hasOnly(['score','day','metrics']) && d.keys().hasAll(['score']) && number(d.score,700)
+    && (!('day' in d) || (d.day is string && d.day.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')))
+    && (!('metrics' in d) || validMetrics(d.metrics));
+  }
+  function nickname(n) { return n is string && n.size() >= 2 && n.size() <= 24; }
+  function validSocial(d) {
+   return d.keys().hasOnly(['code','nickname']) && d.keys().hasAll(['code','nickname'])
+    && d.code is string && d.code.matches('^[a-f0-9]{32}$') && nickname(d.nickname);
+  }
+  function scores(s) {
+   return s is list && s.size() <= 10
+    && (s.size()<1||number(s[0],700)) && (s.size()<2||number(s[1],700))
+    && (s.size()<3||number(s[2],700)) && (s.size()<4||number(s[3],700))
+    && (s.size()<5||number(s[4],700)) && (s.size()<6||number(s[5],700))
+    && (s.size()<7||number(s[6],700)) && (s.size()<8||number(s[7],700))
+    && (s.size()<9||number(s[8],700)) && (s.size()<10||number(s[9],700));
+  }
+  function validStats(d) {
+   return d.keys().hasOnly(['nickname','rounds','totalPoints','best','metricsRounds','answered','skipped','timeouts','measured','responseMs','fastestMs','slowestMs','reports','failed','quick','rare','full','perfectRounds','recent','updatedAt'])
+    && d.keys().hasAll(['nickname','rounds','totalPoints','best','metricsRounds','answered','skipped','timeouts','measured','responseMs','fastestMs','slowestMs','reports','failed','quick','rare','full','perfectRounds','recent','updatedAt'])
+    && nickname(d.nickname) && number(d.rounds,10000000) && number(d.totalPoints,d.rounds*700) && number(d.best,700)
+    && number(d.metricsRounds,d.rounds) && number(d.answered,d.metricsRounds*7) && number(d.skipped,d.metricsRounds*7) && number(d.timeouts,d.metricsRounds*7)
+    && d.answered+d.skipped+d.timeouts == d.metricsRounds*7 && number(d.measured,d.answered)
+    && number(d.responseMs,d.measured*30000) && number(d.fastestMs,30000) && number(d.slowestMs,30000)
+    && number(d.reports,d.metricsRounds*99) && number(d.failed,d.metricsRounds*999)
+    && number(d.quick,d.measured) && number(d.rare,d.answered) && number(d.full,d.rare)
+    && number(d.perfectRounds,d.rounds) && scores(d.recent) && d.updatedAt == request.time;
+  }
+  function friends(uid) {
+   return signed() && exists(/databases/$(database)/documents/users/$(uid)/friends/$(request.auth.uid))
+    && exists(/databases/$(database)/documents/users/$(request.auth.uid)/friends/$(uid))
+    && get(/databases/$(database)/documents/users/$(uid)/friends/$(request.auth.uid)).data.status == 'accepted'
+    && get(/databases/$(database)/documents/users/$(request.auth.uid)/friends/$(uid)).data.status == 'accepted';
+  }
+  function validFriend(d,uid,other) {
+   return d.keys().hasOnly(['from','to','fromName','status','createdAt']) && d.keys().hasAll(['from','to','fromName','status','createdAt'])
+    && d.from is string && d.from.size() <= 128 && d.to is string && d.to.size() <= 128
+    && uid != other && ((d.from==uid&&d.to==other)||(d.to==uid&&d.from==other))
+    && nickname(d.fromName) && d.status in ['pending','accepted'] && d.createdAt is timestamp;
+  }
+  function validRejected(d) {
+   return d.keys().hasOnly(['uid','question','answer','createdAt','status','priority']) && d.keys().hasAll(['uid','question','answer','createdAt','status'])
+    && d.uid == request.auth.uid && d.question is string && d.question.size() > 0 && d.question.size() <= 250
+    && d.answer is string && d.answer.size() > 0 && d.answer.size() <= 180
+    && d.status == 'pending' && d.createdAt == request.time && (!('priority' in d)||d.priority in [0,1]);
+  }
+  match /users/{uid}/profile/rotation {
+   allow read: if owner(uid);
+   allow create, update: if owner(uid) && validRotation(request.resource.data);
+  }
+  match /users/{uid}/profile/preferences {
+   allow read: if owner(uid);
+   allow create, update: if owner(uid) && validPreferences(request.resource.data);
+  }
+  match /users/{uid}/profile/social {
+   allow read: if owner(uid);
+   allow create: if owner(uid) && validSocial(request.resource.data)
+    && getAfter(/databases/$(database)/documents/friendCodes/$(request.resource.data.code)).data.uid == uid;
+   allow update: if owner(uid) && validSocial(request.resource.data) && request.resource.data.code == resource.data.code;
+  }
+  match /users/{uid}/profile/stats {
+   allow read: if owner(uid) || friends(uid);
+   allow create, update: if owner(uid) && validStats(request.resource.data);
+  }
+  match /friendCodes/{code} {
+   allow get: if signed();
+   allow list: if false;
+   allow create: if signed() && request.resource.data.keys().hasOnly(['uid']) && request.resource.data.uid == request.auth.uid
+    && getAfter(/databases/$(database)/documents/users/$(request.auth.uid)/profile/social).data.code == code;
+  }
+  match /users/{uid}/friends/{other} {
+   allow read: if owner(uid);
+   allow create: if signed() && validFriend(request.resource.data,uid,other) && request.resource.data.from == request.auth.uid
+    && request.resource.data.status == 'pending' && request.resource.data.createdAt == request.time
+    && request.resource.data.fromName == get(/databases/$(database)/documents/users/$(request.auth.uid)/profile/social).data.nickname
+    && getAfter(/databases/$(database)/documents/users/$(other)/friends/$(uid)).data == request.resource.data;
+   allow update: if signed() && validFriend(request.resource.data,uid,other) && resource.data.status == 'pending'
+    && request.auth.uid == resource.data.to && request.resource.data.status == 'accepted'
+    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+    && getAfter(/databases/$(database)/documents/users/$(other)/friends/$(uid)).data == request.resource.data;
+   allow delete: if owner(uid) || owner(other);
+  }
+  match /users/{uid}/games/{game} {
+   allow read: if owner(uid);
+   allow create: if owner(uid) && validGame(request.resource.data);
+   allow update: if owner(uid) && validGame(request.resource.data) && request.resource.data == resource.data;
+  }
+  match /rejectedAnswers/{entry} {
+   allow create: if signed() && validRejected(request.resource.data);
+  }
+ }
 }

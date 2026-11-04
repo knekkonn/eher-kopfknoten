@@ -4,7 +4,9 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
  for(const viewport of [{width:390,height:844},{width:768,height:1024},{width:1024,height:768}]){
   const page=await browser.newPage({viewport,serviceWorkers:'block',reducedMotion:'reduce'});const errors=[];
   page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(process.env.ABGRUND_URL||'http://127.0.0.1:8765');
+  await page.route('https://fonts.googleapis.com/**',r=>r.abort());
+ await page.route('https://fonts.gstatic.com/**',r=>r.abort());
+ await page.goto(process.env.ABGRUND_URL||'http://127.0.0.1:8765',{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>window.ABGRUND_ARCHIVE?.ready);
   await page.evaluate(()=>window.ABGRUND_ARCHIVE.ready);
   await page.locator('#begin').click();

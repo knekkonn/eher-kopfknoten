@@ -21,14 +21,15 @@ do{
   const question=f.question?.stringValue,answer=f.answer?.stringValue;
   if(typeof question!=='string'||typeof answer!=='string'||question.length>250||answer.length>180)continue;
   const key=createHash('sha256').update(JSON.stringify([question,answer.toLocaleLowerCase('de-DE').trim()])).digest('hex');
-  const group=groups.get(key);if(group)group.count++;else groups.set(key,{question,answer,count:1});
+  const group=groups.get(key);const priority=Number(f.priority?.integerValue||0)===1?1:0;if(group){group.count++;group.priority=Math.max(group.priority,priority)}else groups.set(key,{question,answer,count:1,priority});
  }
  pageToken=data.nextPageToken||'';
  if(scanned>100000)throw Error('Review safety limit exceeded; use a server-side pending query before increasing the limit.');
 }while(pageToken);
 // Rotate the bounded sample daily so a large queue does not permanently starve later records.
 const day=new Date().toISOString().slice(0,10);
-const selected=[...groups.entries()].sort(([a],[b])=>{
+const selected=[...groups.entries()].sort(([a,left],[b,right])=>{
+ if(left.priority!==right.priority)return right.priority-left.priority;
  const rank=id=>createHash('sha256').update(day+id).digest('hex');return rank(a).localeCompare(rank(b));
 }).slice(0,200);
 for(const [,group] of selected){
@@ -38,5 +39,5 @@ for(const [,group] of selected){
 }
 notChecked=groups.size-selected.length;
 // No UIDs, submitted text or tokens in public logs/artifacts.
-const report={checkedAt:new Date().toISOString(),project,database,scanned,pending,uniquePending:groups.size,recognized,needsHumanReview,notChecked,duplicates:pending-groups.size,mode:'read-only-human-approval-required'};
+const report={checkedAt:new Date().toISOString(),project,database,scanned,pending,uniquePending:groups.size,prioritized:[...groups.values()].filter(x=>x.priority===1).length,recognized,needsHumanReview,notChecked,duplicates:pending-groups.size,mode:'read-only-human-approval-required'};
 writeFileSync(process.env.REVIEW_OUTPUT||'review-summary.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
