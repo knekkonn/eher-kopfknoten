@@ -80,7 +80,7 @@ async function start(){
   $('accountLinkPassword').onclick=()=>perform(()=>api.linkWithCredential(user(),api.EmailAuthProvider.credential(user().email,$('accountNewPassword').value)));
   api.onAuthStateChanged(auth,u=>{
    epoch++;const myEpoch=epoch;unlisten();unlisten=()=>{};restartSync=()=>{};pending=new Set();failed=new Set();serverIds=new Set();serverReady=false;
-   window.ABGRUND_HISTORY.select(u?.uid||'guest');render();
+   window.ABGRUND_HISTORY.select(u?.uid||'guest');render();window.dispatchEvent(new CustomEvent('abgrund-auth',{detail:{uid:u?.uid||null}}));
    if(!u)return;
    try{window.ABGRUND_HISTORY.migrateGuest()}catch{status('Gastspiele konnten nicht übernommen werden. Bitte schaffe Speicherplatz und melde dich erneut an.');return}
    $('accountSync').textContent='Deine Ergebnisse werden geladen …';
