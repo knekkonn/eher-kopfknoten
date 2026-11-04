@@ -1,7 +1,7 @@
 /* Account-only cosmetic rewards and release notes. Scores are read from synced rounds. */
 (()=>{
 'use strict';
-const VERSION='2026-11-04';
+const VERSION='2026-11-04-character-skins';
 const SKINS=[
 {id:'diver',name:'Taucher',min:0,sprite:'diver.svg',color:'#7ce4d9'},
 {id:'jelly',name:'Leuchtqualle',min:100,sprite:'jelly.svg',color:'#83c8ff'},
@@ -55,7 +55,7 @@ function artImage(skin,className){
 }
 const localBest=()=>Math.max(0,...(window.ABGRUND_HISTORY?.list?.()||[]).map(x=>Number(x.score)||0));
 function modal(title,body,action){document.querySelector('.abg-perk-overlay')?.remove();const wrap=document.createElement('div');wrap.className='abg-perk-overlay';const panel=document.createElement('section');panel.className='abg-perk-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');const h=document.createElement('h2');h.textContent=title;panel.append(h);const b=document.createElement('div');panel.append(b);body(b);const close=document.createElement('button');close.className='abg-perk-close';close.textContent=action||'WEITER TAUCHEN';close.onclick=()=>wrap.remove();panel.append(close);wrap.append(panel);document.body.append(wrap);wrap.onclick=e=>{if(e.target===wrap)wrap.remove()};}
-function release(){if(!uid||!ready||lastSeen===VERSION)return;lastSeen=VERSION;persist();modal('NEUES AUS DER TIEFE',b=>{const p=document.createElement('p');p.textContent='Mehr gültige Antworten, neue Skins und bessere Namensvorschläge. Deine höchste Punktzahl in EINER Runde schaltet Skins frei. Abgelehnte Antworten können künftig überprüft werden.';b.append(p)});}
+function release(){if(!uid||!ready||lastSeen===VERSION)return;lastSeen=VERSION;persist();modal('NEUES AUS DER TIEFE',b=>{const p=document.createElement('p');p.textContent='Sechs vollständig illustrierte und animierte Tiefsee-Charaktere sind da! Wähle im Skin-Menü deinen Begleiter. Seine Figur erscheint jetzt im eigentlichen Tauchgang. Deine Bestleistung in einer einzelnen Runde schaltet weitere Charaktere frei.';b.append(p)});}
 function updateEquipped(){const skin=SKINS.find(x=>x.id===selected)||SKINS[0];const widget=document.getElementById('abgEquipped');if(!widget)return;widget.hidden=!uid;const stage=document.getElementById('abgSkinStage');if(stage)stage.hidden=!uid;if(!uid)return;widget.style.setProperty('--abg-skin-color',skin.color);widget.querySelector('.abg-equipped-emoji').src=spriteUrl(skin);widget.querySelector('.abg-equipped-emoji').alt=skin.name;widget.querySelector('strong').textContent=skin.name;widget.querySelector('small').textContent='AUSGERÜSTETER SKIN';widget.setAttribute('aria-label','Aktueller Skin: '+skin.name+'. Skins wechseln');
  const stage=document.getElementById('abgSkinStage');if(stage){stage.hidden=false;stage.style.setProperty('--abg-skin-color',skin.color);stage.querySelector('.abg-stage-art').src=spriteUrl(skin);stage.querySelector('.abg-stage-art').alt=skin.name;stage.querySelector('.abg-stage-name').textContent=skin.name.toUpperCase();stage.classList.remove('abg-skin-change');void stage.offsetWidth;stage.classList.add('abg-skin-change')}}
 function persist(){updateEquipped();if(!uid||!db||!fire)return;fire.setDoc(fire.doc(db,'users',uid,'profile','preferences'),{skin:selected,seenUpdate:lastSeen}).catch(e=>console.warn('Perk preferences:',e.code||e.message));}
