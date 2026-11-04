@@ -1,0 +1,14 @@
+const fs=require('node:fs'),vm=require('node:vm');
+const html=fs.readFileSync('index.html','utf8'),script=html.match(/<script>([\s\S]*?)<\/script>/)[1];
+const nodes=new Map(),storage=new Map();
+const node=id=>{if(!nodes.has(id)){const classes=new Set();nodes.set(id,{value:'',textContent:'',innerHTML:'',disabled:false,hidden:false,dataset:{},style:{setProperty(){}},classList:{add:(...a)=>a.forEach(x=>classes.add(x)),remove:(...a)=>a.forEach(x=>classes.delete(x)),contains:x=>classes.has(x),toggle:(x,on)=>on?classes.add(x):classes.delete(x)},addEventListener(){},focus(){},appendChild(){},querySelector:s=>node(id+s),querySelectorAll:()=>[]})}return nodes.get(id)};
+const ctx=vm.createContext({console,URL,AbortController,Event,CustomEvent:class{},queueMicrotask,document:{getElementById:node,createElement:()=>node('created-dialog'),querySelector:node,querySelectorAll:()=>[],body:node('body'),documentElement:node('root'),addEventListener(){}},window:{innerHeight:844,dispatchEvent(){},addEventListener(){},ABGRUND_FIREBASE_CONFIG:{}},navigator:{},location:{href:'https://example.test/'},localStorage:{getItem:k=>storage.get(k)??null,setItem:(k,v)=>storage.set(k,String(v)),removeItem:k=>storage.delete(k)},setTimeout:()=>1,clearTimeout(){},setInterval:()=>1,clearInterval(){},fetch:async()=>{throw Error('offline')}});
+vm.runInContext(script,ctx);
+for(const file of ['krillion-patch.js','krillion-archive-extra.js','answer-expansion.js','tier-calibration.js','answer-corrections.js','question-pack.js','question-pack-extra.js','fact-fixes.js'])vm.runInContext(fs.readFileSync(file,'utf8'),ctx);
+const run=s=>vm.runInContext(s,ctx);
+const {Blob}=require('node:buffer'),{DecompressionStream}=require('node:stream/web');
+Object.assign(ctx,{Blob,DecompressionStream,Response,TextDecoder,TextEncoder});
+ctx.fetch=async path=>new Response(fs.readFileSync(String(path).replace(/^\.\//,'')));
+vm.runInContext(fs.readFileSync('archive-pack.js','utf8'),ctx);
+vm.runInContext(fs.readFileSync('reviewed-answers.js','utf8'),ctx);
+module.exports={ctx,run,ready:ctx.window.ABGRUND_ARCHIVE.ready};

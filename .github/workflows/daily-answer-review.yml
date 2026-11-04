@@ -1,0 +1,42 @@
+name: Daily rejected-answer review
+on:
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/daily-answer-review.yml'
+      - 'scripts/review-rejected.mjs'
+      - 'scripts/game-engine.cjs'
+      - 'reviewed-answers.js'
+permissions:
+  contents: read
+  id-token: write
+concurrency:
+  group: daily-answer-review
+  cancel-in-progress: false
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: google-github-actions/auth@v2
+        id: auth
+        with:
+          workload_identity_provider: projects/1054616756639/locations/global/workloadIdentityPools/abgrund-github/providers/answer-review
+          service_account: abgrund-answer-review@krillion-d74e1.iam.gserviceaccount.com
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/datastore
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/review-rejected.mjs
+        env:
+          FIREBASE_REVIEW_TOKEN: ${{ steps.auth.outputs.access_token }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: review-summary
+          path: review-summary.json
+          retention-days: 14

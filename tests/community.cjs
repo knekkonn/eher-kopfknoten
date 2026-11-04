@@ -1,3 +1,4 @@
+const TEST_BASE=require('node:path').resolve(__dirname,'..'),TEST_TEMP=require('node:os').tmpdir();
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),cp=require('node:child_process'),{webcrypto}=require('node:crypto');
 (async()=>{
 const database=TEST_TEMP+'/community-test-'+webcrypto.randomUUID()+'.sqlite';

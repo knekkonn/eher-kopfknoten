@@ -56,7 +56,7 @@ window.ABGRUND_ARCHIVE={loadQuestion,resolveGerman,ready:null};let renderRequest
 showQ=async()=>{
  const request=++renderRequest,q=deck[save.idx];if(!q)return oldShow();
  stopTimer();$('answer').disabled=true;$('submitAnswer').disabled=true;$('question').textContent=q.q;$('hint').textContent='Frage wird vorbereitet …';
- try{await window.ABGRUND_ARCHIVE.ready;if(!(save.questionDeadlineIndex===save.idx&&save.questionDeadline&&Date.now()>=save.questionDeadline))await loadQuestion(q);if(request!==renderRequest)return;
+ try{await window.ABGRUND_ARCHIVE.ready;if(!(save.questionDeadlineIndex===save.idx&&save.questionDeadline&&Date.now()>=save.questionDeadline))await window.ABGRUND_ARCHIVE.loadQuestion(q);if(request!==renderRequest)return;
   await window.ABGRUND_COMMUNITY?.prepare(q);if(request!==renderRequest)return;oldShow();if(q.archiveDate)$('hint').textContent='Archivstand '+q.archiveDate+' · Deutsch und Englisch zählen gleich.';
  }catch(e){if(request!==renderRequest)return;$('response').classList.add('show','invalid');$('response').innerHTML='Die Antworten konnten nicht geladen werden. Deine Runde bleibt gespeichert. <button class="nextbtn" id="archiveRetry" type="button">ERNEUT VERSUCHEN</button>';$('archiveRetry').onclick=showQ;$('hint').textContent='Die Zeit läuft erst, wenn die Frage bereit ist.'}
 };

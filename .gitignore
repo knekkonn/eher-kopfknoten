@@ -1,0 +1,6 @@
+node_modules/
+review-summary.json
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
+gha-creds-*.json
