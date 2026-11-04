@@ -11,6 +11,7 @@ const SKINS=[
 {id:'leviathan',name:'Leviathan',min:700,sprite:'leviathan.svg',color:'#83f4cd'}];
 let uid=null,db=null,fire=null,auth=null,profile=null,score=0,selected='diver',unsub=()=>{},lastSeen='',ready=false;
 const css=document.createElement('style');css.textContent=`
+.abg-perk-overlay[hidden],.abg-skin-stage[hidden],.abg-equipped[hidden]{display:none!important}
 .abg-perk-overlay{position:fixed;inset:0;background:#00101cce;z-index:99999;display:grid;place-items:center;padding:20px;backdrop-filter:blur(9px)}
 .abg-perk-panel{width:min(540px,96vw);max-height:85vh;overflow:auto;background:linear-gradient(155deg,#0b2a39,#061522);border:1px solid #79e6dd65;border-radius:22px;padding:25px;color:#e6f8fa;box-shadow:0 20px 90px #000b;font-family:Manrope,system-ui}
 .abg-perk-panel h2{font-size:24px;margin:8px 0 14px}.abg-perk-panel p{line-height:1.55;color:#a8c7d3}.abg-perk-panel button{border:1px solid #7de6dc77;background:#10313f;color:#e9ffff;border-radius:10px;padding:12px;cursor:pointer}
