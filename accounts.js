@@ -60,7 +60,8 @@ async function syncPending(){
   }).catch(error=>{if(epoch!==myEpoch)return;pending.delete(item.id);failed.add(item.id);$('accountSync').textContent='Noch lokal gespeichert. Bitte Synchronisierung erneut versuchen.';console.warn('Account sync:',error.code||'unavailable')});
  }
 }
-window.ABGRUND_ACCOUNTS={identity:()=>user()?.uid||null,getToken:async()=>user()?.getIdToken?user().getIdToken():null,onLocalGame:()=>{if(user()){serverReady&&($('accountSync').textContent='Ergebnisse werden synchronisiert …');syncPending()}}};
+let rotationReady=Promise.resolve();let rotationRevision=0;
+window.ABGRUND_ACCOUNTS={identity:()=>user()?.uid||null,waitRotation:()=>rotationReady,onRotationChanged:state=>{const u=user();if(!u||!db||!api)return;api.setDoc(api.doc(db,'users',u.uid,'profile','rotation'),{round:state.round,order:state.order.slice(-2000),last:state.last},{merge:false}).catch(e=>console.warn('Rotation sync:',e.code||e.message))},getToken:async()=>user()?.getIdToken?user().getIdToken():null,onLocalGame:()=>{if(user()){serverReady&&($('accountSync').textContent='Ergebnisse werden synchronisiert …');syncPending()}}};
 async function start(){
  try{
   const [appMod,authMod,fireMod]=await Promise.all([
@@ -81,7 +82,8 @@ async function start(){
   api.onAuthStateChanged(auth,u=>{
    epoch++;const myEpoch=epoch;unlisten();unlisten=()=>{};restartSync=()=>{};pending=new Set();failed=new Set();serverIds=new Set();serverReady=false;
    window.ABGRUND_HISTORY.select(u?.uid||'guest');render();window.dispatchEvent(new CustomEvent('abgrund-auth',{detail:{uid:u?.uid||null}}));
-   if(!u)return;
+   if(!u){rotationReady=Promise.resolve();return;}
+   const rotationId=++rotationRevision;rotationReady=api.getDoc(api.doc(db,'users',u.uid,'profile','rotation')).then(snapshot=>{if(rotationRevision!==rotationId||user()?.uid!==u.uid)return;const remote=snapshot.data();if(!remote||!Array.isArray(remote.order))return;const key='abgrundRotationV2:'+u.uid;let local;try{local=JSON.parse(localStorage.getItem(key)||'null')}catch{}if(!local||Number(remote.round)>Number(local.round))localStorage.setItem(key,JSON.stringify(remote))}).catch(e=>console.warn('Rotation load:',e.code||e.message));
    try{window.ABGRUND_HISTORY.migrateGuest()}catch{status('Gastspiele konnten nicht übernommen werden. Bitte schaffe Speicherplatz und melde dich erneut an.');return}
    $('accountSync').textContent='Deine Ergebnisse werden geladen …';
    restartSync=()=>{unlisten();unlisten=api.onSnapshot(api.collection(db,'users',u.uid,'games'),{includeMetadataChanges:true},snapshot=>{
