@@ -4,11 +4,11 @@
 const VERSION='2026-11-04';
 const SKINS=[
 {id:'diver',name:'Taucher',min:0,emoji:'🤿',color:'#7ce4d9'},
-{id:'jelly',name:'Leuchtqualle',min:60,emoji:'🪼',color:'#83c8ff'},
-{id:'crab',name:'Korallenkrabbe',min:120,emoji:'🦀',color:'#ff9981'},
-{id:'phantom',name:'Phantom',min:210,emoji:'🐙',color:'#c9a0ff'},
-{id:'angler',name:'Goldangler',min:350,emoji:'🐡',color:'#ffd68a'},
-{id:'leviathan',name:'Leviathan',min:500,emoji:'🐉',color:'#83f4cd'}];
+{id:'jelly',name:'Leuchtqualle',min:100,emoji:'🪼',color:'#83c8ff'},
+{id:'crab',name:'Korallenkrabbe',min:200,emoji:'🦀',color:'#ff9981'},
+{id:'phantom',name:'Phantom',min:400,emoji:'🐙',color:'#c9a0ff'},
+{id:'angler',name:'Goldangler',min:600,emoji:'🐡',color:'#ffd68a'},
+{id:'leviathan',name:'Leviathan',min:1000,emoji:'🐉',color:'#83f4cd'}];
 let uid=null,db=null,fire=null,auth=null,profile=null,score=0,selected='diver',unsub=()=>{},lastSeen='',ready=false;
 const css=document.createElement('style');css.textContent=`
 .abg-perk-overlay{position:fixed;inset:0;background:#00101cce;z-index:99999;display:grid;place-items:center;padding:20px;backdrop-filter:blur(9px)}
