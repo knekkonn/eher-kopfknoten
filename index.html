@@ -14782,7 +14782,46 @@ $('dateLabel').textContent='KOSTENLOS · UNBEGRENZT SPIELBAR';$('edition').textC
 function rng(seed){let t=seed>>>0;return()=>{t+=0x6D2B79F5;let x=t;x=Math.imul(x^x>>>15,x|1);x^=x+Math.imul(x^x>>>7,x|61);return((x^x>>>14)>>>0)/4294967296}}
 const CURRENT='abgrundCurrentV5',USED='abgrundUsedV5';
 bank.push({"q":"Nenne einen abendfüllenden Pixar-Film.","answers":["Elio","Cars 3","Onward","Cars 2","Elemental","Hoppers","Incredibles 2","Lightyear","Toy Story 4","Toy Story 5","Turning Red","A Bug's Life","Brave","Cars","Coco","Finding Dory","Inside Out 2","Luca","Monsters University","Ratatouille","Soul","Toy Story 2","Toy Story 3","WALL-E","The Good Dinosaur","Finding Nemo","Inside Out","Monsters, Inc.","The Incredibles","Toy Story","Up","alles steht kopf","alles steht kopf 2","findet nemo","findet dorie","die monster ag","die monster uni","die unglaublichen","die unglaublichen 2","oben","rot","merida","merida legende der highlands","arlo und spot","das grosse krabbeln"],"answerAliases":{"alles steht kopf":"Inside Out","alles steht kopf 2":"Inside Out 2","findet nemo":"Finding Nemo","findet dorie":"Finding Dory","die monster ag":"Monsters, Inc.","die monster uni":"Monsters University","die unglaublichen":"The Incredibles","die unglaublichen 2":"Incredibles 2","oben":"Up","rot":"Turning Red","merida":"Brave","merida legende der highlands":"Brave","arlo und spot":"The Good Dinosaur","das grosse krabbeln":"A Bug's Life"},"full":"Elio","top":"Elio","reviewedOnly":true});
-function makeSession(){let used=JSON.parse(localStorage.getItem(USED)||'[]'),available=bank.map((_,i)=>i).filter(i=>!used.includes(i));if(!available.length){used=[];available=bank.map((_,i)=>i)}const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};shuffle(available);const picks=available.slice(0,7);if(picks.length<7){const extras=shuffle(bank.map((_,i)=>i).filter(i=>!picks.includes(i)));picks.push(...extras.slice(0,7-picks.length))}return{started:false,idx:0,depth:0,points:0,answers:[],done:false,counted:false,deckIds:picks,deckQuestions:picks.map(i=>bank[i].q)}}
+// Account-isolated rotation: exhaust the question bank before repeating any question.
+const ROTATION_PREFIX='abgrundRotationV2:';
+function rotationOwner(){return window.ABGRUND_ACCOUNTS?.identity?.()||'guest'}
+function rotationKey(){return ROTATION_PREFIX+rotationOwner()}
+function readRotation(){try{const x=JSON.parse(localStorage.getItem(rotationKey())||'null');if(x&&Array.isArray(x.order)&&Number.isInteger(x.round))return x}catch{}return{round:0,order:[],last:{}}}
+function writeRotation(x){try{localStorage.setItem(rotationKey(),JSON.stringify(x))}catch{}}
+function questionIdentity(q){return normalizeFactText(q.q)}
+function makeSession(){
+ const rotation=readRotation(),pool=bank.map((q,i)=>({i,id:questionIdentity(q)})),unique=[...new Map(pool.map(x=>[x.id,x])).values()];
+ const used=new Set(rotation.order),unused=unique.filter(x=>!used.has(x.id));
+ const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+ // The next seven prompts are drawn from unseen questions whenever possible.
+ // Only once the entire bank is exhausted can earlier questions enter the pool.
+ const picked=shuffle(unused).slice(0,7);
+ if(picked.length<7){
+  const candidates=unique.filter(x=>!picked.some(p=>p.id===x.id));
+  const eligible=candidates.filter(x=>rotation.round-(rotation.last[x.id]??-999)>=9);
+  const fallback=eligible.length>=7-picked.length?eligible:candidates;
+  fallback.sort((a,b)=>(rotation.last[a.id]??-999)-(rotation.last[b.id]??-999)||Math.random()-.5);
+  picked.push(...fallback.slice(0,7-picked.length));
+ }
+ const ids=picked.map(x=>x.i);
+ return{started:false,idx:0,depth:0,points:0,answers:[],done:false,counted:false,deckIds:ids,deckQuestions:ids.map(i=>bank[i].q),rotationOwner:rotationOwner()};
+}
+function commitRotation(session){
+ if(session.rotationCommitted)return;
+ const owner=session.rotationOwner||rotationOwner(),key=ROTATION_PREFIX+owner;
+ let state;try{state=JSON.parse(localStorage.getItem(key)||'null')}catch{}
+ if(!state||!Array.isArray(state.order))state={round:0,order:[],last:{}};
+ state.round++;const all=new Set(bank.map(questionIdentity));
+ const seen=new Set(state.order);
+ const names=(session.deckQuestions||session.deckIds.map(i=>bank[i]?.q)).filter(Boolean).map(normalizeFactText);
+ // A new cycle begins only when every unique question was already seen.
+ if([...all].every(id=>seen.has(id)))state.order=[];
+ for(const name of names){if(!state.order.includes(name))state.order.push(name);state.last[name]=state.round}
+ try{localStorage.setItem(key,JSON.stringify(state))}catch{}
+ session.rotationCommitted=true;
+ window.ABGRUND_ACCOUNTS?.onRotationChanged?.(state);
+}
+
 let save=JSON.parse(localStorage.getItem(CURRENT)||'null');if(!save)save=makeSession();let deck=save.deckIds.map(i=>bank[i]);let timerId=null,remaining=SECONDS;
 function store(){if(deck.every(Boolean))save.deckQuestions=deck.map(q=>q.q);localStorage.setItem(CURRENT,JSON.stringify(save));updateStats()}
 // Scores belong to this browser/device; a stable run ID makes recording idempotent.
@@ -15115,8 +15154,8 @@ recordScoreHistory();const scoreHistory=readScoreHistory();
 const dk=statKey('abgrundPointsToday:'+dayKey),ak=statKey('abgrundPointsAllTime'),scores=scoreBests(),todayBest=Math.max(scores.today,save.points||0),allBest=Math.max(scores.all,save.points||0);localStorage.setItem(dk,todayBest);localStorage.setItem(ak,allBest);const depthKey=statKey('abgrundBest');localStorage.setItem(depthKey,String(Math.max(Number(localStorage.getItem(depthKey)||0),save.depth)));store();document.querySelector('.gamecard').classList.add('complete');$('counter').textContent='TAUCHGANG ABGESCHLOSSEN';const rows=save.answers.map((a,i)=>{const tier=scoreTierForSaved(a);return'<li><b>'+esc(deck[i].q)+'</b><br>Deine Antwort: „'+esc(a?.text||'Keine Antwort')+'“ · <strong>'+fmt(a?.points||0)+' Punkte</strong> <span class="tier-chip" data-tier="'+tier.id+'">'+tier.name+'</span><br><small>Beste hinterlegte Antwort ('+tierForAnswer(deck[i],topAnswer(deck[i]),null).points+' Punkte): '+esc(topAnswer(deck[i]))+'</small>'+archivedTierExamples(deck[i])+'</li>'}).join('');const runId=scoreHistoryOwner==='guest'?Number(localStorage.getItem('abgrundDives')||0):scoreHistory.length;$('question').innerHTML='RUNDE GESCHAFFT<br><em style="color:var(--aqua)">'+fmt(save.points||0)+' Punkte gesamt</em>';$('hint').textContent='Deine Antworten und die besten hinterlegten Antworten.';$('response').innerHTML='<div style="display:flex;gap:12px;margin-bottom:16px"><div>BESTLEISTUNG HEUTE<br><b>'+fmt(todayBest)+' PUNKTE</b></div><div>BESTLEISTUNG ALLTIME<br><b>'+fmt(allBest)+' PUNKTE</b></div></div><ol style="padding-left:22px;max-height:36vh;overflow:auto">'+rows+'</ol><small>Antwortprüfung über geprüfte Listen und kostenlose Faktenquellen. Seltenheit nach Wikipedia-Aufrufen; bei API-Ausfall lokal geschätzt. Keine externe KI-Verbindung.</small>';$('response').classList.add('show');$('begin').textContent='↻  NEUER TAUCHGANG';$('begin').disabled=false;$('newRound').hidden=true;$('nextrow').classList.remove('show');$('timerText').textContent='✓';$('timerBar').style.width='0';document.body.classList.remove('answer-revealing','diving');document.body.classList.add('run-complete','playing');const overlay=$('diveOverlay');overlay.innerHTML='<main class="final-board"><header class="final-header"><div class="final-kicker">DIVE #'+String(runId).padStart(3,'0')+' · COMPLETE</div><h2>TAUCHGANG <em>GESCHAFFT</em></h2><div class="final-total">'+fmt(save.points||0)+' <small>PUNKTE</small></div><div class="final-depth">TAUCHTIEFE · '+fmt(save.depth||0)+' M</div></header><div class="final-bests"><div><small>BESTLEISTUNG HEUTE</small><b>'+fmt(todayBest)+' P</b></div><div><small>ALLZEIT-BESTLEISTUNG</small><b>'+fmt(allBest)+' P</b></div></div><section class="chart-panel"><div class="chart-heading"><span>DEIN VERGLEICH</span><small>DEINE RUNDEN · COMMUNITY</small></div>'+scoreCurveSvg(scoreHistory,save.points||0)+scoreCurveLegend(scoreHistory,save.points||0)+'</section><section class="chart-panel"><div class="chart-heading"><span>TAUCHPROTOKOLL</span><small>FRAGE · TIEFE IN METERN</small></div>'+diveLogSvg()+'</section><details class="answer-review"><summary>ANTWORTEN · STUFEN · VOLLPUNKTZAHL</summary><ol>'+rows+'</ol><small>Antwortprüfung über freie Faktenquellen. Seltenheit nach Wikipedia-Aufrufen; bei Ausfall lokal geschätzt.</small></details><button class="startbtn final-restart" id="restartDive" type="button">↻ &nbsp;NEUER TAUCHGANG</button></main>';$('restartDive').onclick=startFreshDive;overlay.classList.add('show','final-mode');updateStats()}
 
 
-function markDeckUsed(){let used=JSON.parse(localStorage.getItem(USED)||'[]');if(used.length>=bank.length)used=[];localStorage.setItem(USED,JSON.stringify([...new Set([...used,...save.deckIds])]));$('edition').textContent='TAUCHGANG · #'+String(Number(localStorage.getItem('abgrundDives')||0)+1).padStart(3,'0')}
-function startRun(){document.body.classList.add('playing');save.started=true;markDeckUsed();$('begin').textContent='✓  TAUCHGANG LÄUFT';$('begin').disabled=true;$('newRound').hidden=true;store();showQ()}
+function markDeckUsed(){commitRotation(save);$('edition').textContent='TAUCHGANG · #'+String(Number(localStorage.getItem('abgrundDives')||0)+1).padStart(3,'0')}
+async function startRun(){if(!save.started){await window.ABGRUND_ACCOUNTS?.waitRotation?.();if(save.rotationOwner!==rotationOwner()){save=makeSession();deck=save.deckIds.map(i=>bank[i])}}document.body.classList.add('playing');save.started=true;markDeckUsed();$('begin').textContent='✓  TAUCHGANG LÄUFT';$('begin').disabled=true;$('newRound').hidden=true;store();showQ()}
 $('answer').addEventListener('input',()=>{const result=completionOptions(deck[save.idx],$('answer').value);$('answerSuggestion').innerHTML=result.suggestion?'<button class="suggestion-action" type="button" data-fill="'+esc(result.suggestion)+'">ERGÄNZEN · „'+esc(result.suggestion)+'“ ↗</button>':result.ambiguous?'Mehrere Antworten möglich · Bitte weiter tippen.':''});$('answerSuggestion').addEventListener('click',e=>{const button=e.target.closest('[data-fill]');if(!button)return;$('answer').value=button.dataset.fill;$('answer').dispatchEvent(new Event('input',{bubbles:true}));$('answer').focus()});
 $('begin').onclick=()=>{if(save.done){startFreshDive();return}clearDiveOverlay();startRun()};
 $('newRound').onclick=startFreshDive;$('submitAnswer').onclick=()=>submitAnswer();$('answer').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();submitAnswer()}});$('answer').addEventListener('input',()=>{if($('response').classList.contains('invalid')){$('response').classList.remove('show','invalid');$('hint').textContent='Noch einmal versuchen — die Uhr läuft.'}});$('next').onclick=advanceDive;
