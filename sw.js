@@ -1,5 +1,5 @@
-const CACHE='abgrund-shell-v22';
-const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./krillion-patch.js?v=20261102b','./krillion-archive-extra.js?v=20261102','./answer-expansion.js?v=20261102c','./tier-calibration.js?v=20261102','./answer-corrections.js?v=20261102f','./question-pack.js?v=20261102','./question-pack-extra.js?v=20261102','./fact-fixes.js?v=20261102','./archive-pack.js?v=20261103','./archive-manifest.json','./firebase-config.js?v=2','./accounts.js?v=3','./community.js?v=1','./community-questions.json','./polish.css?v=1','./polish.js?v=1','./accounts.css?v=1','./account-perks.js?v=20261104-scene','./skins/diver.svg','./skins/jelly.svg','./skins/crab.svg','./skins/phantom.svg','./skins/angler.svg','./skins/leviathan.svg'];
+const CACHE='abgrund-shell-v23';
+const CORE=['./reviewed-answers.js?v=20261104','./','./index.html','./manifest.webmanifest','./icon.svg','./krillion-patch.js?v=20261102b','./krillion-archive-extra.js?v=20261102','./answer-expansion.js?v=20261102c','./tier-calibration.js?v=20261102','./answer-corrections.js?v=20261102f','./question-pack.js?v=20261102','./question-pack-extra.js?v=20261102','./fact-fixes.js?v=20261102','./archive-pack.js?v=20261104','./archive-manifest.json','./firebase-config.js?v=2','./accounts.js?v=4','./community.js?v=1','./community-questions.json','./polish.css?v=2','./polish.js?v=1','./accounts.css?v=1','./account-perks.js?v=20261104-review','./skins/diver.svg','./skins/jelly.svg','./skins/crab.svg','./skins/phantom.svg','./skins/angler.svg','./skins/leviathan.svg'];
 const MAIN_PATCH='<script src="./krillion-patch.js?v=20261101"></script>';
 const EXTRA_PATCH='<script src="./krillion-archive-extra.js?v=20261101"></script>';
 function injectPatches(html){
@@ -33,8 +33,7 @@ self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addA
 self.addEventListener('activate',e=>e.waitUntil((async()=>{
   const keys=await caches.keys();await Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)));
   await self.clients.claim();
-  const clients=await self.clients.matchAll({type:'window'});
-  await Promise.all(clients.map(c=>c.navigate(c.url).catch(()=>{})));
+  // Keep active rounds intact; updated assets load on the next navigation.
 })()));
 self.addEventListener('fetch',e=>{
   const u=new URL(e.request.url);

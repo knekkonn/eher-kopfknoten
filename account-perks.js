@@ -1,7 +1,7 @@
 /* Account-only cosmetic rewards and release notes. Scores are read from synced rounds. */
 (()=>{
 'use strict';
-const VERSION='2026-11-04-scene-character-fix';
+const VERSION='2026-11-04-reliable-rounds';
 const SKINS=[
 {id:'diver',name:'Taucher',min:0,sprite:'diver.svg',color:'#7ce4d9'},
 {id:'jelly',name:'Leuchtqualle',min:100,sprite:'jelly.svg',color:'#83c8ff'},
@@ -90,7 +90,21 @@ function artImage(skin,className){
 }
 const localBest=()=>Math.max(0,...(window.ABGRUND_HISTORY?.list?.()||[]).map(x=>Number(x.score)||0));
 function modal(title,body,action){document.querySelector('.abg-perk-overlay')?.remove();const wrap=document.createElement('div');wrap.className='abg-perk-overlay';const panel=document.createElement('section');panel.className='abg-perk-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');const h=document.createElement('h2');h.textContent=title;panel.append(h);const b=document.createElement('div');panel.append(b);body(b);const close=document.createElement('button');close.className='abg-perk-close';close.textContent=action||'WEITER TAUCHEN';close.onclick=()=>wrap.remove();panel.append(close);wrap.append(panel);document.body.append(wrap);wrap.onclick=e=>{if(e.target===wrap)wrap.remove()};}
-function release(){if(!uid||!ready||lastSeen===VERSION)return;lastSeen=VERSION;persist();modal('NEUES AUS DER TIEFE',b=>{const p=document.createElement('p');p.textContent='Dein ausgewählter Skin ersetzt jetzt direkt den kleinen Taucher in der Unterwasser-Szene. Alle sechs Charaktere haben eigene Animationen. Deine Bestleistung in einer einzelnen Runde schaltet weitere Charaktere frei.';b.append(p)});}
+let releasePending=false;
+async function release(){
+ if(!uid||!ready||lastSeen===VERSION||releasePending)return;
+ const owner=uid,generation=authGeneration;releasePending=true;
+ try{
+  const claimed=await fire.runTransaction(db,async tx=>{
+   const ref=fire.doc(db,'users',owner,'profile','preferences'),snap=await tx.get(ref),data=snap.data()||{};
+   if(data.seenUpdate===VERSION)return false;
+   tx.set(ref,{skin:SKINS.some(s=>s.id===data.skin)?data.skin:selected,seenUpdate:VERSION});return true;
+  });
+  if(owner!==uid||generation!==authGeneration)return;
+  lastSeen=VERSION;try{localStorage.setItem('abgrundSeenUpdate:'+owner,VERSION)}catch{}
+  if(claimed)modal('NEUES AUS DER TIEFE',b=>{const p=document.createElement('p');p.textContent='Neue geprüfte Antwortvarianten, sichere Fragenreservierung pro Konto und bessere Synchronisierung. Deine Bestleistung einer einzelnen Runde schaltet weiterhin die sechs animierten Skins frei.';b.append(p)});
+ }catch(e){console.warn('Update notes:',e.code||e.message)}finally{releasePending=false;if(uid&&generation!==authGeneration)release()}
+}
 function updateSceneCharacter(skin){
  // The existing #diver is the actual swimming figure in the scene, not the account badge.
  const sceneDiver=document.getElementById('diver');
@@ -128,12 +142,60 @@ function updateEquipped(){
  widget.querySelector('small').textContent='AUSGERÜSTETER SKIN';
  widget.setAttribute('aria-label','Aktueller Skin: '+skin.name+'. Skins wechseln');
 }
-function persist(){updateEquipped();if(uid){try{localStorage.setItem('abgrundSeenUpdate:'+uid,lastSeen);localStorage.setItem('abgrundEquippedSkin:'+uid,selected)}catch{}}if(!uid||!db||!fire)return;fire.setDoc(fire.doc(db,'users',uid,'profile','preferences'),{skin:selected,seenUpdate:lastSeen}).catch(e=>console.warn('Perk preferences:',e.code||e.message));}
+function persist(){
+ updateEquipped();if(!uid)return;const owner=uid,skin=selected;
+ try{localStorage.setItem('abgrundEquippedSkin:'+owner,skin)}catch{}
+ if(!db||!fire)return;
+ fire.runTransaction(db,async tx=>{const ref=fire.doc(db,'users',owner,'profile','preferences'),snap=await tx.get(ref);tx.set(ref,{skin,seenUpdate:snap.data()?.seenUpdate||lastSeen})}).catch(e=>console.warn('Perk preferences:',e.code||e.message));
+}
 function choose(){if(!uid)return;score=Math.max(score,localBest());modal('DEINE TIEFSEE-SKINS',b=>{const p=document.createElement('p');p.textContent='Rundenbestleistung: '+score+' Punkte. Skins sind rein kosmetisch und beeinflussen deine Punkte nicht.';b.append(p);const grid=document.createElement('div');grid.className='abg-perk-grid';for(const skin of SKINS){const button=document.createElement('button'),available=score>=skin.min;button.disabled=!available;button.dataset.skin=skin.id;button.setAttribute('aria-pressed',String(selected===skin.id));const avatar=artImage(skin,'abg-perk-avatar');avatar.style.color=skin.color;avatar.src=spriteUrl(skin);avatar.alt=skin.name+' als Tiefsee-Charakter';const name=document.createElement('strong');name.textContent=skin.name;const threshold=document.createElement('small');threshold.textContent=available?'FREIGESCHALTET':skin.min+' P IN EINER RUNDE';button.append(avatar,name,threshold);button.onclick=()=>{selected=skin.id;try{localStorage.setItem('abgrundEquippedSkin:'+uid,selected)}catch{}updateEquipped();persist();choose()};grid.append(button)}b.append(grid);const achievements=document.createElement('div');achievements.innerHTML='<h3>ERFOLGE & PROFIL</h3>';const games=window.ABGRUND_HISTORY?.list?.()||[];const streakDays=[...new Set(games.map(g=>g.day).filter(Boolean))].sort().reverse();let streak=0,day=new Date();for(let i=0;i<365;i++){const key=day.toISOString().slice(0,10);if(streakDays.includes(key))streak++;else if(i>0||streakDays.length&&streakDays[0]!==new Date(Date.now()-86400000).toISOString().slice(0,10))break;day.setUTCDate(day.getUTCDate()-1)}const lines=[['Erster Tauchgang',games.length>=1],['10 Tauchgänge',games.length>=10],['100 Tauchgänge',games.length>=100],['7-Tage-Serie',streak>=7],['Tiefsee-Legende',score>=700]];for(const [label,done] of lines){const el=document.createElement('p');el.textContent=(done?'🏆 ':'🔒 ')+label;achievements.append(el)}const summary=document.createElement('p');summary.textContent='Gespielte Runden: '+games.length+' · Tages-Serie: '+streak+' · Bestleistung: '+score;achievements.prepend(summary);b.append(achievements)})}
 const equipped=document.createElement('button');equipped.id='abgEquipped';equipped.type='button';equipped.className='abg-equipped';equipped.hidden=true;equipped.innerHTML='<img class="abg-equipped-emoji" aria-hidden="true" alt=""><span class="abg-equipped-copy"><small>AUSGERÜSTETER SKIN</small><strong></strong></span>';equipped.onclick=choose;
 const hud=document.querySelector('.hudtop');const home=document.querySelector('.homehub');if(hud)hud.insertAdjacentElement('afterend',equipped);else if(home)home.insertAdjacentElement('beforebegin',equipped);else document.querySelector('.main')?.prepend(equipped);
 const trigger=document.createElement('button');trigger.type='button';trigger.textContent='✦ SKINS';trigger.hidden=true;trigger.onclick=choose;trigger.style.cssText='background:#102b3a;color:#91eee2;border:1px solid #7de6dc55;border-radius:10px;padding:10px;cursor:pointer;font:11px monospace';document.getElementById('accountButton')?.insertAdjacentElement('afterend',trigger);
-async function init(){try{const [a,f,g]=await Promise.all([import('https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js'),import('https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js'),import('https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js')]);fire=f;const app=a.getApps()[0]||a.initializeApp(window.ABGRUND_FIREBASE_CONFIG);db=f.getFirestore(app,window.ABGRUND_FIRESTORE_DATABASE||'(default)');auth=g.getAuth(app);g.onAuthStateChanged(auth,async u=>{unsub();unsub=()=>{};uid=u?.uid||null;ready=false;trigger.hidden=!uid;selected='diver';if(uid){try{const cached=localStorage.getItem('abgrundEquippedSkin:'+uid);if(SKINS.some(x=>x.id===cached))selected=cached}catch{}}updateEquipped();lastSeen='';if(uid){try{lastSeen=localStorage.getItem('abgrundSeenUpdate:'+uid)||''}catch{}}score=localBest();if(!uid)return;unsub=f.onSnapshot(f.doc(db,'users',uid,'profile','preferences'),snap=>{const data=snap.data()||{};selected=SKINS.some(x=>x.id===data.skin)?data.skin:selected;lastSeen=data.seenUpdate||lastSeen;ready=true;updateEquipped();release()},()=>{ready=true;release()});f.onSnapshot(f.collection(db,'users',uid,'games'),snap=>{score=Math.max(localBest(),...snap.docs.map(d=>Number(d.data().score)||0));if(score<SKINS.find(s=>s.id===selected)?.min){selected='diver';updateEquipped();persist()}},()=>{});});}catch(e){console.warn('Account perks unavailable',e.message)}}
-window.ABGRUND_FEATURES={rejected:async(q,answer)=>{if(!uid||!db||!fire||!answer?.trim())return;try{await fire.addDoc(fire.collection(db,'rejectedAnswers'),{uid,question:q.q,answer:answer.trim(),status:'pending',createdAt:fire.serverTimestamp()})}catch(e){console.warn('Answer review queue:',e.code||e.message)}}};
+let authGeneration=0;
+async function init(){try{
+ const [a,f,g]=await Promise.all([import('https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js'),import('https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js'),import('https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js')]);
+ fire=f;const app=a.getApps()[0]||a.initializeApp(window.ABGRUND_FIREBASE_CONFIG);db=f.getFirestore(app,window.ABGRUND_FIRESTORE_DATABASE||'(default)');auth=g.getAuth(app);
+ g.onAuthStateChanged(auth,u=>{
+  const generation=++authGeneration;document.querySelector('.abg-perk-overlay')?.remove();unsub();const listeners=[];unsub=()=>listeners.forEach(stop=>stop());
+  uid=u?.uid||null;ready=false;trigger.hidden=!uid;selected='diver';lastSeen='';score=localBest();
+  if(uid){try{const cached=localStorage.getItem('abgrundEquippedSkin:'+uid);if(SKINS.some(x=>x.id===cached))selected=cached;lastSeen=localStorage.getItem('abgrundSeenUpdate:'+uid)||''}catch{}}
+  updateEquipped();if(!uid)return;
+  listeners.push(f.onSnapshot(f.doc(db,'users',uid,'profile','preferences'),snap=>{
+   if(generation!==authGeneration||snap.metadata?.fromCache)return;
+   const data=snap.data()||{};selected=SKINS.some(x=>x.id===data.skin)?data.skin:selected;lastSeen=data.seenUpdate||lastSeen;ready=true;updateEquipped();release();
+  },()=>{ /* Wait for server confirmation before showing account-wide update notes. */ }));
+  listeners.push(f.onSnapshot(f.collection(db,'users',uid,'games'),snap=>{
+   if(generation!==authGeneration)return;
+   score=Math.max(localBest(),0,...snap.docs.map(d=>Number(d.data().score)||0));
+   if(score<SKINS.find(s=>s.id===selected)?.min){selected='diver';updateEquipped()}
+  },()=>{}));
+  flushRejected();
+ });
+}catch(e){console.warn('Account perks unavailable',e.message)}}
+const outboxKey=owner=>'abgrundRejectedV1:'+owner;
+function readOutbox(owner){try{return JSON.parse(localStorage.getItem(outboxKey(owner))||'[]')}catch{return []}}
+let flushing=false;
+async function flushRejected(){
+ if(flushing||!uid||!db||!fire)return;flushing=true;const owner=uid;
+ try{
+  for(const item of readOutbox(owner)){
+   if(uid!==owner)break;
+   await fire.addDoc(fire.collection(db,'rejectedAnswers'),{uid:owner,question:item.question,answer:item.answer,status:'pending',createdAt:fire.serverTimestamp()});
+   const remaining=readOutbox(owner).filter(x=>x.id!==item.id);localStorage.setItem(outboxKey(owner),JSON.stringify(remaining));
+  }
+ }catch(e){console.warn('Answer review queue:',e.code||e.message)}finally{flushing=false}
+}
+window.addEventListener('online',flushRejected);
+setInterval(flushRejected,30000);
+window.ABGRUND_FEATURES={rejected:async(q,answer)=>{
+ if(!uid||!answer?.trim()||answer.trim().length>180||q.q.length>250)return;
+ const owner=uid,items=readOutbox(owner),text=answer.trim();
+ if(items.some(x=>x.question===q.q&&x.answer===text))return;
+ const id=crypto.randomUUID();items.push({id,question:q.q,answer:text});
+ try{localStorage.setItem(outboxKey(owner),JSON.stringify(items.slice(-100)))}catch{return}
+ await flushRejected();
+}};
+updateEquipped();
 init();
 })();

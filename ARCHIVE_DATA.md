@@ -16,3 +16,5 @@ Quellen:
 - Ding/FreeDict English–German 1.9-fd1: https://download.freedict.org/dictionaries/eng-deu/1.9-fd1/freedict-eng-deu-1.9-fd1.src.tar.xz. Urheber und Lizenzbedingungen: `ARCHIVE-DICTIONARY-LICENSE.txt`. Die aus diesem Wörterbuch abgeleiteten Übersetzungszuordnungen werden unter den dort genannten freien Lizenzen weitergegeben. Quellform und Konvertierungswerkzeuge sind über die verlinkte Originaldistribution verfügbar.
 - Wikipedia-Sprachverknüpfungen für offizielle deutsche Werktitel, keine wörtlichen Übersetzungen von Filmtiteln.
 - Pokémon-Speziesnamen: https://github.com/PokeAPI/pokeapi/blob/master/data/v2/csv/pokemon_species_names.csv.
+
+Nachprüfung 4. November 2026: Die Datei für Dive 110 enthielt einen beschädigten Deflate-Datenstrom. Sie wurde aus der erneut abgerufenen datierten Quelle rekonstruiert. Aktueller Bestand: 589.649 Antwortzeilen; 41.174 Alias-Zuordnungen im Archivtest. Ältere Zahlen oben beschreiben den ursprünglichen Import. Details und verbleibende Übersetzungslücken: `COMPLETION_STATUS.md`.

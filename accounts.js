@@ -14,7 +14,7 @@ box.innerHTML=`<section class="account-card" role="dialog" aria-modal="true" ari
  <div class="account-actions"><div class="account-row"><button id="accountLogin" type="button">ANMELDEN</button><button id="accountRegister" type="button">REGISTRIEREN</button></div><button id="accountReset" type="button">PASSWORT ZURÜCKSETZEN</button></div></div>
  <div id="accountSignedIn" hidden><p class="account-user" id="accountUser"></p><p id="accountSync"></p><div class="account-actions"><button id="accountRetry" type="button">SYNCHRONISIERUNG ERNEUT VERSUCHEN</button><button id="accountLinkGoogle" type="button">GOOGLE-KONTO VERBINDEN</button></div>
  <div id="accountPasswordLink"><label for="accountNewPassword">PASSWORT FÜR E-MAIL-ANMELDUNG</label><input id="accountNewPassword" type="password" autocomplete="new-password"><div class="account-actions"><button id="accountLinkPassword" type="button">E-MAIL-ANMELDUNG HINZUFÜGEN</button></div></div>
- <div class="account-actions"><button id="accountVerify" type="button">E-MAIL BESTÄTIGEN</button><button id="accountLogout" type="button">ABMELDEN</button></div></div>
+ <div class="account-actions"><button id="accountVerify" type="button">E-MAIL BESTÄTIGEN</button><button id="accountExport" type="button">MEINE ERGEBNISSE EXPORTIEREN</button><button id="accountLogout" type="button">ABMELDEN</button></div></div>
  <p class="account-status" id="accountStatus" role="status" aria-live="polite"></p><div class="account-actions"><button id="accountClose" type="button">SCHLIESSEN</button></div>
  </section>`;
 document.body.appendChild(box);
@@ -61,7 +61,17 @@ async function syncPending(){
  }
 }
 let rotationReady=Promise.resolve();let rotationRevision=0;
-window.ABGRUND_ACCOUNTS={identity:()=>user()?.uid||null,waitRotation:()=>rotationReady,onRotationChanged:state=>{const u=user();if(!u||!db||!api)return;api.setDoc(api.doc(db,'users',u.uid,'profile','rotation'),{round:state.round,order:state.order.slice(-2000),last:state.last},{merge:false}).catch(e=>console.warn('Rotation sync:',e.code||e.message))},getToken:async()=>user()?.getIdToken?user().getIdToken():null,onLocalGame:()=>{if(user()){serverReady&&($('accountSync').textContent='Ergebnisse werden synchronisiert …');syncPending()}}};
+window.ABGRUND_ACCOUNTS={identity:()=>user()?.uid||null,waitRotation:()=>rotationReady,reserveRotation:async planner=>{
+ const u=user();if(!u)return null;
+ const uid=u.uid,myEpoch=epoch,ref=api.doc(db,'users',uid,'profile','rotation');
+ const result=await api.runTransaction(db,async tx=>{
+  const snapshot=await tx.get(ref);if(epoch!==myEpoch||user()?.uid!==uid)throw Error('account-changed');
+  const result=planner(snapshot.data());tx.set(ref,result.state);return result;
+ });
+ if(epoch!==myEpoch||user()?.uid!==uid)throw Error('account-changed');
+ try{localStorage.setItem('abgrundRotationV2:'+uid,JSON.stringify(result.state))}catch{}
+ result.session.rotationCommitted=true;return result.session;
+},getToken:async()=>user()?.getIdToken?user().getIdToken():null,onLocalGame:()=>{if(user()){serverReady&&($('accountSync').textContent='Ergebnisse werden synchronisiert …');syncPending()}}};
 async function start(){
  try{
   const [appMod,authMod,fireMod]=await Promise.all([
@@ -75,15 +85,20 @@ async function start(){
   $('accountRegister').onclick=()=>perform(()=>api.createUserWithEmailAndPassword(auth,$('accountEmail').value.trim(),$('accountPassword').value));
   $('accountReset').onclick=()=>perform(async()=>{await api.sendPasswordResetEmail(auth,$('accountEmail').value.trim());status('Wenn ein Konto existiert, wurde eine E-Mail zum Zurücksetzen versendet.')});
   $('accountVerify').onclick=()=>perform(async()=>{await api.sendEmailVerification(user());status('Bestätigungslink versendet. Öffne ihn und melde dich danach erneut an, damit deine Runden zur Community zählen.')});
+  $('accountExport').onclick=()=>{
+   if(!user())return;
+   const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),games:window.ABGRUND_HISTORY.list()},null,2)],{type:'application/json'});
+   const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='abgrund-ergebnisse.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  };
   $('accountLogout').onclick=()=>perform(()=>api.signOut(auth));
   $('accountRetry').onclick=()=>{failed.clear();if(serverReady)syncPending();else restartSync()};
   $('accountLinkGoogle').onclick=()=>perform(()=>api.linkWithPopup(user(),new api.GoogleAuthProvider()));
   $('accountLinkPassword').onclick=()=>perform(()=>api.linkWithCredential(user(),api.EmailAuthProvider.credential(user().email,$('accountNewPassword').value)));
   api.onAuthStateChanged(auth,u=>{
-   epoch++;const myEpoch=epoch;unlisten();unlisten=()=>{};restartSync=()=>{};pending=new Set();failed=new Set();serverIds=new Set();serverReady=false;
+   rotationRevision++;epoch++;const myEpoch=epoch;unlisten();unlisten=()=>{};restartSync=()=>{};pending=new Set();failed=new Set();serverIds=new Set();serverReady=false;
    window.ABGRUND_HISTORY.select(u?.uid||'guest');render();window.dispatchEvent(new CustomEvent('abgrund-auth',{detail:{uid:u?.uid||null}}));
    if(!u){rotationReady=Promise.resolve();return;}
-   const rotationId=++rotationRevision;rotationReady=api.getDoc(api.doc(db,'users',u.uid,'profile','rotation')).then(snapshot=>{if(rotationRevision!==rotationId||user()?.uid!==u.uid)return;const remote=snapshot.data();if(!remote||!Array.isArray(remote.order))return;const key='abgrundRotationV2:'+u.uid;let local;try{local=JSON.parse(localStorage.getItem(key)||'null')}catch{}if(!local||Number(remote.round)>Number(local.round))localStorage.setItem(key,JSON.stringify(remote))}).catch(e=>console.warn('Rotation load:',e.code||e.message));
+   const rotationId=++rotationRevision;rotationReady=Promise.resolve().then(()=>api.getDoc(api.doc(db,'users',u.uid,'profile','rotation'))).then(snapshot=>{if(rotationRevision!==rotationId||user()?.uid!==u.uid)return;const remote=snapshot.data();if(!remote||!Array.isArray(remote.order))return;const key='abgrundRotationV2:'+u.uid;let local;try{local=JSON.parse(localStorage.getItem(key)||'null')}catch{}if(!local||Number(remote.round)>Number(local.round))localStorage.setItem(key,JSON.stringify(remote))}).catch(e=>console.warn('Rotation load:',e.code||e.message));
    try{window.ABGRUND_HISTORY.migrateGuest()}catch{status('Gastspiele konnten nicht übernommen werden. Bitte schaffe Speicherplatz und melde dich erneut an.');return}
    $('accountSync').textContent='Deine Ergebnisse werden geladen …';
    restartSync=()=>{unlisten();unlisten=api.onSnapshot(api.collection(db,'users',u.uid,'games'),{includeMetadataChanges:true},snapshot=>{
