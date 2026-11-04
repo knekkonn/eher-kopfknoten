@@ -1,0 +1,8 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');const ctx={window:{}};vm.runInNewContext(fs.readFileSync('stats.js','utf8'),ctx);const stats=ctx.window.ABGRUND_STATS;
+const answers=[{points:100,responseMs:1000},{points:85,responseMs:4000},{points:30,responseMs:9000},{points:10,responseMs:15000},{points:60,responseMs:25000},{points:0,timedOut:true,skipped:true},{points:0,timedOut:true}];
+const metrics=stats.round({answers,reportCount:2,failedAttempts:3});assert(stats.valid(metrics));assert.equal(metrics.answered,5);assert.equal(metrics.skipped,1);assert.equal(metrics.timeouts,1);assert.equal(metrics.measured,5);assert.equal(metrics.responseMs,54000);assert.equal(metrics.quick,2);assert.equal(metrics.rare,2);assert.equal(metrics.full,1);
+const summary=stats.summary([{id:'old',score:100},{id:'new',score:285,metrics}],'Name');assert.equal(summary.rounds,2);assert.equal(summary.metricsRounds,1);assert.equal(summary.measured,5);assert.equal(summary.totalPoints,385);assert.equal(summary.fastestMs,1000);assert.equal(summary.slowestMs,25000);assert.equal(summary.skipped,1);assert.equal(summary.timeouts,1);assert(!stats.valid({...metrics,responseMs:300000}));assert(!stats.valid({...metrics,answered:7}));
+const older=stats.summary([{score:700}]);assert.equal(older.measured,0);assert.equal(older.metricsRounds,0);assert.equal(older.perfectRounds,1);
+console.log('Profiles: skips/timeouts separated, measured response times, rare hits, explicit reports and legacy coverage without invented timings: OK.');
+
+assert.equal(stats.friendAverage([{rounds:10,totalPoints:1000},{rounds:1,totalPoints:700},{rounds:0,totalPoints:0}]).average,400,'friends are weighted equally, not by number of rounds');

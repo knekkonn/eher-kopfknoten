@@ -54,14 +54,14 @@ async function syncPending(){
   if(user()?.uid!==uid||epoch!==myEpoch)return;
   if(serverIds.has(item.id)||pending.has(item.id)||failed.has(item.id))continue;
   pending.add(item.id);
-  const payload={score:item.score};if(/^\d{4}-\d{2}-\d{2}$/.test(item.day))payload.day=item.day;
+  const payload={score:item.score};if(window.ABGRUND_STATS?.valid(item.metrics))payload.metrics=item.metrics;if(/^\d{4}-\d{2}-\d{2}$/.test(item.day))payload.day=item.day;
   api.setDoc(api.doc(db,'users',uid,'games',item.id),payload).then(()=>{
    if(epoch!==myEpoch)return;pending.delete(item.id);serverIds.add(item.id);if(!pending.size&&!failed.size)$('accountSync').textContent='Deine Ergebnisse sind synchronisiert.';
   }).catch(error=>{if(epoch!==myEpoch)return;pending.delete(item.id);failed.add(item.id);$('accountSync').textContent='Noch lokal gespeichert. Bitte Synchronisierung erneut versuchen.';console.warn('Account sync:',error.code||'unavailable')});
  }
 }
 let rotationReady=Promise.resolve();let rotationRevision=0;
-window.ABGRUND_ACCOUNTS={identity:()=>user()?.uid||null,waitRotation:()=>rotationReady,reserveRotation:async planner=>{
+window.ABGRUND_ACCOUNTS={identity:()=>user()?.uid||null,waitRotation:()=>rotationReady,synced:()=>serverReady,reserveRotation:async planner=>{
  const u=user();if(!u)return null;
  const uid=u.uid,myEpoch=epoch,ref=api.doc(db,'users',uid,'profile','rotation');
  const result=await api.runTransaction(db,async tx=>{
@@ -71,7 +71,7 @@ window.ABGRUND_ACCOUNTS={identity:()=>user()?.uid||null,waitRotation:()=>rotatio
  if(epoch!==myEpoch||user()?.uid!==uid)throw Error('account-changed');
  try{localStorage.setItem('abgrundRotationV2:'+uid,JSON.stringify(result.state))}catch{}
  result.session.rotationCommitted=true;return result.session;
-},getToken:async()=>user()?.getIdToken?user().getIdToken():null,onLocalGame:()=>{if(user()){serverReady&&($('accountSync').textContent='Ergebnisse werden synchronisiert …');syncPending()}}};
+},getToken:async()=>user()?.getIdToken?user().getIdToken():null,onLocalGame:()=>{window.dispatchEvent(new CustomEvent('abgrund-history'));if(user()){serverReady&&($('accountSync').textContent='Ergebnisse werden synchronisiert …');syncPending()}}};
 async function start(){
  try{
   const [appMod,authMod,fireMod]=await Promise.all([
@@ -103,11 +103,12 @@ async function start(){
    $('accountSync').textContent='Deine Ergebnisse werden geladen …';
    restartSync=()=>{unlisten();unlisten=api.onSnapshot(api.collection(db,'users',u.uid,'games'),{includeMetadataChanges:true},snapshot=>{
     if(epoch!==myEpoch||user()?.uid!==u.uid)return;
-    const rows=snapshot.docs.map(doc=>({id:doc.id,score:doc.data().score,day:doc.data().day}));
+    const rows=snapshot.docs.map(doc=>({id:doc.id,score:doc.data().score,day:doc.data().day,metrics:doc.data().metrics}));
     if(!snapshot.metadata.fromCache){serverIds=new Set(rows.filter((_,i)=>!snapshot.docs[i].metadata.hasPendingWrites).map(x=>x.id));serverReady=true}
     try{window.ABGRUND_HISTORY.mergeRemote(rows);window.ABGRUND_HISTORY.refresh()}catch{status('Ergebnisse konnten auf diesem Gerät nicht gespeichert werden.')}
     $('accountSync').textContent=snapshot.metadata.fromCache?'Offline: Ergebnisse bleiben auf diesem Gerät gespeichert.':'Ergebnisse werden synchronisiert …';
     syncPending();
+    window.dispatchEvent(new CustomEvent('abgrund-history'));
     if(serverReady&&pending.size===0&&failed.size===0)$('accountSync').textContent='Deine Ergebnisse sind synchronisiert.';
    },error=>{if(epoch===myEpoch){serverReady=false;$('accountSync').textContent='Synchronisierung fehlgeschlagen. Ergebnisse bleiben lokal gespeichert.';status(errorText(error))}})};
    restartSync();

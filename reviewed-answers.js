@@ -2,7 +2,7 @@
 (()=>{
 'use strict';
 const originalCanonical=canonicalAnswer;
-canonicalAnswer=(q,text)=>q?.reviewedCanonical?.[normalizeFactText(text)]||originalCanonical(q,text);
+canonicalAnswer=(q,text)=>q?.reviewedCanonical&&Object.prototype.hasOwnProperty.call(q.reviewedCanonical,normalizeFactText(text))?q.reviewedCanonical[normalizeFactText(text)]:originalCanonical(q,text);
 const entries=[
  ['Nenne eine Kette von Coffeeshops.','Coffee Fellows',['Coffee-Fellows'],30],
  ['Nenne ein Winterkleidungsstück.','Ohrenwärmer',['Ohrenschützer','Ohrwaermer'],30],

@@ -1,0 +1,6057 @@
+{
+  "questions": 864,
+  "answers": 642421,
+  "germanPresentation": 65207,
+  "guamCategories": 3,
+  "policy": "German labels where an accepted equivalent with equal points is available; proper names remain unchanged; no fabricated translations.",
+  "prompts": [
+    {
+      "question": "Nenne ein Nudelgericht.",
+      "archiveId": null,
+      "answers": 87,
+      "germanPresentation": 0,
+      "unchangedNames": 87
+    },
+    {
+      "question": "Nenne einen Gewinner des Ballon d’Or.",
+      "archiveId": null,
+      "answers": 89,
+      "germanPresentation": 0,
+      "unchangedNames": 89
+    },
+    {
+      "question": "Nenne einen Spieler, der einmal NBA MVP war.",
+      "archiveId": null,
+      "answers": 74,
+      "germanPresentation": 0,
+      "unchangedNames": 74
+    },
+    {
+      "question": "Nenne ein Gericht, das oft mit Reis serviert wird.",
+      "archiveId": null,
+      "answers": 41,
+      "germanPresentation": 0,
+      "unchangedNames": 41
+    },
+    {
+      "question": "Nenne einen Film, der einen Oscar für den besten Film gewonnen hat.",
+      "archiveId": null,
+      "answers": 182,
+      "germanPresentation": 80,
+      "unchangedNames": 102
+    },
+    {
+      "question": "Nenne eine Pizzasorte, die man in einer Pizzeria bestellen kann.",
+      "archiveId": null,
+      "answers": 57,
+      "germanPresentation": 0,
+      "unchangedNames": 57
+    },
+    {
+      "question": "Nenne ein Land, das die Fußball-WM der Männer oder Frauen gewonnen hat.",
+      "archiveId": null,
+      "answers": 25,
+      "germanPresentation": 0,
+      "unchangedNames": 25
+    },
+    {
+      "question": "Nenne einen Verein, der die UEFA Champions League gewonnen hat.",
+      "archiveId": "d17-p6",
+      "answers": 60,
+      "germanPresentation": 2,
+      "unchangedNames": 58
+    },
+    {
+      "question": "Nenne einen NBA-Spieler, der mindestens einen Meistertitel gewonnen hat.",
+      "archiveId": null,
+      "answers": 139,
+      "germanPresentation": 0,
+      "unchangedNames": 139
+    },
+    {
+      "question": "Nenne ein italienisches Pastagericht.",
+      "archiveId": null,
+      "answers": 40,
+      "germanPresentation": 0,
+      "unchangedNames": 40
+    },
+    {
+      "question": "Nenne ein Gericht aus Kartoffeln.",
+      "archiveId": null,
+      "answers": 51,
+      "germanPresentation": 0,
+      "unchangedNames": 51
+    },
+    {
+      "question": "Nenne einen Künstler, der einen Grammy gewonnen hat.",
+      "archiveId": null,
+      "answers": 75,
+      "germanPresentation": 0,
+      "unchangedNames": 75
+    },
+    {
+      "question": "Nenne eine olympische Sportart oder Disziplin.",
+      "archiveId": null,
+      "answers": 124,
+      "germanPresentation": 0,
+      "unchangedNames": 124
+    },
+    {
+      "question": "Nenne einen Ort, in dem ein Formel-1-Rennen stattfindet oder stattgefunden hat.",
+      "archiveId": null,
+      "answers": 59,
+      "germanPresentation": 0,
+      "unchangedNames": 59
+    },
+    {
+      "question": "Nenne einen Formel-1-Weltmeister.",
+      "archiveId": "d20-p6",
+      "answers": 64,
+      "germanPresentation": 18,
+      "unchangedNames": 46
+    },
+    {
+      "question": "Nenne einen Tennisspieler, der einen Grand-Slam-Titel gewonnen hat.",
+      "archiveId": null,
+      "answers": 126,
+      "germanPresentation": 0,
+      "unchangedNames": 126
+    },
+    {
+      "question": "Nenne ein Land, das schon einmal den Eurovision Song Contest gewonnen hat.",
+      "archiveId": null,
+      "answers": 53,
+      "germanPresentation": 0,
+      "unchangedNames": 53
+    },
+    {
+      "question": "Nenne einen Animationsfilm, der einen Oscar gewonnen hat.",
+      "archiveId": null,
+      "answers": 43,
+      "germanPresentation": 0,
+      "unchangedNames": 43
+    },
+    {
+      "question": "Nenne eine Eissorte (auch Sorbet zählt).",
+      "archiveId": "d13-p3",
+      "answers": 305,
+      "germanPresentation": 89,
+      "unchangedNames": 216
+    },
+    {
+      "question": "Nenne ein Frühstücksgericht, das in mehreren Ländern gegessen wird.",
+      "archiveId": null,
+      "answers": 60,
+      "germanPresentation": 0,
+      "unchangedNames": 60
+    },
+    {
+      "question": "Nenne einen Fußballer, der für Real Madrid gespielt hat.",
+      "archiveId": null,
+      "answers": 125,
+      "germanPresentation": 0,
+      "unchangedNames": 125
+    },
+    {
+      "question": "Nenne einen Fußballer, der für den FC Barcelona gespielt hat.",
+      "archiveId": null,
+      "answers": 111,
+      "germanPresentation": 0,
+      "unchangedNames": 111
+    },
+    {
+      "question": "Nenne eine aktuelle oder frühere Mannschaft aus der NBA.",
+      "archiveId": "d3-p5",
+      "answers": 103,
+      "germanPresentation": 64,
+      "unchangedNames": 39
+    },
+    {
+      "question": "Nenne einen Gewinner der NBA Finals MVP-Auszeichnung.",
+      "archiveId": null,
+      "answers": 70,
+      "germanPresentation": 0,
+      "unchangedNames": 70
+    },
+    {
+      "question": "Nenne einen Spieler, der den Ballon d’Or mehr als einmal gewonnen hat.",
+      "archiveId": null,
+      "answers": 22,
+      "germanPresentation": 0,
+      "unchangedNames": 22
+    },
+    {
+      "question": "Nenne eine asiatische Nudelsuppe.",
+      "archiveId": null,
+      "answers": 32,
+      "germanPresentation": 0,
+      "unchangedNames": 32
+    },
+    {
+      "question": "Nenne ein Gericht mit Käse als Hauptzutat.",
+      "archiveId": null,
+      "answers": 43,
+      "germanPresentation": 0,
+      "unchangedNames": 43
+    },
+    {
+      "question": "Nenne ein Fast-Food-Gericht, das kein Burger ist.",
+      "archiveId": null,
+      "answers": 45,
+      "germanPresentation": 0,
+      "unchangedNames": 45
+    },
+    {
+      "question": "Nenne einen Film mit Leonardo DiCaprio.",
+      "archiveId": null,
+      "answers": 72,
+      "germanPresentation": 35,
+      "unchangedNames": 37
+    },
+    {
+      "question": "Nenne eine Serie, die einen Emmy gewonnen hat.",
+      "archiveId": null,
+      "answers": 79,
+      "germanPresentation": 0,
+      "unchangedNames": 79
+    },
+    {
+      "question": "Nenne einen Sänger oder eine Sängerin, der oder die einen Grammy gewonnen hat.",
+      "archiveId": null,
+      "answers": 68,
+      "germanPresentation": 0,
+      "unchangedNames": 68
+    },
+    {
+      "question": "Nenne ein Land, das bei einer Rugby-Union-WM der Männer oder Frauen im Finale stand.",
+      "archiveId": null,
+      "answers": 16,
+      "germanPresentation": 0,
+      "unchangedNames": 16
+    },
+    {
+      "question": "Nenne einen Verein, der die deutsche Bundesliga gewonnen hat.",
+      "archiveId": null,
+      "answers": 35,
+      "germanPresentation": 0,
+      "unchangedNames": 35
+    },
+    {
+      "question": "Nenne einen deutschen Fußballer, der international bekannt ist.",
+      "archiveId": null,
+      "answers": 118,
+      "germanPresentation": 0,
+      "unchangedNames": 118
+    },
+    {
+      "question": "Nenne einen Basketballer, der für die Los Angeles Lakers gespielt hat.",
+      "archiveId": null,
+      "answers": 113,
+      "germanPresentation": 0,
+      "unchangedNames": 113
+    },
+    {
+      "question": "Nenne ein Gericht, das mit Tomaten zubereitet wird.",
+      "archiveId": null,
+      "answers": 40,
+      "germanPresentation": 0,
+      "unchangedNames": 40
+    },
+    {
+      "question": "Nenne eine Nudelform.",
+      "archiveId": "d1-p3",
+      "answers": 96,
+      "germanPresentation": 34,
+      "unchangedNames": 62
+    },
+    {
+      "question": "Nenne ein Gericht, das man mit Stäbchen isst.",
+      "archiveId": null,
+      "answers": 49,
+      "germanPresentation": 0,
+      "unchangedNames": 49
+    },
+    {
+      "question": "Nenne einen Gewinner des Wimbledon-Turniers.",
+      "archiveId": null,
+      "answers": 108,
+      "germanPresentation": 0,
+      "unchangedNames": 108
+    },
+    {
+      "question": "Nenne eine Sportlerin, die olympisches Gold gewonnen hat.",
+      "archiveId": null,
+      "answers": 118,
+      "germanPresentation": 0,
+      "unchangedNames": 118
+    },
+    {
+      "question": "Nenne einen Boxweltmeister.",
+      "archiveId": null,
+      "answers": 103,
+      "germanPresentation": 0,
+      "unchangedNames": 103
+    },
+    {
+      "question": "Nenne ein Land, das schon einmal den Africa Cup of Nations gewonnen hat.",
+      "archiveId": null,
+      "answers": 35,
+      "germanPresentation": 0,
+      "unchangedNames": 35
+    },
+    {
+      "question": "Nenne einen Film, der einen Golden Globe gewonnen hat.",
+      "archiveId": null,
+      "answers": 61,
+      "germanPresentation": 0,
+      "unchangedNames": 61
+    },
+    {
+      "question": "Nenne ein Gericht aus Mexiko.",
+      "archiveId": null,
+      "answers": 48,
+      "germanPresentation": 0,
+      "unchangedNames": 48
+    },
+    {
+      "question": "Nenne ein Gericht aus Japan.",
+      "archiveId": "d24-p3",
+      "answers": 91,
+      "germanPresentation": 5,
+      "unchangedNames": 86
+    },
+    {
+      "question": "Nenne ein Gericht aus Indien.",
+      "archiveId": "d33-p3",
+      "answers": 137,
+      "germanPresentation": 7,
+      "unchangedNames": 130
+    },
+    {
+      "question": "Nenne ein Dessert, das gebacken wird.",
+      "archiveId": null,
+      "answers": 54,
+      "germanPresentation": 0,
+      "unchangedNames": 54
+    },
+    {
+      "question": "Nenne ein Getränk, das typischerweise heiß serviert wird.",
+      "archiveId": null,
+      "answers": 57,
+      "germanPresentation": 0,
+      "unchangedNames": 57
+    },
+    {
+      "question": "Nenne ein Land oder eine frühere Nationalmannschaft, die die Fußball-Europameisterschaft der Männer gewonnen hat.",
+      "archiveId": null,
+      "answers": 11,
+      "germanPresentation": 0,
+      "unchangedNames": 11
+    },
+    {
+      "question": "Nenne einen Verein, der die Fußball-Bundesliga der Frauen gewonnen hat.",
+      "archiveId": null,
+      "answers": 10,
+      "germanPresentation": 0,
+      "unchangedNames": 10
+    },
+    {
+      "question": "Nenne eine Stadt, die bereits Olympische Sommerspiele ausgerichtet hat.",
+      "archiveId": null,
+      "answers": 34,
+      "germanPresentation": 0,
+      "unchangedNames": 34
+    },
+    {
+      "question": "Nenne einen Musiker, der beim Super Bowl Halftime Show aufgetreten ist.",
+      "archiveId": null,
+      "answers": 70,
+      "germanPresentation": 0,
+      "unchangedNames": 70
+    },
+    {
+      "question": "Nenne einen Gewinner des The Best FIFA Men’s Player Award.",
+      "archiveId": null,
+      "answers": 13,
+      "germanPresentation": 0,
+      "unchangedNames": 13
+    },
+    {
+      "question": "Nenne eine Gewinnerin oder Top-3-Platzierte beim Ballon d’Or Féminin.",
+      "archiveId": null,
+      "answers": 14,
+      "germanPresentation": 0,
+      "unchangedNames": 14
+    },
+    {
+      "question": "Nenne einen Spieler, der bei einer Fußball-WM den Goldenen Schuh gewonnen hat.",
+      "archiveId": null,
+      "answers": 51,
+      "germanPresentation": 0,
+      "unchangedNames": 51
+    },
+    {
+      "question": "Nenne einen Verein, der aktuell oder früher in der Premier League gespielt hat.",
+      "archiveId": "d36-p6",
+      "answers": 72,
+      "germanPresentation": 3,
+      "unchangedNames": 69
+    },
+    {
+      "question": "Nenne ein Gericht, in dem Pilze vorkommen.",
+      "archiveId": null,
+      "answers": 46,
+      "germanPresentation": 0,
+      "unchangedNames": 46
+    },
+    {
+      "question": "Nenne eine Nachspeise mit Schokolade.",
+      "archiveId": null,
+      "answers": 51,
+      "germanPresentation": 0,
+      "unchangedNames": 51
+    },
+    {
+      "question": "Nenne ein Gericht, das traditionell mit Brot serviert wird.",
+      "archiveId": null,
+      "answers": 49,
+      "germanPresentation": 0,
+      "unchangedNames": 49
+    },
+    {
+      "question": "Nenne ein beliebtes Gericht mit Hühnchen.",
+      "archiveId": null,
+      "answers": 55,
+      "germanPresentation": 0,
+      "unchangedNames": 55
+    },
+    {
+      "question": "Nenne eine Suppe, die in Europa bekannt ist.",
+      "archiveId": null,
+      "answers": 64,
+      "germanPresentation": 0,
+      "unchangedNames": 64
+    },
+    {
+      "question": "Nenne einen Oscar-Gewinner für die beste Hauptrolle.",
+      "archiveId": null,
+      "answers": 283,
+      "germanPresentation": 0,
+      "unchangedNames": 283
+    },
+    {
+      "question": "Nenne eine Schauspielerin, die einen Oscar gewonnen hat.",
+      "archiveId": null,
+      "answers": 172,
+      "germanPresentation": 0,
+      "unchangedNames": 172
+    },
+    {
+      "question": "Nenne einen Schauspieler, der einen Oscar gewonnen hat.",
+      "archiveId": null,
+      "answers": 182,
+      "germanPresentation": 0,
+      "unchangedNames": 182
+    },
+    {
+      "question": "Nenne einen Gewinner des Deutschen Filmpreises.",
+      "archiveId": null,
+      "answers": 54,
+      "germanPresentation": 0,
+      "unchangedNames": 54
+    },
+    {
+      "question": "Nenne einen Rapper, der einen Grammy gewonnen hat.",
+      "archiveId": null,
+      "answers": 47,
+      "germanPresentation": 0,
+      "unchangedNames": 47
+    },
+    {
+      "question": "Nenne eine Band, die einen Grammy gewonnen hat.",
+      "archiveId": null,
+      "answers": 58,
+      "germanPresentation": 0,
+      "unchangedNames": 58
+    },
+    {
+      "question": "Nenne ein Land, das die Copa América gewonnen hat.",
+      "archiveId": null,
+      "answers": 12,
+      "germanPresentation": 0,
+      "unchangedNames": 12
+    },
+    {
+      "question": "Nenne einen Gewinner des Cricket World Cup.",
+      "archiveId": null,
+      "answers": 11,
+      "germanPresentation": 0,
+      "unchangedNames": 11
+    },
+    {
+      "question": "Nenne einen bekannten Golfspieler, der ein Major-Turnier gewonnen hat.",
+      "archiveId": "d24-p6",
+      "answers": 296,
+      "germanPresentation": 98,
+      "unchangedNames": 198
+    },
+    {
+      "question": "Nenne eine olympische Schwimmdisziplin.",
+      "archiveId": null,
+      "answers": 38,
+      "germanPresentation": 0,
+      "unchangedNames": 38
+    },
+    {
+      "question": "Nenne ein Gericht, das mit Bohnen gekocht wird.",
+      "archiveId": null,
+      "answers": 45,
+      "germanPresentation": 0,
+      "unchangedNames": 45
+    },
+    {
+      "question": "Nenne ein Gericht, das mit Ei zubereitet wird.",
+      "archiveId": null,
+      "answers": 58,
+      "germanPresentation": 0,
+      "unchangedNames": 58
+    },
+    {
+      "question": "Nenne eine Nudelsauce.",
+      "archiveId": null,
+      "answers": 54,
+      "germanPresentation": 0,
+      "unchangedNames": 54
+    },
+    {
+      "question": "Nenne einen Käse, der in einem bekannten Gericht verwendet wird.",
+      "archiveId": null,
+      "answers": 65,
+      "germanPresentation": 0,
+      "unchangedNames": 65
+    },
+    {
+      "question": "Nenne ein Gericht, das aus Teig und Füllung besteht.",
+      "archiveId": null,
+      "answers": 60,
+      "germanPresentation": 0,
+      "unchangedNames": 60
+    },
+    {
+      "question": "Nenne ein Street-Food-Gericht.",
+      "archiveId": null,
+      "answers": 71,
+      "germanPresentation": 0,
+      "unchangedNames": 71
+    },
+    {
+      "question": "Nenne ein Land, das für seine Küche bekannt ist.",
+      "archiveId": null,
+      "answers": 101,
+      "germanPresentation": 0,
+      "unchangedNames": 101
+    },
+    {
+      "question": "Nenne einen Gewinner des Afrika-Cups, der auch bei einem europäischen Verein spielte.",
+      "archiveId": null,
+      "answers": 102,
+      "germanPresentation": 0,
+      "unchangedNames": 102
+    },
+    {
+      "question": "Nenne einen NBA-Spieler, der mindestens einmal MVP der regulären Saison wurde.",
+      "archiveId": null,
+      "answers": 74,
+      "germanPresentation": 0,
+      "unchangedNames": 74
+    },
+    {
+      "question": "Nenne einen Verein, der die UEFA Europa League oder den UEFA-Pokal gewonnen hat.",
+      "archiveId": null,
+      "answers": 21,
+      "germanPresentation": 0,
+      "unchangedNames": 21
+    },
+    {
+      "question": "Nenne einen Gewinner des Giro d’Italia.",
+      "archiveId": null,
+      "answers": 120,
+      "germanPresentation": 0,
+      "unchangedNames": 120
+    },
+    {
+      "question": "Nenne einen Gewinner der Tour de France.",
+      "archiveId": null,
+      "answers": 118,
+      "germanPresentation": 0,
+      "unchangedNames": 118
+    },
+    {
+      "question": "Nenne eine Sportlerin, die einen Grand-Slam-Titel gewonnen hat.",
+      "archiveId": null,
+      "answers": 119,
+      "germanPresentation": 0,
+      "unchangedNames": 119
+    },
+    {
+      "question": "Nenne einen Gewinner der UEFA Europa League.",
+      "archiveId": null,
+      "answers": 52,
+      "germanPresentation": 0,
+      "unchangedNames": 52
+    },
+    {
+      "question": "Nenne einen Verein, der die Copa Libertadores gewonnen hat.",
+      "archiveId": null,
+      "answers": 35,
+      "germanPresentation": 0,
+      "unchangedNames": 35
+    },
+    {
+      "question": "Nenne ein Gericht mit Meeresfrüchten.",
+      "archiveId": null,
+      "answers": 50,
+      "germanPresentation": 0,
+      "unchangedNames": 50
+    },
+    {
+      "question": "Nenne ein Gericht, das mit Kokosmilch gekocht wird.",
+      "archiveId": null,
+      "answers": 48,
+      "germanPresentation": 0,
+      "unchangedNames": 48
+    },
+    {
+      "question": "Nenne eine beliebte Nachspeise aus Frankreich.",
+      "archiveId": null,
+      "answers": 50,
+      "germanPresentation": 0,
+      "unchangedNames": 50
+    },
+    {
+      "question": "Nenne einen Film, der auf einem Buch basiert und einen Filmpreis gewonnen hat.",
+      "archiveId": null,
+      "answers": 81,
+      "germanPresentation": 0,
+      "unchangedNames": 81
+    },
+    {
+      "question": "Nenne einen Ballon-d’Or-Gewinner aus Südamerika.",
+      "archiveId": null,
+      "answers": 19,
+      "germanPresentation": 0,
+      "unchangedNames": 19
+    },
+    {
+      "question": "Nenne einen Ballon-d’Or-Gewinner aus Europa.",
+      "archiveId": null,
+      "answers": 76,
+      "germanPresentation": 0,
+      "unchangedNames": 76
+    },
+    {
+      "question": "Nenne ein Nudelgericht, das außerhalb Italiens erfunden wurde.",
+      "archiveId": null,
+      "answers": 50,
+      "germanPresentation": 0,
+      "unchangedNames": 50
+    },
+    {
+      "question": "Nenne einen NBA-MVP aus den 1980er- oder 1990er-Jahren.",
+      "archiveId": null,
+      "answers": 16,
+      "germanPresentation": 0,
+      "unchangedNames": 16
+    },
+    {
+      "question": "Nenne einen NBA MVP aus den 2000er-Jahren.",
+      "archiveId": null,
+      "answers": 18,
+      "germanPresentation": 0,
+      "unchangedNames": 18
+    },
+    {
+      "question": "Nenne einen Gewinner der Champions-League-Torschützenliste.",
+      "archiveId": null,
+      "answers": 83,
+      "germanPresentation": 0,
+      "unchangedNames": 83
+    },
+    {
+      "question": "Nenne eine Eissorte mit Fruchtgeschmack.",
+      "archiveId": null,
+      "answers": 111,
+      "germanPresentation": 0,
+      "unchangedNames": 111
+    },
+    {
+      "question": "Nenne einen Ballon-d’Or-Gewinner, der auch eine Weltmeisterschaft gewonnen hat.",
+      "archiveId": null,
+      "answers": 23,
+      "germanPresentation": 0,
+      "unchangedNames": 23
+    },
+    {
+      "question": "Nenne eine Figur aus der Serie „The Big Bang Theory“.",
+      "archiveId": null,
+      "answers": 39,
+      "germanPresentation": 0,
+      "unchangedNames": 39
+    },
+    {
+      "question": "Nenne eine Sprache, die Amtssprache eines europäischen Landes ist.",
+      "archiveId": "d50-p4",
+      "answers": 223,
+      "germanPresentation": 27,
+      "unchangedNames": 196
+    },
+    {
+      "question": "Nenne ein aktuelles oder ehemaliges Team aus NBA, MLB, Premier League oder NFL.",
+      "archiveId": "d91-p4",
+      "answers": 472,
+      "germanPresentation": 69,
+      "unchangedNames": 403
+    },
+    {
+      "question": "Nenne eine Einzelsportart.",
+      "archiveId": null,
+      "answers": 109,
+      "germanPresentation": 13,
+      "unchangedNames": 96
+    },
+    {
+      "question": "Nenne eine Stadt in Italien.",
+      "archiveId": "d74-p4",
+      "answers": 1100,
+      "germanPresentation": 40,
+      "unchangedNames": 1060
+    },
+    {
+      "question": "Nenne ein deutsches Wort, das auf „-schaft“ endet.",
+      "archiveId": null,
+      "answers": 20,
+      "germanPresentation": 0,
+      "unchangedNames": 20
+    },
+    {
+      "question": "Nenne ein Bauteil eines Autos.",
+      "archiveId": null,
+      "answers": 70,
+      "germanPresentation": 0,
+      "unchangedNames": 70
+    },
+    {
+      "question": "Nenne ein Land, das an mehr als fünf Länder grenzt.",
+      "archiveId": "d45-p4",
+      "answers": 65,
+      "germanPresentation": 56,
+      "unchangedNames": 9
+    },
+    {
+      "question": "Nenne ein Straßen- oder Verkehrszeichen.",
+      "archiveId": "d36-p1",
+      "answers": 168,
+      "germanPresentation": 41,
+      "unchangedNames": 127
+    },
+    {
+      "question": "Nenne einen Teil des menschlichen Fußes.",
+      "archiveId": null,
+      "answers": 39,
+      "germanPresentation": 0,
+      "unchangedNames": 39
+    },
+    {
+      "question": "Nenne eine heute lebende Vogelart.",
+      "archiveId": "d79-p7",
+      "answers": 1095,
+      "germanPresentation": 400,
+      "unchangedNames": 695
+    },
+    {
+      "question": "Nenne eine echte Nahkampfwaffe.",
+      "archiveId": "d73-p6",
+      "answers": 689,
+      "germanPresentation": 110,
+      "unchangedNames": 579
+    },
+    {
+      "question": "Nenne eine Haiart.",
+      "archiveId": "d6-p2",
+      "answers": 97,
+      "germanPresentation": 28,
+      "unchangedNames": 69
+    },
+    {
+      "question": "Nenne ein Land, dessen Gesamtfläche inklusive Überseegebieten größer als die von Mexiko ist.",
+      "archiveId": "d33-p1",
+      "answers": 29,
+      "germanPresentation": 27,
+      "unchangedNames": 2
+    },
+    {
+      "question": "Nenne eine Sorte oder Geschmacksrichtung eines Bagels.",
+      "archiveId": null,
+      "answers": 51,
+      "germanPresentation": 0,
+      "unchangedNames": 51
+    },
+    {
+      "question": "Nenne ein Werkzeug oder Material zum Schreiben oder Zeichnen.",
+      "archiveId": null,
+      "answers": 49,
+      "germanPresentation": 0,
+      "unchangedNames": 49
+    },
+    {
+      "question": "Nenne eine deutsche Konjunktion.",
+      "archiveId": null,
+      "answers": 25,
+      "germanPresentation": 0,
+      "unchangedNames": 25
+    },
+    {
+      "question": "Nenne ein Broadway-Musical.",
+      "archiveId": "d15-p4",
+      "answers": 146,
+      "germanPresentation": 11,
+      "unchangedNames": 135
+    },
+    {
+      "question": "Nenne einen Belag für Pizza.",
+      "archiveId": "d10-p3",
+      "answers": 114,
+      "germanPresentation": 50,
+      "unchangedNames": 64
+    },
+    {
+      "question": "Nenne eine Marke für Sport- oder Fitnessgetränke.",
+      "archiveId": null,
+      "answers": 29,
+      "germanPresentation": 0,
+      "unchangedNames": 29
+    },
+    {
+      "question": "Nenne einen Schokoriegel oder eine Süßigkeitenriegel-Marke.",
+      "archiveId": "d12-p3",
+      "answers": 88,
+      "germanPresentation": 10,
+      "unchangedNames": 78
+    },
+    {
+      "question": "Nenne eine Automarke, die Sportwagen baut.",
+      "archiveId": "d85-p1",
+      "answers": 679,
+      "germanPresentation": 32,
+      "unchangedNames": 647
+    },
+    {
+      "question": "Nenne ein Tier, dessen deutscher oder englischer Name mit W beginnt.",
+      "archiveId": null,
+      "answers": 36,
+      "germanPresentation": 0,
+      "unchangedNames": 36
+    },
+    {
+      "question": "Nenne eine Art von Zuhause oder Behausung.",
+      "archiveId": "d53-p6",
+      "answers": 491,
+      "germanPresentation": 126,
+      "unchangedNames": 365
+    },
+    {
+      "question": "Nenne ein Spiel aus „Wii Sports“ oder „Wii Sports Resort“.",
+      "archiveId": "d51-p6",
+      "answers": 54,
+      "germanPresentation": 10,
+      "unchangedNames": 44
+    },
+    {
+      "question": "Nenne einen Snowboard- oder Skateboard-Trick.",
+      "archiveId": null,
+      "answers": 46,
+      "germanPresentation": 0,
+      "unchangedNames": 46
+    },
+    {
+      "question": "Nenne ein Gerät oder eine Maschine im Fitnessstudio.",
+      "archiveId": null,
+      "answers": 57,
+      "germanPresentation": 0,
+      "unchangedNames": 57
+    },
+    {
+      "question": "Nenne ein Wort für eine Art, etwas anzuschauen oder zu betrachten.",
+      "archiveId": null,
+      "answers": 36,
+      "germanPresentation": 0,
+      "unchangedNames": 36
+    },
+    {
+      "question": "Nenne ein Messinstrument.",
+      "archiveId": null,
+      "answers": 48,
+      "germanPresentation": 0,
+      "unchangedNames": 48
+    },
+    {
+      "question": "Nenne ein Land, dessen Flagge ein Kreuz enthält – auch im Wappen.",
+      "archiveId": null,
+      "answers": 43,
+      "germanPresentation": 0,
+      "unchangedNames": 43
+    },
+    {
+      "question": "Nenne ein Unternehmen, das zum S&P 500 gehört oder gehört hat.",
+      "archiveId": "d46-p1",
+      "answers": 514,
+      "germanPresentation": 2,
+      "unchangedNames": 512
+    },
+    {
+      "question": "Nenne einen Begriff aus Pool oder Billard.",
+      "archiveId": null,
+      "answers": 59,
+      "germanPresentation": 0,
+      "unchangedNames": 59
+    },
+    {
+      "question": "Nenne ein deutsches Wort mit der Buchstabenfolge „ung“.",
+      "archiveId": null,
+      "answers": 16,
+      "germanPresentation": 0,
+      "unchangedNames": 16
+    },
+    {
+      "question": "Nenne ein italienisches Gericht.",
+      "archiveId": "d31-p3",
+      "answers": 121,
+      "germanPresentation": 21,
+      "unchangedNames": 100
+    },
+    {
+      "question": "Nenne ein deutsches Wort, das mit „unter“ beginnt.",
+      "archiveId": null,
+      "answers": 15,
+      "germanPresentation": 0,
+      "unchangedNames": 15
+    },
+    {
+      "question": "Nenne ein Franchise, zu dem offizielle LEGO-Sets erschienen sind.",
+      "archiveId": null,
+      "answers": 42,
+      "germanPresentation": 0,
+      "unchangedNames": 42
+    },
+    {
+      "question": "Nenne eine Dienstleistung, die ein Friseursalon anbietet.",
+      "archiveId": "d93-p2",
+      "answers": 284,
+      "germanPresentation": 10,
+      "unchangedNames": 274
+    },
+    {
+      "question": "Nenne eine mittelalterliche Waffe.",
+      "archiveId": null,
+      "answers": 44,
+      "germanPresentation": 0,
+      "unchangedNames": 44
+    },
+    {
+      "question": "Nenne eine Frisur oder einen Haarschnitt.",
+      "archiveId": "d34-p7",
+      "answers": 168,
+      "germanPresentation": 77,
+      "unchangedNames": 91
+    },
+    {
+      "question": "Nenne eine Stadt mit mehr als zehn Millionen Einwohnern im Ballungsraum.",
+      "archiveId": "d58-p1",
+      "answers": 73,
+      "germanPresentation": 33,
+      "unchangedNames": 40
+    },
+    {
+      "question": "Nenne eine Figur aus „Teenage Mutant Ninja Turtles“.",
+      "archiveId": null,
+      "answers": 36,
+      "germanPresentation": 0,
+      "unchangedNames": 36
+    },
+    {
+      "question": "Nenne ein deutsches Wort, das mit „vor“ beginnt.",
+      "archiveId": null,
+      "answers": 15,
+      "germanPresentation": 0,
+      "unchangedNames": 15
+    },
+    {
+      "question": "Nenne ein Land oder ein abhängiges Gebiet.",
+      "archiveId": null,
+      "answers": 325,
+      "germanPresentation": 0,
+      "unchangedNames": 325
+    },
+    {
+      "question": "Nenne eine Figur aus „Peter Pan“.",
+      "archiveId": null,
+      "answers": 30,
+      "germanPresentation": 0,
+      "unchangedNames": 30
+    },
+    {
+      "question": "Nenne ein Tier mit Flossen oder Flippern.",
+      "archiveId": null,
+      "answers": 60,
+      "germanPresentation": 0,
+      "unchangedNames": 60
+    },
+    {
+      "question": "Nenne ein heutiges Land, dessen Gebiet zum Reich Alexanders des Großen gehörte.",
+      "archiveId": "d61-p1",
+      "answers": 50,
+      "germanPresentation": 44,
+      "unchangedNames": 6
+    },
+    {
+      "question": "Nenne ein chemisches Element.",
+      "archiveId": null,
+      "answers": 165,
+      "germanPresentation": 0,
+      "unchangedNames": 165
+    },
+    {
+      "question": "Nenne eine Sorte oder Zubereitungsart von Kartoffelchips.",
+      "archiveId": null,
+      "answers": 53,
+      "germanPresentation": 0,
+      "unchangedNames": 53
+    },
+    {
+      "question": "Nenne eine Figur aus „Brooklyn Nine-Nine“.",
+      "archiveId": null,
+      "answers": 41,
+      "germanPresentation": 0,
+      "unchangedNames": 41
+    },
+    {
+      "question": "Nenne einen militärischen Dienstgrad.",
+      "archiveId": "d66-p6",
+      "answers": 835,
+      "germanPresentation": 74,
+      "unchangedNames": 761
+    },
+    {
+      "question": "Nenne einen Fernsehsender oder Streamingdienst, der Sport überträgt.",
+      "archiveId": null,
+      "answers": 52,
+      "germanPresentation": 0,
+      "unchangedNames": 52
+    },
+    {
+      "question": "Nenne ein Pokémon vom Typ Feuer.",
+      "archiveId": "d74-p3",
+      "answers": 161,
+      "germanPresentation": 140,
+      "unchangedNames": 21
+    },
+    {
+      "question": "Nenne einen Film aus der „Rocky“- oder „Creed“-Reihe.",
+      "archiveId": null,
+      "answers": 19,
+      "germanPresentation": 0,
+      "unchangedNames": 19
+    },
+    {
+      "question": "Nenne etwas, das in einer Tube verkauft wird.",
+      "archiveId": "d76-p1",
+      "answers": 610,
+      "germanPresentation": 194,
+      "unchangedNames": 416
+    },
+    {
+      "question": "Nenne ein offiziell anerkanntes Sternbild.",
+      "archiveId": "d3-p4",
+      "answers": 178,
+      "germanPresentation": 131,
+      "unchangedNames": 47
+    },
+    {
+      "question": "Nenne ein Thema für Small Talk.",
+      "archiveId": null,
+      "answers": 55,
+      "germanPresentation": 0,
+      "unchangedNames": 55
+    },
+    {
+      "question": "Nenne einen Gegenstand aus „Mario Kart“.",
+      "archiveId": null,
+      "answers": 68,
+      "germanPresentation": 0,
+      "unchangedNames": 68
+    },
+    {
+      "question": "Nenne eine Figur aus „Die Eiskönigin“ („Frozen“).",
+      "archiveId": null,
+      "answers": 37,
+      "germanPresentation": 0,
+      "unchangedNames": 37
+    },
+    {
+      "question": "Nenne ein Land, dessen Nationalflagge mindestens einen Stern zeigt – auch im Wappen.",
+      "archiveId": null,
+      "answers": 117,
+      "germanPresentation": 0,
+      "unchangedNames": 117
+    },
+    {
+      "question": "Nenne ein deutsches Wort, das mit zwei gleichen Buchstaben endet.",
+      "archiveId": null,
+      "answers": 14,
+      "germanPresentation": 0,
+      "unchangedNames": 14
+    },
+    {
+      "question": "Nenne einen Teil des menschlichen Ohrs.",
+      "archiveId": null,
+      "answers": 46,
+      "germanPresentation": 0,
+      "unchangedNames": 46
+    },
+    {
+      "question": "Nenne ein Säugetier, das unter der Erde lebt.",
+      "archiveId": "d61-p2",
+      "answers": 1011,
+      "germanPresentation": 238,
+      "unchangedNames": 773
+    },
+    {
+      "question": "Nenne eine Art von Stuhl oder Sessel.",
+      "archiveId": "d76-p3",
+      "answers": 1085,
+      "germanPresentation": 70,
+      "unchangedNames": 1015
+    },
+    {
+      "question": "Nenne ein Reinigungsmittel oder einen Putzartikel; Marken zählen.",
+      "archiveId": null,
+      "answers": 69,
+      "germanPresentation": 0,
+      "unchangedNames": 69
+    },
+    {
+      "question": "Nenne einen Begriff oder Schlag aus dem Boxen.",
+      "archiveId": null,
+      "answers": 61,
+      "germanPresentation": 0,
+      "unchangedNames": 61
+    },
+    {
+      "question": "Nenne ein Füllwort, das man beim Nachdenken sagt.",
+      "archiveId": null,
+      "answers": 39,
+      "germanPresentation": 0,
+      "unchangedNames": 39
+    },
+    {
+      "question": "Nenne ein Land, das Anteil an den Alpen, den Anden oder dem Himalaya hat.",
+      "archiveId": "d90-p5",
+      "answers": 34,
+      "germanPresentation": 26,
+      "unchangedNames": 8
+    },
+    {
+      "question": "Nenne eine Art von Brille oder anderem Augenschutz.",
+      "archiveId": null,
+      "answers": 49,
+      "germanPresentation": 0,
+      "unchangedNames": 49
+    },
+    {
+      "question": "Nenne eine Stadt in Europa mit mehr als 100.000 Einwohnern.",
+      "archiveId": "d84-p5",
+      "answers": 869,
+      "germanPresentation": 175,
+      "unchangedNames": 694
+    },
+    {
+      "question": "Nenne einen Block aus „Minecraft“.",
+      "archiveId": "d50-p6",
+      "answers": 980,
+      "germanPresentation": 177,
+      "unchangedNames": 803
+    },
+    {
+      "question": "Nenne einen Gelbton.",
+      "archiveId": null,
+      "answers": 54,
+      "germanPresentation": 0,
+      "unchangedNames": 54
+    },
+    {
+      "question": "Nenne einen Film mit Zendaya.",
+      "archiveId": null,
+      "answers": 25,
+      "germanPresentation": 0,
+      "unchangedNames": 25
+    },
+    {
+      "question": "Nenne eine Art von Bürste.",
+      "archiveId": "d83-p3",
+      "answers": 490,
+      "germanPresentation": 83,
+      "unchangedNames": 407
+    },
+    {
+      "question": "Nenne einen Teil oder ein Merkmal einer Straße.",
+      "archiveId": null,
+      "answers": 71,
+      "germanPresentation": 0,
+      "unchangedNames": 71
+    },
+    {
+      "question": "Nenne einen Song von Justin Bieber.",
+      "archiveId": "d86-p1",
+      "answers": 259,
+      "germanPresentation": 6,
+      "unchangedNames": 253
+    },
+    {
+      "question": "Nenne ein Tier, dessen Name auf ein anderes Tier verweist.",
+      "archiveId": null,
+      "answers": 83,
+      "germanPresentation": 0,
+      "unchangedNames": 83
+    },
+    {
+      "question": "Nenne einen Twitch-Streamer mit mehr als 500.000 Followern.",
+      "archiveId": "d86-p3",
+      "answers": 1522,
+      "germanPresentation": 14,
+      "unchangedNames": 1508
+    },
+    {
+      "question": "Nenne ein Land, dessen Flagge sowohl Rot als auch Grün enthält.",
+      "archiveId": "d86-p4",
+      "answers": 138,
+      "germanPresentation": 102,
+      "unchangedNames": 36
+    },
+    {
+      "question": "Nenne eine Stadt oder einen anderen Ort im Vereinigten Königreich.",
+      "archiveId": "d86-p5",
+      "answers": 2317,
+      "germanPresentation": 70,
+      "unchangedNames": 2247
+    },
+    {
+      "question": "Nenne einen aktuellen oder früheren E-Mail-Dienst bzw. Anbieter.",
+      "archiveId": "d86-p6",
+      "answers": 680,
+      "germanPresentation": 2,
+      "unchangedNames": 678
+    },
+    {
+      "question": "Nenne einen abendfüllenden Pixar-Film.",
+      "archiveId": "d1-p4",
+      "answers": 56,
+      "germanPresentation": 8,
+      "unchangedNames": 48
+    },
+    {
+      "question": "Nenne eine Person mit mehr als 10 Millionen Instagram-Followern (Stand November 2026).",
+      "archiveId": "d109-p1",
+      "answers": 1644,
+      "germanPresentation": 97,
+      "unchangedNames": 1547
+    },
+    {
+      "question": "Nenne einen Feiertag oder Festtag, der im Oktober, November oder Dezember gefeiert wird.",
+      "archiveId": "d109-p2",
+      "answers": 3444,
+      "germanPresentation": 79,
+      "unchangedNames": 3365
+    },
+    {
+      "question": "Nenne eine Art oder ein Format einer Musikveröffentlichung.",
+      "archiveId": "d109-p3",
+      "answers": 322,
+      "germanPresentation": 10,
+      "unchangedNames": 312
+    },
+    {
+      "question": "Nenne ein Tier, das in Südamerika heimisch ist.",
+      "archiveId": "d109-p4",
+      "answers": 22412,
+      "germanPresentation": 5683,
+      "unchangedNames": 16729
+    },
+    {
+      "question": "Nenne ein Werkzeug zum Graben.",
+      "archiveId": "d109-p5",
+      "answers": 500,
+      "germanPresentation": 99,
+      "unchangedNames": 401
+    },
+    {
+      "question": "Nenne eine Chips- oder Crisps-Marke.",
+      "archiveId": "d109-p6",
+      "answers": 2715,
+      "germanPresentation": 28,
+      "unchangedNames": 2687
+    },
+    {
+      "question": "Nenne eine Halloween-Tradition.",
+      "archiveId": "d108-p1",
+      "answers": 501,
+      "germanPresentation": 42,
+      "unchangedNames": 459
+    },
+    {
+      "question": "Nenne eine Schokolade mit Waffel, Keks oder Biscuit.",
+      "archiveId": "d108-p2",
+      "answers": 1463,
+      "germanPresentation": 48,
+      "unchangedNames": 1415
+    },
+    {
+      "question": "Nenne eine fiktive Figur, die eine Maske trägt.",
+      "archiveId": "d108-p3",
+      "answers": 5386,
+      "germanPresentation": 48,
+      "unchangedNames": 5338
+    },
+    {
+      "question": "Nenne ein Tier, das sich von Blut ernährt.",
+      "archiveId": "d108-p4",
+      "answers": 116,
+      "germanPresentation": 49,
+      "unchangedNames": 67
+    },
+    {
+      "question": "Nenne eine orangefarbene Frucht oder ein orangefarbenes Gemüse.",
+      "archiveId": "d108-p5",
+      "answers": 378,
+      "germanPresentation": 122,
+      "unchangedNames": 256
+    },
+    {
+      "question": "Nenne ein Land, dessen Flagge Schwarz oder Orange enthält.",
+      "archiveId": "d108-p6",
+      "answers": 145,
+      "germanPresentation": 109,
+      "unchangedNames": 36
+    },
+    {
+      "question": "Nenne eine Sportart, bei der Athleten Saltos oder Überschläge machen.",
+      "archiveId": null,
+      "answers": 28,
+      "germanPresentation": 4,
+      "unchangedNames": 24
+    },
+    {
+      "question": "Nenne eine Stadt, deren Name mit Los, Las, La, Le, El oder The beginnt.",
+      "archiveId": null,
+      "answers": 21,
+      "germanPresentation": 0,
+      "unchangedNames": 21
+    },
+    {
+      "question": "Nenne etwas, womit man Dinge greifen oder aufnehmen kann.",
+      "archiveId": null,
+      "answers": 38,
+      "germanPresentation": 3,
+      "unchangedNames": 35
+    },
+    {
+      "question": "Nenne eine nichtmenschliche Figur aus Star Wars, dem MCU oder Der Herr der Ringe.",
+      "archiveId": "d107-p4",
+      "answers": 16934,
+      "germanPresentation": 84,
+      "unchangedNames": 16850
+    },
+    {
+      "question": "Nenne ein Produkt oder Werkzeug für die Nagelpflege.",
+      "archiveId": null,
+      "answers": 40,
+      "germanPresentation": 2,
+      "unchangedNames": 38
+    },
+    {
+      "question": "Nenne eine Möglichkeit, jemanden zu kontaktieren – keine Marke oder App.",
+      "archiveId": null,
+      "answers": 35,
+      "germanPresentation": 0,
+      "unchangedNames": 35
+    },
+    {
+      "question": "Nenne eine Fast-Food-Kette, die in mehr als einem Land tätig ist.",
+      "archiveId": "d107-p7",
+      "answers": 858,
+      "germanPresentation": 13,
+      "unchangedNames": 845
+    },
+    {
+      "question": "Nenne ein französisches oder britisches Essen.",
+      "archiveId": "d106-p1",
+      "answers": 3883,
+      "germanPresentation": 475,
+      "unchangedNames": 3408
+    },
+    {
+      "question": "Nenne etwas, das man am menschlichen Körper messen kann.",
+      "archiveId": "d106-p2",
+      "answers": 2057,
+      "germanPresentation": 477,
+      "unchangedNames": 1580
+    },
+    {
+      "question": "Nenne ein strategisches Brettspiel.",
+      "archiveId": "d106-p3",
+      "answers": 8091,
+      "germanPresentation": 78,
+      "unchangedNames": 8013
+    },
+    {
+      "question": "Nenne ein Tier mit einem einteiligen Namen, der „ck“ enthält.",
+      "archiveId": null,
+      "answers": 30,
+      "germanPresentation": 0,
+      "unchangedNames": 30
+    },
+    {
+      "question": "Nenne ein Land, in dem eine andere Religion mehr Anhänger hat als das Christentum.",
+      "archiveId": "d106-p5",
+      "answers": 115,
+      "germanPresentation": 79,
+      "unchangedNames": 36
+    },
+    {
+      "question": "Nenne jemanden, der Teamkollege von Lionel Messi, Cristiano Ronaldo, LeBron James oder Tom Brady war.",
+      "archiveId": "d106-p6",
+      "answers": 2827,
+      "germanPresentation": 156,
+      "unchangedNames": 2671
+    },
+    {
+      "question": "Nenne einen Haartyp, eine Haarstruktur oder eine natürliche Haarfarbe.",
+      "archiveId": "d106-p7",
+      "answers": 309,
+      "germanPresentation": 30,
+      "unchangedNames": 279
+    },
+    {
+      "question": "Nenne eine Art von Bett zum Schlafen.",
+      "archiveId": "d102-p1",
+      "answers": 347,
+      "germanPresentation": 62,
+      "unchangedNames": 285
+    },
+    {
+      "question": "Nenne ein Lebensmittel oder eine Zutat, die mehr als 100 US-Dollar pro Kilogramm kosten kann.",
+      "archiveId": "d102-p2",
+      "answers": 481,
+      "germanPresentation": 80,
+      "unchangedNames": 401
+    },
+    {
+      "question": "Nenne einen Song, der Platz 1 der Billboard Hot 100 erreicht hat.",
+      "archiveId": "d102-p3",
+      "answers": 1182,
+      "germanPresentation": 12,
+      "unchangedNames": 1170
+    },
+    {
+      "question": "Nenne einen Nationalpark irgendwo auf der Welt.",
+      "archiveId": "d102-p4",
+      "answers": 6259,
+      "germanPresentation": 2530,
+      "unchangedNames": 3729
+    },
+    {
+      "question": "Nenne eine TV-Komödie mit mindestens 1.000 IMDb-Bewertungen.",
+      "archiveId": "d102-p5",
+      "answers": 5740,
+      "germanPresentation": 1349,
+      "unchangedNames": 4391
+    },
+    {
+      "question": "Nenne einen Spieler, der 2026/27 zum Kader eines Premier-League- oder NFL-Teams gehörte.",
+      "archiveId": "d102-p7",
+      "answers": 3155,
+      "germanPresentation": 2,
+      "unchangedNames": 3153
+    },
+    {
+      "question": "Nenne ein Tier, dessen Name mit K beginnt.",
+      "archiveId": null,
+      "answers": 47,
+      "germanPresentation": 0,
+      "unchangedNames": 47
+    },
+    {
+      "question": "Nenne ein Land in Afrika.",
+      "archiveId": "d1-p2",
+      "answers": 92,
+      "germanPresentation": 65,
+      "unchangedNames": 27
+    },
+    {
+      "question": "Nenne eine Sportart, die irgendwann Teil der Olympischen Sommerspiele war.",
+      "archiveId": "d1-p6",
+      "answers": 107,
+      "germanPresentation": 60,
+      "unchangedNames": 47
+    },
+    {
+      "question": "Nenne ein Instrument, das in einem Sinfonieorchester vorkommt.",
+      "archiveId": "d1-p7",
+      "answers": 116,
+      "germanPresentation": 106,
+      "unchangedNames": 10
+    },
+    {
+      "question": "Nenne die Hauptstadt eines europäischen Landes.",
+      "archiveId": "d3-p1",
+      "answers": 80,
+      "germanPresentation": 37,
+      "unchangedNames": 43
+    },
+    {
+      "question": "Nenne eine Zitrusfrucht.",
+      "archiveId": "d3-p2",
+      "answers": 83,
+      "germanPresentation": 34,
+      "unchangedNames": 49
+    },
+    {
+      "question": "Nenne einen Film, der den Oscar für den besten Film gewonnen hat.",
+      "archiveId": "d3-p3",
+      "answers": 180,
+      "germanPresentation": 142,
+      "unchangedNames": 38
+    },
+    {
+      "question": "Nenne ein Wurzelgemüse.",
+      "archiveId": "d3-p6",
+      "answers": 118,
+      "germanPresentation": 101,
+      "unchangedNames": 17
+    },
+    {
+      "question": "Nenne einen griechischen Gott oder eine griechische Göttin.",
+      "archiveId": "d3-p7",
+      "answers": 101,
+      "germanPresentation": 26,
+      "unchangedNames": 75
+    },
+    {
+      "question": "Nenne ein Binnenland.",
+      "archiveId": "d6-p1",
+      "answers": 79,
+      "germanPresentation": 56,
+      "unchangedNames": 23
+    },
+    {
+      "question": "Nenne einen Cocktail.",
+      "archiveId": "d6-p3",
+      "answers": 311,
+      "germanPresentation": 49,
+      "unchangedNames": 262
+    },
+    {
+      "question": "Nenne eine Figur aus Harry Potter.",
+      "archiveId": "d6-p4",
+      "answers": 141,
+      "germanPresentation": 14,
+      "unchangedNames": 127
+    },
+    {
+      "question": "Nenne einen Mond eines Planeten in unserem Sonnensystem.",
+      "archiveId": "d6-p5",
+      "answers": 110,
+      "germanPresentation": 8,
+      "unchangedNames": 102
+    },
+    {
+      "question": "Nenne eine Kampfkunst.",
+      "archiveId": "d6-p6",
+      "answers": 93,
+      "germanPresentation": 21,
+      "unchangedNames": 72
+    },
+    {
+      "question": "Nenne ein Fabelwesen.",
+      "archiveId": "d6-p7",
+      "answers": 162,
+      "germanPresentation": 87,
+      "unchangedNames": 75
+    },
+    {
+      "question": "Nenne ein Kaffeegetränk.",
+      "archiveId": "d9-p3",
+      "answers": 94,
+      "germanPresentation": 32,
+      "unchangedNames": 62
+    },
+    {
+      "question": "Nenne ein Land mit einer Landgrenze zu Saudi-Arabien.",
+      "archiveId": null,
+      "answers": 13,
+      "germanPresentation": 0,
+      "unchangedNames": 13
+    },
+    {
+      "question": "Nenne einen Berg mit mehr als 8.000 Metern Höhe.",
+      "archiveId": null,
+      "answers": 19,
+      "germanPresentation": 0,
+      "unchangedNames": 19
+    },
+    {
+      "question": "Nenne eine Figur aus einem Theaterstück von Shakespeare.",
+      "archiveId": null,
+      "answers": 103,
+      "germanPresentation": 0,
+      "unchangedNames": 103
+    },
+    {
+      "question": "Nenne eine Position oder taktische Rolle im Fußball.",
+      "archiveId": "d46-p6",
+      "answers": 88,
+      "germanPresentation": 57,
+      "unchangedNames": 31
+    },
+    {
+      "question": "Nenne etwas, das man in einem Werkzeugkasten findet.",
+      "archiveId": "d59-p5",
+      "answers": 924,
+      "germanPresentation": 446,
+      "unchangedNames": 478
+    },
+    {
+      "question": "Nenne ein Gemüse.",
+      "archiveId": "d47-p2",
+      "answers": 507,
+      "germanPresentation": 318,
+      "unchangedNames": 189
+    },
+    {
+      "question": "Nenne eine Hauptstadt in Afrika.",
+      "archiveId": "d22-p1",
+      "answers": 78,
+      "germanPresentation": 27,
+      "unchangedNames": 51
+    },
+    {
+      "question": "Nenne ein Schienenfahrzeug oder eine Bahn, mit der man fahren kann.",
+      "archiveId": null,
+      "answers": 54,
+      "germanPresentation": 0,
+      "unchangedNames": 54
+    },
+    {
+      "question": "Nenne einen Roman oder eine Erzählung von Charles Dickens.",
+      "archiveId": null,
+      "answers": 26,
+      "germanPresentation": 0,
+      "unchangedNames": 26
+    },
+    {
+      "question": "Nenne ein Team aus der NFL.",
+      "archiveId": "d23-p6",
+      "answers": 32,
+      "germanPresentation": 0,
+      "unchangedNames": 32
+    },
+    {
+      "question": "Nenne einen Fluss in Afrika.",
+      "archiveId": null,
+      "answers": 36,
+      "germanPresentation": 0,
+      "unchangedNames": 36
+    },
+    {
+      "question": "Nenne ein Material zum Hausbau.",
+      "archiveId": "d70-p4",
+      "answers": 1119,
+      "germanPresentation": 371,
+      "unchangedNames": 748
+    },
+    {
+      "question": "Nenne ein Bauwerk, einen Ort oder ein Landschaftsmerkmal.",
+      "archiveId": null,
+      "answers": 12,
+      "germanPresentation": 0,
+      "unchangedNames": 12
+    },
+    {
+      "question": "Nenne eine Erfindung aus der Zeit vor 1900.",
+      "archiveId": null,
+      "answers": 14,
+      "germanPresentation": 0,
+      "unchangedNames": 14
+    },
+    {
+      "question": "Nenne ein Land oder einen Landesteil, dessen englischer Name mit G beginnt.",
+      "archiveId": null,
+      "answers": 18,
+      "germanPresentation": 0,
+      "unchangedNames": 18
+    },
+    {
+      "question": "Nenne ein Erdalkalimetall.",
+      "archiveId": null,
+      "answers": 13,
+      "germanPresentation": 0,
+      "unchangedNames": 13
+    },
+    {
+      "question": "Nenne ein Nagetier.",
+      "archiveId": "d15-p2",
+      "answers": 94,
+      "germanPresentation": 76,
+      "unchangedNames": 18
+    },
+    {
+      "question": "Nenne einen berühmten Maler oder eine berühmte Malerin.",
+      "archiveId": null,
+      "answers": 76,
+      "germanPresentation": 0,
+      "unchangedNames": 76
+    },
+    {
+      "question": "Nenne einen klassischen Komponisten oder eine klassische Komponistin.",
+      "archiveId": "d17-p7",
+      "answers": 197,
+      "germanPresentation": 19,
+      "unchangedNames": 178
+    },
+    {
+      "question": "Nenne ein Harry-Potter-Buch.",
+      "archiveId": null,
+      "answers": 21,
+      "germanPresentation": 0,
+      "unchangedNames": 21
+    },
+    {
+      "question": "Nenne ein Edelgas.",
+      "archiveId": null,
+      "answers": 14,
+      "germanPresentation": 0,
+      "unchangedNames": 14
+    },
+    {
+      "question": "Nenne ein Land mit einer Landgrenze zu Serbien.",
+      "archiveId": null,
+      "answers": 17,
+      "germanPresentation": 0,
+      "unchangedNames": 17
+    },
+    {
+      "question": "Nenne eine der ursprünglichen dreizehn amerikanischen Kolonien.",
+      "archiveId": null,
+      "answers": 17,
+      "germanPresentation": 0,
+      "unchangedNames": 17
+    },
+    {
+      "question": "Nenne ein mexikanisches Gericht.",
+      "archiveId": "d22-p3",
+      "answers": 81,
+      "germanPresentation": 16,
+      "unchangedNames": 65
+    },
+    {
+      "question": "Nenne ein Saiteninstrument.",
+      "archiveId": null,
+      "answers": 74,
+      "germanPresentation": 0,
+      "unchangedNames": 74
+    },
+    {
+      "question": "Nenne ein Küchenutensil.",
+      "archiveId": "d11-p6",
+      "answers": 165,
+      "germanPresentation": 121,
+      "unchangedNames": 44
+    },
+    {
+      "question": "Nenne ein Land, in dem Französisch Amtssprache ist.",
+      "archiveId": null,
+      "answers": 47,
+      "germanPresentation": 0,
+      "unchangedNames": 47
+    },
+    {
+      "question": "Nenne ein Werk von Jane Austen.",
+      "archiveId": null,
+      "answers": 16,
+      "germanPresentation": 0,
+      "unchangedNames": 16
+    },
+    {
+      "question": "Nenne eine Disziplin der Leichtathletik.",
+      "archiveId": null,
+      "answers": 74,
+      "germanPresentation": 0,
+      "unchangedNames": 74
+    },
+    {
+      "question": "Nenne ein Party- oder Gesellschaftsspiel.",
+      "archiveId": null,
+      "answers": 98,
+      "germanPresentation": 0,
+      "unchangedNames": 98
+    },
+    {
+      "question": "Nenne ein Tier, das auf einem Bauernhof gehalten wird.",
+      "archiveId": "d26-p2",
+      "answers": 124,
+      "germanPresentation": 107,
+      "unchangedNames": 17
+    },
+    {
+      "question": "Nenne ein Land in den Amerikas (Nord-, Mittel- oder Südamerika).",
+      "archiveId": "d2-p1",
+      "answers": 57,
+      "germanPresentation": 42,
+      "unchangedNames": 15
+    },
+    {
+      "question": "Nenne einen Greifvogel.",
+      "archiveId": "d2-p2",
+      "answers": 122,
+      "germanPresentation": 107,
+      "unchangedNames": 15
+    },
+    {
+      "question": "Nenne eine Käsesorte.",
+      "archiveId": "d2-p3",
+      "answers": 83,
+      "germanPresentation": 35,
+      "unchangedNames": 48
+    },
+    {
+      "question": "Nenne ein Lied der Beatles.",
+      "archiveId": "d2-p4",
+      "answers": 171,
+      "germanPresentation": 4,
+      "unchangedNames": 167
+    },
+    {
+      "question": "Nenne einen Buchstaben des griechischen Alphabets.",
+      "archiveId": "d2-p5",
+      "answers": 58,
+      "germanPresentation": 53,
+      "unchangedNames": 5
+    },
+    {
+      "question": "Nenne eine Hauptstadt eines US-Bundesstaates.",
+      "archiveId": "d2-p6",
+      "answers": 51,
+      "germanPresentation": 2,
+      "unchangedNames": 49
+    },
+    {
+      "question": "Nenne eine Hunderasse.",
+      "archiveId": "d2-p7",
+      "answers": 137,
+      "germanPresentation": 40,
+      "unchangedNames": 97
+    },
+    {
+      "question": "Nenne einen Inselstaat.",
+      "archiveId": "d4-p1",
+      "answers": 84,
+      "germanPresentation": 69,
+      "unchangedNames": 15
+    },
+    {
+      "question": "Nenne eine wilde Katzenart.",
+      "archiveId": "d4-p2",
+      "answers": 62,
+      "germanPresentation": 40,
+      "unchangedNames": 22
+    },
+    {
+      "question": "Nenne eine Brotart.",
+      "archiveId": "d4-p3",
+      "answers": 91,
+      "germanPresentation": 29,
+      "unchangedNames": 62
+    },
+    {
+      "question": "Nenne einen Studio-Ghibli-Film.",
+      "archiveId": "d4-p4",
+      "answers": 38,
+      "germanPresentation": 22,
+      "unchangedNames": 16
+    },
+    {
+      "question": "Nenne einen Knochen im menschlichen Körper.",
+      "archiveId": "d4-p5",
+      "answers": 92,
+      "germanPresentation": 59,
+      "unchangedNames": 33
+    },
+    {
+      "question": "Nenne ein Kartenspiel.",
+      "archiveId": "d4-p6",
+      "answers": 80,
+      "germanPresentation": 2,
+      "unchangedNames": 78
+    },
+    {
+      "question": "Nenne einen US-Präsidenten.",
+      "archiveId": "d4-p7",
+      "answers": 45,
+      "germanPresentation": 0,
+      "unchangedNames": 45
+    },
+    {
+      "question": "Nenne ein Land in Asien.",
+      "archiveId": "d5-p1",
+      "answers": 87,
+      "germanPresentation": 72,
+      "unchangedNames": 15
+    },
+    {
+      "question": "Nenne ein Tier, das Gift produziert oder bei Berührung beziehungsweise Verzehr giftig ist.",
+      "archiveId": "d5-p2",
+      "answers": 93,
+      "germanPresentation": 58,
+      "unchangedNames": 35
+    },
+    {
+      "question": "Nenne ein Küchenkraut oder Gewürz.",
+      "archiveId": "d5-p3",
+      "answers": 175,
+      "germanPresentation": 143,
+      "unchangedNames": 32
+    },
+    {
+      "question": "Nenne einen Walt-Disney-Animationsfilm.",
+      "archiveId": "d5-p4",
+      "answers": 89,
+      "germanPresentation": 54,
+      "unchangedNames": 35
+    },
+    {
+      "question": "Nenne eine Maßeinheit.",
+      "archiveId": "d5-p5",
+      "answers": 135,
+      "germanPresentation": 68,
+      "unchangedNames": 67
+    },
+    {
+      "question": "Nenne eine Stadt, die bereits Olympische Sommerspiele oder Winterspiele ausgerichtet hat.",
+      "archiveId": "d5-p6",
+      "answers": 59,
+      "germanPresentation": 27,
+      "unchangedNames": 32
+    },
+    {
+      "question": "Nenne eine Blumenart.",
+      "archiveId": "d5-p7",
+      "answers": 138,
+      "germanPresentation": 65,
+      "unchangedNames": 73
+    },
+    {
+      "question": "Nenne einen Fluss in Europa.",
+      "archiveId": "d7-p1",
+      "answers": 113,
+      "germanPresentation": 49,
+      "unchangedNames": 64
+    },
+    {
+      "question": "Nenne eine Pinguinart.",
+      "archiveId": "d7-p2",
+      "answers": 33,
+      "germanPresentation": 26,
+      "unchangedNames": 7
+    },
+    {
+      "question": "Nenne eine Marke von Frühstücksflocken.",
+      "archiveId": "d7-p3",
+      "answers": 65,
+      "germanPresentation": 0,
+      "unchangedNames": 65
+    },
+    {
+      "question": "Nenne einen James-Bond-Film.",
+      "archiveId": "d7-p4",
+      "answers": 31,
+      "germanPresentation": 8,
+      "unchangedNames": 23
+    },
+    {
+      "question": "Nenne einen Edelstein.",
+      "archiveId": "d7-p5",
+      "answers": 97,
+      "germanPresentation": 61,
+      "unchangedNames": 36
+    },
+    {
+      "question": "Nenne ein Brettspiel.",
+      "archiveId": "d7-p6",
+      "answers": 97,
+      "germanPresentation": 16,
+      "unchangedNames": 81
+    },
+    {
+      "question": "Nenne eine in Europa gesprochene Sprache.",
+      "archiveId": "d7-p7",
+      "answers": 120,
+      "germanPresentation": 38,
+      "unchangedNames": 82
+    },
+    {
+      "question": "Nenne ein Land mit einer Mittelmeerküste.",
+      "archiveId": "d8-p1",
+      "answers": 40,
+      "germanPresentation": 36,
+      "unchangedNames": 4
+    },
+    {
+      "question": "Nenne eine Walart.",
+      "archiveId": "d8-p2",
+      "answers": 98,
+      "germanPresentation": 93,
+      "unchangedNames": 5
+    },
+    {
+      "question": "Nenne eine tropische Frucht.",
+      "archiveId": "d8-p3",
+      "answers": 105,
+      "germanPresentation": 76,
+      "unchangedNames": 29
+    },
+    {
+      "question": "Nenne eine Figur aus Scooby-Doo.",
+      "archiveId": "d8-p4",
+      "answers": 25,
+      "germanPresentation": 0,
+      "unchangedNames": 25
+    },
+    {
+      "question": "Nenne eine Wolkenart.",
+      "archiveId": "d8-p5",
+      "answers": 58,
+      "germanPresentation": 28,
+      "unchangedNames": 30
+    },
+    {
+      "question": "Nenne einen Tanzstil.",
+      "archiveId": "d8-p6",
+      "answers": 108,
+      "germanPresentation": 25,
+      "unchangedNames": 83
+    },
+    {
+      "question": "Nenne einen römischen Kaiser.",
+      "archiveId": "d8-p7",
+      "answers": 101,
+      "germanPresentation": 8,
+      "unchangedNames": 93
+    },
+    {
+      "question": "Nenne eine Wüste.",
+      "archiveId": "d9-p1",
+      "answers": 58,
+      "germanPresentation": 10,
+      "unchangedNames": 48
+    },
+    {
+      "question": "Nenne eine Schlangenart.",
+      "archiveId": "d9-p2",
+      "answers": 86,
+      "germanPresentation": 28,
+      "unchangedNames": 58
+    },
+    {
+      "question": "Nenne eine Videospielkonsole.",
+      "archiveId": "d9-p4",
+      "answers": 61,
+      "germanPresentation": 0,
+      "unchangedNames": 61
+    },
+    {
+      "question": "Nenne einen Muskel im menschlichen Körper.",
+      "archiveId": "d9-p5",
+      "answers": 98,
+      "germanPresentation": 48,
+      "unchangedNames": 50
+    },
+    {
+      "question": "Nenne einen Hutstil.",
+      "archiveId": "d9-p6",
+      "answers": 93,
+      "germanPresentation": 49,
+      "unchangedNames": 44
+    },
+    {
+      "question": "Nenne ein Theaterstück von Shakespeare.",
+      "archiveId": "d9-p7",
+      "answers": 78,
+      "germanPresentation": 63,
+      "unchangedNames": 15
+    },
+    {
+      "question": "Nenne eine ehemalige Sowjetrepublik.",
+      "archiveId": "d10-p1",
+      "answers": 29,
+      "germanPresentation": 23,
+      "unchangedNames": 6
+    },
+    {
+      "question": "Nenne einen Dinosaurier.",
+      "archiveId": "d10-p2",
+      "answers": 77,
+      "germanPresentation": 2,
+      "unchangedNames": 75
+    },
+    {
+      "question": "Nenne eine TV-Sitcom.",
+      "archiveId": "d10-p4",
+      "answers": 156,
+      "germanPresentation": 61,
+      "unchangedNames": 95
+    },
+    {
+      "question": "Nenne eine Programmiersprache.",
+      "archiveId": "d10-p5",
+      "answers": 93,
+      "germanPresentation": 21,
+      "unchangedNames": 72
+    },
+    {
+      "question": "Nenne eine olympische Leichtathletikdisziplin.",
+      "archiveId": "d10-p6",
+      "answers": 72,
+      "germanPresentation": 47,
+      "unchangedNames": 25
+    },
+    {
+      "question": "Nenne eine Nuss.",
+      "archiveId": "d10-p7",
+      "answers": 67,
+      "germanPresentation": 40,
+      "unchangedNames": 27
+    },
+    {
+      "question": "Nenne eine Gebirgskette.",
+      "archiveId": "d11-p1",
+      "answers": 116,
+      "germanPresentation": 53,
+      "unchangedNames": 63
+    },
+    {
+      "question": "Nenne ein Insekt.",
+      "archiveId": "d11-p2",
+      "answers": 98,
+      "germanPresentation": 76,
+      "unchangedNames": 22
+    },
+    {
+      "question": "Nenne eine Suppe.",
+      "archiveId": "d11-p3",
+      "answers": 77,
+      "germanPresentation": 34,
+      "unchangedNames": 43
+    },
+    {
+      "question": "Nenne einen Film mit Tom Hanks.",
+      "archiveId": "d11-p4",
+      "answers": 70,
+      "germanPresentation": 26,
+      "unchangedNames": 44
+    },
+    {
+      "question": "Nenne eine Blauschattierung.",
+      "archiveId": "d11-p5",
+      "answers": 78,
+      "germanPresentation": 2,
+      "unchangedNames": 76
+    },
+    {
+      "question": "Nenne einen nordischen Gott oder eine Göttin.",
+      "archiveId": "d11-p7",
+      "answers": 47,
+      "germanPresentation": 6,
+      "unchangedNames": 41
+    },
+    {
+      "question": "Nenne ein Land, in dem Spanisch Amtssprache ist.",
+      "archiveId": "d12-p1",
+      "answers": 31,
+      "germanPresentation": 22,
+      "unchangedNames": 9
+    },
+    {
+      "question": "Nenne eine Primatenart.",
+      "archiveId": "d12-p2",
+      "answers": 63,
+      "germanPresentation": 26,
+      "unchangedNames": 37
+    },
+    {
+      "question": "Nenne eine Boyband.",
+      "archiveId": "d12-p4",
+      "answers": 58,
+      "germanPresentation": 0,
+      "unchangedNames": 58
+    },
+    {
+      "question": "Nenne ein Organ des menschlichen Körpers.",
+      "archiveId": "d12-p5",
+      "answers": 67,
+      "germanPresentation": 46,
+      "unchangedNames": 21
+    },
+    {
+      "question": "Nenne eine Yogaposition.",
+      "archiveId": "d12-p6",
+      "answers": 71,
+      "germanPresentation": 33,
+      "unchangedNames": 38
+    },
+    {
+      "question": "Nenne einen US-Nationalpark.",
+      "archiveId": "d12-p7",
+      "answers": 77,
+      "germanPresentation": 24,
+      "unchangedNames": 53
+    },
+    {
+      "question": "Nenne ein Land, in dem links gefahren wird.",
+      "archiveId": "d13-p1",
+      "answers": 108,
+      "germanPresentation": 79,
+      "unchangedNames": 29
+    },
+    {
+      "question": "Nenne eine Amphibienart.",
+      "archiveId": "d13-p2",
+      "answers": 55,
+      "germanPresentation": 24,
+      "unchangedNames": 31
+    },
+    {
+      "question": "Nenne eine Star-Wars-Figur.",
+      "archiveId": "d13-p4",
+      "answers": 177,
+      "germanPresentation": 13,
+      "unchangedNames": 164
+    },
+    {
+      "question": "Nenne eine Übung aus dem Fitnesstraining.",
+      "archiveId": "d13-p6",
+      "answers": 88,
+      "germanPresentation": 22,
+      "unchangedNames": 66
+    },
+    {
+      "question": "Nenne ein klassisches französisches Gericht.",
+      "archiveId": "d13-p7",
+      "answers": 78,
+      "germanPresentation": 23,
+      "unchangedNames": 55
+    },
+    {
+      "question": "Nenne die Hauptstadt eines asiatischen Landes.",
+      "archiveId": "d14-p1",
+      "answers": 78,
+      "germanPresentation": 44,
+      "unchangedNames": 34
+    },
+    {
+      "question": "Nenne eine Spinnenart.",
+      "archiveId": "d14-p2",
+      "answers": 52,
+      "germanPresentation": 4,
+      "unchangedNames": 48
+    },
+    {
+      "question": "Nenne eine Sandwichsorte.",
+      "archiveId": "d14-p3",
+      "answers": 91,
+      "germanPresentation": 24,
+      "unchangedNames": 67
+    },
+    {
+      "question": "Nenne eine Figur aus Toy Story.",
+      "archiveId": "d14-p4",
+      "answers": 61,
+      "germanPresentation": 0,
+      "unchangedNames": 61
+    },
+    {
+      "question": "Nenne ein Kryptid – ein Wesen wie Bigfoot, dessen Existenz behauptet, aber nicht bewiesen ist.",
+      "archiveId": "d14-p5",
+      "answers": 84,
+      "germanPresentation": 20,
+      "unchangedNames": 64
+    },
+    {
+      "question": "Nenne eine Sportart mit einem Schläger oder Paddel.",
+      "archiveId": "d14-p6",
+      "answers": 39,
+      "germanPresentation": 15,
+      "unchangedNames": 24
+    },
+    {
+      "question": "Nenne einen Renaissance-Künstler.",
+      "archiveId": "d14-p7",
+      "answers": 63,
+      "germanPresentation": 4,
+      "unchangedNames": 59
+    },
+    {
+      "question": "Nenne ein Land, dessen Flagge ausschließlich Rot, Weiß und Blau enthält.",
+      "archiveId": "d15-p1",
+      "answers": 49,
+      "germanPresentation": 42,
+      "unchangedNames": 7
+    },
+    {
+      "question": "Nenne einen Tee.",
+      "archiveId": "d15-p3",
+      "answers": 75,
+      "germanPresentation": 23,
+      "unchangedNames": 52
+    },
+    {
+      "question": "Nenne ein metrisches Präfix.",
+      "archiveId": "d15-p5",
+      "answers": 30,
+      "germanPresentation": 12,
+      "unchangedNames": 18
+    },
+    {
+      "question": "Nenne eine Knotenart.",
+      "archiveId": "d15-p6",
+      "answers": 83,
+      "germanPresentation": 39,
+      "unchangedNames": 44
+    },
+    {
+      "question": "Nenne eine antike Zivilisation.",
+      "archiveId": "d15-p7",
+      "answers": 100,
+      "germanPresentation": 29,
+      "unchangedNames": 71
+    },
+    {
+      "question": "Nenne eine Meerenge.",
+      "archiveId": "d16-p1",
+      "answers": 82,
+      "germanPresentation": 38,
+      "unchangedNames": 44
+    },
+    {
+      "question": "Nenne ein Tiefseelebewesen.",
+      "archiveId": "d16-p2",
+      "answers": 66,
+      "germanPresentation": 21,
+      "unchangedNames": 45
+    },
+    {
+      "question": "Nenne eine Chilisorte.",
+      "archiveId": "d16-p3",
+      "answers": 65,
+      "germanPresentation": 18,
+      "unchangedNames": 47
+    },
+    {
+      "question": "Nenne ein Pokémon aus den ersten 151.",
+      "archiveId": "d16-p4",
+      "answers": 272,
+      "germanPresentation": 239,
+      "unchangedNames": 33
+    },
+    {
+      "question": "Nenne die fachsprachliche Bezeichnung einer Phobie.",
+      "archiveId": "d16-p5",
+      "answers": 123,
+      "germanPresentation": 74,
+      "unchangedNames": 49
+    },
+    {
+      "question": "Nenne einen Schachweltmeister.",
+      "archiveId": "d16-p6",
+      "answers": 29,
+      "germanPresentation": 0,
+      "unchangedNames": 29
+    },
+    {
+      "question": "Nenne ein berühmtes reales oder fiktives Schiff.",
+      "archiveId": "d16-p7",
+      "answers": 97,
+      "germanPresentation": 14,
+      "unchangedNames": 83
+    },
+    {
+      "question": "Nenne ein Land in der Europäischen Union.",
+      "archiveId": "d17-p1",
+      "answers": 53,
+      "germanPresentation": 51,
+      "unchangedNames": 2
+    },
+    {
+      "question": "Nenne eine Eulenart.",
+      "archiveId": "d17-p2",
+      "answers": 75,
+      "germanPresentation": 56,
+      "unchangedNames": 19
+    },
+    {
+      "question": "Nenne eine Kuchensorte.",
+      "archiveId": "d17-p3",
+      "answers": 93,
+      "germanPresentation": 52,
+      "unchangedNames": 41
+    },
+    {
+      "question": "Nenne einen DreamWorks-Animationsfilm.",
+      "archiveId": "d17-p4",
+      "answers": 64,
+      "germanPresentation": 20,
+      "unchangedNames": 44
+    },
+    {
+      "question": "Nenne eine Legierung.",
+      "archiveId": "d17-p5",
+      "answers": 93,
+      "germanPresentation": 51,
+      "unchangedNames": 42
+    },
+    {
+      "question": "Nenne ein Land mit Monarchie.",
+      "archiveId": "d18-p1",
+      "answers": 79,
+      "germanPresentation": 64,
+      "unchangedNames": 15
+    },
+    {
+      "question": "Nenne eine Sorte Pie – eine gefüllte Pastete oder einen gedeckten Kuchen.",
+      "archiveId": "d18-p3",
+      "answers": 79,
+      "germanPresentation": 13,
+      "unchangedNames": 66
+    },
+    {
+      "question": "Nenne einen Marvel-Cinematic-Universe-Film.",
+      "archiveId": "d18-p4",
+      "answers": 43,
+      "germanPresentation": 2,
+      "unchangedNames": 41
+    },
+    {
+      "question": "Nenne eine Baumart.",
+      "archiveId": "d18-p5",
+      "answers": 121,
+      "germanPresentation": 67,
+      "unchangedNames": 54
+    },
+    {
+      "question": "Nenne einen Tennisspieler oder eine Tennisspielerin mit einem Grand-Slam-Titel im Einzel.",
+      "archiveId": "d18-p6",
+      "answers": 258,
+      "germanPresentation": 181,
+      "unchangedNames": 77
+    },
+    {
+      "question": "Nenne ein berühmtes Gemälde.",
+      "archiveId": "d18-p7",
+      "answers": 96,
+      "germanPresentation": 28,
+      "unchangedNames": 68
+    },
+    {
+      "question": "Nenne einen US-Bundesstaat.",
+      "archiveId": "d19-p1",
+      "answers": 55,
+      "germanPresentation": 10,
+      "unchangedNames": 45
+    },
+    {
+      "question": "Nenne einen Süßwasserfisch.",
+      "archiveId": "d19-p2",
+      "answers": 123,
+      "germanPresentation": 95,
+      "unchangedNames": 28
+    },
+    {
+      "question": "Nenne eine Art gefüllter Teigtasche oder einen Knödel.",
+      "archiveId": "d19-p3",
+      "answers": 47,
+      "germanPresentation": 2,
+      "unchangedNames": 45
+    },
+    {
+      "question": "Nenne eine Nintendo-Videospielreihe.",
+      "archiveId": "d19-p4",
+      "answers": 63,
+      "germanPresentation": 0,
+      "unchangedNames": 63
+    },
+    {
+      "question": "Nenne ein Wetterphänomen.",
+      "archiveId": "d19-p5",
+      "answers": 86,
+      "germanPresentation": 55,
+      "unchangedNames": 31
+    },
+    {
+      "question": "Nenne einen Schwergewichts-Boxweltmeister.",
+      "archiveId": "d19-p6",
+      "answers": 100,
+      "germanPresentation": 28,
+      "unchangedNames": 72
+    },
+    {
+      "question": "Nenne ein Dr.-Seuss-Buch.",
+      "archiveId": "d19-p7",
+      "answers": 51,
+      "germanPresentation": 4,
+      "unchangedNames": 47
+    },
+    {
+      "question": "Nenne ein Land im Nahen Osten.",
+      "archiveId": "d20-p1",
+      "answers": 31,
+      "germanPresentation": 27,
+      "unchangedNames": 4
+    },
+    {
+      "question": "Nenne eine Papageienart.",
+      "archiveId": "d20-p2",
+      "answers": 62,
+      "germanPresentation": 42,
+      "unchangedNames": 20
+    },
+    {
+      "question": "Nenne eine Würzsoße oder ein anderes Würzmittel.",
+      "archiveId": "d20-p3",
+      "answers": 91,
+      "germanPresentation": 38,
+      "unchangedNames": 53
+    },
+    {
+      "question": "Nenne einen Batman-Schurken.",
+      "archiveId": "d20-p4",
+      "answers": 75,
+      "germanPresentation": 20,
+      "unchangedNames": 55
+    },
+    {
+      "question": "Nenne einen Teil des menschlichen Auges.",
+      "archiveId": "d20-p5",
+      "answers": 59,
+      "germanPresentation": 38,
+      "unchangedNames": 21
+    },
+    {
+      "question": "Nenne einen Roman von Stephen King.",
+      "archiveId": "d20-p7",
+      "answers": 81,
+      "germanPresentation": 30,
+      "unchangedNames": 51
+    },
+    {
+      "question": "Nenne eine Krabbe oder ein anderes Krebstier.",
+      "archiveId": "d21-p2",
+      "answers": 73,
+      "germanPresentation": 49,
+      "unchangedNames": 24
+    },
+    {
+      "question": "Nenne eine Kochmethode.",
+      "archiveId": "d21-p3",
+      "answers": 67,
+      "germanPresentation": 18,
+      "unchangedNames": 49
+    },
+    {
+      "question": "Nenne eine Simpsons-Figur.",
+      "archiveId": "d21-p4",
+      "answers": 103,
+      "germanPresentation": 0,
+      "unchangedNames": 103
+    },
+    {
+      "question": "Nenne einen Aggregatzustand.",
+      "archiveId": "d21-p5",
+      "answers": 14,
+      "germanPresentation": 4,
+      "unchangedNames": 10
+    },
+    {
+      "question": "Nenne eine Position im American Football.",
+      "archiveId": "d21-p6",
+      "answers": 42,
+      "germanPresentation": 16,
+      "unchangedNames": 26
+    },
+    {
+      "question": "Nenne einen Film von Steven Spielberg.",
+      "archiveId": "d21-p7",
+      "answers": 51,
+      "germanPresentation": 24,
+      "unchangedNames": 27
+    },
+    {
+      "question": "Nenne eine Wasservogelart.",
+      "archiveId": "d22-p2",
+      "answers": 85,
+      "germanPresentation": 61,
+      "unchangedNames": 24
+    },
+    {
+      "question": "Nenne einen Disney-Schurken.",
+      "archiveId": "d22-p4",
+      "answers": 92,
+      "germanPresentation": 15,
+      "unchangedNames": 77
+    },
+    {
+      "question": "Nenne eine geometrische Form.",
+      "archiveId": "d22-p5",
+      "answers": 111,
+      "germanPresentation": 62,
+      "unchangedNames": 49
+    },
+    {
+      "question": "Nenne ein Land, das die Fußball-WM ausgetragen hat.",
+      "archiveId": "d22-p6",
+      "answers": 38,
+      "germanPresentation": 34,
+      "unchangedNames": 4
+    },
+    {
+      "question": "Nenne einen berühmten Dichter.",
+      "archiveId": "d22-p7",
+      "answers": 105,
+      "germanPresentation": 2,
+      "unchangedNames": 103
+    },
+    {
+      "question": "Nenne eine Karibikinsel.",
+      "archiveId": "d23-p1",
+      "answers": 67,
+      "germanPresentation": 15,
+      "unchangedNames": 52
+    },
+    {
+      "question": "Nenne einen Käfer.",
+      "archiveId": "d23-p2",
+      "answers": 60,
+      "germanPresentation": 26,
+      "unchangedNames": 34
+    },
+    {
+      "question": "Nenne eine Salatart.",
+      "archiveId": "d23-p3",
+      "answers": 67,
+      "germanPresentation": 24,
+      "unchangedNames": 43
+    },
+    {
+      "question": "Nenne ein Mitglied der Saturday Night Live-Besetzung.",
+      "archiveId": "d23-p4",
+      "answers": 100,
+      "germanPresentation": 2,
+      "unchangedNames": 98
+    },
+    {
+      "question": "Nenne ein Vitamin oder einen Mineralstoff aus der Ernährung.",
+      "archiveId": "d23-p5",
+      "answers": 58,
+      "germanPresentation": 49,
+      "unchangedNames": 9
+    },
+    {
+      "question": "Nenne ein Märchen.",
+      "archiveId": "d23-p7",
+      "answers": 84,
+      "germanPresentation": 52,
+      "unchangedNames": 32
+    },
+    {
+      "question": "Nenne ein nicht mehr existierendes Land.",
+      "archiveId": "d24-p1",
+      "answers": 104,
+      "germanPresentation": 54,
+      "unchangedNames": 50
+    },
+    {
+      "question": "Nenne eine Pferderasse.",
+      "archiveId": "d24-p2",
+      "answers": 75,
+      "germanPresentation": 10,
+      "unchangedNames": 65
+    },
+    {
+      "question": "Nenne eine Figur aus Shrek.",
+      "archiveId": "d24-p4",
+      "answers": 46,
+      "germanPresentation": 2,
+      "unchangedNames": 44
+    },
+    {
+      "question": "Nenne eine Weltraummission oder ein Weltraumprogramm.",
+      "archiveId": "d24-p5",
+      "answers": 108,
+      "germanPresentation": 30,
+      "unchangedNames": 78
+    },
+    {
+      "question": "Nenne ein Buch von Roald Dahl.",
+      "archiveId": "d24-p7",
+      "answers": 40,
+      "germanPresentation": 13,
+      "unchangedNames": 27
+    },
+    {
+      "question": "Nenne eine Hauptstadt südlich des Äquators.",
+      "archiveId": "d25-p1",
+      "answers": 49,
+      "germanPresentation": 9,
+      "unchangedNames": 40
+    },
+    {
+      "question": "Nenne eine Echsenart.",
+      "archiveId": "d25-p2",
+      "answers": 62,
+      "germanPresentation": 29,
+      "unchangedNames": 33
+    },
+    {
+      "question": "Nenne ein Gebäck oder eine Donut-Sorte.",
+      "archiveId": "d25-p3",
+      "answers": 84,
+      "germanPresentation": 37,
+      "unchangedNames": 47
+    },
+    {
+      "question": "Nenne einen Grammy-Preisträger für das Album des Jahres.",
+      "archiveId": "d25-p4",
+      "answers": 68,
+      "germanPresentation": 0,
+      "unchangedNames": 68
+    },
+    {
+      "question": "Nenne ein menschliches Hormon.",
+      "archiveId": "d25-p5",
+      "answers": 67,
+      "germanPresentation": 43,
+      "unchangedNames": 24
+    },
+    {
+      "question": "Nenne eine Sportart oder Disziplin, die jemals bei den Winterspielen ausgetragen oder demonstriert wurde.",
+      "archiveId": "d25-p6",
+      "answers": 57,
+      "germanPresentation": 27,
+      "unchangedNames": 30
+    },
+    {
+      "question": "Nenne einen Film aus dem Jahr 2026, der bis zum 8. August mindestens 200 Millionen Dollar weltweit eingespielt hat.",
+      "archiveId": "d25-p7",
+      "answers": 27,
+      "germanPresentation": 4,
+      "unchangedNames": 23
+    },
+    {
+      "question": "Nenne ein Land, das eine Land- oder Seegrenze mit Russland teilt.",
+      "archiveId": "d26-p1",
+      "answers": 33,
+      "germanPresentation": 31,
+      "unchangedNames": 2
+    },
+    {
+      "question": "Nenne ein Reisgericht.",
+      "archiveId": "d26-p3",
+      "answers": 55,
+      "germanPresentation": 8,
+      "unchangedNames": 47
+    },
+    {
+      "question": "Nenne einen Talkshow-Moderator.",
+      "archiveId": "d26-p4",
+      "answers": 48,
+      "germanPresentation": 2,
+      "unchangedNames": 46
+    },
+    {
+      "question": "Nenne einen Webbrowser.",
+      "archiveId": "d26-p5",
+      "answers": 45,
+      "germanPresentation": 8,
+      "unchangedNames": 37
+    },
+    {
+      "question": "Nenne einen Schauspieler, der in einem Spielfilm von Christopher Nolan als Erster im Vorspann genannt wird.",
+      "archiveId": "d26-p6",
+      "answers": 11,
+      "germanPresentation": 0,
+      "unchangedNames": 11
+    },
+    {
+      "question": "Nenne einen Film, den James Cameron inszeniert, geschrieben oder produziert hat.",
+      "archiveId": "d26-p7",
+      "answers": 26,
+      "germanPresentation": 8,
+      "unchangedNames": 18
+    },
+    {
+      "question": "Nenne ein souveränes Land, dessen Flagge sowohl rot als auch weiß ist.",
+      "archiveId": "d27-p1",
+      "answers": 200,
+      "germanPresentation": 166,
+      "unchangedNames": 34
+    },
+    {
+      "question": "Nenne ein vom Aussterben bedrohtes Tier.",
+      "archiveId": "d27-p2",
+      "answers": 197,
+      "germanPresentation": 149,
+      "unchangedNames": 48
+    },
+    {
+      "question": "Nenne ein Teilstück vom Rind.",
+      "archiveId": "d27-p3",
+      "answers": 60,
+      "germanPresentation": 19,
+      "unchangedNames": 41
+    },
+    {
+      "question": "Nenne eine Girlgroup.",
+      "archiveId": "d27-p4",
+      "answers": 99,
+      "germanPresentation": 2,
+      "unchangedNames": 97
+    },
+    {
+      "question": "Nenne einen berühmten Wissenschaftler.",
+      "archiveId": "d27-p5",
+      "answers": 103,
+      "germanPresentation": 2,
+      "unchangedNames": 101
+    },
+    {
+      "question": "Nenne ein Arcade-Spiel.",
+      "archiveId": "d27-p6",
+      "answers": 105,
+      "germanPresentation": 2,
+      "unchangedNames": 103
+    },
+    {
+      "question": "Nenne eine Mannschaft, die an der FIFA-WM 2026 teilgenommen hat.",
+      "archiveId": "d27-p7",
+      "answers": 52,
+      "germanPresentation": 4,
+      "unchangedNames": 48
+    },
+    {
+      "question": "Nenne eine Sprache mit mehr als 50 Millionen Sprechern.",
+      "archiveId": "d28-p1",
+      "answers": 47,
+      "germanPresentation": 10,
+      "unchangedNames": 37
+    },
+    {
+      "question": "Nenne ein nachtaktives Tier.",
+      "archiveId": "d28-p2",
+      "answers": 197,
+      "germanPresentation": 152,
+      "unchangedNames": 45
+    },
+    {
+      "question": "Nenne ein Frühstücksgetränk oder -essen.",
+      "archiveId": "d28-p3",
+      "answers": 191,
+      "germanPresentation": 120,
+      "unchangedNames": 71
+    },
+    {
+      "question": "Nenne ein Mitglied der Avengers.",
+      "archiveId": "d28-p4",
+      "answers": 98,
+      "germanPresentation": 32,
+      "unchangedNames": 66
+    },
+    {
+      "question": "Nenne eine Religion mit mehr als einer Million Anhängern.",
+      "archiveId": "d28-p6",
+      "answers": 79,
+      "germanPresentation": 37,
+      "unchangedNames": 42
+    },
+    {
+      "question": "Nenne ein Möbelstück.",
+      "archiveId": "d29-p2",
+      "answers": 112,
+      "germanPresentation": 66,
+      "unchangedNames": 46
+    },
+    {
+      "question": "Nenne ein Staatsoberhaupt oder einen Regierungschef.",
+      "archiveId": "d29-p3",
+      "answers": 338,
+      "germanPresentation": 0,
+      "unchangedNames": 338
+    },
+    {
+      "question": "Nenne eine Horrorfilm-Franchise.",
+      "archiveId": "d29-p4",
+      "answers": 245,
+      "germanPresentation": 79,
+      "unchangedNames": 166
+    },
+    {
+      "question": "Nenne ein Land, das den Dollar verwendet.",
+      "archiveId": "d29-p5",
+      "answers": 59,
+      "germanPresentation": 46,
+      "unchangedNames": 13
+    },
+    {
+      "question": "Nenne einen Extremsport.",
+      "archiveId": "d29-p6",
+      "answers": 104,
+      "germanPresentation": 56,
+      "unchangedNames": 48
+    },
+    {
+      "question": "Nenne einen Film mit Ryan Gosling.",
+      "archiveId": "d29-p7",
+      "answers": 33,
+      "germanPresentation": 6,
+      "unchangedNames": 27
+    },
+    {
+      "question": "Nenne eine Schildkröten- oder Landschildkrötenart.",
+      "archiveId": "d30-p2",
+      "answers": 81,
+      "germanPresentation": 21,
+      "unchangedNames": 60
+    },
+    {
+      "question": "Nenne eine Marke für kohlensäurehaltige Erfrischungsgetränke.",
+      "archiveId": "d30-p3",
+      "answers": 96,
+      "germanPresentation": 0,
+      "unchangedNames": 96
+    },
+    {
+      "question": "Nenne eine Eismarke.",
+      "archiveId": "d30-p4",
+      "answers": 98,
+      "germanPresentation": 0,
+      "unchangedNames": 98
+    },
+    {
+      "question": "Nenne ein geologisches Äon, eine Ära, Periode oder Epoche.",
+      "archiveId": "d30-p5",
+      "answers": 84,
+      "germanPresentation": 48,
+      "unchangedNames": 36
+    },
+    {
+      "question": "Nenne ein Spielplatzspiel.",
+      "archiveId": "d30-p6",
+      "answers": 103,
+      "germanPresentation": 30,
+      "unchangedNames": 73
+    },
+    {
+      "question": "Nenne eine derzeitige nationale oder gemeinsame Währung (Stand 2026-08-14).",
+      "archiveId": "d30-p7",
+      "answers": 89,
+      "germanPresentation": 16,
+      "unchangedNames": 73
+    },
+    {
+      "question": "Nenne ein Beuteltier.",
+      "archiveId": "d31-p2",
+      "answers": 71,
+      "germanPresentation": 28,
+      "unchangedNames": 43
+    },
+    {
+      "question": "Nenne eine offizielle Disney-Prinzessin.",
+      "archiveId": "d31-p4",
+      "answers": 14,
+      "germanPresentation": 2,
+      "unchangedNames": 12
+    },
+    {
+      "question": "Nenne einen berühmten Physiker.",
+      "archiveId": "d31-p5",
+      "answers": 110,
+      "germanPresentation": 2,
+      "unchangedNames": 108
+    },
+    {
+      "question": "Nenne ein aktuelles oder ehemaliges MLB-Team.",
+      "archiveId": "d31-p6",
+      "answers": 48,
+      "germanPresentation": 0,
+      "unchangedNames": 48
+    },
+    {
+      "question": "Nenne einen Stoff oder ein Textil.",
+      "archiveId": "d31-p7",
+      "answers": 148,
+      "germanPresentation": 71,
+      "unchangedNames": 77
+    },
+    {
+      "question": "Nenne ein Meer.",
+      "archiveId": "d32-p2",
+      "answers": 129,
+      "germanPresentation": 117,
+      "unchangedNames": 12
+    },
+    {
+      "question": "Nenne einen Singvogel.",
+      "archiveId": "d32-p3",
+      "answers": 96,
+      "germanPresentation": 66,
+      "unchangedNames": 30
+    },
+    {
+      "question": "Nenne ein chinesisches Gericht.",
+      "archiveId": "d32-p4",
+      "answers": 111,
+      "germanPresentation": 10,
+      "unchangedNames": 101
+    },
+    {
+      "question": "Nenne eine Star-Trek-Figur.",
+      "archiveId": "d32-p5",
+      "answers": 102,
+      "germanPresentation": 0,
+      "unchangedNames": 102
+    },
+    {
+      "question": "Nenne ein medizinisches Fachgebiet.",
+      "archiveId": "d32-p6",
+      "answers": 95,
+      "germanPresentation": 66,
+      "unchangedNames": 29
+    },
+    {
+      "question": "Nenne eine Schriftart.",
+      "archiveId": "d32-p7",
+      "answers": 94,
+      "germanPresentation": 24,
+      "unchangedNames": 70
+    },
+    {
+      "question": "Nenne einen Fluss in den Amerikas.",
+      "archiveId": "d33-p2",
+      "answers": 90,
+      "germanPresentation": 12,
+      "unchangedNames": 78
+    },
+    {
+      "question": "Nenne eine Looney-Tunes-Figur.",
+      "archiveId": "d33-p4",
+      "answers": 46,
+      "germanPresentation": 0,
+      "unchangedNames": 46
+    },
+    {
+      "question": "Nenne ein Gestein oder Mineral.",
+      "archiveId": "d33-p5",
+      "answers": 177,
+      "germanPresentation": 163,
+      "unchangedNames": 14
+    },
+    {
+      "question": "Nenne einen Teil einer Rüstung.",
+      "archiveId": "d33-p6",
+      "answers": 49,
+      "germanPresentation": 24,
+      "unchangedNames": 25
+    },
+    {
+      "question": "Nenne eine Art von Klebeband.",
+      "archiveId": "d33-p7",
+      "answers": 66,
+      "germanPresentation": 34,
+      "unchangedNames": 32
+    },
+    {
+      "question": "Nenne eine Insel im Mittelmeer.",
+      "archiveId": "d34-p2",
+      "answers": 144,
+      "germanPresentation": 18,
+      "unchangedNames": 126
+    },
+    {
+      "question": "Nenne ein Tier, das Winterschlaf hält.",
+      "archiveId": "d34-p3",
+      "answers": 60,
+      "germanPresentation": 47,
+      "unchangedNames": 13
+    },
+    {
+      "question": "Nenne ein thailändisches oder vietnamesisches Gericht.",
+      "archiveId": "d34-p4",
+      "answers": 89,
+      "germanPresentation": 3,
+      "unchangedNames": 86
+    },
+    {
+      "question": "Nenne eine Pixar-Figur.",
+      "archiveId": "d34-p5",
+      "answers": 269,
+      "germanPresentation": 8,
+      "unchangedNames": 261
+    },
+    {
+      "question": "Nenne einen Planeten oder Zwergplaneten in unserem Sonnensystem.",
+      "archiveId": "d34-p6",
+      "answers": 19,
+      "germanPresentation": 4,
+      "unchangedNames": 15
+    },
+    {
+      "question": "Nenne ein Weichtier oder Schalentier.",
+      "archiveId": "d35-p2",
+      "answers": 68,
+      "germanPresentation": 44,
+      "unchangedNames": 24
+    },
+    {
+      "question": "Nenne ein deutsches Gericht.",
+      "archiveId": "d35-p3",
+      "answers": 99,
+      "germanPresentation": 45,
+      "unchangedNames": 54
+    },
+    {
+      "question": "Nenne einen YouTuber mit mehr als 100 Millionen Abonnenten.",
+      "archiveId": "d35-p4",
+      "answers": 17,
+      "germanPresentation": 0,
+      "unchangedNames": 17
+    },
+    {
+      "question": "Nenne ein subatomares Teilchen.",
+      "archiveId": "d35-p5",
+      "answers": 75,
+      "germanPresentation": 18,
+      "unchangedNames": 57
+    },
+    {
+      "question": "Nenne eine Schuhart.",
+      "archiveId": "d35-p7",
+      "answers": 124,
+      "germanPresentation": 62,
+      "unchangedNames": 62
+    },
+    {
+      "question": "Nenne eine Pilzart.",
+      "archiveId": "d36-p2",
+      "answers": 73,
+      "germanPresentation": 28,
+      "unchangedNames": 45
+    },
+    {
+      "question": "Nenne eine Soße.",
+      "archiveId": "d36-p3",
+      "answers": 134,
+      "germanPresentation": 29,
+      "unchangedNames": 105
+    },
+    {
+      "question": "Nenne eine Bucht oder einen Golf.",
+      "archiveId": "d36-p4",
+      "answers": 181,
+      "germanPresentation": 45,
+      "unchangedNames": 136
+    },
+    {
+      "question": "Nenne eine Energieart.",
+      "archiveId": "d36-p5",
+      "answers": 64,
+      "germanPresentation": 30,
+      "unchangedNames": 34
+    },
+    {
+      "question": "Nenne eine Taschenart.",
+      "archiveId": "d36-p7",
+      "answers": 143,
+      "germanPresentation": 94,
+      "unchangedNames": 49
+    },
+    {
+      "question": "Nenne ein koreanisches Gericht.",
+      "archiveId": "d37-p1",
+      "answers": 84,
+      "germanPresentation": 4,
+      "unchangedNames": 80
+    },
+    {
+      "question": "Nenne einen See.",
+      "archiveId": "d37-p2",
+      "answers": 217,
+      "germanPresentation": 112,
+      "unchangedNames": 105
+    },
+    {
+      "question": "Nenne einen Film, in dem Matt Damon mitspielt.",
+      "archiveId": "d37-p3",
+      "answers": 93,
+      "germanPresentation": 30,
+      "unchangedNames": 63
+    },
+    {
+      "question": "Nenne eine Figur aus Der Herr der Ringe.",
+      "archiveId": "d37-p4",
+      "answers": 115,
+      "germanPresentation": 2,
+      "unchangedNames": 113
+    },
+    {
+      "question": "Nenne eine berühmte Person namens Michael.",
+      "archiveId": "d37-p5",
+      "answers": 135,
+      "germanPresentation": 10,
+      "unchangedNames": 125
+    },
+    {
+      "question": "Nenne ein Casino-Spiel.",
+      "archiveId": "d37-p6",
+      "answers": 51,
+      "germanPresentation": 0,
+      "unchangedNames": 51
+    },
+    {
+      "question": "Nenne eine Gedichtform.",
+      "archiveId": "d37-p7",
+      "answers": 98,
+      "germanPresentation": 29,
+      "unchangedNames": 69
+    },
+    {
+      "question": "Nenne ein Land mit einer Küste am Indischen Ozean.",
+      "archiveId": "d38-p1",
+      "answers": 66,
+      "germanPresentation": 53,
+      "unchangedNames": 13
+    },
+    {
+      "question": "Nenne ein Tier, das im Dschungel lebt.",
+      "archiveId": "d38-p2",
+      "answers": 173,
+      "germanPresentation": 134,
+      "unchangedNames": 39
+    },
+    {
+      "question": "Nenne eine Apfelsorte.",
+      "archiveId": "d38-p3",
+      "answers": 104,
+      "germanPresentation": 17,
+      "unchangedNames": 87
+    },
+    {
+      "question": "Nenne eine Figur aus Friends.",
+      "archiveId": "d38-p4",
+      "answers": 91,
+      "germanPresentation": 12,
+      "unchangedNames": 79
+    },
+    {
+      "question": "Nenne einen Country-Musik-Künstler.",
+      "archiveId": "d38-p5",
+      "answers": 254,
+      "germanPresentation": 2,
+      "unchangedNames": 252
+    },
+    {
+      "question": "Nenne einen Schauspieler, der in einem 2026er Film mitgespielt hat, der weltweit über 100 Millionen Dollar eingespielt hat.",
+      "archiveId": "d38-p6",
+      "answers": 250,
+      "germanPresentation": 4,
+      "unchangedNames": 246
+    },
+    {
+      "question": "Nenne ein Satzzeichen oder typografisches Symbol.",
+      "archiveId": "d38-p7",
+      "answers": 111,
+      "germanPresentation": 72,
+      "unchangedNames": 39
+    },
+    {
+      "question": "Nenne eine Marke von Flaschenwasser.",
+      "archiveId": "d39-p1",
+      "answers": 98,
+      "germanPresentation": 0,
+      "unchangedNames": 98
+    },
+    {
+      "question": "Nenne ein Land, das einst Teil des Britischen Empires war.",
+      "archiveId": "d39-p2",
+      "answers": 125,
+      "germanPresentation": 92,
+      "unchangedNames": 33
+    },
+    {
+      "question": "Nenne eine Schokoladenmarke.",
+      "archiveId": "d39-p3",
+      "answers": 169,
+      "germanPresentation": 2,
+      "unchangedNames": 167
+    },
+    {
+      "question": "Nenne eine exklusive PlayStation-Franchise.",
+      "archiveId": "d39-p4",
+      "answers": 91,
+      "germanPresentation": 2,
+      "unchangedNames": 89
+    },
+    {
+      "question": "Nenne eine Art von Grafik oder Diagramm.",
+      "archiveId": "d39-p5",
+      "answers": 134,
+      "germanPresentation": 78,
+      "unchangedNames": 56
+    },
+    {
+      "question": "Nenne einen Sportfilm.",
+      "archiveId": "d39-p6",
+      "answers": 1096,
+      "germanPresentation": 255,
+      "unchangedNames": 841
+    },
+    {
+      "question": "Nenne eine der Top-25-Anime (nach MyAnimeList-Beliebtheit).",
+      "archiveId": "d39-p7",
+      "answers": 25,
+      "germanPresentation": 0,
+      "unchangedNames": 25
+    },
+    {
+      "question": "Nenne ein Land mit einem Halbmond auf seiner Flagge.",
+      "archiveId": "d40-p1",
+      "answers": 29,
+      "germanPresentation": 26,
+      "unchangedNames": 3
+    },
+    {
+      "question": "Nenne ein Mathematik-Symbol.",
+      "archiveId": "d40-p2",
+      "answers": 94,
+      "germanPresentation": 34,
+      "unchangedNames": 60
+    },
+    {
+      "question": "Nenne ein Streetfood-Gericht aus irgendeiner Küche der Welt.",
+      "archiveId": "d40-p3",
+      "answers": 312,
+      "germanPresentation": 91,
+      "unchangedNames": 221
+    },
+    {
+      "question": "Nenne eine Figur aus The Office (US).",
+      "archiveId": "d40-p4",
+      "answers": 81,
+      "germanPresentation": 2,
+      "unchangedNames": 79
+    },
+    {
+      "question": "Nenne eine Plattform, auf der du kurze Videos scrollen kannst.",
+      "archiveId": "d40-p5",
+      "answers": 42,
+      "germanPresentation": 3,
+      "unchangedNames": 39
+    },
+    {
+      "question": "Nenne ein Tier, das ein Pflanzenfresser ist.",
+      "archiveId": "d40-p6",
+      "answers": 259,
+      "germanPresentation": 206,
+      "unchangedNames": 53
+    },
+    {
+      "question": "Nenne ein Blechblasinstrument.",
+      "archiveId": "d40-p7",
+      "answers": 61,
+      "germanPresentation": 39,
+      "unchangedNames": 22
+    },
+    {
+      "question": "Nenne einen Pfannkuchen oder ein Fladenbrot aus irgendeiner Küche.",
+      "archiveId": "d41-p3",
+      "answers": 186,
+      "germanPresentation": 14,
+      "unchangedNames": 172
+    },
+    {
+      "question": "Nenne eine Netflix-Original-Serie.",
+      "archiveId": "d41-p4",
+      "answers": 1261,
+      "germanPresentation": 13,
+      "unchangedNames": 1248
+    },
+    {
+      "question": "Nenne einen Hollywood-Regisseur.",
+      "archiveId": "d41-p5",
+      "answers": 376,
+      "germanPresentation": 12,
+      "unchangedNames": 364
+    },
+    {
+      "question": "Nenne ein Land mit mehr als 100 Millionen Einwohnern.",
+      "archiveId": "d41-p6",
+      "answers": 32,
+      "germanPresentation": 28,
+      "unchangedNames": 4
+    },
+    {
+      "question": "Nenne ein Handwerk oder eine handwerkliche Tätigkeit – ein Hobby, bei dem man Dinge von Hand herstellt.",
+      "archiveId": "d41-p7",
+      "answers": 157,
+      "germanPresentation": 57,
+      "unchangedNames": 100
+    },
+    {
+      "question": "Nenne ein Land, in dem das Christentum die Mehrheitsreligion ist.",
+      "archiveId": "d42-p1",
+      "answers": 206,
+      "germanPresentation": 168,
+      "unchangedNames": 38
+    },
+    {
+      "question": "Nenne ein prähistorisches Säugetier.",
+      "archiveId": "d42-p2",
+      "answers": 120,
+      "germanPresentation": 9,
+      "unchangedNames": 111
+    },
+    {
+      "question": "Nenne eine Süßigkeit.",
+      "archiveId": "d42-p3",
+      "answers": 556,
+      "germanPresentation": 128,
+      "unchangedNames": 428
+    },
+    {
+      "question": "Nenne einen logischen Fehlschluss.",
+      "archiveId": "d42-p4",
+      "answers": 155,
+      "germanPresentation": 26,
+      "unchangedNames": 129
+    },
+    {
+      "question": "Nenne etwas, das man im Badezimmer findet.",
+      "archiveId": "d42-p5",
+      "answers": 265,
+      "germanPresentation": 175,
+      "unchangedNames": 90
+    },
+    {
+      "question": "Nenne einen NBA-Spieler in der Hall of Fame.",
+      "archiveId": "d42-p6",
+      "answers": 230,
+      "germanPresentation": 82,
+      "unchangedNames": 148
+    },
+    {
+      "question": "Nenne einen Feiertag von irgendwo auf der Welt.",
+      "archiveId": "d42-p7",
+      "answers": 291,
+      "germanPresentation": 119,
+      "unchangedNames": 172
+    },
+    {
+      "question": "Nenne eine Beere.",
+      "archiveId": "d43-p1",
+      "answers": 187,
+      "germanPresentation": 112,
+      "unchangedNames": 75
+    },
+    {
+      "question": "Nenne eine Fluggesellschaft.",
+      "archiveId": "d43-p2",
+      "answers": 213,
+      "germanPresentation": 8,
+      "unchangedNames": 205
+    },
+    {
+      "question": "Nenne eine Donut-Kette.",
+      "archiveId": "d43-p3",
+      "answers": 139,
+      "germanPresentation": 0,
+      "unchangedNames": 139
+    },
+    {
+      "question": "Nenne eine Sprache, die mit dem lateinischen Alphabet geschrieben wird.",
+      "archiveId": "d43-p4",
+      "answers": 268,
+      "germanPresentation": 56,
+      "unchangedNames": 212
+    },
+    {
+      "question": "Nenne ein Betriebssystem für Computer.",
+      "archiveId": "d43-p5",
+      "answers": 246,
+      "germanPresentation": 13,
+      "unchangedNames": 233
+    },
+    {
+      "question": "Nenne ein Tier, das in Gruppen lebt.",
+      "archiveId": "d43-p6",
+      "answers": 369,
+      "germanPresentation": 305,
+      "unchangedNames": 64
+    },
+    {
+      "question": "Nenne ein Land oder Gebiet mit dem Union Jack auf der Flagge.",
+      "archiveId": "d44-p1",
+      "answers": 30,
+      "germanPresentation": 19,
+      "unchangedNames": 11
+    },
+    {
+      "question": "Nenne einen lebenden Vogel, der nicht fliegen kann.",
+      "archiveId": "d44-p2",
+      "answers": 91,
+      "germanPresentation": 53,
+      "unchangedNames": 38
+    },
+    {
+      "question": "Nenne eine Dip-Sauce.",
+      "archiveId": "d44-p3",
+      "answers": 443,
+      "germanPresentation": 54,
+      "unchangedNames": 389
+    },
+    {
+      "question": "Nenne eine Figur aus Game of Thrones.",
+      "archiveId": "d44-p4",
+      "answers": 576,
+      "germanPresentation": 5,
+      "unchangedNames": 571
+    },
+    {
+      "question": "Nenne ein chemisches Element, das bei Raumtemperatur ein Gas ist.",
+      "archiveId": "d44-p5",
+      "answers": 16,
+      "germanPresentation": 10,
+      "unchangedNames": 6
+    },
+    {
+      "question": "Nenne einen Song von Drake.",
+      "archiveId": "d44-p6",
+      "answers": 580,
+      "germanPresentation": 0,
+      "unchangedNames": 580
+    },
+    {
+      "question": "Nenne ein berühmtes Museum.",
+      "archiveId": "d44-p7",
+      "answers": 504,
+      "germanPresentation": 10,
+      "unchangedNames": 494
+    },
+    {
+      "question": "Nenne eine Frucht.",
+      "archiveId": "d45-p1",
+      "answers": 1132,
+      "germanPresentation": 434,
+      "unchangedNames": 698
+    },
+    {
+      "question": "Nenne eine Holzart.",
+      "archiveId": "d45-p2",
+      "answers": 232,
+      "germanPresentation": 116,
+      "unchangedNames": 116
+    },
+    {
+      "question": "Nenne ein fermentiertes Lebensmittel oder Getränk.",
+      "archiveId": "d45-p3",
+      "answers": 197,
+      "germanPresentation": 76,
+      "unchangedNames": 121
+    },
+    {
+      "question": "Nenne eine Microsoft-Anwendung.",
+      "archiveId": "d45-p5",
+      "answers": 349,
+      "germanPresentation": 6,
+      "unchangedNames": 343
+    },
+    {
+      "question": "Nenne ein Mitglied der Justice League.",
+      "archiveId": "d45-p6",
+      "answers": 177,
+      "germanPresentation": 21,
+      "unchangedNames": 156
+    },
+    {
+      "question": "Nenne eine Papierart.",
+      "archiveId": "d45-p7",
+      "answers": 235,
+      "germanPresentation": 96,
+      "unchangedNames": 139
+    },
+    {
+      "question": "Nenne ein Curry-Gericht.",
+      "archiveId": "d46-p3",
+      "answers": 148,
+      "germanPresentation": 7,
+      "unchangedNames": 141
+    },
+    {
+      "question": "Nenne eine Figur aus der Sesamstraße.",
+      "archiveId": "d46-p4",
+      "answers": 236,
+      "germanPresentation": 7,
+      "unchangedNames": 229
+    },
+    {
+      "question": "Nenne ein Apple-Gerät.",
+      "archiveId": "d46-p5",
+      "answers": 64,
+      "germanPresentation": 4,
+      "unchangedNames": 60
+    },
+    {
+      "question": "Nenne eine Bibelfigur.",
+      "archiveId": "d46-p7",
+      "answers": 481,
+      "germanPresentation": 20,
+      "unchangedNames": 461
+    },
+    {
+      "question": "Nenne eine Hauptstadt, die nicht die größte Stadt ihres Landes ist.",
+      "archiveId": "d47-p1",
+      "answers": 52,
+      "germanPresentation": 13,
+      "unchangedNames": 39
+    },
+    {
+      "question": "Nenne ein Lebensmittel, das am Spieß oder Stiel serviert wird.",
+      "archiveId": "d47-p3",
+      "answers": 98,
+      "germanPresentation": 26,
+      "unchangedNames": 72
+    },
+    {
+      "question": "Nenne einen fiktiven Roboter.",
+      "archiveId": "d47-p4",
+      "answers": 448,
+      "germanPresentation": 57,
+      "unchangedNames": 391
+    },
+    {
+      "question": "Nenne einen antiken griechischen Philosophen.",
+      "archiveId": "d47-p5",
+      "answers": 366,
+      "germanPresentation": 13,
+      "unchangedNames": 353
+    },
+    {
+      "question": "Nenne eine Sportart, die über ein Netz gespielt wird.",
+      "archiveId": "d47-p6",
+      "answers": 58,
+      "germanPresentation": 12,
+      "unchangedNames": 46
+    },
+    {
+      "question": "Nenne ein Land mit einer offiziellen Staatsreligion.",
+      "archiveId": "d47-p7",
+      "answers": 80,
+      "germanPresentation": 65,
+      "unchangedNames": 15
+    },
+    {
+      "question": "Nenne ein Land in Ozeanien.",
+      "archiveId": "d48-p1",
+      "answers": 32,
+      "germanPresentation": 25,
+      "unchangedNames": 7
+    },
+    {
+      "question": "Nenne ein frittiertes Essen.",
+      "archiveId": "d48-p3",
+      "answers": 617,
+      "germanPresentation": 51,
+      "unchangedNames": 566
+    },
+    {
+      "question": "Nenne eine Transformers-Figur.",
+      "archiveId": "d48-p4",
+      "answers": 1051,
+      "germanPresentation": 34,
+      "unchangedNames": 1017
+    },
+    {
+      "question": "Nenne ein Mitglied der Beatles.",
+      "archiveId": "d48-p5",
+      "answers": 10,
+      "germanPresentation": 0,
+      "unchangedNames": 10
+    },
+    {
+      "question": "Nenne ein Land mit Überseegebieten oder abhängigen Gebieten.",
+      "archiveId": "d48-p6",
+      "answers": 68,
+      "germanPresentation": 60,
+      "unchangedNames": 8
+    },
+    {
+      "question": "Nenne eine heutige oder frühere Fluggesellschaft mit Sitz in den USA.",
+      "archiveId": "d48-p7",
+      "answers": 2189,
+      "germanPresentation": 29,
+      "unchangedNames": 2160
+    },
+    {
+      "question": "Nenne eine Art oder ein Modell einer Schusswaffe.",
+      "archiveId": "d49-p1",
+      "answers": 679,
+      "germanPresentation": 121,
+      "unchangedNames": 558
+    },
+    {
+      "question": "Nenne ein Lebewesen aus einem Gezeitentümpel.",
+      "archiveId": "d49-p2",
+      "answers": 182,
+      "germanPresentation": 82,
+      "unchangedNames": 100
+    },
+    {
+      "question": "Nenne eine HBO-Serie.",
+      "archiveId": "d49-p3",
+      "answers": 729,
+      "germanPresentation": 11,
+      "unchangedNames": 718
+    },
+    {
+      "question": "Nenne eine Figur aus einem DreamWorks-Animationsfilm.",
+      "archiveId": "d49-p4",
+      "answers": 642,
+      "germanPresentation": 32,
+      "unchangedNames": 610
+    },
+    {
+      "question": "Nenne ein Land, das während des Kalten Krieges ein Verbündeter der Sowjetunion war.",
+      "archiveId": "d49-p5",
+      "answers": 65,
+      "germanPresentation": 51,
+      "unchangedNames": 14
+    },
+    {
+      "question": "Nenne einen Athleten mit mehreren olympischen Goldmedaillen.",
+      "archiveId": "d49-p6",
+      "answers": 1128,
+      "germanPresentation": 57,
+      "unchangedNames": 1071
+    },
+    {
+      "question": "Nenne einen Schachbegriff.",
+      "archiveId": "d49-p7",
+      "answers": 541,
+      "germanPresentation": 108,
+      "unchangedNames": 433
+    },
+    {
+      "question": "Nenne eine Hauptstadt in den Amerikas.",
+      "archiveId": "d50-p1",
+      "answers": 66,
+      "germanPresentation": 13,
+      "unchangedNames": 53
+    },
+    {
+      "question": "Nenne ein Tier, das für seine Tarnung bekannt ist.",
+      "archiveId": "d50-p2",
+      "answers": 265,
+      "germanPresentation": 164,
+      "unchangedNames": 101
+    },
+    {
+      "question": "Nenne ein Land, das im Zweiten Weltkrieg gekämpft hat.",
+      "archiveId": "d50-p3",
+      "answers": 142,
+      "germanPresentation": 119,
+      "unchangedNames": 23
+    },
+    {
+      "question": "Nenne einen Astronauten oder Kosmonauten.",
+      "archiveId": "d50-p5",
+      "answers": 983,
+      "germanPresentation": 2,
+      "unchangedNames": 981
+    },
+    {
+      "question": "Nenne ein Land, das kleiner als Belgien (nach Fläche) ist.",
+      "archiveId": "d50-p7",
+      "answers": 99,
+      "germanPresentation": 72,
+      "unchangedNames": 27
+    },
+    {
+      "question": "Nenne ein europäisches Land.",
+      "archiveId": "d51-p1",
+      "answers": 104,
+      "germanPresentation": 94,
+      "unchangedNames": 10
+    },
+    {
+      "question": "Nenne ein lebendes Säugetier, das in Afrika heimisch ist.",
+      "archiveId": "d51-p2",
+      "answers": 365,
+      "germanPresentation": 227,
+      "unchangedNames": 138
+    },
+    {
+      "question": "Nenne eine amerikanische Fast-Food-Kette.",
+      "archiveId": "d51-p3",
+      "answers": 891,
+      "germanPresentation": 0,
+      "unchangedNames": 891
+    },
+    {
+      "question": "Nenne einen Song von Taylor Swift.",
+      "archiveId": "d51-p4",
+      "answers": 386,
+      "germanPresentation": 4,
+      "unchangedNames": 382
+    },
+    {
+      "question": "Nenne ein Land, das einen Unabhängigkeitstag feiert.",
+      "archiveId": "d51-p5",
+      "answers": 287,
+      "germanPresentation": 230,
+      "unchangedNames": 57
+    },
+    {
+      "question": "Nenne ein Säugetier oder Reptil, das in der Wüste lebt.",
+      "archiveId": "d52-p2",
+      "answers": 431,
+      "germanPresentation": 239,
+      "unchangedNames": 192
+    },
+    {
+      "question": "Nenne eine Art von Keks (Marken zählen nicht).",
+      "archiveId": "d52-p3",
+      "answers": 401,
+      "germanPresentation": 39,
+      "unchangedNames": 362
+    },
+    {
+      "question": "Nenne eine Figur aus der Fernsehserie Seinfeld.",
+      "archiveId": "d52-p4",
+      "answers": 376,
+      "germanPresentation": 22,
+      "unchangedNames": 354
+    },
+    {
+      "question": "Nenne eine Art von Ingenieurwesen.",
+      "archiveId": "d52-p5",
+      "answers": 223,
+      "germanPresentation": 83,
+      "unchangedNames": 140
+    },
+    {
+      "question": "Nenne eine Einheit der Entfernung.",
+      "archiveId": "d52-p6",
+      "answers": 323,
+      "germanPresentation": 61,
+      "unchangedNames": 262
+    },
+    {
+      "question": "Nenne ein medizinisches Instrument.",
+      "archiveId": "d52-p7",
+      "answers": 442,
+      "germanPresentation": 184,
+      "unchangedNames": 258
+    },
+    {
+      "question": "Nenne eine Luxus-Uhrenmarke.",
+      "archiveId": "d53-p1",
+      "answers": 513,
+      "germanPresentation": 11,
+      "unchangedNames": 502
+    },
+    {
+      "question": "Nenne ein Säugetier mit Streifen.",
+      "archiveId": "d53-p2",
+      "answers": 307,
+      "germanPresentation": 144,
+      "unchangedNames": 163
+    },
+    {
+      "question": "Nenne einen Jeansstil oder Jeansschnitt.",
+      "archiveId": "d53-p3",
+      "answers": 111,
+      "germanPresentation": 2,
+      "unchangedNames": 109
+    },
+    {
+      "question": "Nenne einen Disney-Song.",
+      "archiveId": "d53-p4",
+      "answers": 1767,
+      "germanPresentation": 2,
+      "unchangedNames": 1765
+    },
+    {
+      "question": "Nenne ein Verkehrsmittel.",
+      "archiveId": "d53-p5",
+      "answers": 1129,
+      "germanPresentation": 501,
+      "unchangedNames": 628
+    },
+    {
+      "question": "Nenne ein Land, in dem Englisch Amtssprache ist.",
+      "archiveId": "d54-p1",
+      "answers": 106,
+      "germanPresentation": 77,
+      "unchangedNames": 29
+    },
+    {
+      "question": "Nenne ein Tier, das in der Arktis oder Antarktis lebt.",
+      "archiveId": "d54-p2",
+      "answers": 992,
+      "germanPresentation": 541,
+      "unchangedNames": 451
+    },
+    {
+      "question": "Nenne eine tote Sprache.",
+      "archiveId": "d54-p3",
+      "answers": 1430,
+      "germanPresentation": 59,
+      "unchangedNames": 1371
+    },
+    {
+      "question": "Nenne eine Figur aus Mario.",
+      "archiveId": "d54-p4",
+      "answers": 3154,
+      "germanPresentation": 10,
+      "unchangedNames": 3144
+    },
+    {
+      "question": "Nenne einen Sport, der mit einem Stock, Schläger oder Knüppel gespielt wird.",
+      "archiveId": "d54-p6",
+      "answers": 170,
+      "germanPresentation": 8,
+      "unchangedNames": 162
+    },
+    {
+      "question": "Nenne eine Art von Fahrrad.",
+      "archiveId": "d54-p7",
+      "answers": 143,
+      "germanPresentation": 36,
+      "unchangedNames": 107
+    },
+    {
+      "question": "Nenne eine Stadt in Kanada mit über 100.000 Einwohnern.",
+      "archiveId": "d55-p1",
+      "answers": 78,
+      "germanPresentation": 4,
+      "unchangedNames": 74
+    },
+    {
+      "question": "Nenne ein Tier mit Panzer, Schale oder Gehäuse.",
+      "archiveId": "d55-p2",
+      "answers": 1130,
+      "germanPresentation": 193,
+      "unchangedNames": 937
+    },
+    {
+      "question": "Nenne ein Gericht aus dem Nahen Osten.",
+      "archiveId": "d55-p3",
+      "answers": 861,
+      "germanPresentation": 29,
+      "unchangedNames": 832
+    },
+    {
+      "question": "Nenne eine Figur aus Breaking Bad.",
+      "archiveId": "d55-p4",
+      "answers": 207,
+      "germanPresentation": 3,
+      "unchangedNames": 204
+    },
+    {
+      "question": "Nenne einen Krieg, der im 20. Jahrhundert geführt wurde.",
+      "archiveId": "d55-p5",
+      "answers": 1069,
+      "germanPresentation": 18,
+      "unchangedNames": 1051
+    },
+    {
+      "question": "Nenne ein Land, das an Brasilien grenzt.",
+      "archiveId": "d55-p6",
+      "answers": 16,
+      "germanPresentation": 12,
+      "unchangedNames": 4
+    },
+    {
+      "question": "Nenne ein Mobile-Spiel mit über 100 Millionen Downloads.",
+      "archiveId": "d55-p7",
+      "answers": 448,
+      "germanPresentation": 4,
+      "unchangedNames": 444
+    },
+    {
+      "question": "Nenne eine Stadt in Kalifornien.",
+      "archiveId": "d56-p1",
+      "answers": 609,
+      "germanPresentation": 60,
+      "unchangedNames": 549
+    },
+    {
+      "question": "Nenne ein Tier mit Hörnern oder Geweih.",
+      "archiveId": "d56-p2",
+      "answers": 932,
+      "germanPresentation": 265,
+      "unchangedNames": 667
+    },
+    {
+      "question": "Nenne ein spanisches oder portugiesisches Gericht.",
+      "archiveId": "d56-p3",
+      "answers": 851,
+      "germanPresentation": 12,
+      "unchangedNames": 839
+    },
+    {
+      "question": "Nenne ein aquatisches Säugetier.",
+      "archiveId": "d56-p4",
+      "answers": 565,
+      "germanPresentation": 327,
+      "unchangedNames": 238
+    },
+    {
+      "question": "Nenne ein fleischfressendes Säugetier.",
+      "archiveId": "d56-p5",
+      "answers": 1731,
+      "germanPresentation": 467,
+      "unchangedNames": 1264
+    },
+    {
+      "question": "Nenne ein Videospiel-Genre.",
+      "archiveId": "d56-p6",
+      "answers": 246,
+      "germanPresentation": 0,
+      "unchangedNames": 246
+    },
+    {
+      "question": "Nenne eine Bezeichnung am Ende eines Straßennamens, etwa Straße oder Allee.",
+      "archiveId": "d56-p7",
+      "answers": 746,
+      "germanPresentation": 292,
+      "unchangedNames": 454
+    },
+    {
+      "question": "Nenne jemanden mit über 100 Millionen Instagram-Followern.",
+      "archiveId": "d57-p1",
+      "answers": 38,
+      "germanPresentation": 8,
+      "unchangedNames": 30
+    },
+    {
+      "question": "Nenne ein schwarz-weißes Säugetier oder einen schwarz-weißen Vogel.",
+      "archiveId": "d57-p2",
+      "answers": 590,
+      "germanPresentation": 370,
+      "unchangedNames": 220
+    },
+    {
+      "question": "Nenne ein Hautpflegeprodukt.",
+      "archiveId": "d57-p3",
+      "answers": 384,
+      "germanPresentation": 80,
+      "unchangedNames": 304
+    },
+    {
+      "question": "Nenne ein Videospiel, das über 1 Milliarde Dollar eingespielt hat.",
+      "archiveId": "d57-p4",
+      "answers": 156,
+      "germanPresentation": 2,
+      "unchangedNames": 154
+    },
+    {
+      "question": "Nenne einen römischen Gott oder eine römische Göttin.",
+      "archiveId": "d57-p5",
+      "answers": 363,
+      "germanPresentation": 34,
+      "unchangedNames": 329
+    },
+    {
+      "question": "Nenne einen Golfbegriff.",
+      "archiveId": "d57-p6",
+      "answers": 963,
+      "germanPresentation": 137,
+      "unchangedNames": 826
+    },
+    {
+      "question": "Nenne ein literarisches Genre.",
+      "archiveId": "d57-p7",
+      "answers": 1514,
+      "germanPresentation": 217,
+      "unchangedNames": 1297
+    },
+    {
+      "question": "Nenne einen heiligen Text des Christentums, des Islam, des Judentums, des Hinduismus oder des Buddhismus.",
+      "archiveId": "d58-p2",
+      "answers": 1014,
+      "germanPresentation": 52,
+      "unchangedNames": 962
+    },
+    {
+      "question": "Nenne einen Protagonisten eines Marvel Cinematic Universe-Films.",
+      "archiveId": "d58-p3",
+      "answers": 37,
+      "germanPresentation": 8,
+      "unchangedNames": 29
+    },
+    {
+      "question": "Nenne einen Teil des menschlichen Gehirns.",
+      "archiveId": "d58-p5",
+      "answers": 853,
+      "germanPresentation": 145,
+      "unchangedNames": 708
+    },
+    {
+      "question": "Nenne eine Einheit von Gewicht oder Masse.",
+      "archiveId": "d58-p6",
+      "answers": 382,
+      "germanPresentation": 61,
+      "unchangedNames": 321
+    },
+    {
+      "question": "Nenne einen Protagonisten von Shakespeare.",
+      "archiveId": "d58-p7",
+      "answers": 70,
+      "germanPresentation": 35,
+      "unchangedNames": 35
+    },
+    {
+      "question": "Nenne einen Zustelldienst.",
+      "archiveId": "d59-p2",
+      "answers": 1227,
+      "germanPresentation": 4,
+      "unchangedNames": 1223
+    },
+    {
+      "question": "Nenne ein Land in Osteuropa.",
+      "archiveId": "d59-p3",
+      "answers": 41,
+      "germanPresentation": 39,
+      "unchangedNames": 2
+    },
+    {
+      "question": "Nenne eine Bezeichnung für eine große Zahl ab einer Million.",
+      "archiveId": "d59-p4",
+      "answers": 230,
+      "germanPresentation": 31,
+      "unchangedNames": 199
+    },
+    {
+      "question": "Nenne ein chemisches Element, das leichter als Eisen ist.",
+      "archiveId": "d59-p6",
+      "answers": 41,
+      "germanPresentation": 32,
+      "unchangedNames": 9
+    },
+    {
+      "question": "Nenne einen Sport, der ohne Ball gespielt wird.",
+      "archiveId": "d59-p7",
+      "answers": 1479,
+      "germanPresentation": 343,
+      "unchangedNames": 1136
+    },
+    {
+      "question": "Nenne ein Google-Produkt.",
+      "archiveId": "d60-p1",
+      "answers": 988,
+      "germanPresentation": 65,
+      "unchangedNames": 923
+    },
+    {
+      "question": "Nenne ein Tier, das schneller als 65 km/h werden kann.",
+      "archiveId": "d60-p2",
+      "answers": 230,
+      "germanPresentation": 190,
+      "unchangedNames": 40
+    },
+    {
+      "question": "Nenne ein Getreide oder eine Getreidepflanze.",
+      "archiveId": "d60-p3",
+      "answers": 286,
+      "germanPresentation": 53,
+      "unchangedNames": 233
+    },
+    {
+      "question": "Nenne eine Figur aus Avatar: Der Herr der Elemente (nicht Korra).",
+      "archiveId": "d60-p4",
+      "answers": 182,
+      "germanPresentation": 3,
+      "unchangedNames": 179
+    },
+    {
+      "question": "Nenne eine Freizeitparkkette.",
+      "archiveId": "d60-p6",
+      "answers": 104,
+      "germanPresentation": 0,
+      "unchangedNames": 104
+    },
+    {
+      "question": "Nenne ein literarisches Mittel.",
+      "archiveId": "d60-p7",
+      "answers": 868,
+      "germanPresentation": 316,
+      "unchangedNames": 552
+    },
+    {
+      "question": "Nenne eine Hülsenfrucht.",
+      "archiveId": "d61-p3",
+      "answers": 432,
+      "germanPresentation": 181,
+      "unchangedNames": 251
+    },
+    {
+      "question": "Nenne ein Land, dessen Nationalflagge genau zwei Farben hat.",
+      "archiveId": "d61-p4",
+      "answers": 65,
+      "germanPresentation": 52,
+      "unchangedNames": 13
+    },
+    {
+      "question": "Nenne ein Büromaterial.",
+      "archiveId": "d61-p5",
+      "answers": 491,
+      "germanPresentation": 233,
+      "unchangedNames": 258
+    },
+    {
+      "question": "Nenne einen Film mit Timothée Chalamet.",
+      "archiveId": "d61-p6",
+      "answers": 30,
+      "germanPresentation": 9,
+      "unchangedNames": 21
+    },
+    {
+      "question": "Nenne ein New-York-Times-Spiel.",
+      "archiveId": "d61-p7",
+      "answers": 33,
+      "germanPresentation": 0,
+      "unchangedNames": 33
+    },
+    {
+      "question": "Nenne etwas, aus dem man trinkt.",
+      "archiveId": "d62-p1",
+      "answers": 213,
+      "germanPresentation": 96,
+      "unchangedNames": 117
+    },
+    {
+      "question": "Nenne eine Obstsorte mit Kerngehäuse.",
+      "archiveId": "d62-p2",
+      "answers": 58,
+      "germanPresentation": 39,
+      "unchangedNames": 19
+    },
+    {
+      "question": "Nenne ein Blattgemüse.",
+      "archiveId": "d62-p3",
+      "answers": 228,
+      "germanPresentation": 76,
+      "unchangedNames": 152
+    },
+    {
+      "question": "Nenne einen Film von Wes Anderson.",
+      "archiveId": "d62-p4",
+      "answers": 27,
+      "germanPresentation": 5,
+      "unchangedNames": 22
+    },
+    {
+      "question": "Nenne etwas aus einem Erste-Hilfe-Kasten.",
+      "archiveId": "d62-p5",
+      "answers": 160,
+      "germanPresentation": 87,
+      "unchangedNames": 73
+    },
+    {
+      "question": "Nenne eine Art von Diät.",
+      "archiveId": "d62-p6",
+      "answers": 324,
+      "germanPresentation": 40,
+      "unchangedNames": 284
+    },
+    {
+      "question": "Nenne ein Land mit einem Tier auf seiner Flagge (nicht Teilstaaten).",
+      "archiveId": "d62-p7",
+      "answers": 42,
+      "germanPresentation": 31,
+      "unchangedNames": 11
+    },
+    {
+      "question": "Nenne ein domestiziertes Tier (nicht Rassen).",
+      "archiveId": "d63-p1",
+      "answers": 314,
+      "germanPresentation": 217,
+      "unchangedNames": 97
+    },
+    {
+      "question": "Nenne eine Katzenrasse (Fellmuster nicht mitzählen).",
+      "archiveId": "d63-p2",
+      "answers": 159,
+      "germanPresentation": 38,
+      "unchangedNames": 121
+    },
+    {
+      "question": "Nenne ein Wasser-Typ-Pokémon.",
+      "archiveId": "d63-p3",
+      "answers": 288,
+      "germanPresentation": 254,
+      "unchangedNames": 34
+    },
+    {
+      "question": "Nenne einen Film mit Will Smith.",
+      "archiveId": "d63-p4",
+      "answers": 44,
+      "germanPresentation": 12,
+      "unchangedNames": 32
+    },
+    {
+      "question": "Nenne eine Haushaltsaufgabe.",
+      "archiveId": "d63-p5",
+      "answers": 237,
+      "germanPresentation": 12,
+      "unchangedNames": 225
+    },
+    {
+      "question": "Nenne ein modernes Land, das teilweise vom Römischen Reich regiert wurde (nicht Teilstaaten).",
+      "archiveId": "d63-p7",
+      "answers": 91,
+      "germanPresentation": 82,
+      "unchangedNames": 9
+    },
+    {
+      "question": "Nenne einen aktuellen CEO der Fortune 500 (Stand 2026-09-17).",
+      "archiveId": "d64-p1",
+      "answers": 511,
+      "germanPresentation": 0,
+      "unchangedNames": 511
+    },
+    {
+      "question": "Nenne eine Bezeichnung für ein Tierjunges.",
+      "archiveId": "d64-p2",
+      "answers": 339,
+      "germanPresentation": 131,
+      "unchangedNames": 208
+    },
+    {
+      "question": "Nenne ein Land mit Atomwaffen (nicht Teilstaaten).",
+      "archiveId": "d64-p3",
+      "answers": 20,
+      "germanPresentation": 18,
+      "unchangedNames": 2
+    },
+    {
+      "question": "Nenne eine Calisthenics-Übung, bei der nur das eigene Körpergewicht eingesetzt wird.",
+      "archiveId": "d64-p4",
+      "answers": 650,
+      "germanPresentation": 60,
+      "unchangedNames": 590
+    },
+    {
+      "question": "Nenne ein Kleidungsstück (Schmuck, Brillen und Taschen nicht mitzählen).",
+      "archiveId": "d64-p5",
+      "answers": 2633,
+      "germanPresentation": 546,
+      "unchangedNames": 2087
+    },
+    {
+      "question": "Nenne eine soziale Medienplattform, die noch aktiv ist.",
+      "archiveId": "d64-p6",
+      "answers": 268,
+      "germanPresentation": 23,
+      "unchangedNames": 245
+    },
+    {
+      "question": "Nenne ein Gas, das in der Erdatmosphäre vorkommt.",
+      "archiveId": "d64-p7",
+      "answers": 307,
+      "germanPresentation": 163,
+      "unchangedNames": 144
+    },
+    {
+      "question": "Nenne ein Land mit einer Land- oder Seegrenze zu Indien.",
+      "archiveId": "d65-p1",
+      "answers": 15,
+      "germanPresentation": 8,
+      "unchangedNames": 7
+    },
+    {
+      "question": "Nenne einen Beruf, dessen Schwerpunkt die Arbeit mit Kindern ist.",
+      "archiveId": "d65-p2",
+      "answers": 319,
+      "germanPresentation": 78,
+      "unchangedNames": 241
+    },
+    {
+      "question": "Nenne ein Tier, das sein eigenes Licht produziert.",
+      "archiveId": "d65-p3",
+      "answers": 123,
+      "germanPresentation": 25,
+      "unchangedNames": 98
+    },
+    {
+      "question": "Nenne ein Lied von Michael Jackson.",
+      "archiveId": "d65-p4",
+      "answers": 487,
+      "germanPresentation": 0,
+      "unchangedNames": 487
+    },
+    {
+      "question": "Nenne eine Pixar-Hauptfigur; gleichberechtigte Hauptrollen zählen ebenfalls.",
+      "archiveId": "d65-p6",
+      "answers": 107,
+      "germanPresentation": 20,
+      "unchangedNames": 87
+    },
+    {
+      "question": "Nenne eine Art von Gebäude, das für Gebete verwendet wird.",
+      "archiveId": "d65-p7",
+      "answers": 114,
+      "germanPresentation": 56,
+      "unchangedNames": 58
+    },
+    {
+      "question": "Nenne einen Bereich in einer Schule.",
+      "archiveId": "d66-p1",
+      "answers": 576,
+      "germanPresentation": 202,
+      "unchangedNames": 374
+    },
+    {
+      "question": "Nenne eine Art von Milch.",
+      "archiveId": "d66-p3",
+      "answers": 200,
+      "germanPresentation": 53,
+      "unchangedNames": 147
+    },
+    {
+      "question": "Nenne ein Lied von Queen.",
+      "archiveId": "d66-p4",
+      "answers": 262,
+      "germanPresentation": 0,
+      "unchangedNames": 262
+    },
+    {
+      "question": "Nenne einen Sport, der das Fangen eines Balles beinhaltet.",
+      "archiveId": "d66-p5",
+      "answers": 187,
+      "germanPresentation": 14,
+      "unchangedNames": 173
+    },
+    {
+      "question": "Nenne eine Schattierung von Grün.",
+      "archiveId": "d66-p7",
+      "answers": 396,
+      "germanPresentation": 69,
+      "unchangedNames": 327
+    },
+    {
+      "question": "Nenne eine Art von Tür.",
+      "archiveId": "d67-p1",
+      "answers": 253,
+      "germanPresentation": 55,
+      "unchangedNames": 198
+    },
+    {
+      "question": "Nenne etwas, das zum Süßen von Kaffee verwendet wird.",
+      "archiveId": "d67-p2",
+      "answers": 181,
+      "germanPresentation": 71,
+      "unchangedNames": 110
+    },
+    {
+      "question": "Nenne einen Ort, an dem Menschen Bargeld aufbewahren.",
+      "archiveId": "d67-p3",
+      "answers": 262,
+      "germanPresentation": 124,
+      "unchangedNames": 138
+    },
+    {
+      "question": "Nenne ein Land mit Streifen auf seiner Flagge.",
+      "archiveId": "d67-p4",
+      "answers": 254,
+      "germanPresentation": 199,
+      "unchangedNames": 55
+    },
+    {
+      "question": "Nenne eine Krankheit, für die es einen Impfstoff gibt.",
+      "archiveId": "d67-p5",
+      "answers": 296,
+      "germanPresentation": 138,
+      "unchangedNames": 158
+    },
+    {
+      "question": "Nenne eine Gewichtsklasse im Boxen.",
+      "archiveId": "d67-p6",
+      "answers": 36,
+      "germanPresentation": 26,
+      "unchangedNames": 10
+    },
+    {
+      "question": "Nenne ein Muster oder Druckmotiv, beispielsweise Streifen.",
+      "archiveId": "d67-p7",
+      "answers": 709,
+      "germanPresentation": 80,
+      "unchangedNames": 629
+    },
+    {
+      "question": "Nenne die am weitesten verbreitete Sprache eines asiatischen Landes.",
+      "archiveId": "d68-p1",
+      "answers": 59,
+      "germanPresentation": 7,
+      "unchangedNames": 52
+    },
+    {
+      "question": "Nenne ein Säugetier oder Reptil, das in Flüssen lebt.",
+      "archiveId": "d68-p2",
+      "answers": 567,
+      "germanPresentation": 132,
+      "unchangedNames": 435
+    },
+    {
+      "question": "Nenne eine Stadt in Japan.",
+      "archiveId": "d68-p3",
+      "answers": 870,
+      "germanPresentation": 10,
+      "unchangedNames": 860
+    },
+    {
+      "question": "Nenne ein Feld auf einem Monopoly-Spielbrett der US- oder UK-Ausgabe.",
+      "archiveId": "d68-p4",
+      "answers": 66,
+      "germanPresentation": 5,
+      "unchangedNames": 61
+    },
+    {
+      "question": "Nenne einen sichtbaren oder berührbaren Bestandteil eines Smartphones; Zubehör zählt nicht.",
+      "archiveId": "d68-p6",
+      "answers": 88,
+      "germanPresentation": 35,
+      "unchangedNames": 53
+    },
+    {
+      "question": "Nenne eine Salatsoße.",
+      "archiveId": "d69-p1",
+      "answers": 268,
+      "germanPresentation": 19,
+      "unchangedNames": 249
+    },
+    {
+      "question": "Nenne eine Sprache, deren Bezeichnung von einem Land oder Landesteil abgeleitet ist, etwa England und Englisch.",
+      "archiveId": "d69-p2",
+      "answers": 183,
+      "germanPresentation": 23,
+      "unchangedNames": 160
+    },
+    {
+      "question": "Nenne eine der aktuellen Top-200-Websites (nach Tranco; benannte Sites und Dienste).",
+      "archiveId": "d69-p3",
+      "answers": 115,
+      "germanPresentation": 2,
+      "unchangedNames": 113
+    },
+    {
+      "question": "Nenne eine Suchmaschine.",
+      "archiveId": "d69-p4",
+      "answers": 621,
+      "germanPresentation": 47,
+      "unchangedNames": 574
+    },
+    {
+      "question": "Nenne ein mathematisches Teilgebiet.",
+      "archiveId": "d69-p5",
+      "answers": 547,
+      "germanPresentation": 123,
+      "unchangedNames": 424
+    },
+    {
+      "question": "Nenne eine Marke, die eine eigene Sonnenbrillenkollektion hat.",
+      "archiveId": "d69-p6",
+      "answers": 1405,
+      "germanPresentation": 34,
+      "unchangedNames": 1371
+    },
+    {
+      "question": "Nenne einen Bartstil.",
+      "archiveId": "d69-p7",
+      "answers": 135,
+      "germanPresentation": 21,
+      "unchangedNames": 114
+    },
+    {
+      "question": "Nenne eine Methode, Eier zuzubereiten.",
+      "archiveId": "d70-p1",
+      "answers": 289,
+      "germanPresentation": 39,
+      "unchangedNames": 250
+    },
+    {
+      "question": "Nenne einen Promi-Koch.",
+      "archiveId": "d70-p3",
+      "answers": 2109,
+      "germanPresentation": 6,
+      "unchangedNames": 2103
+    },
+    {
+      "question": "Nenne einen Telefonanbieter.",
+      "archiveId": "d70-p5",
+      "answers": 3942,
+      "germanPresentation": 15,
+      "unchangedNames": 3927
+    },
+    {
+      "question": "Nenne ein Computer-Teil (Zubehör zählt nicht).",
+      "archiveId": "d70-p6",
+      "answers": 386,
+      "germanPresentation": 142,
+      "unchangedNames": 244
+    },
+    {
+      "question": "Nenne etwas, das aus einer Dose gesprüht wird (Pumpflaschen zählen nicht).",
+      "archiveId": "d70-p7",
+      "answers": 234,
+      "germanPresentation": 58,
+      "unchangedNames": 176
+    },
+    {
+      "question": "Nenne eine US-Stadt mit über 100.000 Einwohnern.",
+      "archiveId": "d71-p1",
+      "answers": 380,
+      "germanPresentation": 48,
+      "unchangedNames": 332
+    },
+    {
+      "question": "Nenne ein Land, das an China grenzt.",
+      "archiveId": "d71-p2",
+      "answers": 24,
+      "germanPresentation": 17,
+      "unchangedNames": 7
+    },
+    {
+      "question": "Nenne ein Küchengerät, das mit Energie betrieben wird.",
+      "archiveId": "d71-p3",
+      "answers": 187,
+      "germanPresentation": 60,
+      "unchangedNames": 127
+    },
+    {
+      "question": "Nenne einen Bösewicht aus einem Marvel Cinematic Universe-Film.",
+      "archiveId": "d71-p4",
+      "answers": 239,
+      "germanPresentation": 34,
+      "unchangedNames": 205
+    },
+    {
+      "question": "Nenne eine Marke von Mobiltelefonen.",
+      "archiveId": "d71-p6",
+      "answers": 585,
+      "germanPresentation": 6,
+      "unchangedNames": 579
+    },
+    {
+      "question": "Nenne eine Plattform, die Menschen zum Musikhören nutzen (Apps und Dienste, keine Geräte).",
+      "archiveId": "d71-p7",
+      "answers": 599,
+      "germanPresentation": 19,
+      "unchangedNames": 580
+    },
+    {
+      "question": "Nenne die meistgesprochene Sprache eines afrikanischen Landes.",
+      "archiveId": "d72-p3",
+      "answers": 47,
+      "germanPresentation": 11,
+      "unchangedNames": 36
+    },
+    {
+      "question": "Nenne ein Videospiel, das Mario enthält.",
+      "archiveId": "d72-p4",
+      "answers": 256,
+      "germanPresentation": 0,
+      "unchangedNames": 256
+    },
+    {
+      "question": "Nenne den vollständigen Namen eines internationalen Flughafens.",
+      "archiveId": "d72-p5",
+      "answers": 2022,
+      "germanPresentation": 0,
+      "unchangedNames": 2022
+    },
+    {
+      "question": "Nenne ein Gartengerät.",
+      "archiveId": "d72-p6",
+      "answers": 232,
+      "germanPresentation": 102,
+      "unchangedNames": 130
+    },
+    {
+      "question": "Nenne einen Börsenhandel-Begriff.",
+      "archiveId": "d72-p7",
+      "answers": 1775,
+      "germanPresentation": 364,
+      "unchangedNames": 1411
+    },
+    {
+      "question": "Nenne eine App, die auf einem iPhone vorinstalliert ist.",
+      "archiveId": "d73-p1",
+      "answers": 60,
+      "germanPresentation": 2,
+      "unchangedNames": 58
+    },
+    {
+      "question": "Nenne eine Deodorant-Marke.",
+      "archiveId": "d73-p2",
+      "answers": 733,
+      "germanPresentation": 14,
+      "unchangedNames": 719
+    },
+    {
+      "question": "Nenne etwas mit Rädern, das kein Fahrzeug ist.",
+      "archiveId": "d73-p3",
+      "answers": 461,
+      "germanPresentation": 178,
+      "unchangedNames": 283
+    },
+    {
+      "question": "Nenne eine Rot-Tönung (Rosa zählt nicht).",
+      "archiveId": "d73-p4",
+      "answers": 524,
+      "germanPresentation": 99,
+      "unchangedNames": 425
+    },
+    {
+      "question": "Nenne einen Staat, Bundesstaat oder eine Provinz, der beziehungsweise die offiziell als State oder Province bezeichnet wird.",
+      "archiveId": "d73-p5",
+      "answers": 2462,
+      "germanPresentation": 252,
+      "unchangedNames": 2210
+    },
+    {
+      "question": "Nenne eine Stadt mit einer U-Bahn.",
+      "archiveId": "d73-p7",
+      "answers": 569,
+      "germanPresentation": 156,
+      "unchangedNames": 413
+    },
+    {
+      "question": "Nenne ein abhängiges Gebiet, einen Landesteil oder eine autonome Region.",
+      "archiveId": "d74-p2",
+      "answers": 209,
+      "germanPresentation": 100,
+      "unchangedNames": 109
+    },
+    {
+      "question": "Nenne einen Beruf im Finanzwesen.",
+      "archiveId": "d74-p5",
+      "answers": 177,
+      "germanPresentation": 69,
+      "unchangedNames": 108
+    },
+    {
+      "question": "Nenne eine Sportart, die einen Torwart hat.",
+      "archiveId": "d74-p6",
+      "answers": 77,
+      "germanPresentation": 23,
+      "unchangedNames": 54
+    },
+    {
+      "question": "Nenne eine Art von Karte (wie eine Geburtstagskarte oder eine Bibliothekskarte).",
+      "archiveId": "d74-p7",
+      "answers": 614,
+      "germanPresentation": 138,
+      "unchangedNames": 476
+    },
+    {
+      "question": "Nenne eine Superkraft, die Superman in Comics oder Filmen hat.",
+      "archiveId": "d75-p1",
+      "answers": 108,
+      "germanPresentation": 26,
+      "unchangedNames": 82
+    },
+    {
+      "question": "Nenne etwas, das verwendet wird, um die Sonne zu blockieren.",
+      "archiveId": "d75-p3",
+      "answers": 475,
+      "germanPresentation": 108,
+      "unchangedNames": 367
+    },
+    {
+      "question": "Nenne eine Marke von Laptops.",
+      "archiveId": "d75-p4",
+      "answers": 803,
+      "germanPresentation": 19,
+      "unchangedNames": 784
+    },
+    {
+      "question": "Nenne einen Teil eines Flugzeugs, innen oder außen (alles, was eingebaut oder montiert ist).",
+      "archiveId": "d75-p5",
+      "answers": 1255,
+      "germanPresentation": 442,
+      "unchangedNames": 813
+    },
+    {
+      "question": "Nenne einen Körperteil, den Menschen mehr als zweimal haben (wie Finger).",
+      "archiveId": "d75-p6",
+      "answers": 1752,
+      "germanPresentation": 269,
+      "unchangedNames": 1483
+    },
+    {
+      "question": "Nenne ein Kleidungsstück für formelle Anlässe (Kleidung und Schuhe, nicht Schmuck).",
+      "archiveId": "d75-p7",
+      "answers": 843,
+      "germanPresentation": 143,
+      "unchangedNames": 700
+    },
+    {
+      "question": "Nenne ein Symbol oder eine Form, die auf einer Nationalflagge erscheint (wie ein Stern).",
+      "archiveId": "d76-p2",
+      "answers": 250,
+      "germanPresentation": 103,
+      "unchangedNames": 147
+    },
+    {
+      "question": "Nenne eine Art von Versicherungspolice (alle Fahrzeuge zählen als eine Art).",
+      "archiveId": "d76-p4",
+      "answers": 477,
+      "germanPresentation": 75,
+      "unchangedNames": 402
+    },
+    {
+      "question": "Nenne einen Song mit über einer Milliarde Streams auf Spotify.",
+      "archiveId": "d76-p5",
+      "answers": 1373,
+      "germanPresentation": 11,
+      "unchangedNames": 1362
+    },
+    {
+      "question": "Nenne ein Tier, das länger als 10 Fuß (3 m) wachsen kann, einschließlich des Schwanzes.",
+      "archiveId": "d76-p6",
+      "answers": 468,
+      "germanPresentation": 270,
+      "unchangedNames": 198
+    },
+    {
+      "question": "Nenne ein Produkt, das zum Waschen oder Stylen von Haaren verwendet wird (Produkttypen, nicht Marken).",
+      "archiveId": "d76-p7",
+      "answers": 296,
+      "germanPresentation": 71,
+      "unchangedNames": 225
+    },
+    {
+      "question": "Nenne eine Kette von Coffeeshops.",
+      "archiveId": "d77-p1",
+      "answers": 1657,
+      "germanPresentation": 0,
+      "unchangedNames": 1657
+    },
+    {
+      "question": "Nenne einen Gegenstand, der mit Luft befüllt werden soll.",
+      "archiveId": "d77-p2",
+      "answers": 329,
+      "germanPresentation": 105,
+      "unchangedNames": 224
+    },
+    {
+      "question": "Nenne ein medizinisches bildgebendes Verfahren; reine Messkurven wie ein EKG zählen nicht.",
+      "archiveId": "d77-p3",
+      "answers": 407,
+      "germanPresentation": 35,
+      "unchangedNames": 372
+    },
+    {
+      "question": "Nenne ein elektrisches Werkzeug.",
+      "archiveId": "d77-p4",
+      "answers": 404,
+      "germanPresentation": 166,
+      "unchangedNames": 238
+    },
+    {
+      "question": "Nenne eine Behausung oder einen Unterschlupf für Tiere, keinen Lebensraum wie das Meer.",
+      "archiveId": "d77-p5",
+      "answers": 264,
+      "germanPresentation": 127,
+      "unchangedNames": 137
+    },
+    {
+      "question": "Nenne ein Zubehör für ein Telefon.",
+      "archiveId": "d77-p6",
+      "answers": 236,
+      "germanPresentation": 54,
+      "unchangedNames": 182
+    },
+    {
+      "question": "Nenne eine reale Sprache, die ein nicht-lateinisches Schreibsystem verwendet.",
+      "archiveId": "d77-p7",
+      "answers": 843,
+      "germanPresentation": 101,
+      "unchangedNames": 742
+    },
+    {
+      "question": "Nenne eine Funktion auf Instagram.",
+      "archiveId": "d78-p1",
+      "answers": 561,
+      "germanPresentation": 109,
+      "unchangedNames": 452
+    },
+    {
+      "question": "Nenne eine Soße, die in der asiatischen Küche verwendet wird (wie Sojasoße).",
+      "archiveId": "d78-p2",
+      "answers": 614,
+      "germanPresentation": 12,
+      "unchangedNames": 602
+    },
+    {
+      "question": "Nenne ein Musikfestival.",
+      "archiveId": "d78-p3",
+      "answers": 17576,
+      "germanPresentation": 2,
+      "unchangedNames": 17574
+    },
+    {
+      "question": "Nenne eine gelbe Frucht oder ein gelbes Gemüse.",
+      "archiveId": "d78-p5",
+      "answers": 473,
+      "germanPresentation": 109,
+      "unchangedNames": 364
+    },
+    {
+      "question": "Nenne eine App, mit der man Videotelefonate tätigen kann.",
+      "archiveId": "d78-p6",
+      "answers": 754,
+      "germanPresentation": 6,
+      "unchangedNames": 748
+    },
+    {
+      "question": "Nenne einen Ort im Harry-Potter-Universum.",
+      "archiveId": "d79-p1",
+      "answers": 1618,
+      "germanPresentation": 142,
+      "unchangedNames": 1476
+    },
+    {
+      "question": "Nenne eine Art Wurf, Schuss oder Schlag aus einer Sportart, etwa einen Freiwurf.",
+      "archiveId": "d79-p2",
+      "answers": 678,
+      "germanPresentation": 104,
+      "unchangedNames": 574
+    },
+    {
+      "question": "Nenne einen Teil eines Schuhs.",
+      "archiveId": "d79-p3",
+      "answers": 276,
+      "germanPresentation": 50,
+      "unchangedNames": 226
+    },
+    {
+      "question": "Nenne ein Land mit Gletschern.",
+      "archiveId": "d79-p5",
+      "answers": 98,
+      "germanPresentation": 87,
+      "unchangedNames": 11
+    },
+    {
+      "question": "Nenne eine Standardsteuerart (derzeit in mindestens einem Land erhoben).",
+      "archiveId": "d79-p6",
+      "answers": 196,
+      "germanPresentation": 71,
+      "unchangedNames": 125
+    },
+    {
+      "question": "Nenne ein TV-Genre.",
+      "archiveId": "d80-p1",
+      "answers": 443,
+      "germanPresentation": 92,
+      "unchangedNames": 351
+    },
+    {
+      "question": "Nenne ein Gerät zum Vergrößern von Objekten.",
+      "archiveId": "d80-p2",
+      "answers": 263,
+      "germanPresentation": 93,
+      "unchangedNames": 170
+    },
+    {
+      "question": "Nenne eine Art von unterirdischer Struktur (vom Menschen gebaut).",
+      "archiveId": "d80-p3",
+      "answers": 246,
+      "germanPresentation": 103,
+      "unchangedNames": 143
+    },
+    {
+      "question": "Nenne einen Körperteil, den ein Tier zum Kampf oder zur Verteidigung hat.",
+      "archiveId": "d80-p4",
+      "answers": 268,
+      "germanPresentation": 145,
+      "unchangedNames": 123
+    },
+    {
+      "question": "Nenne eine Wurstsorte.",
+      "archiveId": "d80-p5",
+      "answers": 604,
+      "germanPresentation": 34,
+      "unchangedNames": 570
+    },
+    {
+      "question": "Nenne ein Brett-, Karten- oder Handspiel, das für genau zwei Spieler gedacht ist.",
+      "archiveId": "d80-p6",
+      "answers": 3939,
+      "germanPresentation": 32,
+      "unchangedNames": 3907
+    },
+    {
+      "question": "Nenne ein Land in Nord-, Mittel- oder Südamerika, in dem Spanisch nicht die meistgesprochene Sprache ist.",
+      "archiveId": "d80-p7",
+      "answers": 32,
+      "germanPresentation": 26,
+      "unchangedNames": 6
+    },
+    {
+      "question": "Nenne einen YouTuber mit mehr als 10 Millionen Abonnenten.",
+      "archiveId": "d81-p1",
+      "answers": 2656,
+      "germanPresentation": 10,
+      "unchangedNames": 2646
+    },
+    {
+      "question": "Nenne eine Tankstellenkette.",
+      "archiveId": "d81-p2",
+      "answers": 2864,
+      "germanPresentation": 0,
+      "unchangedNames": 2864
+    },
+    {
+      "question": "Nenne einen Ordner in einem E-Mail-Postfach.",
+      "archiveId": "d81-p4",
+      "answers": 145,
+      "germanPresentation": 30,
+      "unchangedNames": 115
+    },
+    {
+      "question": "Nenne eine Angabe auf einer Nährwertkennzeichnung.",
+      "archiveId": "d81-p5",
+      "answers": 166,
+      "germanPresentation": 96,
+      "unchangedNames": 70
+    },
+    {
+      "question": "Nenne ein Land mit größerer Fläche als das Vereinigte Königreich.",
+      "archiveId": "d81-p6",
+      "answers": 141,
+      "germanPresentation": 119,
+      "unchangedNames": 22
+    },
+    {
+      "question": "Nenne eine religiöse Rolle oder einen Titel im Christentum, Islam, Buddhismus, Hinduismus oder Judentum.",
+      "archiveId": "d81-p7",
+      "answers": 1374,
+      "germanPresentation": 225,
+      "unchangedNames": 1149
+    },
+    {
+      "question": "Nenne einen Künstler mit mindestens 1 Million monatlichen Hörern auf Spotify.",
+      "archiveId": "d82-p1",
+      "answers": 14696,
+      "germanPresentation": 115,
+      "unchangedNames": 14581
+    },
+    {
+      "question": "Nenne einen Teil einer Frucht.",
+      "archiveId": "d82-p2",
+      "answers": 195,
+      "germanPresentation": 104,
+      "unchangedNames": 91
+    },
+    {
+      "question": "Nenne eine TV-Marke.",
+      "archiveId": "d82-p4",
+      "answers": 1212,
+      "germanPresentation": 38,
+      "unchangedNames": 1174
+    },
+    {
+      "question": "Nenne etwas, das man mit einer Tastenkombination machen kann (wie Kopieren mit Strg+C).",
+      "archiveId": "d82-p5",
+      "answers": 828,
+      "germanPresentation": 29,
+      "unchangedNames": 799
+    },
+    {
+      "question": "Nenne eine Website oder App, die hauptsächlich für Bewertungen und Rezensionen erstellt wurde.",
+      "archiveId": "d82-p7",
+      "answers": 720,
+      "germanPresentation": 0,
+      "unchangedNames": 720
+    },
+    {
+      "question": "Nenne eine Sportart oder ein Spiel, bei dem ein Ball oder Gegenstand in ein Loch, einen Ring, Korb oder eine Tasche gelangen muss, um zu punkten.",
+      "archiveId": "d83-p2",
+      "answers": 238,
+      "germanPresentation": 2,
+      "unchangedNames": 236
+    },
+    {
+      "question": "Nenne eine Sicherheitseinrichtung für Zuhause, etwa einen Rauchmelder.",
+      "archiveId": "d83-p4",
+      "answers": 207,
+      "germanPresentation": 56,
+      "unchangedNames": 151
+    },
+    {
+      "question": "Nenne etwas, das man mit einem Foto in einem Fotoeditor auf dem Telefon machen kann (wie Beschneiden).",
+      "archiveId": "d83-p5",
+      "answers": 393,
+      "germanPresentation": 82,
+      "unchangedNames": 311
+    },
+    {
+      "question": "Nenne eine Form der Entlohnung, die ein Arbeitnehmer erhalten kann.",
+      "archiveId": "d83-p6",
+      "answers": 387,
+      "germanPresentation": 79,
+      "unchangedNames": 308
+    },
+    {
+      "question": "Nenne eine Dating-App.",
+      "archiveId": "d84-p1",
+      "answers": 2206,
+      "germanPresentation": 14,
+      "unchangedNames": 2192
+    },
+    {
+      "question": "Nenne ein Lebensmittel, das man reibt (Käsesorten zählen einmal).",
+      "archiveId": "d84-p2",
+      "answers": 332,
+      "germanPresentation": 269,
+      "unchangedNames": 63
+    },
+    {
+      "question": "Nenne einen Stand-up-Comedian.",
+      "archiveId": "d84-p3",
+      "answers": 7364,
+      "germanPresentation": 8,
+      "unchangedNames": 7356
+    },
+    {
+      "question": "Nenne ein pistolenförmiges Gerät, das keine Waffe ist, etwa eine Heißklebepistole.",
+      "archiveId": "d84-p4",
+      "answers": 233,
+      "germanPresentation": 44,
+      "unchangedNames": 189
+    },
+    {
+      "question": "Nenne eine Art von Live-Bühnenshow (wie eine Zaubershow).",
+      "archiveId": "d84-p6",
+      "answers": 792,
+      "germanPresentation": 2,
+      "unchangedNames": 790
+    },
+    {
+      "question": "Nenne einen Einzelsport (keine Kartenspiele, Brettspiele oder E-Sports).",
+      "archiveId": "d84-p7",
+      "answers": 2008,
+      "germanPresentation": 417,
+      "unchangedNames": 1591
+    },
+    {
+      "question": "Nenne etwas, das einen Filter verwendet (physische Filter, keine Fotofilter).",
+      "archiveId": "d85-p2",
+      "answers": 2280,
+      "germanPresentation": 1042,
+      "unchangedNames": 1238
+    },
+    {
+      "question": "Nenne einen Teil eines Hemdes.",
+      "archiveId": "d85-p3",
+      "answers": 255,
+      "germanPresentation": 63,
+      "unchangedNames": 192
+    },
+    {
+      "question": "Nenne ein Symptom einer Erkältung oder Grippe.",
+      "archiveId": "d85-p4",
+      "answers": 143,
+      "germanPresentation": 70,
+      "unchangedNames": 73
+    },
+    {
+      "question": "Nenne eine Zeremonie oder Feier, die ein Lebensstadium markiert.",
+      "archiveId": "d85-p6",
+      "answers": 1072,
+      "germanPresentation": 67,
+      "unchangedNames": 1005
+    },
+    {
+      "question": "Nenne einen Sport, der normalerweise auf Gras gespielt wird.",
+      "archiveId": "d85-p7",
+      "answers": 426,
+      "germanPresentation": 79,
+      "unchangedNames": 347
+    },
+    {
+      "question": "Nenne eine Art von Kamera (keine Marken).",
+      "archiveId": "d86-p7",
+      "answers": 220,
+      "germanPresentation": 55,
+      "unchangedNames": 165
+    },
+    {
+      "question": "Nenne ein Musikinstrument.",
+      "archiveId": "d87-p1",
+      "answers": 3163,
+      "germanPresentation": 77,
+      "unchangedNames": 3086
+    },
+    {
+      "question": "Nenne ein Gemüse, das botanisch eine Frucht ist.",
+      "archiveId": "d87-p2",
+      "answers": 10181,
+      "germanPresentation": 150,
+      "unchangedNames": 10031
+    },
+    {
+      "question": "Nenne einen Körperteil, den Menschen genau zweimal haben (wie Ohren).",
+      "archiveId": "d87-p3",
+      "answers": 2794,
+      "germanPresentation": 260,
+      "unchangedNames": 2534
+    },
+    {
+      "question": "Nenne eine Saftmarke.",
+      "archiveId": "d87-p5",
+      "answers": 1017,
+      "germanPresentation": 4,
+      "unchangedNames": 1013
+    },
+    {
+      "question": "Nenne ein Backgerät.",
+      "archiveId": "d87-p6",
+      "answers": 320,
+      "germanPresentation": 94,
+      "unchangedNames": 226
+    },
+    {
+      "question": "Nenne etwas, das in einer Rolle verkauft wird.",
+      "archiveId": "d88-p1",
+      "answers": 846,
+      "germanPresentation": 292,
+      "unchangedNames": 554
+    },
+    {
+      "question": "Nenne eine Art von Tisch (das Möbelstück).",
+      "archiveId": "d88-p2",
+      "answers": 842,
+      "germanPresentation": 88,
+      "unchangedNames": 754
+    },
+    {
+      "question": "Nenne ein Metall, das ein reines chemisches Element ist; Legierungen wie Stahl zählen nicht.",
+      "archiveId": "d88-p3",
+      "answers": 128,
+      "germanPresentation": 65,
+      "unchangedNames": 63
+    },
+    {
+      "question": "Nenne eine Art von Lizenz oder Genehmigung, die eine Person erhalten kann.",
+      "archiveId": "d88-p4",
+      "answers": 922,
+      "germanPresentation": 0,
+      "unchangedNames": 922
+    },
+    {
+      "question": "Nenne eine App oder einen Dienst zum Bezahlen oder Senden von Geld (wie PayPal; Banken und Kartennetzwerke zählen nicht).",
+      "archiveId": "d88-p5",
+      "answers": 1987,
+      "germanPresentation": 16,
+      "unchangedNames": 1971
+    },
+    {
+      "question": "Nenne eine Rennsportart, bei der gewinnt, wer zuerst das Ziel erreicht.",
+      "archiveId": "d88-p6",
+      "answers": 670,
+      "germanPresentation": 115,
+      "unchangedNames": 555
+    },
+    {
+      "question": "Nenne ein Land mit einer Landgrenze zum Irak oder Iran.",
+      "archiveId": "d88-p7",
+      "answers": 22,
+      "germanPresentation": 19,
+      "unchangedNames": 3
+    },
+    {
+      "question": "Nenne eine Job-Suchwebsite oder -App (wie LinkedIn).",
+      "archiveId": "d89-p1",
+      "answers": 9471,
+      "germanPresentation": 8,
+      "unchangedNames": 9463
+    },
+    {
+      "question": "Nenne ein Winterkleidungsstück.",
+      "archiveId": "d89-p2",
+      "answers": 564,
+      "germanPresentation": 115,
+      "unchangedNames": 449
+    },
+    {
+      "question": "Nenne einen Körperteil, den Tiere haben, aber Menschen nicht.",
+      "archiveId": "d89-p3",
+      "answers": 966,
+      "germanPresentation": 199,
+      "unchangedNames": 767
+    },
+    {
+      "question": "Nenne eine Hotelmarke.",
+      "archiveId": "d89-p4",
+      "answers": 4044,
+      "germanPresentation": 4,
+      "unchangedNames": 4040
+    },
+    {
+      "question": "Nenne eine Abteilung in einem Unternehmen (wie Personalwesen).",
+      "archiveId": "d89-p5",
+      "answers": 1345,
+      "germanPresentation": 0,
+      "unchangedNames": 1345
+    },
+    {
+      "question": "Nenne eine Funktion auf YouTube.",
+      "archiveId": "d89-p7",
+      "answers": 619,
+      "germanPresentation": 104,
+      "unchangedNames": 515
+    },
+    {
+      "question": "Nenne ein Produkt oder einen Dienst von Amazon oder ein Unternehmen im Besitz von Amazon.",
+      "archiveId": "d90-p1",
+      "answers": 1126,
+      "germanPresentation": 0,
+      "unchangedNames": 1126
+    },
+    {
+      "question": "Nenne ein Verkehrsdelikt oder einen Verstoß gegen Verkehrsregeln.",
+      "archiveId": "d90-p3",
+      "answers": 256,
+      "germanPresentation": 13,
+      "unchangedNames": 243
+    },
+    {
+      "question": "Nenne eine fiktive Figur, die von mehr als einem Schauspieler in Live-Action-Filmen gespielt wurde.",
+      "archiveId": "d90-p4",
+      "answers": 2717,
+      "germanPresentation": 88,
+      "unchangedNames": 2629
+    },
+    {
+      "question": "Nenne eine Stadt in Asien mit über einer Million Einwohnern innerhalb der Stadtgrenzen.",
+      "archiveId": "d90-p6",
+      "answers": 597,
+      "germanPresentation": 98,
+      "unchangedNames": 499
+    },
+    {
+      "question": "Nenne eine Shampoo-Marke.",
+      "archiveId": "d90-p7",
+      "answers": 1842,
+      "germanPresentation": 12,
+      "unchangedNames": 1830
+    },
+    {
+      "question": "Nenne eine App oder Website zum Schreiben von Dokumenten oder Notizen.",
+      "archiveId": "d91-p1",
+      "answers": 3925,
+      "germanPresentation": 18,
+      "unchangedNames": 3907
+    },
+    {
+      "question": "Nenne eine Sprache, die am meisten in mindestens einem Land in den Amerikas gesprochen wird.",
+      "archiveId": "d91-p2",
+      "answers": 13,
+      "germanPresentation": 0,
+      "unchangedNames": 13
+    },
+    {
+      "question": "Nenne die Hauptstadt eines Gebiets, das offiziell als State oder Province bezeichnet wird.",
+      "archiveId": "d91-p3",
+      "answers": 2065,
+      "germanPresentation": 151,
+      "unchangedNames": 1914
+    },
+    {
+      "question": "Nenne eine Figur aus den Cars-Filmen.",
+      "archiveId": "d91-p5",
+      "answers": 556,
+      "germanPresentation": 4,
+      "unchangedNames": 552
+    },
+    {
+      "question": "Nenne eine Pulverart.",
+      "archiveId": "d91-p6",
+      "answers": 1787,
+      "germanPresentation": 366,
+      "unchangedNames": 1421
+    },
+    {
+      "question": "Nenne etwas, das man vor der Verwendung schüttelt.",
+      "archiveId": "d91-p7",
+      "answers": 842,
+      "germanPresentation": 145,
+      "unchangedNames": 697
+    },
+    {
+      "question": "Nenne eine Art von astronomischem Objekt, das im Weltraum gefunden wird (wie ein Asteroid).",
+      "archiveId": "d92-p1",
+      "answers": 800,
+      "germanPresentation": 103,
+      "unchangedNames": 697
+    },
+    {
+      "question": "Nenne eine professionelle Sportliga mit mindestens 10 Teams.",
+      "archiveId": "d92-p2",
+      "answers": 1482,
+      "germanPresentation": 2,
+      "unchangedNames": 1480
+    },
+    {
+      "question": "Nenne ein lebendes Tier, das über eine Tonne (1000 kg) wiegt.",
+      "archiveId": "d92-p3",
+      "answers": 198,
+      "germanPresentation": 157,
+      "unchangedNames": 41
+    },
+    {
+      "question": "Nenne einen Film mit Natalie Portman (wie Star Wars).",
+      "archiveId": "d92-p4",
+      "answers": 63,
+      "germanPresentation": 16,
+      "unchangedNames": 47
+    },
+    {
+      "question": "Nenne eine Stadt südlich des Äquators mit über 100.000 Einwohnern (in der Metropolregion).",
+      "archiveId": "d92-p5",
+      "answers": 984,
+      "germanPresentation": 22,
+      "unchangedNames": 962
+    },
+    {
+      "question": "Nenne eine App oder einen Dienst zur Fotobearbeitung.",
+      "archiveId": "d92-p6",
+      "answers": 1289,
+      "germanPresentation": 4,
+      "unchangedNames": 1285
+    },
+    {
+      "question": "Nenne etwas, das in einer Flasche mit Pumpspender verkauft wird.",
+      "archiveId": "d93-p1",
+      "answers": 486,
+      "germanPresentation": 101,
+      "unchangedNames": 385
+    },
+    {
+      "question": "Nenne ein Feature, das ein modernes Auto haben kann (wie Tempomat).",
+      "archiveId": "d93-p3",
+      "answers": 1042,
+      "germanPresentation": 158,
+      "unchangedNames": 884
+    },
+    {
+      "question": "Nenne ein Land in Ostafrika.",
+      "archiveId": "d93-p4",
+      "answers": 31,
+      "germanPresentation": 24,
+      "unchangedNames": 7
+    },
+    {
+      "question": "Nenne eine weiße Soße, einen weißen Dip oder ein weißes Würzmittel.",
+      "archiveId": "d93-p5",
+      "answers": 488,
+      "germanPresentation": 57,
+      "unchangedNames": 431
+    },
+    {
+      "question": "Nenne einen Sport, bei dem die Teilnehmer sitzen, wenn sie gegeneinander antreten (kein E-Sport, Brettspiel oder Kartenspiel).",
+      "archiveId": "d93-p6",
+      "answers": 691,
+      "germanPresentation": 71,
+      "unchangedNames": 620
+    },
+    {
+      "question": "Nenne etwas, das Dampf verwendet.",
+      "archiveId": "d93-p7",
+      "answers": 733,
+      "germanPresentation": 153,
+      "unchangedNames": 580
+    },
+    {
+      "question": "Nenne eine Methode, um Kartoffeln zuzubereiten.",
+      "archiveId": "d94-p1",
+      "answers": 1256,
+      "germanPresentation": 36,
+      "unchangedNames": 1220
+    },
+    {
+      "question": "Nenne jemanden, der den MVP (NBA/NFL/MLB), den Premier League Player of the Season oder den Ballon d’Or gewonnen hat.",
+      "archiveId": "d94-p3",
+      "answers": 420,
+      "germanPresentation": 131,
+      "unchangedNames": 289
+    },
+    {
+      "question": "Nenne ein chemisches Element mit einem einbuchstabigen Elementsymbol.",
+      "archiveId": "d94-p4",
+      "answers": 27,
+      "germanPresentation": 25,
+      "unchangedNames": 2
+    },
+    {
+      "question": "Nenne eine Art von Station, etwa einen Bahnhof.",
+      "archiveId": "d94-p5",
+      "answers": 726,
+      "germanPresentation": 148,
+      "unchangedNames": 578
+    },
+    {
+      "question": "Nenne ein Superhelden-Team.",
+      "archiveId": "d94-p7",
+      "answers": 1420,
+      "germanPresentation": 0,
+      "unchangedNames": 1420
+    },
+    {
+      "question": "Nenne eine Frucht, die größer ist als ein Apfel.",
+      "archiveId": "d95-p1",
+      "answers": 275,
+      "germanPresentation": 103,
+      "unchangedNames": 172
+    },
+    {
+      "question": "Nenne ein Symbol des Hinduismus, Judentums, Christentums, Islams oder Buddhismus (wie das Kreuz).",
+      "archiveId": "d95-p2",
+      "answers": 542,
+      "germanPresentation": 144,
+      "unchangedNames": 398
+    },
+    {
+      "question": "Nenne eine Parfum- oder Duftmarke.",
+      "archiveId": "d95-p3",
+      "answers": 17155,
+      "germanPresentation": 160,
+      "unchangedNames": 16995
+    },
+    {
+      "question": "Nenne einen Sport, bei dem die Teilnehmer Handschuhe tragen.",
+      "archiveId": "d95-p4",
+      "answers": 605,
+      "germanPresentation": 105,
+      "unchangedNames": 500
+    },
+    {
+      "question": "Nenne eine Beinübung im Fitnessstudio (keine Cardio-Übungen).",
+      "archiveId": "d95-p5",
+      "answers": 187,
+      "germanPresentation": 16,
+      "unchangedNames": 171
+    },
+    {
+      "question": "Nenne eine Fortnite-Figur oder einen Skin; Sidekicks und Haustiere zählen nicht.",
+      "archiveId": "d95-p6",
+      "answers": 3151,
+      "germanPresentation": 49,
+      "unchangedNames": 3102
+    },
+    {
+      "question": "Nenne einen Rapper mit mehr als 500.000 monatlichen Spotify-Hörern.",
+      "archiveId": "d95-p7",
+      "answers": 3764,
+      "germanPresentation": 36,
+      "unchangedNames": 3728
+    },
+    {
+      "question": "Nenne eine weibliche Künstlerin mit über 500.000 monatlichen Hörern auf Spotify.",
+      "archiveId": "d96-p1",
+      "answers": 3437,
+      "germanPresentation": 33,
+      "unchangedNames": 3404
+    },
+    {
+      "question": "Nenne ein Foul oder einen Regelverstoß aus Fußball, Basketball, American Football, Cricket, Rugby oder Eishockey.",
+      "archiveId": "d96-p2",
+      "answers": 446,
+      "germanPresentation": 41,
+      "unchangedNames": 405
+    },
+    {
+      "question": "Nenne eine Unterwäschemarke.",
+      "archiveId": "d96-p3",
+      "answers": 1120,
+      "germanPresentation": 18,
+      "unchangedNames": 1102
+    },
+    {
+      "question": "Nenne eine Universität in den USA oder im Vereinigten Königreich.",
+      "archiveId": "d96-p4",
+      "answers": 3139,
+      "germanPresentation": 0,
+      "unchangedNames": 3139
+    },
+    {
+      "question": "Nenne eine Sprache, die in mindestens zwei Ländern am häufigsten gesprochen wird.",
+      "archiveId": "d96-p5",
+      "answers": 38,
+      "germanPresentation": 6,
+      "unchangedNames": 32
+    },
+    {
+      "question": "Nenne eine Figur, die in einem Super-Smash-Bros.-Spiel spielbar war.",
+      "archiveId": "d96-p6",
+      "answers": 93,
+      "germanPresentation": 5,
+      "unchangedNames": 88
+    },
+    {
+      "question": "Nenne eine Frucht, die normalerweise mit der Schale gegessen wird.",
+      "archiveId": "d96-p7",
+      "answers": 820,
+      "germanPresentation": 334,
+      "unchangedNames": 486
+    },
+    {
+      "question": "Nenne etwas, das als Stab oder in Stäben verkauft wird (Essen auf einem Stab zählt nicht).",
+      "archiveId": "d97-p1",
+      "answers": 515,
+      "germanPresentation": 141,
+      "unchangedNames": 374
+    },
+    {
+      "question": "Nenne ein Lebensmittel, das durch Zerdrücken oder Pürieren hergestellt wird (wie Guacamole).",
+      "archiveId": "d97-p2",
+      "answers": 1515,
+      "germanPresentation": 92,
+      "unchangedNames": 1423
+    },
+    {
+      "question": "Nenne ein Gerät, das dazu dient, Luft zu blasen.",
+      "archiveId": "d97-p4",
+      "answers": 418,
+      "germanPresentation": 125,
+      "unchangedNames": 293
+    },
+    {
+      "question": "Nenne ein Säugetier, das kleiner ist als eine Hauskatze.",
+      "archiveId": "d97-p5",
+      "answers": 6693,
+      "germanPresentation": 319,
+      "unchangedNames": 6374
+    },
+    {
+      "question": "Nenne einen Internetdienstleister.",
+      "archiveId": "d97-p6",
+      "answers": 8195,
+      "germanPresentation": 20,
+      "unchangedNames": 8175
+    },
+    {
+      "question": "Nenne etwas, das einen Sattel hat (wie ein Fahrrad).",
+      "archiveId": "d97-p7",
+      "answers": 255,
+      "germanPresentation": 149,
+      "unchangedNames": 106
+    },
+    {
+      "question": "Nenne eine Fernsehsendung, die auf IMDb eine Bewertung von 8,5 oder höher hat (mindestens 1.000 Stimmen).",
+      "archiveId": "d98-p1",
+      "answers": 1073,
+      "germanPresentation": 163,
+      "unchangedNames": 910
+    },
+    {
+      "question": "Nenne einen aktuellen NBA-Spieler (muss in einem NBA-Team sein).",
+      "archiveId": "d98-p2",
+      "answers": 560,
+      "germanPresentation": 58,
+      "unchangedNames": 502
+    },
+    {
+      "question": "Nenne ein Lebensmittel, dessen harte Schale man vor dem Essen entfernen oder aufbrechen muss.",
+      "archiveId": "d98-p3",
+      "answers": 496,
+      "germanPresentation": 195,
+      "unchangedNames": 301
+    },
+    {
+      "question": "Nenne ein Fahrzeug, das nicht auf Rädern fährt.",
+      "archiveId": "d98-p4",
+      "answers": 1420,
+      "germanPresentation": 366,
+      "unchangedNames": 1054
+    },
+    {
+      "question": "Nenne einen Körperteil, den Menschen genau einmal haben (wie die Nase).",
+      "archiveId": "d98-p5",
+      "answers": 770,
+      "germanPresentation": 236,
+      "unchangedNames": 534
+    },
+    {
+      "question": "Nenne ein Land, das an Griechenland oder Österreich grenzt.",
+      "archiveId": "d98-p6",
+      "answers": 24,
+      "germanPresentation": 23,
+      "unchangedNames": 1
+    },
+    {
+      "question": "Nenne eine Zusatzleistung, für die Fluggesellschaften eine Gebühr verlangen.",
+      "archiveId": "d98-p7",
+      "answers": 138,
+      "germanPresentation": 41,
+      "unchangedNames": 97
+    },
+    {
+      "question": "Nenne eine Figur aus Attack on Titan, One Piece oder Naruto.",
+      "archiveId": "d99-p1",
+      "answers": 3463,
+      "germanPresentation": 67,
+      "unchangedNames": 3396
+    },
+    {
+      "question": "Nenne einen Beruf mit einem Median-Jahresgehalt von über 100.000 US-Dollar in den USA.",
+      "archiveId": "d99-p2",
+      "answers": 1810,
+      "germanPresentation": 505,
+      "unchangedNames": 1305
+    },
+    {
+      "question": "Nenne ein Spiel mit einer Zahl in seinem Namen (Fortsetzungen und 3D-Varianten zählen nicht).",
+      "archiveId": "d99-p3",
+      "answers": 5989,
+      "germanPresentation": 8,
+      "unchangedNames": 5981
+    },
+    {
+      "question": "Nenne ein Umweltproblem (wie Verschmutzung).",
+      "archiveId": "d99-p6",
+      "answers": 348,
+      "germanPresentation": 142,
+      "unchangedNames": 206
+    },
+    {
+      "question": "Nenne ein Gericht aus Südasien (Indien, Pakistan, Bangladesch, Sri Lanka, Nepal, Bhutan, Malediven, Afghanistan).",
+      "archiveId": "d99-p7",
+      "answers": 2212,
+      "germanPresentation": 29,
+      "unchangedNames": 2183
+    },
+    {
+      "question": "Nenne ein Fast-Food-Produkt mit eigenem Markennamen, etwa den Big Mac.",
+      "archiveId": "d100-p1",
+      "answers": 2553,
+      "germanPresentation": 131,
+      "unchangedNames": 2422
+    },
+    {
+      "question": "Nenne ein Tier, das etwas spritzt, spuckt oder sprüht, um sich zu verteidigen.",
+      "archiveId": "d100-p2",
+      "answers": 157,
+      "germanPresentation": 76,
+      "unchangedNames": 81
+    },
+    {
+      "question": "Nenne einen Teil einer 2D- oder 3D-Form (wie einen Radius).",
+      "archiveId": "d100-p3",
+      "answers": 286,
+      "germanPresentation": 58,
+      "unchangedNames": 228
+    },
+    {
+      "question": "Nenne eine Kraftübung für den Oberkörper; Ganzkörperübungen zählen nicht.",
+      "archiveId": "d100-p4",
+      "answers": 631,
+      "germanPresentation": 28,
+      "unchangedNames": 603
+    },
+    {
+      "question": "Nenne ein Nintendo-Wii-Spiel.",
+      "archiveId": "d100-p5",
+      "answers": 2085,
+      "germanPresentation": 14,
+      "unchangedNames": 2071
+    },
+    {
+      "question": "Nenne einen Rap-Song mit mehr als 100 Millionen Spotify-Streams.",
+      "archiveId": "d100-p6",
+      "answers": 5579,
+      "germanPresentation": 55,
+      "unchangedNames": 5524
+    },
+    {
+      "question": "Nenne eine Maschine, die traditionell durch Münzeinwurf bedient wird.",
+      "archiveId": "d100-p7",
+      "answers": 223,
+      "germanPresentation": 39,
+      "unchangedNames": 184
+    },
+    {
+      "question": "Nenne einen Film, der erstmals 2026 in den Kinos veröffentlicht wurde.",
+      "archiveId": "d101-p1",
+      "answers": 1474,
+      "germanPresentation": 161,
+      "unchangedNames": 1313
+    },
+    {
+      "question": "Nenne etwas mit einer rotierenden Klinge.",
+      "archiveId": "d101-p2",
+      "answers": 1468,
+      "germanPresentation": 518,
+      "unchangedNames": 950
+    },
+    {
+      "question": "Nenne ein Buch, das mindestens 500.000 Exemplare weltweit verkauft hat.",
+      "archiveId": "d101-p3",
+      "answers": 12029,
+      "germanPresentation": 1939,
+      "unchangedNames": 10090
+    },
+    {
+      "question": "Nenne eine App oder ein Programm, das standardmäßig in Windows oder macOS installiert ist (ältere Versionen zählen).",
+      "archiveId": "d101-p5",
+      "answers": 1940,
+      "germanPresentation": 6,
+      "unchangedNames": 1934
+    },
+    {
+      "question": "Nenne eine Sprache, die in Südasien oder Südostasien entstanden ist.",
+      "archiveId": "d101-p6",
+      "answers": 1992,
+      "germanPresentation": 21,
+      "unchangedNames": 1971
+    },
+    {
+      "question": "Nenne etwas, für das ein gesetzliches Mindestalter gilt.",
+      "archiveId": "d101-p7",
+      "answers": 618,
+      "germanPresentation": 248,
+      "unchangedNames": 370
+    },
+    {
+      "question": "Nenne ein Land mit einer Wüstenklimazone (in irgendeinem Teil davon).",
+      "archiveId": "d102-p6",
+      "answers": 130,
+      "germanPresentation": 110,
+      "unchangedNames": 20
+    },
+    {
+      "question": "Nenne eine Währung, die weniger wert ist als der US-Dollar.",
+      "archiveId": "d103-p1",
+      "answers": 156,
+      "germanPresentation": 11,
+      "unchangedNames": 145
+    },
+    {
+      "question": "Nenne etwas, das traditionell als Prozentsatz ausgedrückt wird (wie Körperfett).",
+      "archiveId": "d103-p3",
+      "answers": 2556,
+      "germanPresentation": 484,
+      "unchangedNames": 2072
+    },
+    {
+      "question": "Nenne etwas, das verwendet wird, um einen Ball in einem Sport zu schlagen (das gleiche Werkzeug zählt einmal über Sportarten hinweg).",
+      "archiveId": "d103-p4",
+      "answers": 43,
+      "germanPresentation": 25,
+      "unchangedNames": 18
+    },
+    {
+      "question": "Nenne ein lateinamerikanisches Gericht.",
+      "archiveId": "d103-p5",
+      "answers": 4627,
+      "germanPresentation": 55,
+      "unchangedNames": 4572
+    },
+    {
+      "question": "Nenne eine Telefon-Einstellung, die man ein- und ausschalten kann.",
+      "archiveId": "d103-p7",
+      "answers": 2097,
+      "germanPresentation": 92,
+      "unchangedNames": 2005
+    },
+    {
+      "question": "Nenne einen Vogel, der in oder bei Wasser lebt.",
+      "archiveId": "d104-p1",
+      "answers": 2433,
+      "germanPresentation": 1855,
+      "unchangedNames": 578
+    },
+    {
+      "question": "Nenne etwas mit physischen Seiten (benannte Werke zählen nicht).",
+      "archiveId": "d104-p2",
+      "answers": 597,
+      "germanPresentation": 271,
+      "unchangedNames": 326
+    },
+    {
+      "question": "Nenne eine Art von Ball außerhalb von Sport.",
+      "archiveId": "d104-p3",
+      "answers": 394,
+      "germanPresentation": 63,
+      "unchangedNames": 331
+    },
+    {
+      "question": "Nenne eine Boyband oder Girlgroup mit über 500.000 monatlichen Hörern auf Spotify.",
+      "archiveId": "d104-p4",
+      "answers": 539,
+      "germanPresentation": 0,
+      "unchangedNames": 539
+    },
+    {
+      "question": "Nenne einen Teil des Schuljahres (Ereignisse wie der Abschlussball zählen auch).",
+      "archiveId": "d104-p5",
+      "answers": 637,
+      "germanPresentation": 80,
+      "unchangedNames": 557
+    },
+    {
+      "question": "Nenne ein Land, dessen Flagge einen weißen Streifen durch die Mitte hat (horizontal oder vertikal).",
+      "archiveId": "d104-p6",
+      "answers": 75,
+      "germanPresentation": 63,
+      "unchangedNames": 12
+    },
+    {
+      "question": "Nenne ein Pastagericht.",
+      "archiveId": "d105-p1",
+      "answers": 781,
+      "germanPresentation": 7,
+      "unchangedNames": 774
+    },
+    {
+      "question": "Nenne einen Teil des menschlichen Kopfes.",
+      "archiveId": "d105-p2",
+      "answers": 2310,
+      "germanPresentation": 447,
+      "unchangedNames": 1863
+    },
+    {
+      "question": "Nenne eine Region der Welt, die sich über mehrere Länder erstreckt.",
+      "archiveId": "d105-p3",
+      "answers": 1068,
+      "germanPresentation": 323,
+      "unchangedNames": 745
+    },
+    {
+      "question": "Nenne ein Essen oder Getränk, das ein Emoji hat.",
+      "archiveId": "d105-p4",
+      "answers": 382,
+      "germanPresentation": 315,
+      "unchangedNames": 67
+    },
+    {
+      "question": "Nenne eine Superkraft, die irgendein Superheld im MCU hat.",
+      "archiveId": "d105-p5",
+      "answers": 169,
+      "germanPresentation": 45,
+      "unchangedNames": 124
+    },
+    {
+      "question": "Nenne etwas, auf dem man stehend fährt oder reitet.",
+      "archiveId": "d105-p7",
+      "answers": 410,
+      "germanPresentation": 184,
+      "unchangedNames": 226
+    },
+    {
+      "question": "Nenne eine Sportart, bei der Athleten Überschläge oder Saltos machen.",
+      "archiveId": "d107-p1",
+      "answers": 263,
+      "germanPresentation": 91,
+      "unchangedNames": 172
+    },
+    {
+      "question": "Nenne etwas, das verwendet wird, um Dinge zu greifen oder aufzunehmen.",
+      "archiveId": "d107-p3",
+      "answers": 1683,
+      "germanPresentation": 489,
+      "unchangedNames": 1194
+    },
+    {
+      "question": "Nenne ein Produkt oder Werkzeug für die Nagelpflege (Typen, keine Marken).",
+      "archiveId": "d107-p5",
+      "answers": 438,
+      "germanPresentation": 100,
+      "unchangedNames": 338
+    },
+    {
+      "question": "Nenne eine Möglichkeit, jemanden zu kontaktieren (Methoden, keine Marken/Apps).",
+      "archiveId": "d107-p6",
+      "answers": 186,
+      "germanPresentation": 12,
+      "unchangedNames": 174
+    },
+    {
+      "question": "Nenne einen der 1000 häufigsten Vornamen der Welt.",
+      "archiveId": "d109-p7",
+      "answers": 1118,
+      "germanPresentation": 158,
+      "unchangedNames": 960
+    },
+    {
+      "question": "Nenne eine Substanz, die der menschliche Körper produziert.",
+      "archiveId": "d110-p1",
+      "answers": 13137,
+      "germanPresentation": 1038,
+      "unchangedNames": 12099
+    },
+    {
+      "question": "Nenne eine Nachrichtenorganisation.",
+      "archiveId": "d110-p2",
+      "answers": 100767,
+      "germanPresentation": 44,
+      "unchangedNames": 100723
+    },
+    {
+      "question": "Nenne etwas, das die Form eines Kegels hat.",
+      "archiveId": "d110-p3",
+      "answers": 2412,
+      "germanPresentation": 0,
+      "unchangedNames": 2412
+    },
+    {
+      "question": "Nenne ein klares, farbloses Getränk.",
+      "archiveId": "d110-p4",
+      "answers": 280,
+      "germanPresentation": 0,
+      "unchangedNames": 280
+    },
+    {
+      "question": "Nenne einen Film, der auf IMDb eine Bewertung von 8,0 oder höher hat (mindestens 1.000 Stimmen).",
+      "archiveId": "d110-p6",
+      "answers": 2059,
+      "germanPresentation": 0,
+      "unchangedNames": 2059
+    },
+    {
+      "question": "Nenne ein Musikgenre (aufgeführt als Genre auf Spotify).",
+      "archiveId": "d110-p7",
+      "answers": 6407,
+      "germanPresentation": 0,
+      "unchangedNames": 6407
+    }
+  ]
+}

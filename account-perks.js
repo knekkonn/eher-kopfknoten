@@ -1,7 +1,7 @@
 /* Account-only cosmetic rewards and release notes. Scores are read from synced rounds. */
 (()=>{
 'use strict';
-const VERSION='2026-11-04-reliable-rounds';
+const VERSION='2026-11-04-profile-friends';
 const SKINS=[
 {id:'diver',name:'Taucher',min:0,sprite:'diver.svg',color:'#7ce4d9'},
 {id:'jelly',name:'Leuchtqualle',min:100,sprite:'jelly.svg',color:'#83c8ff'},
@@ -92,7 +92,7 @@ const localBest=()=>Math.max(0,...(window.ABGRUND_HISTORY?.list?.()||[]).map(x=>
 function modal(title,body,action){document.querySelector('.abg-perk-overlay')?.remove();const wrap=document.createElement('div');wrap.className='abg-perk-overlay';const panel=document.createElement('section');panel.className='abg-perk-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');const h=document.createElement('h2');h.textContent=title;panel.append(h);const b=document.createElement('div');panel.append(b);body(b);const close=document.createElement('button');close.className='abg-perk-close';close.textContent=action||'WEITER TAUCHEN';close.onclick=()=>wrap.remove();panel.append(close);wrap.append(panel);document.body.append(wrap);wrap.onclick=e=>{if(e.target===wrap)wrap.remove()};}
 let releasePending=false;
 async function release(){
- if(!uid||!ready||lastSeen===VERSION||releasePending)return;
+ if(!uid||!ready||lastSeen===VERSION||releasePending||save?.started&&!save.done)return;
  const owner=uid,generation=authGeneration;releasePending=true;
  try{
   const claimed=await fire.runTransaction(db,async tx=>{
@@ -102,7 +102,7 @@ async function release(){
   });
   if(owner!==uid||generation!==authGeneration)return;
   lastSeen=VERSION;try{localStorage.setItem('abgrundSeenUpdate:'+owner,VERSION)}catch{}
-  if(claimed)modal('NEUES AUS DER TIEFE',b=>{const p=document.createElement('p');p.textContent='Neue geprüfte Antwortvarianten, sichere Fragenreservierung pro Konto und bessere Synchronisierung. Deine Bestleistung einer einzelnen Runde schaltet weiterhin die sechs animierten Skins frei.';b.append(p)});
+  if(claimed)modal('NEUES AUS DER TIEFE',b=>{const p=document.createElement('p');p.textContent='Neu: Deutsch zuerst, priorisierte Wortmeldungen sowie dein Profil mit Statistiken und bestätigten Freunden. Im Endbildschirm siehst du außerdem den Vergleich mit deinen Freunden.';b.append(p)});
  }catch(e){console.warn('Update notes:',e.code||e.message)}finally{releasePending=false;if(uid&&generation!==authGeneration)release()}
 }
 function updateSceneCharacter(skin){
@@ -173,29 +173,45 @@ async function init(){try{
   flushRejected();
  });
 }catch(e){console.warn('Account perks unavailable',e.message)}}
+const reportId=()=>Array.from(crypto.getRandomValues(new Uint8Array(16)),b=>b.toString(16).padStart(2,'0')).join('');
 const outboxKey=owner=>'abgrundRejectedV1:'+owner;
 function readOutbox(owner){try{return JSON.parse(localStorage.getItem(outboxKey(owner))||'[]')}catch{return []}}
 let flushing=false;
 async function flushRejected(){
- if(flushing||!uid||!db||!fire)return;flushing=true;const owner=uid;
+ if(flushing||!uid||!db||!fire)return;flushing=true;const owner=uid;let retry=false;
  try{
   for(const item of readOutbox(owner)){
    if(uid!==owner)break;
-   await fire.addDoc(fire.collection(db,'rejectedAnswers'),{uid:owner,question:item.question,answer:item.answer,status:'pending',createdAt:fire.serverTimestamp()});
+   await fire.addDoc(fire.collection(db,'rejectedAnswers'),{uid:owner,question:item.question,answer:item.answer,status:'pending',priority:item.priority||0,createdAt:fire.serverTimestamp()});
    const remaining=readOutbox(owner).filter(x=>x.id!==item.id);localStorage.setItem(outboxKey(owner),JSON.stringify(remaining));
   }
- }catch(e){console.warn('Answer review queue:',e.code||e.message)}finally{flushing=false}
+  retry=uid===owner&&readOutbox(owner).length>0;
+ }catch(e){console.warn('Answer review queue:',e.code||e.message)}finally{flushing=false;if(retry||(uid&&uid!==owner))queueMicrotask(flushRejected)}
 }
 window.addEventListener('online',flushRejected);
 setInterval(flushRejected,30000);
-window.ABGRUND_FEATURES={rejected:async(q,answer)=>{
- if(!uid||!answer?.trim()||answer.trim().length>180||q.q.length>250)return;
- const owner=uid,items=readOutbox(owner),text=answer.trim();
- if(items.some(x=>x.question===q.q&&x.answer===text))return;
- const id=crypto.randomUUID();items.push({id,question:q.q,answer:text});
- try{localStorage.setItem(outboxKey(owner),JSON.stringify(items.slice(-100)))}catch{return}
- await flushRejected();
+function queueRejected(q,answer,priority=0){
+ if(!uid||!answer?.trim()||answer.trim().length>180||q.q.length>250)return false;
+ const owner=uid,items=readOutbox(owner),text=answer.trim(),existing=items.find(x=>x.question===q.q&&x.answer===text);
+ if(!existing||(existing.priority||0)<priority)items.push({id:reportId(),question:q.q,answer:text,priority});
+ try{localStorage.setItem(outboxKey(owner),JSON.stringify(items.sort((a,b)=>(b.priority||0)-(a.priority||0)).slice(0,100)))}catch{return false}
+ void flushRejected();return true;
+}
+window.ABGRUND_FEATURES={rejected:(q,answer)=>queueRejected(q,answer,0)};
+const reported=new Set();
+window.ABGRUND_REPORTS={offer(q,answer){
+ document.getElementById('reportAnswer')?.remove();if(!uid)return;
+ const button=document.createElement('button');button.id='reportAnswer';button.type='button';button.className='report-answer';button.textContent='Begriff melden & weiterspielen';
+ button.onclick=()=>{
+  const key=uid+'|'+q.q+'|'+answer.toLocaleLowerCase('de-DE');
+  const fresh=!reported.has(key);if(fresh&&!queueRejected(q,answer,1)){toast('Meldung konnte nicht lokal gespeichert werden.');return}
+  reported.add(key);if(fresh)save.reportCount=(save.reportCount||0)+1;
+  $('answer').value='';$('answerSuggestion').textContent='';$('response').classList.remove('show','invalid');$('answer').classList.remove('wrong');$('hint').textContent='Zur priorisierten Prüfung vorgemerkt. Du kannst sofort weiterspielen.';button.remove();$('answer').focus();store();
+ };
+ $('response').append(button);
 }};
+
+const previousFinish=finish;finish=()=>{previousFinish();void release()};
 updateEquipped();
 init();
 })();

@@ -61,3 +61,7 @@ Zusätzliche lokale Browserprüfung: Chrome mit Ansichten 390×844, 768×1024 un
 Der konfigurierte öffentliche Community-Endpunkt `/stats` antwortete bei der rein lesenden Prüfung am 4. November 2026 erfolgreich. Dies bestätigt seine Erreichbarkeit, aber weder seinen aktuellen Quellstand noch ein Deployment dieser Änderungen.
 
 Live-Regeltest mit temporären Firebase-Accounts am 4. November 2026: Zwei gleichzeitig angemeldete Instanzen desselben Testkontos reservierten erfolgreich zwei disjunkte Fragenpakete; der Serververlauf stand anschließend auf Runde 2. Eigene Präferenzen und das Erstellen eines Warteschlangeneintrags funktionierten. Fremde sowie unangemeldete Zugriffe, eine fremde UID im Warteschlangeneintrag, ein Ergebnis über 700 und das nachträgliche Ändern eines gespeicherten Ergebnisses wurden abgewiesen. Identisches erneutes Hochladen eines Ergebnisses funktionierte. Die synthetischen Testdokumente und beide Testkonten wurden danach entfernt. Es wurden keine bestehenden Nutzerkonten oder Rundenergebnisse geändert.
+
+## Nachtrag: deutsche Darstellung, Meldungen und soziale Profile
+
+PR #9 wurde nach grünen GitHub-Prüfungen zusammengeführt. Die Seitenveröffentlichung und der initiale automatische Antwort-Prüflauf waren erfolgreich. Der weiterführende, aktuelle Stand mit deutscher Priorität, geänderten Zustelldienst-/Guam-Punkten, Sofortmeldungen, Profilstatistiken, Freundschaften und zusätzlichen Live-Deployments ist in `GERMAN_SOCIAL_UPDATE.md` dokumentiert. Frühere Absätze dieses Dokuments beschreiben den geprüften Grundstand von PR #9.
