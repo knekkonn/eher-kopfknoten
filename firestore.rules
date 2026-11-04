@@ -1,6 +1,25 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    match /users/{userId}/profile/{profileId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow create, update: if request.auth != null && request.auth.uid == userId
+        && profileId == 'preferences'
+        && request.resource.data.keys().hasOnly(['skin','seenUpdate'])
+        && request.resource.data.skin is string && request.resource.data.skin.size() <= 32
+        && request.resource.data.seenUpdate is string && request.resource.data.seenUpdate.size() <= 32;
+      allow delete: if false;
+    }
+    match /rejectedAnswers/{entryId} {
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly(['uid','question','answer','createdAt','status'])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.question is string && request.resource.data.question.size() <= 250
+        && request.resource.data.answer is string && request.resource.data.answer.size() <= 180
+        && request.resource.data.status == 'pending'
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if false;
+    }
     match /users/{userId}/games/{gameId} {
       function owner() { return request.auth != null && request.auth.uid == userId; }
       function validGame() {
