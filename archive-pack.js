@@ -3,8 +3,9 @@
 'use strict';
 const norm=normalizeFactText,loadCache=new Map();
 const oldCanonical=canonicalAnswer,oldVerify=verifyFact,oldCompletion=completionOptions,oldShow=showQ,oldExamples=archivedTierExamples;
-canonicalAnswer=(q,text)=>q?.archiveRawNames?.[text.trim().toLocaleLowerCase('de-DE')]||oldCanonical(q,text);
-verifyFact=(q,text)=>q.archiveLookup?!!q.archiveRawNames?.[text.trim().toLocaleLowerCase('de-DE')]||q.archiveLookup.has(norm(text)):oldVerify(q,text);
+const own=(map,key)=>map&&Object.prototype.hasOwnProperty.call(map,key)?map[key]:undefined;
+canonicalAnswer=(q,text)=>own(q?.archiveRawNames,String(text).trim().toLocaleLowerCase('de-DE'))||oldCanonical(q,text);
+verifyFact=(q,text)=>q.archiveLookup?!!own(q.archiveRawNames,String(text).trim().toLocaleLowerCase('de-DE'))||q.archiveLookup.has(norm(text)):oldVerify(q,text);
 completionOptions=(q,input)=>{
  if(!q||!q.archiveLookup||q.answers.length<1000)return oldCompletion(q,input);
  const key=norm(input);if(key.length<5||q.archiveLookup.has(key))return{suggestion:'',ambiguous:false};
@@ -30,7 +31,7 @@ async function loadQuestion(q){
  if(!q.archiveAssets||q.archiveLoaded)return q;
  const sources=await Promise.all(q.archiveAssets.map(async asset=>{const dive=await fetchDive(asset.path);const record=dive.find(x=>x.id===asset.id);if(!record)throw Error('missing question');return record}));
  const answers=new Map((q.answers||[]).map(a=>[norm(a),a]));
- q.archiveGermanNames||={};q.archiveCanonicalByNorm||=new Map();q.answerAliases||={};q.scoreOverrides||={};q.archiveRawScores||={};q.archiveRawNames||={};q.suppliedTiers=true;
+ q.archiveGermanNames||={};q.archiveCanonicalByNorm||=new Map();q.answerAliases||={};q.scoreOverrides||={};q.archiveRawScores||={};q.archiveRawNames||=Object.create(null);q.suppliedTiers=true;
  // Dated records are processed from old to new. Newer snapshots determine repeated scores.
  for(const source of sources)for(const [answer,points,aliases=[]] of source.rows){
   const candidates=aliases.filter(a=>norm(a)!==norm(answer)&&!/^the /i.test(a)&&!/^\p{Ll}/u.test(a));

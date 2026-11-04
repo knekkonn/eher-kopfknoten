@@ -12,12 +12,12 @@ try{
    for(let i=0;documents.length<205&&i<100000;i++)if(rank('Unknown-'+i)<limit)documents.push(entry(q,'Unknown-'+i));
    if(documents.length<205)throw Error('Fixture generation failed');const manual=entry(q,'Hermes');manual.fields.priority={integerValue:'1'};documents.push(manual);return Response.json({documents});
   }
-  return Response.json({documents:[entry('Nenne einen griechischen Gott oder eine griechische Göttin.','Hermes'),entry('Nenne einen griechischen Gott oder eine griechische Göttin.','Hermes'),entry('Nenne einen griechischen Gott oder eine griechische Göttin.','PRIVATE_ANSWER_<script>alert(1)</script>'),entry('Unknown question','PRIVATE_ANSWER'),entry('ignored','ignored','approved')]});
+  return Response.json({documents:[entry('Nenne einen griechischen Gott oder eine griechische Göttin.','Hermes'),entry('Nenne einen griechischen Gott oder eine griechische Göttin.','Hermes'),entry('Nenne einen griechischen Gott oder eine griechische Göttin.','PRIVATE_ANSWER_<script>alert(1)</script>'),entry('Unknown question','PRIVATE_ANSWER'),entry('Nenne einen griechischen Gott oder eine griechische Göttin.','constructor'),entry('ignored','ignored','approved')]});
  };
  `);
  const result=spawnSync(process.execPath,['--import',preload,'scripts/review-rejected.mjs'],{env:{...process.env,FIREBASE_REVIEW_TOKEN:'fixture',REVIEW_OUTPUT:output},encoding:'utf8'});
  assert.equal(result.status,0,result.stderr);const report=JSON.parse(fs.readFileSync(output));
- assert.equal(report.scanned,5);assert.equal(report.pending,4);assert.equal(report.uniquePending,3);assert.equal(report.duplicates,1);assert.equal(report.recognized,1);assert.equal(report.needsHumanReview,2);
+ assert.equal(report.scanned,6);assert.equal(report.pending,5);assert.equal(report.uniquePending,4);assert.equal(report.duplicates,1);assert.equal(report.recognized,1);assert.equal(report.needsHumanReview,3);
  assert(!result.stdout.includes('PRIVATE_'));assert(!fs.readFileSync(output,'utf8').includes('PRIVATE_'));
  const prioritized=spawnSync(process.execPath,['--import',preload,'scripts/review-rejected.mjs'],{env:{...process.env,FIREBASE_REVIEW_TOKEN:'fixture',REVIEW_OUTPUT:output,REVIEW_PRIORITY_TEST:'1'},encoding:'utf8'});assert.equal(prioritized.status,0,prioritized.stderr);const capacity=JSON.parse(fs.readFileSync(output));assert.equal(capacity.prioritized,1);assert.equal(capacity.recognized,1,'explicit known report must be included before a full automatic queue');assert.equal(capacity.notChecked,6);
  const missing=spawnSync(process.execPath,['scripts/review-rejected.mjs'],{env:{...process.env,FIREBASE_REVIEW_TOKEN:'',REVIEW_OUTPUT:output},encoding:'utf8'});assert.notEqual(missing.status,0);

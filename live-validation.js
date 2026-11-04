@@ -17,7 +17,19 @@ const rules=new Map([
 async function check(q,input){
  const rule=rules.get(normalizeFactText(q.q)),text=input.trim();if(!rule||text.length<3||text.length>180)return null;
  const cacheKey='abgrundLiveProofV2:'+normalizeFactText(q.q)+':'+normalizeFactText(text);
- const accept=proof=>{q.answers||=[];q.archiveLookup?.add(normalizeFactText(proof.canonical));if(!q.answers.includes(proof.canonical))q.answers.push(proof.canonical);if(proof.german){q.germanNames||={};q.germanNames[normalizeFactText(proof.canonical)]=proof.german}return proof};
+ const accept=proof=>{
+  if(!proof||typeof proof.canonical!=='string'||proof.points!==30) return null;
+  const original=proof.canonical,known=[original,proof.german].find(name=>typeof name==='string'&&verifyFact(q,name));
+  const canonical=known?canonicalAnswer(q,known):original,wasLive=Number.isFinite(q.livePoints?.[normalizeFactText(canonical)]);
+  const points=known?tierForAnswer(q,canonical).points:30,estimated=!known||wasLive;
+  q.answers||=[];q.answerAliases||={};
+  for(const name of [original,proof.german].filter(x=>typeof x==='string'&&x)){
+   if(!q.answers.includes(name))q.answers.push(name);q.archiveLookup?.add(normalizeFactText(name));if(normalizeFactText(name)!==normalizeFactText(canonical))q.answerAliases[normalizeFactText(name)]=canonical;
+  }
+  if(proof.german){q.germanNames||={};q.germanNames[normalizeFactText(canonical)]=proof.german}
+  if(estimated){q.livePoints||={};q.livePoints[normalizeFactText(canonical)]=30}
+  return {...proof,canonical,points,estimated};
+ };
  try{const saved=JSON.parse(localStorage.getItem(cacheKey)||'null');if(saved&&Date.now()-saved.at<86400000)return accept(saved.proof)}catch{}
  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),1800);
  try{
@@ -25,9 +37,9 @@ async function check(q,input){
    const url='https://'+lang+'.wikipedia.org/w/api.php?action=query&format=json&origin=*&redirects=1&prop=categories%7Cpageprops%7Clanglinks&ppprop=disambiguation&lllang=de&cllimit=max&titles='+encodeURIComponent(text);
    const r=await fetch(url,{signal:controller.signal});if(!r.ok)return null;const data=await r.json();
    for(const page of Object.values(data.query?.pages||{})){
-    if(page.missing!==undefined||page.pageprops?.disambiguation!==undefined)continue;
+    if(typeof page.title!=='string'||page.missing!==undefined||page.pageprops?.disambiguation!==undefined)continue;
     const exact=normalizeFactText(page.title)===normalizeFactText(text)||(data.query?.redirects||[]).some(x=>normalizeFactText(x.from)===normalizeFactText(text)&&x.to===page.title);
-    if(!exact||!(page.categories||[]).some(c=>rule.test(c.title.replace(/^(Category|Kategorie):/i,''))))continue;
+    if(!exact||!(page.categories||[]).some(c=>typeof c.title==='string'&&rule.test(c.title.replace(/^(Category|Kategorie):/i,''))))continue;
     return {canonical:page.title,german:lang==='de'?page.title:page.langlinks?.find(x=>x.lang==='de')?.['*'],points:30,source:'https://'+lang+'.wikipedia.org/wiki/'+encodeURIComponent(page.title),estimated:true};
    }return null;
   }));

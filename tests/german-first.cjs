@@ -8,6 +8,7 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),engine=require(
   report.push({question:q.q,archiveId:q.archiveId||null,answers:q.answers.length,germanPresentation:german,unchangedNames:q.answers.length-german});
  }
  const delivery=engine.run('bank').find(q=>q.q==='Nenne einen Zustelldienst.');for(const [answer,points] of [['DHL',10],['DoorDash',60],['Deutsche Post',10]]){assert(functions.verify(delivery,answer));assert.equal(functions.tier(delivery,answer).points,points)}
+ for(const word of ['constructor','__proto__']){assert.equal(typeof functions.canonical(delivery,word),'string');assert.equal(functions.verify(delivery,word),false);assert.equal(functions.label(delivery,word),word)}
  let guams=0;for(const q of engine.run('bank'))if(functions.verify(q,'Guam')){assert.equal(functions.tier(q,'Guam').points,60,q.q);guams++}assert(guams>=3);
  const country=engine.run('bank').find(q=>q.q==='Nenne ein Land in Afrika.');assert.equal(functions.label(country,'Egypt'),'Ägypten');assert.equal(functions.completion(country,'Egypt').suggestion,'Ägypten');
  assert(!engine.run('bank').filter(q=>q.q==='Nenne ein Land.').some(q=>functions.verify(q,'Guam')),'Guam is not a sovereign state');

@@ -2,8 +2,9 @@
 (()=>{'use strict';
 const n=normalizeFactText;
 const oldCompletion=completionOptions,oldTier=tierForAnswer,canonicalStep=canonicalAnswer;
-canonicalAnswer=(q,text)=>{let value=text;const seen=new Set();for(let i=0;i<8;i++){const next=canonicalStep(q,value);if(next===value||seen.has(next))return next;seen.add(value);value=next}return value};
-function label(q,text){const canonical=canonicalAnswer(q,text),key=n(canonical);const candidate=q.germanNames?.[key]||q.archiveGermanNames?.[key];if(!candidate||candidate===canonical)return canonical;return verifyFact(q,candidate)&&tierForAnswer(q,candidate).points===tierForAnswer(q,canonical).points?candidate:canonical}
+canonicalAnswer=(q,text)=>{let value=String(text??'');const seen=new Set();for(let i=0;i<8;i++){const next=canonicalStep(q,value);if(next===value||seen.has(next))return next;seen.add(value);value=next}return value};
+const own=(map,key)=>map&&Object.prototype.hasOwnProperty.call(map,key)?map[key]:undefined;
+function label(q,text){const canonical=canonicalAnswer(q,text),key=n(canonical);const candidate=own(q.germanNames,key)||own(q.archiveGermanNames,key);if(!candidate||candidate===canonical)return canonical;return verifyFact(q,candidate)&&tierForAnswer(q,candidate).points===tierForAnswer(q,canonical).points?candidate:canonical}
 window.ABGRUND_DISPLAY={answer:label};
 function apply(q){
  q.germanNames||={};const present=new Set((q.answers||[]).map(n));
@@ -28,7 +29,7 @@ function apply(q){
  if(territory||present.has('guam'))q.editorialPoints[n(canonicalAnswer(q,'Guam'))]=60;
  return q;
 }
-tierForAnswer=(q,text,views)=>{const points=q.editorialPoints?.[n(canonicalAnswer(q,text))]??q.livePoints?.[n(canonicalAnswer(q,text))];return Number.isFinite(points)?SCORE_TIERS.find(t=>t.points===points):oldTier(q,text,views)};
+tierForAnswer=(q,text,views)=>{const points=own(q.editorialPoints,n(canonicalAnswer(q,text)))??own(q.livePoints,n(canonicalAnswer(q,text)));return Number.isFinite(points)?SCORE_TIERS.find(t=>t.points===points):oldTier(q,text,views)};
 completionOptions=(q,input)=>{
  const result=oldCompletion(q,input);let suggestion=result.suggestion;
  if(!suggestion&&!result.ambiguous&&q&&verifyFact(q,input)&&n(label(q,input))!==n(input))suggestion=label(q,input);
