@@ -325,3 +325,37 @@ for(const q of bank){
  if(name===n('Nenne ein Tier, dessen Name mit K beginnt.'))add(q,'Karausche',['Carassius carassius'],60);
 }
 })();
+
+
+/* 2026-11-04: verified player-reported food variants and common proper-name spellings. */
+(()=>{
+'use strict';
+const norm=normalizeFactText;
+for(const q of bank){
+ const title=norm(q.q);
+ const isIce=/eissorte/.test(title);
+ if(isIce){
+  q.answers||=[];q.answerAliases||={};
+  for(const flavor of ['Pampelmuse','Physalis','Grapefruit','Pink Grapefruit','Stachelbeere','Maracuja','Passionsfrucht','Guave','Litschi','Lychee','Yuzu','Blutorange','Granatapfel','Quitte','Sanddorn','Rhabarber','Tamarinde','Kaktusfeige']){
+   if(!q.answers.some(a=>norm(a)===norm(flavor)))q.answers.push(flavor);
+  }
+  for(const [variant,canonical] of [['Grapefruit-Eis','Grapefruit'],['Pampelmuseneis','Pampelmuse'],['Physaliseis','Physalis'],['Physalis-Sorbet','Physalis'],['Grapefruitsorbet','Grapefruit'],['Passionfruit','Passionsfrucht'],['Litschi-Eis','Litschi'],['Lychee','Litschi']]){
+   q.answerAliases[norm(variant)]=canonical;
+  }
+ }
+ if(/gewurz|gewuerz|gewürz|gewurzpulver|gewuerzpulver|gewürzpulver/.test(title)){
+  q.answers||=[];q.answerAliases||={};
+  for(const spice of ['Shichimi Togarashi','Ichimi Togarashi','Togarashi']){
+   if(!q.answers.some(a=>norm(a)===norm(spice)))q.answers.push(spice);
+  }
+  for(const typo of ['Togorashi','Togaorshi','Shichimi-Togarashi','Togarashi Pulver'])q.answerAliases[norm(typo)]='Togarashi';
+ }
+ if(/oscar/.test(title)&&/(schauspieler|hauptrolle|gewinner)/.test(title)){
+  q.answerAliases||={};
+  const leonardo=(q.answers||[]).find(a=>norm(a)==='leonardo dicaprio');
+  if(leonardo){
+   for(const variant of ['Leonardo di Caprio','Leonardo di Cabrio','Leonardo de Caprio','Leonardo Dicaprio'])q.answerAliases[norm(variant)]=leonardo;
+  }
+ }
+}
+})();
