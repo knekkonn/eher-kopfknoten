@@ -1,13 +1,13 @@
 /* Account-only cosmetic rewards and release notes. Scores are read from synced rounds. */
 (()=>{
 'use strict';
-const VERSION='2026-11-08-deutsch-design';
+const VERSION='2026-11-08-ozean';
 const SKINS=[
-{id:'diver',name:'Messingtaucher',min:0,sprite:'diver-v2.webp',color:'#7ce4d9'},
+{id:'diver',name:'Kupferhelm',min:0,sprite:'diver-v2.webp',color:'#7ce4d9'},
 {id:'jelly',name:'Fadenlicht',min:100,sprite:'jelly-v2.webp',color:'#83c8ff'},
 {id:'crab',name:'Riffschmied',min:200,sprite:'crab-v2.webp',color:'#ff9981'},
-{id:'phantom',name:'Schleierläufer',min:400,sprite:'phantom-v2.webp',color:'#c9a0ff'},
-{id:'angler',name:'Laternenangler',min:600,sprite:'angler-v2.webp',color:'#ffd68a'},
+{id:'phantom',name:'Schleier',min:400,sprite:'phantom-v2.webp',color:'#c9a0ff'},
+{id:'angler',name:'Glutangler',min:600,sprite:'angler-v2.webp',color:'#ffd68a'},
 {id:'leviathan',name:'Leviathan',min:700,sprite:'leviathan-v2.webp',color:'#83f4cd'}];
 let uid=null,db=null,fire=null,auth=null,profile=null,score=0,selected='diver',unsub=()=>{},lastSeen='',ready=false;
 const css=document.createElement('style');css.textContent=`
@@ -102,7 +102,7 @@ async function release(){
   });
   if(owner!==uid||generation!==authGeneration)return;
   lastSeen=VERSION;try{localStorage.setItem('abgrundSeenUpdate:'+owner,VERSION)}catch{}
-  if(claimed)modal('NEUES AUS DER TIEFE',b=>{const p=document.createElement('p');p.textContent='Mehr deutsche Antworten, gleiche Punkte für deutsche und englische Begriffe. Dazu: größere Schrift, ein aufgeräumtes Handy-Menü, besser lesbare Profile und abschaltbare Animationen. Sechs neu gestaltete Tiefsee-Charaktere begleiten dich jetzt auch auf dem Handy. Deine Freischaltungen und Bestleistungen bleiben erhalten.';b.append(p)});
+  if(claimed)modal('NEUES AUS DER TIEFE',b=>{const p=document.createElement('p');p.textContent='Dein Tauchgang hat jetzt eine animierte Tiefenleiste mit fünf Ozeanzonen. Mit jedem Meter wird die Umgebung dunkler. Dazu: besser lesbare Texte auf Handy und iPad und kürzere Skin-Namen ohne unschöne Umbrüche. Deine Freischaltungen und Bestleistungen bleiben erhalten.';b.append(p)});
  }catch(e){console.warn('Update notes:',e.code||e.message)}finally{releasePending=false;if(uid&&generation!==authGeneration)release()}
 }
 function updateSceneCharacter(skin){

@@ -5,7 +5,7 @@ function menuOpen(open){nav.classList.toggle('is-open',open);menu.setAttribute('
 menu.onclick=()=>menuOpen(menu.getAttribute('aria-expanded')!=='true');
 nav.addEventListener('click',e=>{if(e.target.closest('button'))menuOpen(false)});
 document.addEventListener('pointerdown',e=>{if(!e.target.closest('.top'))menuOpen(false)});
-const compact=matchMedia('(max-width:767px)');compact.addEventListener('change',()=>menuOpen(false));
+const compact=matchMedia('(max-width:1023px)');compact.addEventListener('change',()=>menuOpen(false));
 // One icon family for navigation and actions; native text remains the accessible name.
 const iconPaths={
  accountButton:'M20 21v-2a7 7 0 0 0-14 0v2 M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0',
@@ -28,9 +28,14 @@ function syncIcons(){for(const [id,path] of Object.entries(iconPaths)){
 }}
 new MutationObserver(syncIcons).observe(document.body,{subtree:true,childList:true});syncIcons();
 
+// SVG labels keep a true 12 CSS-pixel minimum when a chart shrinks on a phone.
+const observedCharts=new Set(),chartObserver=new ResizeObserver(entries=>{for(const {target,contentRect} of entries){if(contentRect.width>0)target.style.setProperty('--chart-font',(12*target.viewBox.baseVal.width/contentRect.width)+'px')}});
+function observeCharts(){for(const chart of observedCharts)if(!chart.isConnected){chartObserver.unobserve(chart);observedCharts.delete(chart)}for(const chart of document.querySelectorAll('.score-curve,.dive-log-chart'))if(!observedCharts.has(chart)){observedCharts.add(chart);chartObserver.observe(chart)}}
+new MutationObserver(observeCharts).observe(document.body,{childList:true,subtree:true});observeCharts();
+
 const character=document.getElementById('diver'),previewSkin=document.querySelector('.preview-skin');
 const hudCharacter=document.createElement('div');hudCharacter.className='hud-character';document.querySelector('.progresshud').prepend(hudCharacter);
-function placeCharacter(){const playing=document.body.classList.contains('playing'),parent=playing?hudCharacter:previewSkin;if(parent&&character.parentElement!==parent)parent.append(character)}
+function placeCharacter(){const playing=document.body.classList.contains('playing'),parent=playing?(document.querySelector('.world-swimmer')||hudCharacter):previewSkin;if(parent&&character.parentElement!==parent)parent.append(character)}
 new MutationObserver(placeCharacter).observe(document.body,{attributes:true,attributeFilter:['class']});placeCharacter();
 const timer=document.querySelector('.timerbox');document.querySelector('.cardtop').append(timer);
 const preview=document.querySelector('.home-preview');

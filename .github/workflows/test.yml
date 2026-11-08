@@ -13,6 +13,7 @@ jobs:
       - run: node scripts/test.cjs
   browser:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -20,11 +21,15 @@ jobs:
           node-version: '22'
       - run: npm ci --prefix tests --ignore-scripts --no-fund
       - run: npm audit --prefix tests --audit-level=high
-      - run: tests/node_modules/.bin/playwright install --with-deps chromium
+      - run: tests/node_modules/.bin/playwright install --with-deps chromium webkit
       - run: python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/abgrund-http.log 2>&1 &
-      - run: node tests/browser/layout.cjs && node tests/browser/perks.cjs && node tests/browser/social.cjs && node tests/browser/experience.cjs
+      - run: node tests/browser/layout.cjs && node tests/browser/perks.cjs && node tests/browser/social.cjs && node tests/browser/experience.cjs && node tests/browser/typography.cjs && node tests/browser/depth.cjs
         env:
           PLAYWRIGHT_MODULE: ${{ github.workspace }}/tests/node_modules/playwright
+      - run: node tests/browser/typography.cjs && node tests/browser/depth.cjs
+        env:
+          PLAYWRIGHT_MODULE: ${{ github.workspace }}/tests/node_modules/playwright
+          ABGRUND_ENGINE: webkit
   firestore-rules:
     runs-on: ubuntu-latest
     timeout-minutes: 10

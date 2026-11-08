@@ -38,16 +38,17 @@ const assert=require('node:assert/strict');
  await page.evaluate(()=>window.setTestUser('alice'));await page.getByRole('heading',{name:'NEUES AUS DER TIEFE'}).waitFor();
  await page.getByRole('button',{name:'WEITER TAUCHEN',exact:true}).click();
  await page.evaluate(()=>window.setTestGames('alice',Array(7).fill(100)));
- await page.getByRole('button',{name:'Skins',exact:true}).click();
+ await page.locator('#menuToggle').click();await page.getByRole('button',{name:'Skins',exact:true}).click();
  assert.equal(await page.locator('.abg-perk-grid button:not(:disabled)').count(),2,'sum of seven rounds never unlocks 700-point skin');
  for(const [score,count] of [[0,1],[100,2],[200,3],[400,4],[600,5],[700,6]]){
   await page.getByRole('button',{name:'WEITER TAUCHEN',exact:true}).click();await page.evaluate(score=>window.setTestGames('alice',[score]),score);
-  await page.getByRole('button',{name:'Skins',exact:true}).click();assert.equal(await page.locator('.abg-perk-grid button:not(:disabled)').count(),count,'single-round threshold '+score);
+  await page.locator('#menuToggle').click();await page.getByRole('button',{name:'Skins',exact:true}).click();assert.equal(await page.locator('.abg-perk-grid button:not(:disabled)').count(),count,'single-round threshold '+score);
  }
  await page.locator('.abg-perk-avatar').evaluateAll(images=>Promise.all(images.map(image=>image.decode())));
  assert.equal(await page.locator('.abg-perk-avatar').count(),6);
  assert.equal(await page.locator('.abg-perk-avatar').evaluateAll(images=>images.every(image=>image.naturalWidth===640&&image.src.endsWith('-v2.webp'))),true,'all six optimized character assets decode');
  await page.screenshot({path:'/tmp/abgrund-skins-final.png',fullPage:true});
+ for(const width of [320,390,768,820]){await page.setViewportSize({width,height:1024});assert(await page.locator('.abg-perk-grid strong').evaluateAll(nodes=>nodes.every(n=>n.scrollWidth<=n.clientWidth&&n.getBoundingClientRect().height<=parseFloat(getComputedStyle(n).lineHeight)+1)),'skin names fit one complete line at '+width)}await page.setViewportSize({width:768,height:1024});
  await page.locator('button[data-skin=leviathan]').click();assert.equal(await page.locator('#diver').getAttribute('data-skin'),'leviathan');
  await page.evaluate(()=>window.setTestUser('bob'));await page.getByRole('heading',{name:'NEUES AUS DER TIEFE'}).waitFor();
  await page.evaluate(()=>window.setTestUser('alice'));await page.waitForTimeout(100);
