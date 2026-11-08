@@ -4,3 +4,5 @@ review-summary.json
 firebase-debug.log*
 firestore-debug.log*
 gha-creds-*.json
+
+.taste-skill/

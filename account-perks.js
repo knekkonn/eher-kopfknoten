@@ -1,14 +1,14 @@
 /* Account-only cosmetic rewards and release notes. Scores are read from synced rounds. */
 (()=>{
 'use strict';
-const VERSION='2026-11-04-profile-friends';
+const VERSION='2026-11-08-deutsch-design';
 const SKINS=[
-{id:'diver',name:'Taucher',min:0,sprite:'diver.svg',color:'#7ce4d9'},
-{id:'jelly',name:'Leuchtqualle',min:100,sprite:'jelly.svg',color:'#83c8ff'},
-{id:'crab',name:'Korallenkrabbe',min:200,sprite:'crab.svg',color:'#ff9981'},
-{id:'phantom',name:'Phantom',min:400,sprite:'phantom.svg',color:'#c9a0ff'},
-{id:'angler',name:'Goldangler',min:600,sprite:'angler.svg',color:'#ffd68a'},
-{id:'leviathan',name:'Leviathan',min:700,sprite:'leviathan.svg',color:'#83f4cd'}];
+{id:'diver',name:'Messingtaucher',min:0,sprite:'diver-v2.webp',color:'#7ce4d9'},
+{id:'jelly',name:'Fadenlicht',min:100,sprite:'jelly-v2.webp',color:'#83c8ff'},
+{id:'crab',name:'Riffschmied',min:200,sprite:'crab-v2.webp',color:'#ff9981'},
+{id:'phantom',name:'Schleierläufer',min:400,sprite:'phantom-v2.webp',color:'#c9a0ff'},
+{id:'angler',name:'Laternenangler',min:600,sprite:'angler-v2.webp',color:'#ffd68a'},
+{id:'leviathan',name:'Leviathan',min:700,sprite:'leviathan-v2.webp',color:'#83f4cd'}];
 let uid=null,db=null,fire=null,auth=null,profile=null,score=0,selected='diver',unsub=()=>{},lastSeen='',ready=false;
 const css=document.createElement('style');css.textContent=`
 .abg-perk-overlay[hidden],.abg-skin-stage[hidden],.abg-equipped[hidden]{display:none!important}
@@ -78,7 +78,7 @@ sceneCss.textContent=`
 @keyframes abg-scene-jelly{0%,100%{transform:scale(1,.94) translateY(3px)}50%{transform:scale(.94,1.07) translateY(-5px)}}
 @keyframes abg-scene-crab{0%,100%{transform:translateX(-3px) rotate(-3deg)}50%{transform:translateX(4px) rotate(3deg)}}
 @keyframes abg-scene-phantom{0%,100%{transform:translateY(3px);opacity:.82}50%{transform:translateY(-8px);opacity:1}}
-@keyframes abg-scene-angler{0%,100%{transform:translateY(2px) rotate(-4deg);filter:drop-shadow(0 0 5px #ffdf84)}50%{transform:translateY(-5px) rotate(4deg);filter:drop-shadow(0 0 17px #ffdf84)}}
+@keyframes abg-scene-angler{0%,100%{transform:translateY(2px) rotate(-4deg)}50%{transform:translateY(-5px) rotate(4deg)}}
 @keyframes abg-scene-leviathan{0%,100%{transform:translate(-3px,3px) rotate(-4deg)}50%{transform:translate(4px,-7px) rotate(4deg)}}
 @media(max-width:650px){#diver:has(.abg-scene-character){width:52px;height:52px}}
 @media(prefers-reduced-motion:reduce){#diver .abg-scene-character{animation:none!important}}
@@ -89,7 +89,7 @@ function artImage(skin,className){
  const img=document.createElement('img');img.className=className;img.src=spriteUrl(skin);img.alt=skin.name+' – Tiefsee-Charakter';img.loading='lazy';img.decoding='async';img.draggable=false;img.onerror=()=>{img.alt='Charaktergrafik konnte nicht geladen werden'};return img;
 }
 const localBest=()=>Math.max(0,...(window.ABGRUND_HISTORY?.list?.()||[]).map(x=>Number(x.score)||0));
-function modal(title,body,action){document.querySelector('.abg-perk-overlay')?.remove();const wrap=document.createElement('div');wrap.className='abg-perk-overlay';const panel=document.createElement('section');panel.className='abg-perk-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');const h=document.createElement('h2');h.textContent=title;panel.append(h);const b=document.createElement('div');panel.append(b);body(b);const close=document.createElement('button');close.className='abg-perk-close';close.textContent=action||'WEITER TAUCHEN';close.onclick=()=>wrap.remove();panel.append(close);wrap.append(panel);document.body.append(wrap);wrap.onclick=e=>{if(e.target===wrap)wrap.remove()};}
+function modal(title,body,action){document.querySelector('.abg-perk-overlay')?.remove();const wrap=document.createElement('div');wrap.className='abg-perk-overlay';const panel=document.createElement('section');panel.className='abg-perk-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');panel.setAttribute('aria-label',title);const h=document.createElement('h2');h.textContent=title;panel.append(h);const b=document.createElement('div');panel.append(b);body(b);const close=document.createElement('button');close.className='abg-perk-close';close.textContent=action||'WEITER TAUCHEN';close.onclick=()=>wrap.remove();panel.append(close);wrap.append(panel);document.body.append(wrap);wrap.onclick=e=>{if(e.target===wrap)wrap.remove()};}
 let releasePending=false;
 async function release(){
  if(!uid||!ready||lastSeen===VERSION||releasePending||save?.started&&!save.done)return;
@@ -102,7 +102,7 @@ async function release(){
   });
   if(owner!==uid||generation!==authGeneration)return;
   lastSeen=VERSION;try{localStorage.setItem('abgrundSeenUpdate:'+owner,VERSION)}catch{}
-  if(claimed)modal('NEUES AUS DER TIEFE',b=>{const p=document.createElement('p');p.textContent='Neu: Deutsch zuerst, priorisierte Wortmeldungen sowie dein Profil mit Statistiken und bestätigten Freunden. Im Endbildschirm siehst du außerdem den Vergleich mit deinen Freunden.';b.append(p)});
+  if(claimed)modal('NEUES AUS DER TIEFE',b=>{const p=document.createElement('p');p.textContent='Mehr deutsche Antworten, gleiche Punkte für deutsche und englische Begriffe. Dazu: größere Schrift, ein aufgeräumtes Handy-Menü, besser lesbare Profile und abschaltbare Animationen. Sechs neu gestaltete Tiefsee-Charaktere begleiten dich jetzt auch auf dem Handy. Deine Freischaltungen und Bestleistungen bleiben erhalten.';b.append(p)});
  }catch(e){console.warn('Update notes:',e.code||e.message)}finally{releasePending=false;if(uid&&generation!==authGeneration)release()}
 }
 function updateSceneCharacter(skin){
@@ -148,10 +148,10 @@ function persist(){
  if(!db||!fire)return;
  fire.runTransaction(db,async tx=>{const ref=fire.doc(db,'users',owner,'profile','preferences'),snap=await tx.get(ref);tx.set(ref,{skin,seenUpdate:snap.data()?.seenUpdate||lastSeen})}).catch(e=>console.warn('Perk preferences:',e.code||e.message));
 }
-function choose(){if(!uid)return;score=Math.max(score,localBest());modal('DEINE TIEFSEE-SKINS',b=>{const p=document.createElement('p');p.textContent='Rundenbestleistung: '+score+' Punkte. Skins sind rein kosmetisch und beeinflussen deine Punkte nicht.';b.append(p);const grid=document.createElement('div');grid.className='abg-perk-grid';for(const skin of SKINS){const button=document.createElement('button'),available=score>=skin.min;button.disabled=!available;button.dataset.skin=skin.id;button.setAttribute('aria-pressed',String(selected===skin.id));const avatar=artImage(skin,'abg-perk-avatar');avatar.style.color=skin.color;avatar.src=spriteUrl(skin);avatar.alt=skin.name+' als Tiefsee-Charakter';const name=document.createElement('strong');name.textContent=skin.name;const threshold=document.createElement('small');threshold.textContent=available?'FREIGESCHALTET':skin.min+' P IN EINER RUNDE';button.append(avatar,name,threshold);button.onclick=()=>{selected=skin.id;try{localStorage.setItem('abgrundEquippedSkin:'+uid,selected)}catch{}updateEquipped();persist();choose()};grid.append(button)}b.append(grid);const achievements=document.createElement('div');achievements.innerHTML='<h3>ERFOLGE & PROFIL</h3>';const games=window.ABGRUND_HISTORY?.list?.()||[];const streakDays=[...new Set(games.map(g=>g.day).filter(Boolean))].sort().reverse();let streak=0,day=new Date();for(let i=0;i<365;i++){const key=day.toISOString().slice(0,10);if(streakDays.includes(key))streak++;else if(i>0||streakDays.length&&streakDays[0]!==new Date(Date.now()-86400000).toISOString().slice(0,10))break;day.setUTCDate(day.getUTCDate()-1)}const lines=[['Erster Tauchgang',games.length>=1],['10 Tauchgänge',games.length>=10],['100 Tauchgänge',games.length>=100],['7-Tage-Serie',streak>=7],['Tiefsee-Legende',score>=700]];for(const [label,done] of lines){const el=document.createElement('p');el.textContent=(done?'🏆 ':'🔒 ')+label;achievements.append(el)}const summary=document.createElement('p');summary.textContent='Gespielte Runden: '+games.length+' · Tages-Serie: '+streak+' · Bestleistung: '+score;achievements.prepend(summary);b.append(achievements)})}
+function choose(){if(!uid)return;score=Math.max(score,localBest());modal('DEINE TIEFSEE-SKINS',b=>{const p=document.createElement('p');p.textContent='Rundenbestleistung: '+score+' Punkte. Skins sind rein kosmetisch und beeinflussen deine Punkte nicht.';b.append(p);const grid=document.createElement('div');grid.className='abg-perk-grid';for(const skin of SKINS){const button=document.createElement('button'),available=score>=skin.min;button.disabled=!available;button.dataset.skin=skin.id;button.setAttribute('aria-pressed',String(selected===skin.id));const avatar=artImage(skin,'abg-perk-avatar');avatar.style.color=skin.color;avatar.src=spriteUrl(skin);avatar.alt=skin.name+' als Tiefsee-Charakter';const name=document.createElement('strong');name.textContent=skin.name;const threshold=document.createElement('small');threshold.textContent=available?'FREIGESCHALTET':skin.min+' P IN EINER RUNDE';button.append(avatar,name,threshold);button.onclick=()=>{selected=skin.id;try{localStorage.setItem('abgrundEquippedSkin:'+uid,selected)}catch{}updateEquipped();persist();choose()};grid.append(button)}b.append(grid);const achievements=document.createElement('div');achievements.innerHTML='<h3>ERFOLGE & PROFIL</h3>';const games=window.ABGRUND_HISTORY?.list?.()||[];const streakDays=[...new Set(games.map(g=>g.day).filter(Boolean))].sort().reverse();let streak=0,day=new Date();for(let i=0;i<365;i++){const key=day.toISOString().slice(0,10);if(streakDays.includes(key))streak++;else if(i>0||streakDays.length&&streakDays[0]!==new Date(Date.now()-86400000).toISOString().slice(0,10))break;day.setUTCDate(day.getUTCDate()-1)}const lines=[['Erster Tauchgang',games.length>=1],['10 Tauchgänge',games.length>=10],['100 Tauchgänge',games.length>=100],['7-Tage-Serie',streak>=7],['Tiefsee-Legende',score>=700]];for(const [label,done] of lines){const el=document.createElement('p');el.textContent=label+(done?' · Erreicht':' · Noch offen');achievements.append(el)}const summary=document.createElement('p');summary.textContent='Gespielte Runden: '+games.length+' · Tages-Serie: '+streak+' · Bestleistung: '+score;achievements.prepend(summary);b.append(achievements)})}
 const equipped=document.createElement('button');equipped.id='abgEquipped';equipped.type='button';equipped.className='abg-equipped';equipped.hidden=true;equipped.innerHTML='<img class="abg-equipped-emoji" aria-hidden="true" alt=""><span class="abg-equipped-copy"><small>AUSGERÜSTETER SKIN</small><strong></strong></span>';equipped.onclick=choose;
 const hud=document.querySelector('.hudtop');const home=document.querySelector('.homehub');if(hud)hud.insertAdjacentElement('afterend',equipped);else if(home)home.insertAdjacentElement('beforebegin',equipped);else document.querySelector('.main')?.prepend(equipped);
-const trigger=document.createElement('button');trigger.type='button';trigger.textContent='✦ SKINS';trigger.hidden=true;trigger.onclick=choose;trigger.style.cssText='background:#102b3a;color:#91eee2;border:1px solid #7de6dc55;border-radius:10px;padding:10px;cursor:pointer;font:11px monospace';document.getElementById('accountButton')?.insertAdjacentElement('afterend',trigger);
+const trigger=document.createElement('button');trigger.type='button';trigger.id='skinsButton';trigger.className='toplink';trigger.textContent='✦ SKINS';trigger.hidden=true;trigger.onclick=choose;document.getElementById('accountButton')?.insertAdjacentElement('afterend',trigger);
 let authGeneration=0;
 async function init(){try{
  const [a,f,g]=await Promise.all([import('https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js'),import('https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js'),import('https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js')]);
@@ -182,7 +182,16 @@ async function flushRejected(){
  try{
   for(const item of readOutbox(owner)){
    if(uid!==owner)break;
-   await fire.addDoc(fire.collection(db,'rejectedAnswers'),{uid:owner,question:item.question,answer:item.answer,status:'pending',priority:item.priority||0,createdAt:fire.serverTimestamp()});
+   const quotaRef=fire.doc(db,'users',owner,'limits','reports'),reportRef=fire.doc(db,'rejectedAnswers',owner+'_'+item.id);
+   await fire.runTransaction(db,async tx=>{
+    const [quotaSnap,reportSnap]=await Promise.all([tx.get(quotaRef),tx.get(reportRef)]);
+    if(uid!==owner)throw Error('account-changed');
+    if(reportSnap.data())return; // Stable ids make retries idempotent.
+    const day=Math.floor(Date.now()/86400000),quota=quotaSnap.data(),count=quota?.day===day?quota.count:0;
+    if(count>=(item.priority===1?100:80))throw Object.assign(Error('report-quota'),{code:'report-quota'});
+    tx.set(quotaRef,{day,count:count+1,last:item.id});
+    tx.set(reportRef,{uid:owner,question:item.question,answer:item.answer,status:'pending',priority:item.priority||0,createdAt:fire.serverTimestamp()});
+   });
    const remaining=readOutbox(owner).filter(x=>x.id!==item.id);localStorage.setItem(outboxKey(owner),JSON.stringify(remaining));
   }
   retry=uid===owner&&readOutbox(owner).length>0;

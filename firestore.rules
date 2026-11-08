@@ -4,6 +4,9 @@ rules_version = '2';
 // Friend edges are written in matching pairs; only the recipient can accept a request.
 // Friend codes are unguessable 128-bit codes, authenticated get only; never listable.
 // Rejected answers: append-only pending entries, priority 0 automatic / 1 explicit report.
+// users/{uid}/limits/reports: day (UTC day number), count (1..100), last (32 hex chars).
+// Every report and quota increment are atomic. Automatic reports stop at 80/day;
+// explicit reports can use the remaining capacity. No client deletes/resets a quota.
 service cloud.firestore {
  match /databases/{database}/documents {
   function signed() { return request.auth != null; }
@@ -77,6 +80,22 @@ service cloud.firestore {
     && d.answer is string && d.answer.size() > 0 && d.answer.size() <= 180
     && d.status == 'pending' && d.createdAt == request.time && (!('priority' in d)||d.priority in [0,1]);
   }
+  function reportDay() { return int(request.time.toMillis() / 86400000); }
+  function validReportQuota(d,uid) {
+   let report = getAfter(/databases/$(database)/documents/rejectedAnswers/$(uid + '_' + d.last)).data;
+   return d.keys().hasOnly(['day','count','last']) && d.keys().hasAll(['day','count','last'])
+    && d.day is int && d.day == reportDay() && number(d.count,100) && d.count > 0
+    && d.last is string && d.last.matches('^[a-f0-9]{32}$')
+    && !exists(/databases/$(database)/documents/rejectedAnswers/$(uid + '_' + d.last))
+    && validRejected(report) && (report.priority == 1 || d.count <= 80);
+  }
+  match /users/{uid}/limits/reports {
+   allow get: if owner(uid);
+   allow create: if owner(uid) && validReportQuota(request.resource.data,uid) && request.resource.data.count == 1;
+   allow update: if owner(uid) && validReportQuota(request.resource.data,uid)
+    && ((resource.data.day == reportDay() && request.resource.data.count == resource.data.count + 1)
+     || (resource.data.day < reportDay() && request.resource.data.count == 1));
+  }
   match /users/{uid}/profile/rotation {
    allow read: if owner(uid);
    allow create, update: if owner(uid) && validRotation(request.resource.data);
@@ -119,7 +138,12 @@ service cloud.firestore {
    allow update: if owner(uid) && validGame(request.resource.data) && request.resource.data == resource.data;
   }
   match /rejectedAnswers/{entry} {
-   allow create: if signed() && validRejected(request.resource.data);
+   // Known-id reads let the owner acknowledge a retry after a lost network response.
+   // Collection listing and reads of anyone else's report remain denied.
+   allow get: if signed() && (!exists(/databases/$(database)/documents/rejectedAnswers/$(entry)) || resource.data.uid == request.auth.uid);
+   allow create: if signed() && validRejected(request.resource.data)
+    && getAfter(/databases/$(database)/documents/users/$(request.auth.uid)/limits/reports).data.day == reportDay()
+    && entry == request.auth.uid + '_' + getAfter(/databases/$(database)/documents/users/$(request.auth.uid)/limits/reports).data.last;
   }
  }
 }
