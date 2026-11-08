@@ -4,6 +4,8 @@ const {chromium,webkit}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),ass
  const browser=await (process.env.ABGRUND_ENGINE==='webkit'?webkit:chromium).launch({headless:true,...(process.env.ABGRUND_BROWSER?{executablePath:process.env.ABGRUND_BROWSER}:{})});
  for(const [width,height]of [[320,568],[390,844],[768,1024],[820,1180],[1024,768],[844,390]]){
   const page=await browser.newPage({viewport:{width,height},serviceWorkers:'block',reducedMotion:'reduce'}),errors=[];page.on('pageerror',e=>errors.push(e.message));
+  // Layout tests use deterministic community data; localhost is intentionally not a production CORS origin.
+  await page.route('https://abgrund-community.knekkonn-hide-and-seek.workers.dev/**',r=>r.fulfill({status:200,contentType:'application/json',headers:{'access-control-allow-origin':'*'},body:JSON.stringify(r.request().url().includes('/scores?')?{scores:[]}:{version:'layout-test',players:0,rounds:0,average:null,histogram:[]})}));
   await page.goto(process.env.ABGRUND_URL||'http://127.0.0.1:8765',{waitUntil:'domcontentloaded'});
   await page.evaluate(()=>document.fonts.ready);
   const fits=async label=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),label+' fits '+width);
