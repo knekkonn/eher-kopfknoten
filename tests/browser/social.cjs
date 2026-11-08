@@ -12,7 +12,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),assert=req
   return r.fulfill({contentType:'application/javascript',body});
  });
  await page.goto(process.env.ABGRUND_URL||'http://127.0.0.1:8765',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.setTestUser&&window.testData);
- const show=()=>page.getByRole('button',{name:'Profil & Freunde',exact:true}).click();
+ const show=async()=>{if(await page.locator('#menuToggle').isVisible())await page.locator('#menuToggle').click();await page.getByRole('button',{name:'Profil & Freunde',exact:true}).click()};
  await page.evaluate(()=>window.setTestUser('alice'));await show();await page.getByRole('textbox',{name:'Dein Profilname'}).fill('Alice');await page.getByRole('button',{name:'NAMEN SPEICHERN',exact:true}).click();for(const width of [390,768]){await page.setViewportSize({width,height:1024});assert(await page.locator('.social-card').evaluate(n=>n.scrollWidth<=n.clientWidth),'profile fits mobile/tablet')}
  const code=await page.locator('.friend-code').innerText();assert.equal(code.length,32);
  await page.evaluate(()=>window.setTestUser('bob'));await show();await page.getByRole('textbox',{name:'Dein Profilname'}).fill('Bob');await page.getByRole('button',{name:'NAMEN SPEICHERN',exact:true}).click();await page.getByRole('textbox',{name:'Freundescode',exact:true}).fill(code);await page.getByRole('button',{name:'FREUNDSCHAFT ANFRAGEN',exact:true}).click();await page.getByRole('button',{name:'ANFRAGE ZURÜCKZIEHEN',exact:true}).waitFor();

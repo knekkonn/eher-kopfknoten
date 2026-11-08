@@ -8,19 +8,20 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),assert=req
   await page.waitForFunction(()=>window.ABGRUND_ARCHIVE?.ready);await page.evaluate(()=>window.ABGRUND_ARCHIVE.ready);
   const fits=async()=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no horizontal overflow at '+viewport.width);
   await fits();await page.evaluate(()=>document.fonts.ready);assert(await page.evaluate(()=>document.fonts.check('600 16px Manrope')),'local font loaded');
-  if(viewport.width<768){await page.locator('#menuToggle').click();assert.equal(await page.locator('#menuToggle').getAttribute('aria-expanded'),'true')}
+  if(viewport.width<1024){await page.locator('#menuToggle').click();assert.equal(await page.locator('#menuToggle').getAttribute('aria-expanded'),'true')}
   await page.locator('#rules').click();await page.locator('#modal.open').waitFor();await page.waitForFunction(()=>document.querySelector('#modal').contains(document.activeElement));
   await page.locator('#gotit').focus();await page.keyboard.press('Tab');assert.equal(await page.evaluate(()=>document.activeElement.id),'closeModal');await page.keyboard.press('Shift+Tab');assert.equal(await page.evaluate(()=>document.activeElement.id),'gotit');await fits();
-  await page.keyboard.press('Escape');assert.equal(await page.locator('#modal').evaluate(n=>n.classList.contains('open')),false);assert.equal(await page.evaluate(()=>document.activeElement.id),viewport.width<768?'menuToggle':'rules');
+  await page.keyboard.press('Escape');assert.equal(await page.locator('#modal').evaluate(n=>n.classList.contains('open')),false);assert.equal(await page.evaluate(()=>document.activeElement.id),viewport.width<1024?'menuToggle':'rules');
   await page.locator('#motionToggle').click();assert.equal(await page.locator('html').getAttribute('data-motion'),'paused');assert.equal(await page.locator('#diver img').evaluate(n=>getComputedStyle(n).animationName),'none');
   await page.reload({waitUntil:'domcontentloaded'});assert.equal(await page.locator('html').getAttribute('data-motion'),'paused');
   await page.locator('#begin').click();await page.waitForFunction(()=>!document.getElementById('answer').disabled);await fits();
+  assert(await page.locator('.progresshud i').evaluateAll(nodes=>new Set(nodes.map(n=>Math.round(n.getBoundingClientRect().top))).size===1),'all seven progress markers stay on one row');
   assert(await page.locator('#diver').isVisible(),'equipped character remains visible in game');
-  assert.equal(await page.locator('#diver').evaluate(n=>n.parentElement.className),'hud-character');
+  assert.equal(await page.locator('#diver').evaluate(n=>n.parentElement.className),'world-swimmer');
   assert(await page.locator('#submitAnswer>span').evaluate(n=>parseFloat(getComputedStyle(n).fontSize)>=14),'action label remains readable');
   assert.equal(await page.locator('.gamecard').getAttribute('aria-live'),null);assert.equal(await page.locator('#timerText').getAttribute('aria-live'),'off');
   await page.locator('#skipAnswer').click();await page.locator('#continueDive').waitFor();await fits();
-  const idx=await page.evaluate(()=>save.idx);if(viewport.width<768)await page.locator('#menuToggle').click();await page.locator('#rules').click();await page.waitForFunction(()=>document.querySelector('#modal').contains(document.activeElement));
+  const idx=await page.evaluate(()=>save.idx);if(viewport.width<1024)await page.locator('#menuToggle').click();await page.locator('#rules').click();await page.waitForFunction(()=>document.querySelector('#modal').contains(document.activeElement));
   await page.keyboard.press('Enter');assert.equal(await page.evaluate(()=>save.idx),idx,'Enter in dialog does not advance the round');
   await page.keyboard.press('Escape');await page.locator('#continueDive').click();await page.waitForFunction(()=>!document.getElementById('answer').disabled);await fits();
   await page.emulateMedia({reducedMotion:'reduce'});await page.waitForFunction(()=>document.getElementById('motionToggle').disabled);assert.equal(await page.locator('.gamecard').evaluate(n=>getComputedStyle(n).animationName),'none');
