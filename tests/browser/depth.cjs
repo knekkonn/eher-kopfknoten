@@ -15,6 +15,7 @@ const {chromium,webkit}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),ass
   assert.deepEqual(await page.evaluate(()=>({deadline:save.questionDeadline,points:save.points})),snapshot,'visual animation never changes score or deadline');
   let darkness=Number(await page.locator('html').evaluate(e=>e.style.getPropertyValue('--ocean-darkness')));
   await page.emulateMedia({reducedMotion:'reduce'});
+  await page.waitForFunction(()=>matchMedia('(prefers-reduced-motion:reduce)').matches&&document.documentElement.dataset.motion==='paused');
   for(const [depth,zone] of [[0,'Lichtzone'],[199,'Lichtzone'],[200,'Dämmerzone'],[999,'Dämmerzone'],[1000,'Mitternachtszone'],[3999,'Mitternachtszone'],[4000,'Abyssalzone'],[5999,'Abyssalzone'],[6000,'Hadalzone'],[7000,'Hadalzone']]){
    await page.evaluate(d=>window.ABGRUND_DEPTH.update(d),depth);assert.equal(await page.locator('.journey-zone').innerText(),zone);assert.equal(await page.locator('.depth-mini').getAttribute('aria-valuenow'),String(depth));
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'rail fits '+width);
