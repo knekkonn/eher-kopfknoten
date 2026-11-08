@@ -29,7 +29,7 @@ function syncIcons(){for(const [id,path] of Object.entries(iconPaths)){
 new MutationObserver(syncIcons).observe(document.body,{subtree:true,childList:true});syncIcons();
 
 // SVG labels keep a true 12 CSS-pixel minimum when a chart shrinks on a phone.
-const observedCharts=new Set(),chartObserver=new ResizeObserver(entries=>{for(const {target,contentRect} of entries){if(contentRect.width>0)target.style.setProperty('--chart-font',(12*target.viewBox.baseVal.width/contentRect.width)+'px')}});
+const observedCharts=new Set(),chartObserver=new ResizeObserver(entries=>{for(const {target} of entries){const width=target.getBoundingClientRect().width;if(width>0)target.style.setProperty('--chart-font',(12*target.viewBox.baseVal.width/width)+'px')}});
 function observeCharts(){for(const chart of observedCharts)if(!chart.isConnected){chartObserver.unobserve(chart);observedCharts.delete(chart)}for(const chart of document.querySelectorAll('.score-curve,.dive-log-chart'))if(!observedCharts.has(chart)){observedCharts.add(chart);chartObserver.observe(chart)}}
 new MutationObserver(observeCharts).observe(document.body,{childList:true,subtree:true});observeCharts();
 
