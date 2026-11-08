@@ -1,7 +1,7 @@
 /* Private profiles and mutually confirmed friendships. No email/name directory is exposed. */
 (()=>{'use strict';
 let fire,db,auth,uid=null,generation=0,identity=null,stopFriends=()=>{},stops=new Map(),relations=[],profiles=new Map(),publishTimer;
-const trigger=document.createElement('button');trigger.type='button';trigger.className='toplink';trigger.textContent='◎ PROFIL & FREUNDE';trigger.hidden=true;document.getElementById('accountButton')?.insertAdjacentElement('afterend',trigger);
+const trigger=document.createElement('button');trigger.type='button';trigger.id='profileButton';trigger.className='toplink';trigger.textContent='◎ PROFIL & FREUNDE';trigger.hidden=true;document.getElementById('accountButton')?.insertAdjacentElement('afterend',trigger);
 const ownStats=()=>window.ABGRUND_STATS.summary(window.ABGRUND_HISTORY?.list?.()||[],identity?.nickname||'Taucher');
 function el(tag,text,className){const node=document.createElement(tag);if(text!=null)node.textContent=text;if(className)node.className=className;return node}
 function action(label,fn){const button=el('button',label,'social-action');button.type='button';button.onclick=()=>Promise.resolve().then(fn).catch(e=>notice(e.code==='permission-denied'?'Zugriff nicht erlaubt. Bitte Anmeldung und Freundschaft prüfen.':'Das hat nicht geklappt. Bitte Verbindung prüfen.'));return button}
@@ -10,9 +10,15 @@ function close(){document.querySelector('.social-overlay')?.remove()}
 function panel(title){close();const overlay=el('div',null,'social-overlay'),card=el('section',null,'social-card');card.setAttribute('role','dialog');card.setAttribute('aria-modal','true');card.setAttribute('aria-label',title);card.append(el('h2',title));const body=el('div');card.append(body,el('p','','social-status'),action('SCHLIESSEN',close));card.querySelector('.social-status').id='socialStatus';overlay.append(card);overlay.onclick=e=>{if(e.target===overlay)close()};document.body.append(overlay);return body}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 function chart(stats){
- const wrap=el('div',null,'profile-chart');const max=Math.max(1,...stats.recent);
- wrap.append(el('h3','LETZTE '+stats.recent.length+' RUNDEN'));
- const bars=el('div',null,'profile-bars');for(const score of stats.recent){const bar=el('div');bar.style.height=Math.max(3,score/700*100)+'%';bar.title=score+' Punkte';bar.setAttribute('aria-label',score+' Punkte');bar.append(el('span',String(score)));bars.append(bar)}wrap.append(bars);return wrap;
+ const wrap=el('div',null,'profile-chart'),count=stats.recent.length,average=stats.recent.reduce((a,b)=>a+b,0)/count;
+ wrap.append(el('h3','Deine letzten '+count+' '+(count===1?'Runde':'Runden')),el('p','Ø '+average.toLocaleString('de-DE',{maximumFractionDigits:1})+' Punkte in diesem Verlauf','profile-chart-summary'));
+ const units=el('p',null,'profile-chart-units');units.append(el('span','Punkte'),el('span','Runde →'));wrap.append(units);
+ const plot=el('div',null,'profile-plot'),axis=el('div',null,'profile-axis'),bars=el('div',null,'profile-bars'),accessible=el('ol',null,'sr-only');
+ axis.setAttribute('aria-hidden','true');for(const value of ['700','350','0'])axis.append(el('span',value));bars.setAttribute('aria-hidden','true');
+ for(const [i,score] of stats.recent.entries()){
+  const round=stats.rounds-count+i+1,bar=el('div');bar.style.height=Math.max(0,score/700*100)+'%';bar.title='Runde '+round+': '+score+' Punkte';bar.append(el('span',String(score)),el('span',String(round),'round-label'));bars.append(bar);accessible.append(el('li',bar.title));
+ }
+ plot.append(axis,bars);wrap.append(plot,accessible);return wrap;
 }
 function renderStats(body,stats){
  const average=stats.rounds?stats.totalPoints/stats.rounds:0,known=stats.metricsRounds*7;
@@ -21,14 +27,14 @@ function renderStats(body,stats){
  const badges=el('div',null,'profile-badges');for(const [count,label] of [[stats.quick,'Blitz-Taucher'],[stats.skipped,'Abkürzungs-Profi'],[stats.timeouts,'Duell mit der Uhr'],[stats.reports,'Wörter-Scout'],[stats.full,'Perlentaucher']])if(count)badges.append(el('span',label+' · '+count));if(badges.childNodes.length)body.append(badges);
  body.append(el('p','Zeit- und Detailstatistiken: '+stats.metricsRounds+' von '+stats.rounds+' Runden erfasst. Ältere Runden behalten ihre Punkte; fehlende Zeiten werden nicht geschätzt.','social-caption'));
  if(stats.recent.length)body.append(chart(stats));
- if(known){const line=el('div',null,'outcome-bar');for(const [key,label] of [['answered','Richtig'],['skipped','Übersprungen'],['timeouts','Zeit abgelaufen']]){const part=el('span',null,key);part.style.width=stats[key]/known*100+'%';part.title=label+': '+stats[key];line.append(part)}body.append(el('h3','DEIN TAUCHVERHALTEN'),line,el('p','Grün: beantwortet · Gold: übersprungen · Rosa: Zeit abgelaufen','social-caption'))}
+ if(known){const line=el('div',null,'outcome-bar');for(const [key,label] of [['answered','Richtig'],['skipped','Übersprungen'],['timeouts','Zeit abgelaufen']]){const part=el('span',null,key);part.style.width=stats[key]/known*100+'%';part.title=label+': '+stats[key];part.setAttribute('aria-label',part.title);part.setAttribute('role','img');line.append(part)}body.append(el('h3','DEIN TAUCHVERHALTEN'),line,el('p',stats.answered+' beantwortet · '+stats.skipped+' übersprungen · '+stats.timeouts+' mal Zeit abgelaufen','social-caption'))}
 }
 function showFriend(friendId){const stats=profiles.get(friendId);if(!stats){notice('Das Profil ist noch nicht verfügbar. Die Person muss sich mit der neuen Version anmelden.');return}const body=panel(stats.nickname+' · PROFIL');renderStats(body,stats);body.append(el('p','Nur bestätigte Freunde können dieses Profil sehen. Synchronisierte persönliche Spielstatistik.','social-caption'),action('ZURÜCK ZU DEINEM PROFIL',show));}
 function show(){
  if(!uid||!identity)return;
- const body=panel('DEIN TAUCHPROFIL');renderStats(body,ownStats());
+ const body=panel('DEIN TAUCHPROFIL');const jump=el('a','Direkt zu deinen Freunden ↓','profile-jump');jump.href='#profileFriends';body.append(jump);renderStats(body,ownStats());
  const name=el('input');name.maxLength=24;name.value=identity.nickname;name.setAttribute('aria-label','Dein Profilname');body.append(el('h3','PROFILNAME'),name,action('NAMEN SPEICHERN',async()=>{const nickname=name.value.trim();if(nickname.length<2){notice('Bitte 2–24 Zeichen eingeben.');return}await fire.updateDoc(fire.doc(db,'users',uid,'profile','social'),{nickname});identity.nickname=nickname;await publish();notice('Profilname gespeichert.')}));
- body.append(el('h3','DEIN FREUNDESCODE'),el('p',identity.code,'friend-code'),action('CODE KOPIEREN',async()=>{await navigator.clipboard.writeText(identity.code);notice('Freundescode kopiert.')}));
+ const friendsHeading=el('h3','DEIN FREUNDESCODE');friendsHeading.id='profileFriends';friendsHeading.tabIndex=-1;jump.onclick=e=>{e.preventDefault();friendsHeading.scrollIntoView({block:'start'});friendsHeading.focus({preventScroll:true})};body.append(friendsHeading,el('p',identity.code,'friend-code'),action('CODE KOPIEREN',async()=>{await navigator.clipboard.writeText(identity.code);notice('Freundescode kopiert.')}));
  const input=el('input');input.placeholder='Freundescode einfügen';input.autocomplete='off';input.maxLength=32;input.setAttribute('aria-label','Freundescode');body.append(el('h3','FREUND HINZUFÜGEN'),input,action('FREUNDSCHAFT ANFRAGEN',async()=>{
   const owner=uid,epoch=generation,code=input.value.trim().toLowerCase();if(!/^[a-f0-9]{32}$/.test(code)){notice('Bitte einen vollständigen Freundescode eingeben.');return}
   const snap=await fire.getDoc(fire.doc(db,'friendCodes',code)),other=snap.data()?.uid;if(epoch!==generation||owner!==uid)return;if(!other){notice('Freundescode nicht gefunden.');return}if(other===uid){notice('Das ist dein eigener Code.');return}if(relations.some(r=>r.other===other)){notice('Es besteht bereits eine Freundschaft oder Anfrage.');return}

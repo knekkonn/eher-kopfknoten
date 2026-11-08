@@ -18,12 +18,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install --prefix /tmp/abgrund-browser playwright@1.64.1 --no-audit --no-fund
-      - run: /tmp/abgrund-browser/node_modules/.bin/playwright install --with-deps chromium
+      - run: npm ci --prefix tests --ignore-scripts --no-fund
+      - run: npm audit --prefix tests --audit-level=high
+      - run: tests/node_modules/.bin/playwright install --with-deps chromium
       - run: python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/abgrund-http.log 2>&1 &
-      - run: node tests/browser/layout.cjs && node tests/browser/perks.cjs && node tests/browser/social.cjs
+      - run: node tests/browser/layout.cjs && node tests/browser/perks.cjs && node tests/browser/social.cjs && node tests/browser/experience.cjs
         env:
-          PLAYWRIGHT_MODULE: /tmp/abgrund-browser/node_modules/playwright
+          PLAYWRIGHT_MODULE: ${{ github.workspace }}/tests/node_modules/playwright
   firestore-rules:
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -36,7 +37,7 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - run: npm install --prefix /tmp/abgrund-rules firebase@12.19.0 @firebase/rules-unit-testing@5.0.0 --no-audit --no-fund
+      - run: npm ci --prefix tests --ignore-scripts --no-fund
       - run: npx -y firebase-tools@latest emulators:exec --only firestore --project demo-abgrund --config firebase.emulator.json "node tests/firestore.cjs"
         env:
-          FIREBASE_TEST_MODULE_ROOT: /tmp/abgrund-rules
+          FIREBASE_TEST_MODULE_ROOT: ${{ github.workspace }}/tests

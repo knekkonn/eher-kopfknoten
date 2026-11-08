@@ -11,5 +11,6 @@ Object.assign(ctx,{Blob,DecompressionStream,Response,TextDecoder,TextEncoder});
 ctx.fetch=async path=>new Response(fs.readFileSync(String(path).replace(/^\.\//,'')));
 vm.runInContext(fs.readFileSync('archive-pack.js','utf8'),ctx);
 vm.runInContext(fs.readFileSync('reviewed-answers.js','utf8'),ctx);
+for(const file of ['german-lexicon.js','german-vocabulary.js','german-localization.js'])vm.runInContext(fs.readFileSync(file,'utf8'),ctx);
 vm.runInContext(fs.readFileSync('german-first.js','utf8'),ctx);
 module.exports={ctx,run,ready:ctx.window.ABGRUND_ARCHIVE.ready};

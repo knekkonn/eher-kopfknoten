@@ -12,7 +12,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),assert=req
   return r.fulfill({contentType:'application/javascript',body});
  });
  await page.goto(process.env.ABGRUND_URL||'http://127.0.0.1:8765',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.setTestUser&&window.testData);
- const show=()=>page.getByRole('button',{name:'◎ PROFIL & FREUNDE',exact:true}).click();
+ const show=()=>page.getByRole('button',{name:'Profil & Freunde',exact:true}).click();
  await page.evaluate(()=>window.setTestUser('alice'));await show();await page.getByRole('textbox',{name:'Dein Profilname'}).fill('Alice');await page.getByRole('button',{name:'NAMEN SPEICHERN',exact:true}).click();for(const width of [390,768]){await page.setViewportSize({width,height:1024});assert(await page.locator('.social-card').evaluate(n=>n.scrollWidth<=n.clientWidth),'profile fits mobile/tablet')}
  const code=await page.locator('.friend-code').innerText();assert.equal(code.length,32);
  await page.evaluate(()=>window.setTestUser('bob'));await show();await page.getByRole('textbox',{name:'Dein Profilname'}).fill('Bob');await page.getByRole('button',{name:'NAMEN SPEICHERN',exact:true}).click();await page.getByRole('textbox',{name:'Freundescode',exact:true}).fill(code);await page.getByRole('button',{name:'FREUNDSCHAFT ANFRAGEN',exact:true}).click();await page.getByRole('button',{name:'ANFRAGE ZURÜCKZIEHEN',exact:true}).waitFor();
@@ -20,6 +20,6 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),assert=req
  assert.deepEqual(await page.evaluate(()=>window.ABGRUND_SOCIAL.friendAverage()),{players:1,average:700});assert.equal(await page.locator('.profile-stat-grid>div').filter({hasText:'Punktedurchschnitt'}).locator('strong').innerText(),'700 P');
  await page.evaluate(()=>{const board=document.createElement('main');board.className='final-board';document.body.append(board);window.testEmit()});await page.locator('#friendAverage').waitFor();assert((await page.locator('#friendAverage').innerText()).includes('700'));
  await page.getByRole('button',{name:'ZURÜCK ZU DEINEM PROFIL',exact:true}).click();await page.getByRole('button',{name:'ENTFERNEN',exact:true}).click();assert.equal(await page.evaluate(()=>window.ABGRUND_SOCIAL.friendAverage().players),0);
- await page.evaluate(()=>window.setTestUser(null));assert.equal(await page.locator('.social-overlay').count(),0);assert.equal(await page.getByRole('button',{name:'◎ PROFIL & FREUNDE',exact:true}).isVisible(),false);assert.deepEqual(errors,[]);
+ await page.evaluate(()=>window.setTestUser(null));assert.equal(await page.locator('.social-overlay').count(),0);assert.equal(await page.getByRole('button',{name:'Profil & Freunde',exact:true}).isVisible(),false);assert.deepEqual(errors,[]);
  console.log('Browser social flow: named profiles, friend codes, request/accept/remove, shared stats, equal-person friend average, endscreen comparison and logout cleanup: OK (mock Firebase).');await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});
