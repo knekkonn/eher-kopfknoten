@@ -69,7 +69,7 @@ window.ABGRUND_ARCHIVE.ready=(async()=>{
  const byQuestion=new Map(bank.map(q=>[norm(q.q),q]));
  for(const row of rows){let q=byQuestion.get(norm(row.q));if(!q){q={q:row.q,answers:[],reviewedOnly:true};bank.push(q);byQuestion.set(norm(row.q),q)}
   q.archiveAssets||=[];q.archiveAssets.push({id:row.id,path:row.path});q.archiveId=row.validationId;q.archiveDate=row.date;q.archiveOriginal=row.original;q.archiveCount=(q.archiveCount||0)+row.count;q.archiveExamples=row.examples;q.full=row.top;q.top=row.top;
-  q.archiveSource='https://krilliongame.com/krillion-answers/'+row.date+'/';
+  q.archiveSource=row.source||'https://krilliongame.com/krillion-answers/'+row.date+'/';q.verifiedGermanAliases=row.verifiedGermanAliases||null;
  }
  if(!save.started)save=makeSession();
  else if(save.deckQuestions){const ids=save.deckQuestions.map(text=>bank.findIndex(q=>q.q===text));if(ids.every(i=>i>=0))save.deckIds=ids;else save=makeSession()}

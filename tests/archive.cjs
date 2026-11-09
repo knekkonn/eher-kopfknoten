@@ -24,7 +24,7 @@ ctx.fetch=async path=>new Response(fs.readFileSync(String(path).replace(/^\.\//,
 vm.runInContext(fs.readFileSync('archive-pack.js','utf8'),ctx);
 const manifest=await ctx.window.ABGRUND_ARCHIVE.ready;
 vm.runInContext(fs.readFileSync('reviewed-answers.js','utf8'),ctx);
-assert.equal(manifest.length,704);assert.equal(new Set(run('bank.map(q=>normalizeFactText(q.q))')).size,run('bank.length'),'no exact question duplicates');
+assert.equal(manifest.length,744);assert.equal(new Set(run('bank.map(q=>normalizeFactText(q.q))')).size,run('bank.length'),'no exact question duplicates');
 const functions=run('({verify:verifyFact,tier:tierForAnswer,canon:canonicalAnswer,n:normalizeFactText})');
 const zlib=require('node:zlib'),files=new Map();let records=0,aliases=0;
 for(const meta of manifest){
@@ -42,5 +42,5 @@ for(const [question,answer,aliases] of ctx.window.ABGRUND_REVIEWED_ANSWERS.entri
 }
 ctx.q=run('bank.find(q=>q.archiveCount>50000)');assert.equal(run("completionOptions(q,'John').suggestion"),'','short name cannot reveal a full news organization');
 assert.equal(functions.n('北京日报'),'北京日报','non-Latin names remain distinct');
-console.log(records+' source answers and '+aliases+' German aliases: exact points and acceptance verified across all 110 dives');
+console.log(records+' source answers and '+aliases+' German aliases: exact points and acceptance verified across all 117 saved dives');
 })().catch(e=>{console.error(e);process.exitCode=1});

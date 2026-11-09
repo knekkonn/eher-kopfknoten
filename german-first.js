@@ -24,6 +24,7 @@ function register(q,canonical,german,present){
 }
 function apply(q){
  q.germanNames||={};const present=new Set((q.answers||[]).map(n));
+ if(q.verifiedGermanAliases)for(const [key,german] of Object.entries(q.archiveGermanNames||{})){const canonical=q.archiveCanonicalByNorm?.get(key);if(canonical)register(q,canonical,german,present)}
  for(const group of window.ABGRUND_GERMAN_GROUPS?.[q.q]||[]){
   const names=group.filter(x=>typeof x==='string');if(!names.length)continue;
   const existing=names.find(name=>present.has(n(name))||q.archiveLookup?.has(n(name)));

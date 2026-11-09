@@ -1,11 +1,11 @@
 /* Presentation only: one point remains ten metres; animation never changes timers or scores. */
 (()=>{'use strict';
 const MAX=7000,zones=[
- {at:0,name:'Lichtzone',description:'Sonnenlicht erreicht das Wasser.'},
- {at:200,name:'Dämmerzone',description:'Das Sonnenlicht wird schwächer.'},
- {at:1000,name:'Mitternachtszone',description:'Hier dringt kein Sonnenlicht mehr hin.'},
- {at:4000,name:'Abyssalzone',description:'Weite, dunkle Tiefsee.'},
- {at:6000,name:'Hadalzone',description:'Du erreichst die tiefen Ozeangräben.'}
+ {at:0,name:'Lichtzone'},
+ {at:200,name:'Dämmerzone'},
+ {at:1000,name:'Mitternachtszone'},
+ {at:4000,name:'Abyssalzone'},
+ {at:6000,name:'Hadalzone'}
 ];
 const zoneAt=d=>zones.findLast(z=>d>=z.at)||zones[0],format=n=>Math.round(n).toLocaleString('de-DE');
 const root=document.documentElement,hud=document.getElementById('hudDepth'),chip=hud?.parentElement;
@@ -20,23 +20,20 @@ function ensureJourney(){
  if(!core){journey=null;return}
  if(core.querySelector('.depth-journey'))return;
  journey=document.createElement('section');journey.className='depth-journey';journey.setAttribute('aria-label','Dein Tauchfortschritt');
- journey.innerHTML='<div class="journey-scale" aria-hidden="true"><span class="journey-surface">0 m</span><div class="journey-track">'+zones.slice(1).map(z=>'<i style="top:'+z.at/MAX*100+'%"></i>').join('')+'<span class="journey-marker"></span></div><span class="journey-floor">7.000 m</span></div><div class="journey-copy"><p class="journey-zone"></p><strong class="journey-depth"></strong><p class="journey-description"></p><p class="journey-next"></p></div>';
+ journey.innerHTML='<div class="journey-copy"><p class="journey-zone"></p><strong class="journey-depth"></strong><p class="journey-next"></p></div>';
  const bubble=core.querySelector('.reveal-bubble');if(bubble)bubble.replaceWith(journey);else core.prepend(journey);
  render(displayed);
 }
 function render(depth){
  displayed=depth;window.ABGRUND_WORLD?.draw(depth);const zone=zoneAt(Math.round(depth)),next=zones.find(z=>z.at>Math.round(depth)),progress=depth/MAX;
- root.style.setProperty('--ocean-progress',String(progress));
  // Water progressively loses visible light; only the scenery darkens, never the controls.
  const darkness=depth<=200?.12+depth/200*.18:depth<=1000?.3+(depth-200)/800*.45:.75+(depth-1000)/6000*.22;
  root.style.setProperty('--ocean-darkness',darkness.toFixed(4));
- mini.style.setProperty('--marker-y',(progress*46)+'px');mini.setAttribute('aria-valuenow',String(Math.round(target)));mini.setAttribute('aria-valuetext',format(target)+' Meter · '+zoneAt(target).name);
+ mini.style.setProperty('--marker-y',(progress*46)+'px');mini.setAttribute('aria-valuenow',String(Math.round(depth)));mini.setAttribute('aria-valuetext',format(depth)+' Meter · '+zone.name);
  if(hud)hud.textContent=format(depth)+' m';
  if(journey?.isConnected){
-  journey.querySelector('.journey-marker').style.transform='translateY('+(progress*176)+'px)';
   journey.querySelector('.journey-zone').textContent=zone.name;
   journey.querySelector('.journey-depth').textContent=format(depth)+' m';
-  journey.querySelector('.journey-description').textContent=zone.description;
   journey.querySelector('.journey-next').textContent=next?'Nächste Zone bei '+format(next.at)+' m':depth>=MAX?'7.000 m · Maximale Rundentiefe erreicht':'Rundenziel: 7.000 m';
  }
 }

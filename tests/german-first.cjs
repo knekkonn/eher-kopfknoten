@@ -7,6 +7,24 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),engine=require(
   for(const answer of q.answers){const label=functions.label(q,answer);assert(functions.verify(q,label),q.q+': '+label);assert.equal(functions.tier(q,label).points,functions.tier(q,answer).points,q.q+': '+answer+' -> '+label);checked++;if(label!==functions.canonical(q,answer)){german++;translated++}}
   report.push({question:q.q,archiveId:q.archiveId||null,answers:q.answers.length,germanPresentation:german,unchanged:q.answers.length-german});
  }
+ const pokemon=engine.run('bank').find(q=>q.archiveId==='d111-p4');assert(pokemon);await engine.ctx.window.ABGRUND_ARCHIVE.loadQuestion(pokemon);assert.equal(functions.label(pokemon,'Bulbasaur'),'Bisasam');assert(functions.verify(pokemon,'Bisasam'));assert.equal(functions.tier(pokemon,'Bisasam').points,functions.tier(pokemon,'Bulbasaur').points);
+ // Common answers in the new dives should read naturally in German without changing their identity or score.
+ for(const [id,english,german,points] of [
+  ['d113-p7','Hot air balloon','Heißluftballon',10],
+  ['d114-p2','Brightness','Helligkeit',10],
+  ['d114-p4','Hoop','Korb',10],
+  ['d116-p1','Electricity','Stromrechnung',10],
+  ['d116-p7','Newspaper ad','Zeitungsanzeige',10],
+  ['d117-p3','Ankle','Knöchel',10]
+ ]){
+  const q=engine.run('bank').find(q=>q.archiveId===id);assert(q,id);await engine.ctx.window.ABGRUND_ARCHIVE.loadQuestion(q);
+  assert.equal(functions.label(q,english),german,id+' German display');
+  assert(functions.verify(q,german),id+' accepts the German answer');
+  assert.equal(functions.canonical(q,german),english,id+' keeps the original answer identity');
+  assert.equal(functions.tier(q,english).points,points,id+' original points');
+  assert.equal(functions.tier(q,german).points,points,id+' translated points');
+  assert.equal(functions.completion(q,english).suggestion,german,id+' suggests German first');
+ }
  const delivery=engine.run('bank').find(q=>q.q==='Nenne einen Zustelldienst.');for(const [answer,points] of [['DHL',10],['DoorDash',60],['Deutsche Post',10]]){assert(functions.verify(delivery,answer));assert.equal(functions.tier(delivery,answer).points,points)}
  for(const word of ['constructor','__proto__']){assert.equal(typeof functions.canonical(delivery,word),'string');assert.equal(functions.verify(delivery,word),false);assert.equal(functions.label(delivery,word),word)}
  let guams=0;for(const q of engine.run('bank'))if(functions.verify(q,'Guam')){assert.equal(functions.tier(q,'Guam').points,60,q.q);guams++}assert(guams>=3);

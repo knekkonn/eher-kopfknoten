@@ -1,7 +1,7 @@
 {
-  "questions": 864,
-  "answers": 646418,
-  "germanPresentation": 31246,
+  "questions": 904,
+  "answers": 814280,
+  "germanPresentation": 37093,
   "guamCategories": 3,
   "policy": "Category-checked German labels resolve to the exact same canonical answer and score. Proper names and literal word tasks stay unchanged. Unverified archive aliases are not used as translations. Counts include accepted spelling variants, not only unique concepts. Unchanged does not imply that every entry is a proper name.",
   "prompts": [
@@ -6052,6 +6052,286 @@
       "answers": 6429,
       "germanPresentation": 44,
       "unchanged": 6385
+    },
+    {
+      "question": "Nenne einen Superhelden, der fliegen kann.",
+      "archiveId": "d111-p2",
+      "answers": 2465,
+      "germanPresentation": 0,
+      "unchanged": 2465
+    },
+    {
+      "question": "Nenne ein Pokémon.",
+      "archiveId": "d111-p4",
+      "answers": 1865,
+      "germanPresentation": 1678,
+      "unchanged": 187
+    },
+    {
+      "question": "Nenne eine Art Behälter (Haushaltsgeräte zählen nicht).",
+      "archiveId": "d111-p7",
+      "answers": 2468,
+      "germanPresentation": 71,
+      "unchanged": 2397
+    },
+    {
+      "question": "Nenne etwas, das aus der Erde abgebaut wird.",
+      "archiveId": "d112-p1",
+      "answers": 1978,
+      "germanPresentation": 38,
+      "unchanged": 1940
+    },
+    {
+      "question": "Nenne ein Meerestier, das weder Fisch noch Vogel ist.",
+      "archiveId": "d112-p2",
+      "answers": 11914,
+      "germanPresentation": 190,
+      "unchanged": 11724
+    },
+    {
+      "question": "Nenne etwas, das von Natur aus blau ist.",
+      "archiveId": "d112-p3",
+      "answers": 3884,
+      "germanPresentation": 14,
+      "unchanged": 3870
+    },
+    {
+      "question": "Nenne einen Gegenstand, mit dem man isst oder Essen serviert (z. B. Teller oder Löffel).",
+      "archiveId": "d112-p4",
+      "answers": 2313,
+      "germanPresentation": 58,
+      "unchanged": 2255
+    },
+    {
+      "question": "Nenne einen Science-Fiction-Film (bei IMDb als Sci-Fi eingeordnet, mindestens 1.000 Bewertungen).",
+      "archiveId": "d112-p5",
+      "answers": 4178,
+      "germanPresentation": 53,
+      "unchanged": 4125
+    },
+    {
+      "question": "Nenne eine Stadt mit 1 bis 10 Millionen Einwohnern innerhalb der Stadtgrenzen.",
+      "archiveId": "d112-p6",
+      "answers": 747,
+      "germanPresentation": 98,
+      "unchanged": 649
+    },
+    {
+      "question": "Nenne ein Dessert aus Teig.",
+      "archiveId": "d112-p7",
+      "answers": 5216,
+      "germanPresentation": 16,
+      "unchanged": 5200
+    },
+    {
+      "question": "Nenne ein Tier, das schneller laufen kann als ein Mensch.",
+      "archiveId": "d113-p1",
+      "answers": 431,
+      "germanPresentation": 178,
+      "unchanged": 253
+    },
+    {
+      "question": "Nenne einen Film von Pixar, DreamWorks Animation, Illumination, Disney Animation, Sony Pictures Animation oder Blue Sky Studios.",
+      "archiveId": "d113-p2",
+      "answers": 347,
+      "germanPresentation": 110,
+      "unchanged": 237
+    },
+    {
+      "question": "Nenne ein Getränk auf Milchbasis.",
+      "archiveId": "d113-p3",
+      "answers": 1671,
+      "germanPresentation": 10,
+      "unchanged": 1661
+    },
+    {
+      "question": "Nenne ein Land mit Landgrenzen zu mindestens vier anderen Ländern.",
+      "archiveId": "d113-p4",
+      "answers": 140,
+      "germanPresentation": 114,
+      "unchanged": 26
+    },
+    {
+      "question": "Nenne eine Gottheit aus der hinduistischen, griechischen, römischen, nordischen oder ägyptischen Mythologie.",
+      "archiveId": "d113-p5",
+      "answers": 2456,
+      "germanPresentation": 22,
+      "unchanged": 2434
+    },
+    {
+      "question": "Nenne eine Art Kleid.",
+      "archiveId": "d113-p6",
+      "answers": 3562,
+      "germanPresentation": 6,
+      "unchanged": 3556
+    },
+    {
+      "question": "Nenne eine Ballonart.",
+      "archiveId": "d113-p7",
+      "answers": 217,
+      "germanPresentation": 16,
+      "unchanged": 201
+    },
+    {
+      "question": "Nenne eine Frucht oder ein Gemüse, das innen rot ist.",
+      "archiveId": "d114-p1",
+      "answers": 165,
+      "germanPresentation": 30,
+      "unchanged": 135
+    },
+    {
+      "question": "Nenne eine Einstellung, die man in einem Videospiel ändern kann.",
+      "archiveId": "d114-p2",
+      "answers": 1593,
+      "germanPresentation": 16,
+      "unchanged": 1577
+    },
+    {
+      "question": "Nenne ein Ziel, auf das Spieler in einer Sportart zielen, um zu punkten (z. B. einen Korb).",
+      "archiveId": "d114-p4",
+      "answers": 209,
+      "germanPresentation": 12,
+      "unchanged": 197
+    },
+    {
+      "question": "Nenne einen emotionalen oder körperlichen Zustand in nur einem Wort.",
+      "archiveId": "d114-p6",
+      "answers": 1888,
+      "germanPresentation": 14,
+      "unchanged": 1874
+    },
+    {
+      "question": "Nenne etwas, das Menschen als Schutz tragen (normale Alltagskleidung zählt nicht).",
+      "archiveId": "d114-p7",
+      "answers": 1391,
+      "germanPresentation": 24,
+      "unchanged": 1367
+    },
+    {
+      "question": "Nenne ein gefülltes Lebensmittel.",
+      "archiveId": "d115-p1",
+      "answers": 4548,
+      "germanPresentation": 39,
+      "unchanged": 4509
+    },
+    {
+      "question": "Nenne eine Animationsserie, die nicht für Kinder gedacht ist (kein Anime).",
+      "archiveId": "d115-p2",
+      "answers": 1737,
+      "germanPresentation": 10,
+      "unchanged": 1727
+    },
+    {
+      "question": "Nenne ein Land, das flächenmäßig größer als das Vereinigte Königreich und kleiner als Ägypten ist.",
+      "archiveId": "d115-p3",
+      "answers": 76,
+      "germanPresentation": 56,
+      "unchanged": 20
+    },
+    {
+      "question": "Nenne eine Ausdauerübung.",
+      "archiveId": "d115-p4",
+      "answers": 644,
+      "germanPresentation": 34,
+      "unchanged": 610
+    },
+    {
+      "question": "Nenne einen Song aus 2025 oder 2026 mit mehr als 10 Millionen Streams auf Spotify.",
+      "archiveId": "d115-p5",
+      "answers": 8792,
+      "germanPresentation": 0,
+      "unchanged": 8792
+    },
+    {
+      "question": "Nenne eine rote Sauce, einen roten Dip oder eine rote Würzsoße.",
+      "archiveId": "d115-p6",
+      "answers": 687,
+      "germanPresentation": 15,
+      "unchanged": 672
+    },
+    {
+      "question": "Nenne eine App oder Website, auf der man etwas buchen kann (z. B. eine Reise).",
+      "archiveId": "d115-p7",
+      "answers": 8238,
+      "germanPresentation": 0,
+      "unchanged": 8238
+    },
+    {
+      "question": "Nenne eine regelmäßig anfallende Haushaltsrechnung.",
+      "archiveId": "d116-p1",
+      "answers": 366,
+      "germanPresentation": 16,
+      "unchanged": 350
+    },
+    {
+      "question": "Nenne ein Tier, das sticht.",
+      "archiveId": "d116-p2",
+      "answers": 6688,
+      "germanPresentation": 24,
+      "unchanged": 6664
+    },
+    {
+      "question": "Nenne einen heute lebenden Vogel, der größer als ein Huhn ist.",
+      "archiveId": "d116-p3",
+      "answers": 1099,
+      "germanPresentation": 574,
+      "unchanged": 525
+    },
+    {
+      "question": "Nenne einen Gegenstand aus Minecraft (auch aus älteren Versionen).",
+      "archiveId": "d116-p5",
+      "answers": 2460,
+      "germanPresentation": 92,
+      "unchanged": 2368
+    },
+    {
+      "question": "Nenne etwas, das man zu Hause regelmäßig leert.",
+      "archiveId": "d116-p6",
+      "answers": 316,
+      "germanPresentation": 54,
+      "unchanged": 262
+    },
+    {
+      "question": "Nenne eine Werbemethode.",
+      "archiveId": "d116-p7",
+      "answers": 825,
+      "germanPresentation": 16,
+      "unchanged": 809
+    },
+    {
+      "question": "Nenne einen Podcast mit mindestens 1.000 Bewertungen auf Spotify.",
+      "archiveId": "d117-p1",
+      "answers": 9056,
+      "germanPresentation": 6,
+      "unchanged": 9050
+    },
+    {
+      "question": "Nenne einen Bösewicht aus Star Wars, DC oder Der Herr der Ringe.",
+      "archiveId": "d117-p2",
+      "answers": 26169,
+      "germanPresentation": 8,
+      "unchanged": 26161
+    },
+    {
+      "question": "Nenne einen Körperteil unterhalb der Taille.",
+      "archiveId": "d117-p3",
+      "answers": 2691,
+      "germanPresentation": 60,
+      "unchanged": 2631
+    },
+    {
+      "question": "Nenne eine Sprache mit insgesamt mehr als 10 Millionen Sprechern.",
+      "archiveId": "d117-p4",
+      "answers": 158,
+      "germanPresentation": 71,
+      "unchanged": 87
+    },
+    {
+      "question": "Nenne ein Tier, das regelmäßig Insekten oder andere kleine Gliederfüßer frisst (belegte Nahrung).",
+      "archiveId": "d117-p5",
+      "answers": 42214,
+      "germanPresentation": 2004,
+      "unchanged": 40210
     }
   ]
 }

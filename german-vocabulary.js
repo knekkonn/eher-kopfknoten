@@ -1227,6 +1227,42 @@ Nenne einen Planeten oder Zwergplaneten in unserem Sonnensystem.|Mercury|Merkur
 Nenne etwas, das verwendet wird, um einen Ball in einem Sport zu schlagen (das gleiche Werkzeug zählt einmal über Sportarten hinweg).|Bat|Schläger
 Nenne eine Eissorte (auch Sorbet zählt).|Blue moon|Blue Moon
 Nenne einen militärischen Dienstgrad.|Captain|Hauptmann
+Nenne eine Ballonart.|Helium balloon|Heliumballon
+Nenne eine Ballonart.|Hot air balloon|Heißluftballon
+Nenne eine Ballonart.|Water balloon|Wasserballon
+Nenne eine Ballonart.|Balloon animal|Ballontier
+Nenne eine Ballonart.|Heart balloon|Herzballon
+Nenne eine Ballonart.|Number balloon|Zahlenballon
+Nenne eine Ballonart.|Weather balloon|Wetterballon
+Nenne eine Einstellung, die man in einem Videospiel ändern kann.|Brightness|Helligkeit
+Nenne eine Einstellung, die man in einem Videospiel ändern kann.|Sensitivity|Empfindlichkeit
+Nenne eine Einstellung, die man in einem Videospiel ändern kann.|Volume|Lautstärke
+Nenne eine Einstellung, die man in einem Videospiel ändern kann.|Aim assist|Zielhilfe
+Nenne eine Einstellung, die man in einem Videospiel ändern kann.|Camera sensitivity|Kameraempfindlichkeit
+Nenne ein Ziel, auf das Spieler in einer Sportart zielen, um zu punkten (z. B. einen Korb).|Goal|Tor
+Nenne ein Ziel, auf das Spieler in einer Sportart zielen, um zu punkten (z. B. einen Korb).|Hole|Loch
+Nenne ein Ziel, auf das Spieler in einer Sportart zielen, um zu punkten (z. B. einen Korb).|Hoop|Korb
+Nenne ein Ziel, auf das Spieler in einer Sportart zielen, um zu punkten (z. B. einen Korb).|Bullseye|Zentrum der Zielscheibe
+Nenne ein Ziel, auf das Spieler in einer Sportart zielen, um zu punkten (z. B. einen Korb).|Crossbar|Querlatte
+Nenne ein Ziel, auf das Spieler in einer Sportart zielen, um zu punkten (z. B. einen Korb).|Dartboard|Dartscheibe
+Nenne eine regelmäßig anfallende Haushaltsrechnung.|Cell phone|Handyrechnung
+Nenne eine regelmäßig anfallende Haushaltsrechnung.|Electricity|Stromrechnung
+Nenne eine regelmäßig anfallende Haushaltsrechnung.|Gas|Gasrechnung
+Nenne eine regelmäßig anfallende Haushaltsrechnung.|Cable TV|Kabelfernsehen
+Nenne eine regelmäßig anfallende Haushaltsrechnung.|Car insurance|Autoversicherung
+Nenne eine Werbemethode.|Billboard|Werbetafel
+Nenne eine Werbemethode.|Flyer|Handzettel
+Nenne eine Werbemethode.|Newspaper ad|Zeitungsanzeige
+Nenne eine Werbemethode.|Aerial banner|Flugzeugbanner
+Nenne eine Werbemethode.|Banner ad|Banneranzeige
+Nenne eine Werbemethode.|Brochure|Werbebroschüre
+Nenne einen Körperteil unterhalb der Taille.|Ankle|Knöchel
+Nenne einen Körperteil unterhalb der Taille.|Buttocks|Gesäß
+Nenne einen Körperteil unterhalb der Taille.|Achilles tendon|Achillessehne
+Nenne einen Körperteil unterhalb der Taille.|Anterior cruciate ligament|Vorderes Kreuzband
+Nenne einen Körperteil unterhalb der Taille.|Big toe|Großer Zeh
+Nenne einen Körperteil unterhalb der Taille.|Calf|Wade
+Nenne einen Körperteil unterhalb der Taille.|Ball of the foot|Fußballen
 `);
 window.ABGRUND_GERMAN_VOCABULARY=sections;
 })();
