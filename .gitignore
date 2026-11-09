@@ -6,3 +6,5 @@ firestore-debug.log*
 gha-creds-*.json
 
 .taste-skill/
+
+.DS_Store
