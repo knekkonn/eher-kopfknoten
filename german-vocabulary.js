@@ -1264,5 +1264,57 @@ Nenne einen Körperteil unterhalb der Taille.|Big toe|Großer Zeh
 Nenne einen Körperteil unterhalb der Taille.|Calf|Wade
 Nenne einen Körperteil unterhalb der Taille.|Ball of the foot|Fußballen
 `);
+// Common answers from Dives 111–117. Exact question scope prevents name collisions.
+add('question',`
+Nenne eine Art Behälter (Haushaltsgeräte zählen nicht).|Bag|Beutel
+Nenne eine Art Behälter (Haushaltsgeräte zählen nicht).|Box|Kiste
+Nenne eine Art Behälter (Haushaltsgeräte zählen nicht).|Bucket|Eimer
+Nenne eine Art Behälter (Haushaltsgeräte zählen nicht).|Food storage container|Vorratsbehälter
+Nenne eine Art Behälter (Haushaltsgeräte zählen nicht).|Jar|Schraubglas
+Nenne etwas, das aus der Erde abgebaut wird.|Coal|Kohle
+Nenne etwas, das von Natur aus blau ist.|Blue jay|Blauhäher
+Nenne etwas, das von Natur aus blau ist.|Ocean|Ozean
+Nenne etwas, das von Natur aus blau ist.|Sapphire|Saphir
+Nenne etwas, das von Natur aus blau ist.|Sea|Meer
+Nenne etwas, das von Natur aus blau ist.|Sky|Himmel
+Nenne ein Dessert aus Teig.|Cookie|Keks
+Nenne ein Getränk auf Milchbasis.|Hot chocolate|Heiße Schokolade
+Nenne ein Getränk auf Milchbasis.|Milkshake|Milchshake
+Nenne eine Art Kleid.|Cocktail dress|Cocktailkleid
+Nenne eine Art Kleid.|Prom dress|Ballkleid
+Nenne eine Art Kleid.|Sundress|Sommerkleid
+Nenne eine Art Kleid.|Wedding dress|Hochzeitskleid
+Nenne einen emotionalen oder körperlichen Zustand in nur einem Wort.|Angry|Wütend
+Nenne einen emotionalen oder körperlichen Zustand in nur einem Wort.|Cold|Kalt
+Nenne einen emotionalen oder körperlichen Zustand in nur einem Wort.|Happy|Glücklich
+Nenne einen emotionalen oder körperlichen Zustand in nur einem Wort.|Hot|Heiß
+Nenne einen emotionalen oder körperlichen Zustand in nur einem Wort.|Hungry|Hungrig
+Nenne einen emotionalen oder körperlichen Zustand in nur einem Wort.|Sad|Traurig
+Nenne einen emotionalen oder körperlichen Zustand in nur einem Wort.|Scared|Ängstlich
+Nenne einen emotionalen oder körperlichen Zustand in nur einem Wort.|Tired|Müde
+Nenne etwas, das Menschen als Schutz tragen (normale Alltagskleidung zählt nicht).|Armor|Rüstung
+Nenne etwas, das Menschen als Schutz tragen (normale Alltagskleidung zählt nicht).|Goggles|Schutzbrille
+Nenne etwas, das Menschen als Schutz tragen (normale Alltagskleidung zählt nicht).|Mask|Maske
+Nenne ein gefülltes Lebensmittel.|Dumpling|Teigtasche
+Nenne eine Ausdauerübung.|Cycling|Radfahren
+Nenne eine Ausdauerübung.|Walking|Walken
+Nenne eine rote Sauce, einen roten Dip oder eine rote Würzsoße.|Hot sauce|Scharfe Soße
+Nenne eine regelmäßig anfallende Haushaltsrechnung.|Internet|Internetrechnung
+Nenne eine regelmäßig anfallende Haushaltsrechnung.|Rent|Miete
+Nenne eine regelmäßig anfallende Haushaltsrechnung.|Water|Wasserrechnung
+Nenne ein Tier, das sticht.|Scorpion|Skorpion
+Nenne ein Tier, das sticht.|Stingray|Stachelrochen
+Nenne einen heute lebenden Vogel, der größer als ein Huhn ist.|Peacock|Pfau
+Nenne einen heute lebenden Vogel, der größer als ein Huhn ist.|Swan|Schwan
+Nenne einen heute lebenden Vogel, der größer als ein Huhn ist.|Turkey|Truthahn
+Nenne etwas, das man zu Hause regelmäßig leert.|Litter box|Katzenklo
+Nenne etwas, das man zu Hause regelmäßig leert.|Recycling bin|Wertstofftonne
+Nenne etwas, das man zu Hause regelmäßig leert.|Trash can|Mülleimer
+Nenne eine Werbemethode.|Radio ad|Radiowerbung
+Nenne eine Werbemethode.|Social media ads|Werbung in sozialen Medien
+Nenne eine Werbemethode.|TV commercial|Fernsehwerbung
+Nenne ein Tier, das regelmäßig Insekten oder andere kleine Gliederfüßer frisst (belegte Nahrung).|Anteater|Ameisenbär
+Nenne ein Tier, das regelmäßig Insekten oder andere kleine Gliederfüßer frisst (belegte Nahrung).|Bird|Vogel
+`);
 window.ABGRUND_GERMAN_VOCABULARY=sections;
 })();
