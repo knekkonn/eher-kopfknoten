@@ -1,7 +1,7 @@
 {
   "questions": 904,
-  "answers": 814280,
-  "germanPresentation": 37093,
+  "answers": 814326,
+  "germanPresentation": 37185,
   "guamCategories": 3,
   "policy": "Category-checked German labels resolve to the exact same canonical answer and score. Proper names and literal word tasks stay unchanged. Unverified archive aliases are not used as translations. Counts include accepted spelling variants, not only unique concepts. Unchanged does not imply that every entry is a proper name.",
   "prompts": [
@@ -6070,16 +6070,16 @@
     {
       "question": "Nenne eine Art Behälter (Haushaltsgeräte zählen nicht).",
       "archiveId": "d111-p7",
-      "answers": 2468,
-      "germanPresentation": 71,
-      "unchanged": 2397
+      "answers": 2473,
+      "germanPresentation": 81,
+      "unchanged": 2392
     },
     {
       "question": "Nenne etwas, das aus der Erde abgebaut wird.",
       "archiveId": "d112-p1",
-      "answers": 1978,
-      "germanPresentation": 38,
-      "unchanged": 1940
+      "answers": 1979,
+      "germanPresentation": 40,
+      "unchanged": 1939
     },
     {
       "question": "Nenne ein Meerestier, das weder Fisch noch Vogel ist.",
@@ -6091,9 +6091,9 @@
     {
       "question": "Nenne etwas, das von Natur aus blau ist.",
       "archiveId": "d112-p3",
-      "answers": 3884,
-      "germanPresentation": 14,
-      "unchanged": 3870
+      "answers": 3889,
+      "germanPresentation": 24,
+      "unchanged": 3865
     },
     {
       "question": "Nenne einen Gegenstand, mit dem man isst oder Essen serviert (z. B. Teller oder Löffel).",
@@ -6119,9 +6119,9 @@
     {
       "question": "Nenne ein Dessert aus Teig.",
       "archiveId": "d112-p7",
-      "answers": 5216,
-      "germanPresentation": 16,
-      "unchanged": 5200
+      "answers": 5217,
+      "germanPresentation": 18,
+      "unchanged": 5199
     },
     {
       "question": "Nenne ein Tier, das schneller laufen kann als ein Mensch.",
@@ -6140,9 +6140,9 @@
     {
       "question": "Nenne ein Getränk auf Milchbasis.",
       "archiveId": "d113-p3",
-      "answers": 1671,
-      "germanPresentation": 10,
-      "unchanged": 1661
+      "answers": 1673,
+      "germanPresentation": 14,
+      "unchanged": 1659
     },
     {
       "question": "Nenne ein Land mit Landgrenzen zu mindestens vier anderen Ländern.",
@@ -6161,9 +6161,9 @@
     {
       "question": "Nenne eine Art Kleid.",
       "archiveId": "d113-p6",
-      "answers": 3562,
-      "germanPresentation": 6,
-      "unchanged": 3556
+      "answers": 3566,
+      "germanPresentation": 14,
+      "unchanged": 3552
     },
     {
       "question": "Nenne eine Ballonart.",
@@ -6196,23 +6196,23 @@
     {
       "question": "Nenne einen emotionalen oder körperlichen Zustand in nur einem Wort.",
       "archiveId": "d114-p6",
-      "answers": 1888,
-      "germanPresentation": 14,
-      "unchanged": 1874
+      "answers": 1896,
+      "germanPresentation": 30,
+      "unchanged": 1866
     },
     {
       "question": "Nenne etwas, das Menschen als Schutz tragen (normale Alltagskleidung zählt nicht).",
       "archiveId": "d114-p7",
-      "answers": 1391,
-      "germanPresentation": 24,
-      "unchanged": 1367
+      "answers": 1394,
+      "germanPresentation": 30,
+      "unchanged": 1364
     },
     {
       "question": "Nenne ein gefülltes Lebensmittel.",
       "archiveId": "d115-p1",
-      "answers": 4548,
-      "germanPresentation": 39,
-      "unchanged": 4509
+      "answers": 4549,
+      "germanPresentation": 41,
+      "unchanged": 4508
     },
     {
       "question": "Nenne eine Animationsserie, die nicht für Kinder gedacht ist (kein Anime).",
@@ -6231,9 +6231,9 @@
     {
       "question": "Nenne eine Ausdauerübung.",
       "archiveId": "d115-p4",
-      "answers": 644,
-      "germanPresentation": 34,
-      "unchanged": 610
+      "answers": 645,
+      "germanPresentation": 36,
+      "unchanged": 609
     },
     {
       "question": "Nenne einen Song aus 2025 oder 2026 mit mehr als 10 Millionen Streams auf Spotify.",
@@ -6245,9 +6245,9 @@
     {
       "question": "Nenne eine rote Sauce, einen roten Dip oder eine rote Würzsoße.",
       "archiveId": "d115-p6",
-      "answers": 687,
-      "germanPresentation": 15,
-      "unchanged": 672
+      "answers": 688,
+      "germanPresentation": 17,
+      "unchanged": 671
     },
     {
       "question": "Nenne eine App oder Website, auf der man etwas buchen kann (z. B. eine Reise).",
@@ -6259,23 +6259,23 @@
     {
       "question": "Nenne eine regelmäßig anfallende Haushaltsrechnung.",
       "archiveId": "d116-p1",
-      "answers": 366,
-      "germanPresentation": 16,
-      "unchanged": 350
+      "answers": 368,
+      "germanPresentation": 20,
+      "unchanged": 348
     },
     {
       "question": "Nenne ein Tier, das sticht.",
       "archiveId": "d116-p2",
-      "answers": 6688,
-      "germanPresentation": 24,
-      "unchanged": 6664
+      "answers": 6690,
+      "germanPresentation": 28,
+      "unchanged": 6662
     },
     {
       "question": "Nenne einen heute lebenden Vogel, der größer als ein Huhn ist.",
       "archiveId": "d116-p3",
-      "answers": 1099,
-      "germanPresentation": 574,
-      "unchanged": 525
+      "answers": 1101,
+      "germanPresentation": 578,
+      "unchanged": 523
     },
     {
       "question": "Nenne einen Gegenstand aus Minecraft (auch aus älteren Versionen).",
@@ -6287,16 +6287,16 @@
     {
       "question": "Nenne etwas, das man zu Hause regelmäßig leert.",
       "archiveId": "d116-p6",
-      "answers": 316,
-      "germanPresentation": 54,
-      "unchanged": 262
+      "answers": 319,
+      "germanPresentation": 60,
+      "unchanged": 259
     },
     {
       "question": "Nenne eine Werbemethode.",
       "archiveId": "d116-p7",
-      "answers": 825,
-      "germanPresentation": 16,
-      "unchanged": 809
+      "answers": 828,
+      "germanPresentation": 22,
+      "unchanged": 806
     },
     {
       "question": "Nenne einen Podcast mit mindestens 1.000 Bewertungen auf Spotify.",
@@ -6329,9 +6329,9 @@
     {
       "question": "Nenne ein Tier, das regelmäßig Insekten oder andere kleine Gliederfüßer frisst (belegte Nahrung).",
       "archiveId": "d117-p5",
-      "answers": 42214,
-      "germanPresentation": 2004,
-      "unchanged": 40210
+      "answers": 42216,
+      "germanPresentation": 2008,
+      "unchanged": 40208
     }
   ]
 }

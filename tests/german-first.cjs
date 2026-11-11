@@ -25,6 +25,15 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),engine=require(
   assert.equal(functions.tier(q,german).points,points,id+' translated points');
   assert.equal(functions.completion(q,english).suggestion,german,id+' suggests German first');
  }
+ const newGermanRows=engine.ctx.window.ABGRUND_GERMAN_VOCABULARY.at(-1).rows;assert.equal(newGermanRows.length,49);
+ for(const [question,english,german] of newGermanRows){
+  const q=engine.run('bank').find(q=>q.q===question);assert(q&&/^d11[1-7]-/.test(q.archiveId),question);await engine.ctx.window.ABGRUND_ARCHIVE.loadQuestion(q);
+  assert(q.archiveCanonicalByNorm.has(functions.n(english)),question+': '+english+' occurs in the full source list');
+  assert.equal(functions.label(q,english),german,question+': German first for '+english);
+  assert(functions.verify(q,german),question+': accepts '+german);
+  assert.equal(functions.canonical(q,german),english,question+': keeps the answer identity');
+  assert.equal(functions.tier(q,german).points,functions.tier(q,english).points,question+': keeps source points');
+ }
  const delivery=engine.run('bank').find(q=>q.q==='Nenne einen Zustelldienst.');for(const [answer,points] of [['DHL',10],['DoorDash',60],['Deutsche Post',10]]){assert(functions.verify(delivery,answer));assert.equal(functions.tier(delivery,answer).points,points)}
  for(const word of ['constructor','__proto__']){assert.equal(typeof functions.canonical(delivery,word),'string');assert.equal(functions.verify(delivery,word),false);assert.equal(functions.label(delivery,word),word)}
  let guams=0;for(const q of engine.run('bank'))if(functions.verify(q,'Guam')){assert.equal(functions.tier(q,'Guam').points,60,q.q);guams++}assert(guams>=3);
